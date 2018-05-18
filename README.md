@@ -1,5 +1,7 @@
 # Tinker Survival
 
+![Tinker Survival Logo](https://raw.githubusercontent.com/wendall911/TinkerSurvival/master/src/main/resources/assets/tinkersurvival/textures/gui/logo.png)
+
 A Minecraft 1.12+ mod designed to create an early game survival concept for
 [Tinkers' Construct](https://github.com/SlimeKnights/TinkersConstruct).
 
