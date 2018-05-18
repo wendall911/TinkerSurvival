@@ -1,4 +1,4 @@
-# Tinker Survival
+# Tinkers' Survival
 
 ![Tinker Survival Logo](https://raw.githubusercontent.com/wendall911/TinkerSurvival/master/src/main/resources/assets/tinkersurvival/textures/gui/logo.png)
 
