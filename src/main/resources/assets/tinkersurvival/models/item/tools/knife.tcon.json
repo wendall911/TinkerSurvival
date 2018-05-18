@@ -1,0 +1,8 @@
+{
+	"textures": {
+		"layer0": "tinkersurvival:items/knife/handle",
+		"layer1": "tinkersurvival:items/knife/head",
+		"layer2": "tinkersurvival:items/knife/binding",
+		"broken1": "tinkersurvival:items/knife/broken_head"
+	}
+}

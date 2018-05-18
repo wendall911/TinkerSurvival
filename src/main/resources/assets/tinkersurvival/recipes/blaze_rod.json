@@ -1,0 +1,19 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"LLL",
+		"LDL",
+		"L L"
+	],
+	"key": {
+        "D": {
+            "item": "minecraft:lead"
+        },
+		"L": {
+			"item": "minecraft:leather"
+		}
+	},
+	"result": {
+		"item": "minecraft:saddle"
+	}
+}

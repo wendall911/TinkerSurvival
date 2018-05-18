@@ -1,0 +1,24 @@
+{
+    "conditions": [
+        {
+            "type": "tinkersurvival:item_exists",
+            "item": "toughasnails:jelled_slime_helmet"
+        },
+        {
+            "type": "tinkersurvival:item_exists",
+            "item": "basemetals:adamantine_helmet"
+        }
+    ],
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+            "item": "toughasnails:jelled_slime_helmet"
+		},
+		{
+			"item": "basemetals:adamantine_helmet"
+		}
+	],
+	"result": {
+		"item": "tinkersurvival:reinforced_jelled_slime_helmet"
+	}
+}

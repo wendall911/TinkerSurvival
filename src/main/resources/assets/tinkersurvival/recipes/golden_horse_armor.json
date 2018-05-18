@@ -1,0 +1,19 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"IDI",
+		"I I"
+	],
+	"key": {
+        "D": {
+            "item": "minecraft:lead"
+        },
+		"I": {
+			"item": "minecraft:gold_ingot"
+		}
+	},
+	"result": {
+		"item": "minecraft:golden_horse_armor"
+	}
+}
