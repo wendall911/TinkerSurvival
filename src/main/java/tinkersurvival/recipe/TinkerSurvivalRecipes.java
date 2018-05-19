@@ -116,7 +116,9 @@ public class TinkerSurvivalRecipes {
 
         for (Item i : ForgeRegistries.ITEMS) {
             String itemName = i.getRegistryName().toString();
-            if (itemName.equals("minecraft:stick") || itemName.contains("planks")) {
+            if (itemName.equals("minecraft:stick")
+                    || itemName.equals("natura:sticks")
+                    || itemName.contains("planks")) {
                 itemSet.add(i);
             }
             if (ie) {
@@ -156,11 +158,9 @@ public class TinkerSurvivalRecipes {
                     TinkerSurvival.logger.info(msg);
 
                 }
-                else if (outputName.equals("minecraft:stick")) {
-                    RecipeHelper.addFakeRecipe(recipe);
-                    TinkerSurvival.logger.info("Replaced recipe for: " + outputName);
-                }
-                else if (outputName.equals("immersiveengineering:material")) {
+                else if (outputName.equals("minecraft:stick")
+                        || outputName.equals("natura:sticks")
+                        || outputName.equals("immersiveengineering:material")) {
                     RecipeHelper.addFakeRecipe(recipe);
                     TinkerSurvival.logger.info("Replaced recipe for: " + outputName);
                 }
