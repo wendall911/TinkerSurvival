@@ -38,13 +38,13 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                     int calculatedDamage = slot.getMaxDamage() - (slot.getItemDamage() + 1);
                     String toolName = I18n.translateToLocal(slot.getItem().getUnlocalizedName() + ".name");
                     
-                    if (calculatedDamage > 0) {
-                        tool = slot.copy();
-                        tool.setItemDamage(tool.getItemDamage() + 1);
-                    }
+                    tool = setDamage(slot.copy(), toolName, calculatedDamage);
 
-                    if (calculatedDamage == 0) {
-                        Toast.hint("tinkersurvival.message.notice", "tinkersurvival.message.tool_broke", toolName);
+                    if (calculatedDamage == 0
+                            && (tool.getItem() instanceof Saw || tool.getItem() instanceof Knife)) {
+                        ItemStack tool2 = tool.copy();
+                        tool = ItemStack.EMPTY;
+                        remains.set(i + 1, tool2);
                     }
                 }
                 remains.set(i, tool);
@@ -53,5 +53,25 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
 
 		return remains;
 	}
+
+    private ItemStack setDamage(ItemStack tool, String toolName, int calculatedDamage) {
+        if (calculatedDamage == 0
+                && (tool.getItem() instanceof CrudeKnife
+                    || tool.getItem() instanceof CrudeSaw)) {
+            tool = ItemStack.EMPTY;
+        }
+        else {
+            tool.setItemDamage(tool.getItemDamage() + 1);
+        }
+
+        if (calculatedDamage == 0) {
+            Toast.hint("tinkersurvival.message.notice", "tinkersurvival.message.tool_broke", toolName);
+        }
+        if (calculatedDamage == -1) {
+            tool = ItemStack.EMPTY;
+        }
+
+        return tool;
+    }
 
 }
