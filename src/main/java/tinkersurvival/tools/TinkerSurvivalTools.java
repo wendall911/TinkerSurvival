@@ -94,12 +94,12 @@ public class TinkerSurvivalTools {
         IForgeRegistry<Item> registry = event.getRegistry();
         all.forEach(registry::register);
         TinkerRegistry.registerToolCrafting(ticKnife);
-        ModelRegisterUtil.registerToolModel(ticKnife);
         TinkerRegistry.registerToolCrafting(ticSaw);
-        ModelRegisterUtil.registerToolModel(ticSaw);
     }
 
     public static void registerItemModels() {
+        ModelRegisterUtil.registerToolModel(ticKnife);
+        ModelRegisterUtil.registerToolModel(ticSaw);
         all.forEach(item -> {
             if (item == ticKnife || item == ticSaw) {
                 return;

@@ -4,14 +4,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
+
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
 import tinkersurvival.util.Event;
 
 public class TooltipEventHandler {
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public void onItemToolTip(ItemTooltipEvent event) {
         EntityPlayer player = event.getEntityPlayer();
 
