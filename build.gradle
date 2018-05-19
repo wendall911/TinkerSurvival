@@ -45,7 +45,8 @@ minecraft {
     mappings = config.mappings
     runDir = 'run'
     replace '@MOD_VERSION@', config.mod_version
-    replace '1.0.0.0', config.forge_version
+    replace '@FORGE_VERSION@', config.forge_version
+    replace '@TTL_VERSION@', config.ttl_version
     replaceIn 'TinkerSurvival.java'
     useDepAts = true
 }

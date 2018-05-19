@@ -3,8 +3,9 @@ package tinkersurvival;
 import net.minecraft.item.Item;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.RegistryNamespacedDefaultedByKey;
+import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -15,15 +16,20 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import tinkersurvival.config.Config;
-import tinkersurvival.world.worldgen.RockGenerator;
+
 import org.apache.logging.log4j.Logger;
+
+import slimeknights.toolleveling.ModToolLeveling;
+
+import tinkersurvival.config.Config;
 import tinkersurvival.proxy.CommonProxy;
+import tinkersurvival.world.worldgen.RockGenerator;
 
 @Mod(modid = TinkerSurvival.MODID,
      version = TinkerSurvival.MOD_VERSION,
      name = TinkerSurvival.MOD_NAME,
-     dependencies = "required-after:forge@[1.0.0.0,);"
+     dependencies = "required-after:forge@[@FORGE_VERSION@,);"
+            + "required-after:tinkertoollevling@[@TTL_VERSION@,);"
             + "after:biomeoplenty;"
             + "after:basemetals;"
             + "after:immersiveengineering;"
@@ -36,6 +42,8 @@ public class TinkerSurvival {
     public static final String MODID = "tinkersurvival";
     public static final String MOD_VERSION = "@MOD_VERSION@";
     public static final String MOD_NAME = "TinkerSurvival";
+
+    public static ModToolLeveling modToolLeveling = new ModToolLeveling();
 
     @SidedProxy(clientSide = "tinkersurvival.proxy.ClientProxy", serverSide = "tinkersurvival.proxy.ServerProxy")
     public static CommonProxy proxy;
