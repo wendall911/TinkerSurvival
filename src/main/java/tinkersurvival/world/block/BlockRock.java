@@ -33,7 +33,7 @@ public class BlockRock extends BlockBase {
     public static final IProperty<EnumMineralType> TYPE = PropertyEnum.create("type",EnumMineralType.class);
 
     public BlockRock(String name) {
-        super(name, Material.ROCK);
+        super(name, Material.CLAY);
 
         setHardness(0.15F);
         setDefaultState(this.blockState.getBaseState().withProperty(TYPE,EnumMineralType.STONE));
@@ -156,8 +156,7 @@ public class BlockRock extends BlockBase {
         }
 
         public static EnumMineralType byMetadata(int meta) {
-            if (meta < 0 || meta >= META_LOOKUP.length)
-            {
+            if (meta < 0 || meta >= META_LOOKUP.length) {
                 meta = 0;
             }
 
