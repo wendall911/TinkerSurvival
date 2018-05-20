@@ -19,17 +19,16 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import org.apache.logging.log4j.Logger;
 
-import slimeknights.toolleveling.ModToolLeveling;
-
 import tinkersurvival.config.Config;
 import tinkersurvival.proxy.CommonProxy;
+import tinkersurvival.util.TinkerSurvivalToolLeveling;
 import tinkersurvival.world.worldgen.RockGenerator;
 
 @Mod(modid = TinkerSurvival.MODID,
      version = TinkerSurvival.MOD_VERSION,
      name = TinkerSurvival.MOD_NAME,
      dependencies = "required-after:forge@[@FORGE_VERSION@,);"
-            + "required-after:tinkertoollevling@[@TTL_VERSION@,);"
+            + "after:tinkertoollevling@[@TTL_VERSION@,);"
             + "after:biomeoplenty;"
             + "after:basemetals;"
             + "after:immersiveengineering;"
@@ -43,7 +42,7 @@ public class TinkerSurvival {
     public static final String MOD_VERSION = "@MOD_VERSION@";
     public static final String MOD_NAME = "TinkerSurvival";
 
-    public static ModToolLeveling modToolLeveling = new ModToolLeveling();
+    public static TinkerSurvivalToolLeveling modToolLeveling = new TinkerSurvivalToolLeveling();
 
     @SidedProxy(clientSide = "tinkersurvival.proxy.ClientProxy", serverSide = "tinkersurvival.proxy.ServerProxy")
     public static CommonProxy proxy;

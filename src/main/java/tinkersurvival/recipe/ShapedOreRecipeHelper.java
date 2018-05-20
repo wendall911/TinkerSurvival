@@ -8,6 +8,7 @@ import net.minecraft.util.text.translation.I18n;
 
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.Knife;
@@ -62,6 +63,9 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
         }
         else {
             tool.setItemDamage(tool.getItemDamage() + 1);
+            if (tool.getItem() instanceof Saw || tool.getItem() instanceof Knife) {
+                TinkerSurvival.modToolLeveling.addCxp(tool, 1);
+            }
         }
 
         if (calculatedDamage == 0) {

@@ -17,6 +17,7 @@ import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
 import tinkersurvival.event.HarvestEventHandler;
 import tinkersurvival.event.HoeEventHandler;
+import tinkersurvival.event.PlayerContainerEventHandler;
 import tinkersurvival.event.PlayerEventHandler;
 import tinkersurvival.event.SleepEventHandler;
 import tinkersurvival.event.TooltipEventHandler;
@@ -32,6 +33,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new BowEventHandler());
         MinecraftForge.EVENT_BUS.register(new HoeEventHandler());
         MinecraftForge.EVENT_BUS.register(new HarvestEventHandler());
+        MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
         MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());

@@ -2,6 +2,7 @@ package tinkersurvival.event;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 
@@ -11,7 +12,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import slimeknights.tconstruct.library.utils.TinkerUtil;
+
+import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.Event;
+import tinkersurvival.util.ToolLevelNBT;
 
 public class TooltipEventHandler {
 
@@ -25,6 +30,14 @@ public class TooltipEventHandler {
             || player.capabilities.isCreativeMode
                 ) {
             return;
+        }
+
+        NBTTagCompound tag = TinkerUtil.getModifierTag(event.getItemStack(), TinkerSurvival.modToolLeveling.getModifierIdentifier());
+        if (!tag.hasNoTags()) {
+            ToolLevelNBT data = new ToolLevelNBT(tag);
+            if (data.cxp >= 0) {
+                event.getToolTip().add(1, TextFormatting.GOLD + I18n.translateToLocalFormatted("tooltip.cxp"));
+            }
         }
 
         if (Event.isUselessBow(event.getItemStack())) {
