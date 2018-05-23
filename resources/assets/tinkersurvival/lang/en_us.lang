@@ -47,10 +47,10 @@ tile.loose_rock.granite.name=Loose Rock (Granite)
 
 # JEI
 
-jei.description.rock=Rocks are found lying on the ground. Breaking them can give you small rocks, with a small chance of giving you an small iron ore piece.
-jei.description.grass_fiber=Grass fibers are dropped when breaking tall grass with a knife. They can also be obtained by cutting plant material in your hand with a knife. They are used to make grass string, which is needed to create basic tools
+jei.description.rock=Rocks are found lying on the ground. These can be used with the knife in a crafting table to get flint shards.
+jei.description.grass_fiber=Grass fibers are dropped when breaking tall grass with a knife. They are used to make grass string for tools and plant paste for bandage ointment.
 jei.description.stick=Sticks are dropped from leaves. Using any knife doubles the chance of getting a stick.
-jei.description.flint_shard=Flint shards can be obtained from knapping flint on any rocky surface. Right click a piece of flint on a stone like block, and it might split into two flint shards. It might take a few tries to get it right though.
+jei.description.flint_shard=Flint shards can be obtained from striking flint on any rocky surface. Attack any stone like block with flint, and it might split into two flint shards.
 
 # Tooltips
 tooltip.uselessTool1=This tool cannot mine anything!
