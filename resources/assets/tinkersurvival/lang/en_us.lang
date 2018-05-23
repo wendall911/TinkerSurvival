@@ -1,0 +1,73 @@
+# Creative Tabs
+
+itemGroup.tinkersurvival=Tinker Survival
+
+# Items
+
+item.rock_stone.name=Rock
+item.rock_andesite.name=Andesite Rock
+item.rock_diorite.name=Diorite Rock
+item.rock_granite.name=Granite Rock
+
+item.grass_fiber.name=Plant Fibers
+item.grass_string.name=Plant String
+item.flint_shard.name=Flint Shard
+
+item.crude_knife.name=Crude Knife
+item.crude_hatchet.name=Crude Hatchet
+item.crude_saw.name=Crude Saw
+item.crude_saw_blade.name=Crude Saw Blade
+item.knife.name=Knife
+item.knife.desc=For cutting stuff.
+item.saw.name=Saw
+item.saw.desc=For cutting wood!
+
+item.reinforced_wool_helmet.name=Reinforced Wool Helmet
+item.reinforced_wool_chestplate.name=Reinforced Wool Chestplate
+item.reinforced_wool_leggings.name=Reinforced Wool Leggings
+item.reinforced_wool_boots.name=Reinforced Wool Boots
+item.reinforced_jelled_slime_helmet.name=Reinforced Slime Helmet
+item.reinforced_jelled_slime_chestplate.name=Reinforced Slime Chestplate
+item.reinforced_jelled_slime_leggings.name=Reinforced Slime Leggings
+item.reinforced_jelled_slime_boots.name=Reinforced Slime Boots
+
+item.bandages.name=Bandages
+item.cloth.name=Cloth
+item.crude_bandages.name=Crude Bandages
+item.ointment.name=Ointment
+item.plant_paste.name=Plant Paste
+item.wooden_cup.name=Mysterious Wooden Cup
+
+# Blocks
+
+tile.loose_rock.stone.name=Loose Rock (Stone)
+tile.loose_rock.andesite.name=Loose Rock (Andesite)
+tile.loose_rock.diorite.name=Loose Rock (Diorite)
+tile.loose_rock.granite.name=Loose Rock (Granite)
+
+# JEI
+
+jei.description.rock=Rocks are found lying on the ground. Breaking them can give you small rocks, with a small chance of giving you an small iron ore piece.
+jei.description.grass_fiber=Grass fibers are dropped when breaking tall grass with a knife. They can also be obtained by cutting plant material in your hand with a knife. They are used to make grass string, which is needed to create basic tools
+jei.description.stick=Sticks are dropped from leaves. Using any knife doubles the chance of getting a stick.
+jei.description.flint_shard=Flint shards can be obtained from knapping flint on any rocky surface. Right click a piece of flint on a stone like block, and it might split into two flint shards. It might take a few tries to get it right though.
+
+# Tooltips
+tooltip.uselessTool1=This tool cannot mine anything!
+tooltip.uselessTool2=It can only be used for crafting.
+tooltip.uselessHoe1=This hoe cannot hoe anything!
+tooltip.uselessWeapon1=This weapon hits like a wet noodle!
+tooltip.uselessBow1=This bows bowstring snapped!
+tooltip.cxp=Crafty
+
+# Messages
+message.notice=Notice
+message.warning=Warning
+message.wrong_tool=A %s is required.
+message.wrong_tool2=Ummm ... %s?
+message.tool_broke=Your %s broke.
+message.spawn_set=Not sleepy, but spawn set!
+
+# Potion Effects
+potion.stopbleeding=Stop Bleeding
+potion.zombieessence=Zombie Essence
