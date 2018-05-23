@@ -1,6 +1,0 @@
-{
-    "conditions": {
-        "ore_exists": "tinkersurvival.recipe.condition.OreExists",
-        "item_exists": "tinkersurvival.recipe.condition.ItemExists"
-    }
-}

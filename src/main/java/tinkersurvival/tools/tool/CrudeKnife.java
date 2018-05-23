@@ -4,6 +4,8 @@ import com.google.common.collect.Sets;
 
 import java.util.Set;
 
+import tinkersurvival.TinkerSurvival;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockTallGrass;
@@ -32,6 +34,7 @@ public class CrudeKnife extends ItemTool {
         setUnlocalizedName(name);
         setRegistryName(name);
         this.name = name;
+        setCreativeTab(TinkerSurvival.TS_Tab);
     }
 
     public boolean shouldBreakBlock(Block block) {

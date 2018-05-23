@@ -75,7 +75,7 @@ public class CommonProxy {
     public void generateParticle(World world, BlockPos pos, EnumParticleTypes particle){
     }
 
-    public void initToolGuis() {
+    public void initGuis() {
     }
 
 }

@@ -82,6 +82,14 @@ task deobfJar(type: Jar) {
     classifier = 'deobf'
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDir 'resources'
+        }   
+    }   
+}
+
 processResources {
     from(sourceSets.main.resources.srcDirs) {
         include '**/*.info'

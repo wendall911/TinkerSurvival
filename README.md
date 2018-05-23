@@ -55,15 +55,22 @@ fiber to craft plant string used in crafting both the Crude Axe and Crude Saw.
      + Knife Blade
      + Tool Rod
      + Tool Binding
+     + Crafty! Item gains XP when used for crafting.
    + Saw - Advanced Tinkers' Construct tool. Better durability, doubles plank output.
      + 2 Axe Heads
      + Tool Rod
      + Tool Binding
+     + Crafty! Item gains XP when used for crafting.
  + Armor
    + Only craftable if BaseMetals and ToughAsNails are both installed. This is
      intended for ToughAsNails integration.
    + Items
      + Reinforced Wool Armor - Full set
      + Reinforced Slime Armor - Full set
+ + Health Items
+   + Crude Bandage
+     + Heals 2 hearts health over 30 seconds.
+   + Bandage
+     + Heals 4 hearts health over 30 seconds.
  + WorldGen
    + Add rock piles throughout the world.

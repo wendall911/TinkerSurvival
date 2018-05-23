@@ -23,7 +23,7 @@ public class SleepEventHandler {
 		if (world.provider.canRespawnHere() && (world.provider.getBiomeForCoords(event.getPos()) != Biomes.HELL)) {
 			player.setSpawnPoint(event.getPos(), false);
 			player.setSpawnChunk(event.getPos(), false, player.dimension);
-			Toast.hint("tinkersurvival.message.notice", "tinkersurvival.message.spawn_set", null);
+			Toast.hint("message.notice", "message.spawn_set", null);
 		}
 	}
 

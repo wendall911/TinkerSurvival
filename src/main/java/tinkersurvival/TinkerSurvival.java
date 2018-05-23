@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import org.apache.logging.log4j.Logger;
 
+import tinkersurvival.client.CreativeTabBase;
 import tinkersurvival.config.Config;
 import tinkersurvival.proxy.CommonProxy;
 import tinkersurvival.util.TinkerSurvivalToolLeveling;
@@ -43,6 +44,7 @@ public class TinkerSurvival {
     public static final String MOD_NAME = "TinkerSurvival";
 
     public static TinkerSurvivalToolLeveling modToolLeveling = new TinkerSurvivalToolLeveling();
+    public static final CreativeTabBase TS_Tab = new CreativeTabBase(MODID);
 
     @SidedProxy(clientSide = "tinkersurvival.proxy.ClientProxy", serverSide = "tinkersurvival.proxy.ServerProxy")
     public static CommonProxy proxy;
@@ -66,7 +68,7 @@ public class TinkerSurvival {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
         logger.info("Init started");
-        proxy.initToolGuis();
+        proxy.initGuis();
     }
 
     @Mod.EventHandler

@@ -7,40 +7,42 @@ import tinkersurvival.TinkerSurvival;
 
 public class ItemRock extends ItemBase {
 
-    public ItemRock(String name){
-        super(name);
+    public static String name;
 
+    public static enum Type {
+        STONE("stone"), ANDESITE("andesite"), DIORITE("diorite"), GRANITE("granite");
+
+        public final String name;
+
+        Type(String name) {
+            this.name = name;
+        }
+    }
+
+    public ItemRock(String name) {
+        super(name, Type.values().length);
+        this.name = name;
         this.setMaxDamage(0);
-        this.setHasSubtypes(true);
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack)
-    {
+    public String getUnlocalizedName(ItemStack stack) {
         return super.getUnlocalizedName() + "_" + getStoneName(stack);
     }
+
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (getCreativeTab() != tab) {
             return;
         }
-        for (int i = 0; i < 4; ++i) {
-            items.add(new ItemStack(this, 1, i));
+
+        for (Type type : Type.values()) {
+            items.add(new ItemStack(this, 1, type.ordinal()));
         }
     }
 
-    public String getStoneName(ItemStack stack){
-        switch(stack.getMetadata()){
-            case 0:
-                return "stone"; // Vanilla Stone
-            case 1:
-                return "andesite"; // Vanilla Stone Variants
-            case 2:
-                return "diorite";
-            case 3:
-                return "granite";
-            default:
-                return "";
-        }
+    public String getStoneName(ItemStack stack) {
+        return Type.values()[stack.getMetadata()].name;
     }
+
 }

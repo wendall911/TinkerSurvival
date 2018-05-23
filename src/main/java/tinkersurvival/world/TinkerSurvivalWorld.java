@@ -19,13 +19,18 @@ import net.minecraftforge.registries.IForgeRegistry;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.item.ItemBase;
+import tinkersurvival.world.item.ItemBandage;
 import tinkersurvival.world.item.ItemRock;
+import tinkersurvival.world.item.ItemWoodenCup;
 import tinkersurvival.world.item.TinkerSurvivalArmor;
+import tinkersurvival.world.potion.StopBleeding;
+import tinkersurvival.world.potion.ZombieEssence;
 
 public class TinkerSurvivalWorld {
 
     private static final List<Item> all = new ArrayList<>();
     private static final List<ItemStack> rocks = new ArrayList<>();
+    private static final List<ItemStack> bandages = new ArrayList<>();
     public static ArmorMaterial reinforced_wool_armor_material;
     public static ArmorMaterial reinforced_jelled_slime_armor_material;
     
@@ -40,9 +45,18 @@ public class TinkerSurvivalWorld {
 
     public static BlockRock looseRock;
     public static ItemRock rockStone;
+    public static ItemBase cloth;
+    public static ItemBase flintShard;
+    public static ItemBase plantPaste;
     public static ItemBase grassFiber;
     public static ItemBase grassString;
-    public static ItemBase flintShard;
+    public static ItemBase ointment;
+    
+    public static ItemBandage bandageItem;
+    public static ItemWoodenCup woodenCup;
+
+    public static StopBleeding stopBleeding;
+    public static ZombieEssence zombieEssence;
 
     public static void initItemRepairMaterials() {
         if (Loader.isModLoaded("basemetals")) {
@@ -90,9 +104,18 @@ public class TinkerSurvivalWorld {
 
         looseRock = getLooseRock(looseRock, "loose_rock");
         rockStone = getRock(rockStone, "rock");
+        cloth = getItem(cloth, "cloth");
         grassFiber = getItem(grassFiber, "grass_fiber");
         grassString = getItem(grassString, "grass_string");
+        ointment = getItem(ointment, "ointment");
+        plantPaste = getItem(plantPaste, "plant_paste");
         flintShard = getItem(flintShard, "flint_shard");
+        bandageItem = getBandage(bandageItem, "bandage");
+        woodenCup = getCup(woodenCup, "wooden_cup");
+
+        stopBleeding = new StopBleeding();
+        zombieEssence = new ZombieEssence();
+
     }
 
 	private static TinkerSurvivalArmor getArmor(TinkerSurvivalArmor armor, ArmorMaterial material, EntityEquipmentSlot slot, String name) {
@@ -111,8 +134,20 @@ public class TinkerSurvivalWorld {
         return rock;
     }
 
+    private static ItemBandage getBandage(ItemBandage bandage, String name) {
+        bandage = new ItemBandage(name);
+        all.add(bandage);
+        return bandage;
+    }
+
+    private static ItemWoodenCup getCup(ItemWoodenCup cup, String name) {
+        cup = new ItemWoodenCup(name, 600);
+        all.add(cup);
+        return cup;
+    }
+
     private static ItemBase getItem(ItemBase item, String name) {
-        item = new ItemBase(name);
+        item = new ItemBase(name, 1);
         all.add(item);
         return item;
     }
@@ -133,26 +168,37 @@ public class TinkerSurvivalWorld {
     }
 
     public static void registerItemModels() {
-        for (int i=0; i < 4; i++) {
+        for (int i=0; i < ItemRock.Type.values().length; i++) {
             ItemStack rock = new ItemStack(rockStone, 1, i);
             rocks.add(rock);
             TinkerSurvival.proxy.registerItemModelWithVariant(
                 rockStone,
                 i,
-                rockStone.name + "_" +  rockStone.getStoneName(rock),
+                rockStone.name + "_" + rockStone.getStoneName(rock),
+                "inventory"
+            );
+        }
+
+        for (int i=0; i < ItemBandage.Type.values().length; i++) {
+            ItemStack bandage = new ItemStack(bandageItem, 1, i);
+            bandages.add(bandage);
+            TinkerSurvival.proxy.registerItemModelWithVariant(
+                bandageItem,
+                i,
+                bandageItem.getBandageName(bandage),
                 "inventory"
             );
         }
 
         all.forEach(item -> {
-            if (!(item instanceof ItemRock)) {
+            if (!(item instanceof ItemRock || item instanceof ItemBandage)) {
                 TinkerSurvival.proxy.registerItemModel(item);
             }
         });
     }
 
     public static void registerBlockModels() {
-        for (int i=0; i < 4; i++) {
+        for (int i=0; i < BlockRock.EnumMineralType.values().length; i++) {
             TinkerSurvival.proxy.registerItemModelWithVariant(
                 Item.getItemFromBlock(looseRock),
                 i,
@@ -164,6 +210,10 @@ public class TinkerSurvivalWorld {
 
     public static List<ItemStack> listAllRocks() {
         return rocks;
+    }
+
+    public static List<ItemStack> listAllBandages() {
+        return bandages;
     }
     
 	public static int[] getDamageReduction(float hardness) {

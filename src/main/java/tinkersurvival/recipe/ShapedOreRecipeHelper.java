@@ -69,7 +69,7 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
         }
 
         if (calculatedDamage == 0) {
-            Toast.hint("tinkersurvival.message.notice", "tinkersurvival.message.tool_broke", toolName);
+            Toast.hint("message.notice", "message.tool_broke", toolName);
         }
         if (calculatedDamage == -1) {
             tool = ItemStack.EMPTY;

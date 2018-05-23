@@ -4,6 +4,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 
+import tinkersurvival.TinkerSurvival;
+
 public class TinkerSurvivalArmor extends ItemArmor {
 
     public String name;
@@ -14,6 +16,7 @@ public class TinkerSurvivalArmor extends ItemArmor {
         this.name = name;
         setUnlocalizedName(name);
         setRegistryName(name);
+        setCreativeTab(TinkerSurvival.TS_Tab);
     }
 
 }

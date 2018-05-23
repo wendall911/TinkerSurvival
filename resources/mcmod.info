@@ -5,7 +5,7 @@
   "description": "A small mod to make the first day or two of play more believable. Adds a few new tools and early game resource gathering.",
   "version": "${mod_version}",
   "mcversion": "${minecraft_version}",
-  "url": "",
+  "url": "https://github.com/wendall911/TinkerSurvival",
   "authorList": ["wendall911"],
   "credits": "ashar42",
   "logoFile": "assets/tinkersurvival/textures/gui/logo.png"

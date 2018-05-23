@@ -43,7 +43,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerItemModelWithVariant(Item item, int meta, String id, String variant){
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(TinkerSurvival.MODID + ":" + id,variant));
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(TinkerSurvival.MODID + ":" + id, variant));
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void initToolGuis() {
+    public void initGuis() {
         ToolBuildGuiInfo knifeInfo = new ToolBuildGuiInfo(TinkerSurvivalTools.ticKnife);
         knifeInfo.addSlotPosition(12, 62); // handle
         knifeInfo.addSlotPosition(48, 27); // blade
@@ -65,6 +65,8 @@ public class ClientProxy extends CommonProxy {
         sawInfo.addSlotPosition(22, 20); // head
         sawInfo.addSlotPosition(31, 44); // binding
         TinkerRegistryClient.addToolBuilding(sawInfo);
+
+        TinkerSurvival.TS_Tab.setTabItem(TinkerSurvivalTools.crudeHatchet);
     }
 
 }

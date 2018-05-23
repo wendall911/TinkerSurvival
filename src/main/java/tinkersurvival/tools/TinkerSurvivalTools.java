@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
@@ -58,7 +57,7 @@ public class TinkerSurvivalTools {
     }
 
     private static ItemBase getItem(ItemBase item, String name) {
-        item = new ItemBase(name);
+        item = new ItemBase(name, 1);
         all.add(item);
         return item;
     }

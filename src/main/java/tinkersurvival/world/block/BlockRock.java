@@ -132,7 +132,7 @@ public class BlockRock extends BlockBase {
     }
 
     public String getStoneName(int meta) {
-        return getStoneName(new ItemStack(this,1,meta));
+        return getStoneName(new ItemStack(this, 1, meta));
     }
 
     @Override

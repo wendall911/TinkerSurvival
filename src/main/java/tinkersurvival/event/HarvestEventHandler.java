@@ -166,10 +166,10 @@ public class HarvestEventHandler {
                             || harvestAttempts.get(player) == null
                             || !harvestAttempts.get(player).equals(pos)) {
                         harvestAttempts.put(player, pos);
-                        Toast.hint("tinkersurvival.message.warning", "tinkersurvival.message.wrong_tool", neededToolClass);
+                        Toast.hint("message.warning", "message.wrong_tool", neededToolClass);
                     }
                     else {
-                        Toast.hint("tinkersurvival.message.warning", "tinkersurvival.message.wrong_tool2", neededToolClass);
+                        Toast.hint("message.warning", "message.wrong_tool2", neededToolClass);
                         player.attackEntityFrom(DamageSource.GENERIC, 0.01f);
                     }
                 }
