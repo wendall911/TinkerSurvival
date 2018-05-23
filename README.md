@@ -29,7 +29,8 @@ Flint is essential for creating your first knife, the Crude Knife. You'll need
 to find gravel and either craft into flint, or break it until you get some.
 
 Plant fiber is a new drop when breaking grass with the knife. You'll need plant
-fiber to craft plant string used in crafting both the Crude Axe and Crude Saw.
+fiber to craft plant string used in crafting both the Crude Axe, Crude Saw and
+bandages.
 
 ## Features
 
