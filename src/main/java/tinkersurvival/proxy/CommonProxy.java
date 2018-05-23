@@ -20,6 +20,8 @@ import tinkersurvival.event.HoeEventHandler;
 import tinkersurvival.event.PlayerContainerEventHandler;
 import tinkersurvival.event.PlayerEventHandler;
 import tinkersurvival.event.SleepEventHandler;
+import tinkersurvival.event.SomethingNeedsToastEvent;
+import tinkersurvival.event.SomethingNeedsToastHandler;
 import tinkersurvival.event.TooltipEventHandler;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
 import tinkersurvival.tools.TinkerSurvivalTools;
@@ -36,6 +38,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
         MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
+        MinecraftForge.EVENT_BUS.register(new SomethingNeedsToastHandler());
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
     }
 
@@ -58,6 +61,10 @@ public class CommonProxy {
         TinkerSurvivalWorld.initItemRepairMaterials();
     }
 
+	public static void toastHint(String title, String subtitle, String replace) {
+		SomethingNeedsToastEvent.fireEvent(title, subtitle, replace);
+    }
+
     public void registerItemModel(Item item, int meta, String id) {
     }
     public void registerItemModel(Item item, int meta) {
@@ -76,9 +83,6 @@ public class CommonProxy {
     }
 
     public void initGuis() {
-    }
-
-	public void toastHint(String title, String subtitle, String replace) {
     }
 
 }

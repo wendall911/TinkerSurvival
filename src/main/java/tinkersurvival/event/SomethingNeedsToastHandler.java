@@ -1,11 +1,22 @@
-package tinkersurvival.util;
+package tinkersurvival.event;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.util.text.TextComponentTranslation;
 
-public class Toast {
-	public static void hint(String title, String subtitle, String replace){
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class SomethingNeedsToastHandler {
+
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+	public void onHint(SomethingNeedsToastEvent event) {
+        String title = event.getTitle();
+        String subtitle = event.getSubtitle();
+        String replace = event.getReplace();
+
         Minecraft.getMinecraft().getToastGui().add(
             new SystemToast(
                 SystemToast.Type.TUTORIAL_HINT,
@@ -14,4 +25,5 @@ public class Toast {
             )
         );
 	}
+
 }
