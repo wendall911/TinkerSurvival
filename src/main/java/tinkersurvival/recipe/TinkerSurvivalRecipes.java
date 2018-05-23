@@ -35,6 +35,18 @@ public class TinkerSurvivalRecipes {
         });
     }
 
+    private static void initBowlRecipes() {
+        registerShaped(
+            new ItemStack(TinkerSurvivalWorld.plantPaste),
+            "I",
+            "T",
+            'I',
+            new ItemStack(TinkerSurvivalWorld.grassFiber),
+            'T',
+            new ItemStack(Items.BOWL)
+        );
+    }
+
     private static void initKnifeRecipes() {
         TinkerSurvivalTools.listAllKnives().forEach(knife -> {
             int shards = 2;
@@ -170,5 +182,6 @@ public class TinkerSurvivalRecipes {
         initSawRecipes(ie);
         initKnifeRecipes();
         initSmeltingRecipes();
+        initBowlRecipes();
     }
 }

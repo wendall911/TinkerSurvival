@@ -1,5 +1,6 @@
 package tinkersurvival.recipe;
 
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -34,7 +35,8 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                     && (slot.getItem() instanceof Knife
                         || slot.getItem() instanceof Saw
                         || slot.getItem() instanceof CrudeKnife
-                        || slot.getItem() instanceof CrudeSaw)) {
+                        || slot.getItem() instanceof CrudeSaw
+                        || slot.getItem() == Items.BOWL)) {
                 if (slot.isItemStackDamageable()) {
                     int calculatedDamage = slot.getMaxDamage() - (slot.getItemDamage() + 1);
                     String toolName = I18n.translateToLocal(slot.getItem().getUnlocalizedName() + ".name");
@@ -47,6 +49,9 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                         tool = ItemStack.EMPTY;
                         remains.set(i + 1, tool2);
                     }
+                }
+                else {
+                    tool = slot.copy();
                 }
                 remains.set(i, tool);
 			}
