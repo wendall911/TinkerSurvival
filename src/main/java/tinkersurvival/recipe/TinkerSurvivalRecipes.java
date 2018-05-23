@@ -27,12 +27,13 @@ public class TinkerSurvivalRecipes {
     }
 
     private static void initSawRecipes(boolean ie) {
-        TinkerSurvivalTools.listAllSaws().forEach(saw -> {
-            addStickPlankRecipe(new ItemStack(Items.STICK, 2), saw);
-            if (ie) {
-                addTreatedStickPlankRecipe(saw);
-            }
-        });
+        ItemStack sticks = new ItemStack(Items.STICK, 2);
+        addStickPlankRecipe(sticks, "crudeSaw");
+        addStickPlankRecipe(sticks, "ticSaw");
+        if (ie) {
+            addTreatedStickPlankRecipe("crudeSaw");
+            addTreatedStickPlankRecipe("ticSaw");
+        }
     }
 
     private static void initBowlRecipes() {
@@ -48,11 +49,12 @@ public class TinkerSurvivalRecipes {
     }
 
     private static void initKnifeRecipes() {
-        TinkerSurvivalTools.listAllKnives().forEach(knife -> {
-            int shards = 2;
+        String knife = "crudeKnife";
 
-            if (knife.getItem() instanceof Knife) {
-                shards = 4;
+        for (int i = 1; i < 3; i++) {
+            if (i == 2) {
+                knife = "ticKnife";
+
                 addKnifeRecipe(
                     new ItemStack(Blocks.WOOL),
                     new ItemStack(Items.STRING, 4),
@@ -60,37 +62,39 @@ public class TinkerSurvivalRecipes {
                 );
             }
 
-            TinkerSurvivalWorld.listAllRocks().forEach(rock -> {
-                addKnifeRecipe(
-                    rock,
-                    new ItemStack(TinkerSurvivalWorld.flintShard),
-                    knife
-                );
-            });
+            addKnifeRecipe(
+                "stoneRock",
+                new ItemStack(TinkerSurvivalWorld.flintShard, i),
+                knife
+            );
 
             addKnifeRecipe(
                 new ItemStack(Items.FLINT),
-                new ItemStack(TinkerSurvivalWorld.flintShard, shards),
+                new ItemStack(TinkerSurvivalWorld.flintShard, i * 2),
                 knife
             );
 
             addKnifeRecipe(
                 new ItemStack(Blocks.SAPLING),
-                new ItemStack(Items.STICK),
+                new ItemStack(Items.STICK, i),
                 knife
             );
-        });
+        };
     }
 
-    private static void addKnifeRecipe(ItemStack input, ItemStack output, ItemStack tool) {
+    private static void addKnifeRecipe(ItemStack input, ItemStack output, String tool) {
         registerShaped(output, "T", "I", 'I', input, 'T', tool);
     }
 
-    private static void addStickPlankRecipe(ItemStack output, ItemStack tool) {
+    private static void addKnifeRecipe(String input, ItemStack output, String tool) {
+        registerShaped(output, "T", "I", 'I', input, 'T', tool);
+    }
+
+    private static void addStickPlankRecipe(ItemStack output, String tool) {
         registerShaped(output, "T", "P", 'P', "plankWood", 'T', tool);
     }
 
-    private static void addTreatedStickPlankRecipe(ItemStack tool) {
+    private static void addTreatedStickPlankRecipe(String tool) {
         registerShaped(
             getSafeItem("immersiveengineering:material", 2),
             "T",
@@ -102,7 +106,7 @@ public class TinkerSurvivalRecipes {
         );
     }
 
-    private static void addLogRecipe(ItemStack output, ItemStack input, ItemStack tool) {
+    private static void addLogRecipe(ItemStack output, ItemStack input, String tool) {
         registerShaped(output, "T", "P", 'P', input, 'T', tool);
     }
 
@@ -145,27 +149,20 @@ public class TinkerSurvivalRecipes {
 
             if (!output.isEmpty() && itemSet.contains(output.getItem())) {
                 String outputName = output.getItem().getRegistryName().toString();
-                int outputMeta = output.getMetadata();
                 String msg = "Replaced recipe for: " + outputName;
 
                 if (outputName.contains("planks")
                         && recipe.getIngredients().size() > 0
                         && recipe.getIngredients().size() < 2) {
                     ItemStack input = recipe.getIngredients().get(0).getMatchingStacks()[0];
-                    String inputName = input.getItem().getRegistryName().toString();
-                    int inputMeta = input.getMetadata();
+                    input.setCount(1);
 
-                    TinkerSurvivalTools.listAllSaws().forEach(saw -> {
-                        int outputCount = 4;
+                    output.setCount(2);
+                    addLogRecipe(output, input, "crudeSaw");
 
-                        if (saw.getItem() instanceof CrudeSaw) {
-                            outputCount = 2;
-                        }
-                        addLogRecipe(getSafeItem(outputName, outputMeta, outputCount), 
-                            getSafeItem(inputName, inputMeta, 1),
-                            saw
-                        );
-                    });
+                    output.setCount(4);
+                    addLogRecipe(output, input, "ticSaw");
+
                     RecipeHelper.addFakeRecipe(recipe);
                     TinkerSurvival.logger.info(msg);
 

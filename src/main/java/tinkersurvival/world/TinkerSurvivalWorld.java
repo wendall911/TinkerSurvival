@@ -1,7 +1,9 @@
 package tinkersurvival.world;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
@@ -30,8 +32,8 @@ import tinkersurvival.world.potion.ZombieEssence;
 public class TinkerSurvivalWorld {
 
     private static final List<Item> all = new ArrayList<>();
-    private static final List<ItemStack> rocks = new ArrayList<>();
-    private static final List<ItemStack> bandages = new ArrayList<>();
+	private static final Map<String, ItemStack> oredictItems = new HashMap<>();
+
     public static ArmorMaterial reinforced_wool_armor_material;
     public static ArmorMaterial reinforced_jelled_slime_armor_material;
     
@@ -131,7 +133,7 @@ public class TinkerSurvivalWorld {
 
     private static ItemRock getRock(ItemRock rock, String name) {
         rock = new ItemRock(name);
-        rocks.add(new ItemStack(rock, 1, OreDictionary.WILDCARD_VALUE));
+        oredictItems.put("stoneRock", new ItemStack(rock, 1, OreDictionary.WILDCARD_VALUE));
         all.add(rock);
         return rock;
     }
@@ -161,6 +163,10 @@ public class TinkerSurvivalWorld {
         event.getRegistry().registerAll(
             new ItemMultiTexture(looseRock, looseRock, looseRock::getStoneName).setRegistryName(looseRock.name)
         );
+
+        for (Map.Entry<String, ItemStack> entry : oredictItems.entrySet()) {
+            OreDictionary.registerOre(entry.getKey(), entry.getValue());
+        }
     }
 
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -182,7 +188,6 @@ public class TinkerSurvivalWorld {
 
         for (int i = 0; i < ItemBandage.Type.values().length; i++) {
             ItemStack bandage = new ItemStack(bandageItem, 1, i);
-            bandages.add(bandage);
             TinkerSurvival.proxy.registerItemModelWithVariant(
                 bandageItem,
                 i,
@@ -209,14 +214,6 @@ public class TinkerSurvivalWorld {
         }
     }
 
-    public static List<ItemStack> listAllRocks() {
-        return rocks;
-    }
-
-    public static List<ItemStack> listAllBandages() {
-        return bandages;
-    }
-    
 	public static int[] getDamageReduction(float hardness) {
 		int[] protection = new int[4];
 		float minimum = 5f;

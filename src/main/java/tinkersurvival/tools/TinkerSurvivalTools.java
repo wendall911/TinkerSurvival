@@ -1,7 +1,9 @@
 package tinkersurvival.tools;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,8 +27,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 public class TinkerSurvivalTools {
 
     private static final List<Item> all = new ArrayList<>();
-    private static final List<ItemStack> knives = new ArrayList<>();
-    private static final List<ItemStack> saws = new ArrayList<>();
+	private static final Map<String, ItemStack> oredictItems = new HashMap<>();
 
     public static Item.ToolMaterial toolMaterialStone;
     public static Item.ToolMaterial toolMaterialFlint;
@@ -51,8 +52,8 @@ public class TinkerSurvivalTools {
 
     private static CrudeKnife getCrudeKnife(CrudeKnife knife, Item.ToolMaterial material, String name) {
         knife = new CrudeKnife(material, name);
+        oredictItems.put("crudeKnife", new ItemStack(knife, 1, OreDictionary.WILDCARD_VALUE));
         all.add(knife);
-        knives.add(new ItemStack(knife, 1, OreDictionary.WILDCARD_VALUE));
         return knife;
     }
 
@@ -64,28 +65,29 @@ public class TinkerSurvivalTools {
 
     private static CrudeHatchet getCrudeHatchet(CrudeHatchet hatchet, Item.ToolMaterial material, String name) {
         hatchet = new CrudeHatchet(material, name);
+        oredictItems.put("crudeHatchet", new ItemStack(hatchet, 1, OreDictionary.WILDCARD_VALUE));
         all.add(hatchet);
         return hatchet;
     }
 
     private static CrudeSaw getCrudeSaw(CrudeSaw saw, Item.ToolMaterial material, String name) {
         saw = new CrudeSaw(material, name);
+        oredictItems.put("crudeSaw", new ItemStack(saw, 1, OreDictionary.WILDCARD_VALUE));
         all.add(saw);
-        saws.add(new ItemStack(saw, 1, OreDictionary.WILDCARD_VALUE));
         return saw;
     }
 
     private static Saw getSaw(Saw saw, String name) {
         saw = new Saw(name);
         all.add(saw);
-        saws.add(new ItemStack(saw, 1, OreDictionary.WILDCARD_VALUE));
+        oredictItems.put("ticSaw", new ItemStack(saw, 1, OreDictionary.WILDCARD_VALUE));
         return saw;
     }
 
     private static Knife getKnife(Knife knife, String name) {
         knife = new Knife(name);
+        oredictItems.put("ticKnife", new ItemStack(knife, 1, OreDictionary.WILDCARD_VALUE));
         all.add(knife);
-        knives.add(new ItemStack(knife, 1, OreDictionary.WILDCARD_VALUE));
         return knife;
     }
 
@@ -94,6 +96,9 @@ public class TinkerSurvivalTools {
         all.forEach(registry::register);
         TinkerRegistry.registerToolCrafting(ticKnife);
         TinkerRegistry.registerToolCrafting(ticSaw);
+        for (Map.Entry<String, ItemStack> entry : oredictItems.entrySet()) {
+            OreDictionary.registerOre(entry.getKey(), entry.getValue());
+        }
     }
 
     public static void registerItemModels() {
@@ -106,11 +111,4 @@ public class TinkerSurvivalTools {
         });
     }
 
-    public static List<ItemStack> listAllKnives() {
-        return knives;
-    }
-
-    public static List<ItemStack> listAllSaws() {
-        return saws;
-    }
 }
