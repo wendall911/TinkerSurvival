@@ -1,0 +1,22 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "ID",
+        "SD"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        },
+        "D": {
+          "item": "tinkersurvival:flint_shard"
+        },
+        "S": {
+          "item": "tinkersurvival:grass_string"
+        }
+    },
+    "result": {
+        "item": "tinkersurvival:crude_saw_blade"
+    }
+}

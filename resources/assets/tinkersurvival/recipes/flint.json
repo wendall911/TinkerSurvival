@@ -1,0 +1,15 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "SS",
+        "SS"
+    ],
+    "key": {
+        "S": {
+            "item": "tinkersurvival:flint_shard"
+        }
+    },
+    "result": {
+        "item": "minecraft:flint"
+    }
+}

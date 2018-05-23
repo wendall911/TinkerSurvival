@@ -1,0 +1,36 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "SR",
+        "I "
+    ],
+    "key": {
+        "I": {
+            "item": "minecraft:stick"
+        },
+        "R": [
+            {
+              "item": "tinkersurvival:rock",
+              "data": 0
+            },
+            {
+              "item": "tinkersurvival:rock",
+              "data": 1
+            },
+            {
+              "item": "tinkersurvival:rock",
+              "data": 2
+            },
+            {
+              "item": "tinkersurvival:rock",
+              "data": 3
+            }
+        ],
+        "S": {
+          "item": "tinkersurvival:grass_string"
+        }
+    },
+    "result": {
+        "item": "tinkersurvival:crude_hatchet"
+    }
+}
