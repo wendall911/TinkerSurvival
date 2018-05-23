@@ -20,13 +20,13 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.Config;
+import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.Knife;
-import tinkersurvival.util.Toast;
 import tinkersurvival.util.Event;
+import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 import slimeknights.tconstruct.library.utils.ToolHelper;
@@ -166,10 +166,10 @@ public class HarvestEventHandler {
                             || harvestAttempts.get(player) == null
                             || !harvestAttempts.get(player).equals(pos)) {
                         harvestAttempts.put(player, pos);
-                        Toast.hint("message.warning", "message.wrong_tool", neededToolClass);
+                        TinkerSurvival.proxy.toastHint("message.warning", "message.wrong_tool", neededToolClass);
                     }
                     else {
-                        Toast.hint("message.warning", "message.wrong_tool2", neededToolClass);
+                        TinkerSurvival.proxy.toastHint("message.warning", "message.wrong_tool2", neededToolClass);
                         player.attackEntityFrom(DamageSource.GENERIC, 0.01f);
                     }
                 }

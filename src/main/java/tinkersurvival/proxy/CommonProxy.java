@@ -78,4 +78,7 @@ public class CommonProxy {
     public void initGuis() {
     }
 
+	public void toastHint(String title, String subtitle, String replace) {
+    }
+
 }

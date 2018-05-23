@@ -9,7 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import tinkersurvival.util.Toast;
+import tinkersurvival.TinkerSurvival;
 
 public class SleepEventHandler {
 
@@ -23,7 +23,7 @@ public class SleepEventHandler {
 		if (world.provider.canRespawnHere() && (world.provider.getBiomeForCoords(event.getPos()) != Biomes.HELL)) {
 			player.setSpawnPoint(event.getPos(), false);
 			player.setSpawnChunk(event.getPos(), false, player.dimension);
-			Toast.hint("message.notice", "message.spawn_set", null);
+			TinkerSurvival.proxy.toastHint("message.notice", "message.spawn_set", null);
 		}
 	}
 

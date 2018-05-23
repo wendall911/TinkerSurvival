@@ -14,7 +14,6 @@ import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.Knife;
 import tinkersurvival.tools.tool.Saw;
-import tinkersurvival.util.Toast;
 
 public class ShapedOreRecipeHelper extends ShapedOreRecipe {
 
@@ -74,7 +73,7 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
         }
 
         if (calculatedDamage == 0) {
-            Toast.hint("message.notice", "message.tool_broke", toolName);
+            TinkerSurvival.proxy.toastHint("message.notice", "message.tool_broke", toolName);
         }
         if (calculatedDamage == -1) {
             tool = ItemStack.EMPTY;

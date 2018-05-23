@@ -16,6 +16,7 @@ import slimeknights.tconstruct.library.TinkerRegistryClient;
 
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
+import tinkersurvival.util.Toast;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
@@ -67,6 +68,11 @@ public class ClientProxy extends CommonProxy {
         TinkerRegistryClient.addToolBuilding(sawInfo);
 
         TinkerSurvival.TS_Tab.setTabItem(TinkerSurvivalTools.crudeHatchet);
+    }
+
+    @Override
+	public void toastHint(String title, String subtitle, String replace) {
+        Toast.hint(title, subtitle, replace);
     }
 
 }
