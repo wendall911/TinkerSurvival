@@ -14,6 +14,7 @@ import net.minecraft.item.ItemMultiTexture;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tinkersurvival.TinkerSurvival;
@@ -130,6 +131,7 @@ public class TinkerSurvivalWorld {
 
     private static ItemRock getRock(ItemRock rock, String name) {
         rock = new ItemRock(name);
+        rocks.add(new ItemStack(rock, 1, OreDictionary.WILDCARD_VALUE));
         all.add(rock);
         return rock;
     }
@@ -168,9 +170,8 @@ public class TinkerSurvivalWorld {
     }
 
     public static void registerItemModels() {
-        for (int i=0; i < ItemRock.Type.values().length; i++) {
+        for (int i = 0; i < ItemRock.Type.values().length; i++) {
             ItemStack rock = new ItemStack(rockStone, 1, i);
-            rocks.add(rock);
             TinkerSurvival.proxy.registerItemModelWithVariant(
                 rockStone,
                 i,
@@ -179,7 +180,7 @@ public class TinkerSurvivalWorld {
             );
         }
 
-        for (int i=0; i < ItemBandage.Type.values().length; i++) {
+        for (int i = 0; i < ItemBandage.Type.values().length; i++) {
             ItemStack bandage = new ItemStack(bandageItem, 1, i);
             bandages.add(bandage);
             TinkerSurvival.proxy.registerItemModelWithVariant(
@@ -191,7 +192,7 @@ public class TinkerSurvivalWorld {
         }
 
         all.forEach(item -> {
-            if (!(item instanceof ItemRock || item instanceof ItemBandage)) {
+            if (!(item == rockStone || item == bandageItem)) {
                 TinkerSurvival.proxy.registerItemModel(item);
             }
         });

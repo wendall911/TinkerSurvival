@@ -100,10 +100,7 @@ public class TinkerSurvivalTools {
         ModelRegisterUtil.registerToolModel(ticKnife);
         ModelRegisterUtil.registerToolModel(ticSaw);
         all.forEach(item -> {
-            if (item == ticKnife || item == ticSaw) {
-                return;
-            }
-            else {
+            if (!(item == ticKnife || item == ticSaw)) {
                 TinkerSurvival.proxy.registerItemModel(item);
             }
         });
