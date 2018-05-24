@@ -22,9 +22,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.Config;
-import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.Knife;
+import tinkersurvival.util.Chat;
 import tinkersurvival.util.Event;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
@@ -170,10 +170,10 @@ public class HarvestEventHandler {
                             || harvestAttempts.get(player) == null
                             || !harvestAttempts.get(player).equals(pos)) {
                         harvestAttempts.put(player, pos);
-                        TinkerSurvival.proxy.toastHint("message.warning", "message.wrong_tool", neededToolClass);
+                        Chat.sendMessage(player, "message.wrong_tool", neededToolClass);
                     }
                     else {
-                        TinkerSurvival.proxy.toastHint("message.warning", "message.wrong_tool2", neededToolClass);
+                        Chat.sendMessage(player, "message.wrong_tool2", neededToolClass);
                         player.attackEntityFrom(DamageSource.GENERIC, 0.01f);
                     }
                 }
