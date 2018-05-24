@@ -107,7 +107,7 @@ public class HarvestEventHandler {
                 }
             }
             else {
-                event.setNewSpeed(event.getOriginalSpeed() / 20);
+                event.setNewSpeed(event.getOriginalSpeed() / 10);
             }
         }
 
@@ -133,7 +133,12 @@ public class HarvestEventHandler {
             String blockName = block.getRegistryName().getResourceDomain() + ":" + block.getRegistryName().getResourcePath();
             ItemStack heldItemStack = player.getHeldItemMainhand();
 
-            if (block == Blocks.AIR || block == Blocks.LEAVES || block == Blocks.SAND || block == Blocks.GRAVEL) {
+            if (block == Blocks.AIR
+                    || block == Blocks.LEAVES
+                    || block == Blocks.SAND
+                    || block == Blocks.GRASS
+                    || block == Blocks.DIRT
+                    || block == Blocks.GRAVEL) {
                 return;
             }
 
@@ -141,7 +146,6 @@ public class HarvestEventHandler {
             int neededHarvestLevel = block.getHarvestLevel(event.getState());
             String neededToolClass = block.getHarvestTool(event.getState());
 
-            //heldItemStack != ItemStack.EMPTY && neededHarvestLevel >= 0
             if (neededToolClass != null) {
                 if (Event.isValidTool(heldItemStack)) {
                     for (String toolClass : heldItemStack.getItem().getToolClasses(heldItemStack)) {
