@@ -63,7 +63,7 @@ public class TinkerSurvivalRecipes {
             }
 
             addKnifeRecipe(
-                "stoneRock",
+                new ItemStack(TinkerSurvivalWorld.rockStone),
                 new ItemStack(TinkerSurvivalWorld.flintShard, i),
                 knife
             );
@@ -83,10 +83,6 @@ public class TinkerSurvivalRecipes {
     }
 
     private static void addKnifeRecipe(ItemStack input, ItemStack output, String tool) {
-        registerShaped(output, "T", "I", 'I', input, 'T', tool);
-    }
-
-    private static void addKnifeRecipe(String input, ItemStack output, String tool) {
         registerShaped(output, "T", "I", 'I', input, 'T', tool);
     }
 

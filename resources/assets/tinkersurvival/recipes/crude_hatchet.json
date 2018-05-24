@@ -8,24 +8,9 @@
         "I": {
             "item": "minecraft:stick"
         },
-        "R": [
-            {
-              "item": "tinkersurvival:rock",
-              "data": 0
-            },
-            {
-              "item": "tinkersurvival:rock",
-              "data": 1
-            },
-            {
-              "item": "tinkersurvival:rock",
-              "data": 2
-            },
-            {
-              "item": "tinkersurvival:rock",
-              "data": 3
-            }
-        ],
+        "R": {
+              "item": "tinkersurvival:rock_stone"
+        },
         "S": {
           "item": "tinkersurvival:grass_string"
         }

@@ -76,7 +76,7 @@ public class BlockRock extends BlockBase {
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
         drops.clear();
-        drops.add(new ItemStack(TinkerSurvivalWorld.rockStone, 1, this.getMetaFromState(state)));
+        drops.add(new ItemStack(TinkerSurvivalWorld.rockStone, 1));
 
     }
 
