@@ -103,9 +103,9 @@ curseforge {
         mainArtifact(jar) {
             relations {
                 requiredLibrary 'mantle'
-                requiredLibrary 'tconstruct'
-                optionalLibrary 'tinkertoollevling'
-                optionalLibrary 'toughasnails'
+                requiredLibrary 'tinkers-construct'
+                optionalLibrary 'tinkers-tool-leveling'
+                optionalLibrary 'tough-as-nails'
             }
         }
     }
