@@ -10,7 +10,7 @@ import tinkersurvival.world.potion.PotionBase;
 
 public class StopBleeding extends PotionBase {
 
-    static final float HEAL_RATE = Config.Balance.HEAL_RATE;
+    static final float HEAL_RATE = (float)Config.Balance.HEAL_RATE;
 
     public StopBleeding() {
         super("stopbleeding", false, 0xf7b7ad);

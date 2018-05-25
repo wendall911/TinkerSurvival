@@ -25,7 +25,7 @@ public class Config {
         public static double GRASS_FIBER_CHANCE = 0.5D;
 
         @Comment("Heal rate for bandages. Crude bandages are 50% less effective.")
-        public static float HEAL_RATE = 0.14f;
+        public static double HEAL_RATE = 0.14D;
     }
 
     public static Features features;
