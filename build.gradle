@@ -98,7 +98,16 @@ curseforge {
     project {
         id = project.curseId
         changelog = file('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt')
-        releaseType = 'beta'
+        releaseType = config.cf_release_type
+        addGameVersion(config.minecraft_version)
+        mainArtifact(jar) {
+            relations {
+                requiredLibrary 'mantle'
+                requiredLibrary 'tconstruct'
+                optionalLibrary 'tinkertoollevling'
+                optionalLibrary 'toughasnails'
+            }
+        }
     }
 }
 
