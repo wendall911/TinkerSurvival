@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Loader;
 
+import tinkersurvival.config.Config;
 import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
 import tinkersurvival.event.HarvestEventHandler;
@@ -41,7 +42,9 @@ public class CommonProxy {
             MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
         }
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
-        MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
+        if (Config.Features.NO_SLEEPING) {
+            MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
+        }
         MinecraftForge.EVENT_BUS.register(new SomethingNeedsToastHandler());
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
     }

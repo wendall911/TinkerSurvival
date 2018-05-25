@@ -18,16 +18,22 @@ public class Config {
 
     public static Balance balance;
     public static class Balance {
-        @Comment({"Chance for a sucessful flint knapping"})
+        @Comment({"Chance for a sucessful flint knapping."})
         public static double FLINT_CHANCE = 0.6D;
 
-        @Comment({"Chance for tall grass to drop plant fibers"})
+        @Comment({"Chance for tall grass to drop plant fibers."})
         public static double GRASS_FIBER_CHANCE = 0.5D;
+
+        @Comment("Heal rate for bandages. Crude bandages are 50% less effective.")
+        public static float HEAL_RATE = 0.14f;
     }
 
     public static Features features;
     public static class Features {
-        @Comment({"Stop enderman griefing"})
+        @Comment({"Stop enderman griefing, wtf Notch."})
         public static boolean NO_GRIEFING = true;
+
+        @Comment({"I cry myself to sleep at night..."})
+        public static boolean NO_SLEEPING = true;
     }
 }
