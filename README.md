@@ -40,7 +40,7 @@ bandages.
    + All tools and weapons in non-whitelisted mods are rendered ineffective.
    + Enderman Griefing Disabled. This allows for mob griefing to be enabled,
      but removes that annoying crap.
-   + No sleeping. Yeah, survival. Go play creative if you don't like it.
+   + No sleeping, aka, bypassing night. Yeah, it's survival mode, not creative.
    + Planks and sticks are no longer craftable without a tool component. See Crude Saw/Saw.
  + Special Drops
    + Sticks from leaves. (Better drop rate when using a knife)
