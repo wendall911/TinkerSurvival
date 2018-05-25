@@ -7,10 +7,16 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.55"
     }
 }
 
+plugins {
+	id 'com.matthewprenger.cursegradle' version '1.0.10'
+}
+
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
 
 // External properties
 ext.configFile = file 'build.properties'
@@ -86,6 +92,26 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 }
 
 build.dependsOn signJar
+
+curseforge {
+    apiKey = project.curseApiKey
+    project {
+        id = project.curseId
+        changelog = file('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt')
+        releaseType = 'beta'
+    }
+}
+
+tasks.curseforge.dependsOn build
+
+task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+	file = new File('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt');
+    templateContent = file('changelog.mustache').getText('UTF-8');
+	toRef = "${config.mod_version}";
+	fromRef = "${config.last_mod_version}";
+}
+
+tasks.build.dependsOn('changelog')
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
