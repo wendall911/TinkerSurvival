@@ -7,11 +7,13 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.Loader;
 
 import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
@@ -35,7 +37,9 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new BowEventHandler());
         MinecraftForge.EVENT_BUS.register(new HoeEventHandler());
         MinecraftForge.EVENT_BUS.register(new HarvestEventHandler());
-        MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
+        if (Loader.isModLoaded("tinkertoolleveling")) {
+            MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
+        }
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
         MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
         MinecraftForge.EVENT_BUS.register(new SomethingNeedsToastHandler());
