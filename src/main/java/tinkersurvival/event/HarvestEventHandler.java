@@ -134,6 +134,8 @@ public class HarvestEventHandler {
             ItemStack heldItemStack = player.getHeldItemMainhand();
 
             if (block == Blocks.AIR
+                    || block == Blocks.MOB_SPAWNER
+                    || block == Blocks.CHEST
                     || block == Blocks.LEAVES
                     || block == Blocks.SAND
                     || block == Blocks.GRASS
