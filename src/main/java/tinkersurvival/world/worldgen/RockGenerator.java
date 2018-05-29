@@ -16,6 +16,7 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import tinkersurvival.config.Config;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -58,7 +59,8 @@ public class RockGenerator {
 
         Material atMat = atBl.getMaterial(atBl.getBlockState().getBaseState());
 
-        if ((world.isAirBlock(new BlockPos(i, j + 1, k))
+        if (random.nextDouble() < Config.Balance.ROCKGEN_CHANCE
+                && (world.isAirBlock(new BlockPos(i, j + 1, k))
                     || upBl== Blocks.SNOW_LAYER
                     || upBl == Blocks.TALLGRASS
                     || upBl == Blocks.SNOW)
@@ -67,8 +69,8 @@ public class RockGenerator {
                     || atMat == Material.SAND)
                 && atBl.isOpaqueCube(atBl.getDefaultState())) {
             BlockRock.EnumMineralType type;
-            if(downBl == Blocks.STONE){
-                switch(downBl.getMetaFromState(world.getBlockState(new BlockPos(i, j - 5, k)))) {
+            if (downBl == Blocks.STONE) {
+                switch (downBl.getMetaFromState(world.getBlockState(new BlockPos(i, j - 5, k)))) {
                     case 1:
                         type = GRANITE;
                         break;
@@ -82,7 +84,7 @@ public class RockGenerator {
                         type = STONE;
                 }
             } else {
-                switch(downBl.getUnlocalizedName()){
+                switch (downBl.getUnlocalizedName()) {
                     default:
                         type = STONE;
                 }
