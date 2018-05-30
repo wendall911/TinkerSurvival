@@ -118,7 +118,7 @@ tasks.curseforge.dependsOn build
 
 task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
 	file = new File('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt');
-    templateContent = file('changelog.mustache').getText('UTF-8');
+    templateContent = file('files/templates/changelog.mustache').getText('UTF-8');
 	toRef = "${config.mod_version}";
 	fromRef = "${config.last_mod_version}";
 }

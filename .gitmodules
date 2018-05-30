@@ -1,0 +1,4 @@
+[submodule "wiki"]
+	path = wiki
+	url = git@github.com:wendall911/TinkerSurvival.wiki.git
+	branch = master
