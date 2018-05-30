@@ -43,9 +43,9 @@ import tinkersurvival.world.worldgen.RockGenerator;
 
 public class TinkerSurvival {
 
-    public static final String MODID = "tinkersurvival";
+    public static final String MODID = "@MODID@";
     public static final String MOD_VERSION = "@MOD_VERSION@";
-    public static final String MOD_NAME = "TinkerSurvival";
+    public static final String MOD_NAME = "@MOD_NAME@";
 
     public static TinkerSurvivalToolLeveling modToolLeveling = new TinkerSurvivalToolLeveling();
     public static final CreativeTabBase TS_Tab = new CreativeTabBase(MODID);

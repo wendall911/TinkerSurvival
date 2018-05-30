@@ -28,10 +28,11 @@ configFile.withReader {
 }
 
 group = 'com.github.wendall911.tinkersurvival'
-version = config.mod_version
-archivesBaseName = 'TinkerSurvival'
-
 version = "${config.minecraft_version}-${config.mod_version}"
+archivesBaseName = "${config.mod_name}"
+def mcversion = "${config.minecraft_version}"
+def modid = "${config.modid}"
+
 
 repositories {
     maven {
@@ -50,6 +51,8 @@ minecraft {
     version = config.minecraft_version + '-' + config.forge_version
     mappings = config.mappings
     runDir = 'run'
+    replace '@MOD_NAME@', archivesBaseName
+    replace '@MODID@', modid
     replace '@MOD_VERSION@', config.mod_version
     replace '@FORGE_VERSION@', config.forge_version
     replace '@TTL_VERSION@', config.ttl_version
@@ -148,19 +151,17 @@ sourceSets {
 
 processResources {
     from(sourceSets.main.resources.srcDirs) {
-        include '**/*.info'
-        include '**/*.properties'
+        include 'mcmod.info'
 
         // replaces
         expand ([
-            'modid': project.archivesBaseName,
-            'mod_version': project.config.mod_version,
-            'minecraft_version': project.config.minecraft_version
+            'modid': modid,
+            'mod_version': version,
+            'minecraft_version': mcversion
         ])
     }
 
     from(sourceSets.main.resources.srcDirs) {
-        exclude '**/*.info'
-        exclude '**/*.properties'
+        exclude 'mcmod.info'
     }
 }

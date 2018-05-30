@@ -1,13 +1,13 @@
 [
 {
   "modid": "${modid}",
-  "name": "Tinker Survival",
-  "description": "A small mod to make the first day or two of play more believable. Adds a few new tools and early game resource gathering.",
+  "name": "Tinkers' Survival",
+  "description": "A small mod to make the first day or two of play more believable. New early game tools, Tinkers' Construct tools, and more!",
   "version": "${mod_version}",
   "mcversion": "${minecraft_version}",
-  "url": "https://github.com/wendall911/TinkerSurvival",
+  "url": "https://minecraft.curseforge.com/projects/tinkersurvival",
   "authorList": ["wendall911"],
-  "credits": "ashar42",
+  "credits": "ashar42 inspired and guided all of the mod concepts.",
   "logoFile": "assets/tinkersurvival/textures/gui/logo.png"
 }
 ]
