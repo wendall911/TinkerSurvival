@@ -1,11 +1,5 @@
 package tinkersurvival;
 
-import net.minecraft.item.Item;
-import net.minecraft.block.Block;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.util.registry.RegistryNamespacedDefaultedByKey;
-import net.minecraft.util.ResourceLocation;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -24,8 +18,8 @@ import org.apache.logging.log4j.LogManager;
 import tinkersurvival.client.CreativeTabBase;
 import tinkersurvival.config.Config;
 import tinkersurvival.proxy.CommonProxy;
+import tinkersurvival.recipe.TinkerSurvivalRecipes;
 import tinkersurvival.util.TinkerSurvivalToolLeveling;
-import tinkersurvival.world.worldgen.RockGenerator;
 
 @Mod(modid = TinkerSurvival.MODID,
      version = TinkerSurvival.MOD_VERSION,
@@ -33,11 +27,7 @@ import tinkersurvival.world.worldgen.RockGenerator;
      certificateFingerprint = "@FINGERPRINT@",
      dependencies = "required-after:forge@[@FORGE_VERSION@,);"
          + "after:tinkertoollevling@[@TTL_VERSION@,);"
-         + "after:biomeoplenty;"
-         + "after:basemetals;"
-         + "after:immersiveengineering;"
-         + "after:natura;"
-         + "after:toughasnails;",
+         + "after:*",
      acceptedMinecraftVersions = "[1.12,)"
 )
 
@@ -66,31 +56,19 @@ public class TinkerSurvival {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger.info("Pre-init started");
-
-        // Register Rock Generation
-        MinecraftForge.EVENT_BUS.register(new RockGenerator());
-
         proxy.preInit(event);
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event){
+    public void init(FMLInitializationEvent event) {
         logger.info("Init started");
-        proxy.initGuis();
+        proxy.init(event);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         logger.info("Post-init started");
-
-        if (Config.Features.NO_GRIEFING) {
-            // Disable Enderman Griefing!!!
-            RegistryNamespacedDefaultedByKey<ResourceLocation, Block> griefBlock = Block.REGISTRY;
-            for (Block block : griefBlock) {
-                EntityEnderman.setCarriable(block, false);
-            }
-        }
-
+        proxy.postInit(event);
         logger.info("Finished Loading");
     }
 

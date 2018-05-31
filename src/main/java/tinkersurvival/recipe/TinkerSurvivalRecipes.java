@@ -1,7 +1,7 @@
 package tinkersurvival.recipe;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,6 +12,7 @@ import net.minecraft.item.crafting.IRecipe;
 
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.oredict.OreDictionary;
 
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
@@ -24,16 +25,6 @@ public class TinkerSurvivalRecipes {
 
     private static void initSmeltingRecipes() {
         RecipeHelper.addSmelting(new ItemStack(TinkerSurvivalWorld.grassString), new ItemStack(Items.STRING));
-    }
-
-    private static void initSawRecipes(boolean ie) {
-        ItemStack sticks = new ItemStack(Items.STICK, 2);
-        addStickPlankRecipe(sticks, "crudeSaw");
-        addStickPlankRecipe(sticks, "ticSaw");
-        if (ie) {
-            addTreatedStickPlankRecipe("crudeSaw");
-            addTreatedStickPlankRecipe("ticSaw");
-        }
     }
 
     private static void initBowlRecipes() {
@@ -86,20 +77,8 @@ public class TinkerSurvivalRecipes {
         registerShaped(output, "T", "I", 'I', input, 'T', tool);
     }
 
-    private static void addStickPlankRecipe(ItemStack output, String tool) {
-        registerShaped(output, "T", "P", 'P', "plankWood", 'T', tool);
-    }
-
-    private static void addTreatedStickPlankRecipe(String tool) {
-        registerShaped(
-            getSafeItem("immersiveengineering:material", 2),
-            "T",
-            "W",
-            'W',
-            getSafeItem("immersiveengineering:treated_wood"),
-            'T',
-            tool
-        );
+    private static void addStickPlankRecipe(ItemStack output, ItemStack input, String tool) {
+        registerShaped(output, "T", "P", 'P', input, 'T', tool);
     }
 
     private static void addLogRecipe(ItemStack output, ItemStack input, String tool) {
@@ -122,20 +101,20 @@ public class TinkerSurvivalRecipes {
     }
 
     public static void updateRecipes() {
-        Set<Item> itemSet = new HashSet<>();
-        Set<IRecipe> recipeSet = new HashSet<>();
-        boolean ie = Loader.isModLoaded("immersiveengineering");
+	    Map<Item, String> woodOreMap = new HashMap<>();
+        String[] woodItems = {
+            "plankWood",
+            "stickWood",
+            "stickTreatedWood",
+            "plankTreatedWood"
+        };
 
-        for (Item i : ForgeRegistries.ITEMS) {
-            String itemName = i.getRegistryName().toString();
-            if (itemName.equals("minecraft:stick")
-                    || itemName.equals("natura:sticks")
-                    || itemName.contains("planks")) {
-                itemSet.add(i);
-            }
-            if (ie) {
-                if (itemName.equals("immersiveengineering:material")) {
-                    itemSet.add(i);
+        for (String name: woodItems) {
+            for (ItemStack stack : OreDictionary.getOres(name)) {
+                if (!stack.isEmpty()) {
+                    Item item = stack.getItem();
+                    String itemName = item.getRegistryName().toString();
+                    woodOreMap.put(item, name);
                 }
             }
         }
@@ -143,36 +122,42 @@ public class TinkerSurvivalRecipes {
         for (IRecipe recipe : CraftingManager.REGISTRY) {
             ItemStack output = recipe.getRecipeOutput();
 
-            if (!output.isEmpty() && itemSet.contains(output.getItem())) {
+            if (!output.isEmpty() && woodOreMap.get(output.getItem()) != null) {
                 String outputName = output.getItem().getRegistryName().toString();
+                String outputType = woodOreMap.get(output.getItem());
                 String msg = "Replaced recipe for: " + outputName;
 
-                if (outputName.contains("planks")
-                        && recipe.getIngredients().size() == 1
+                if (recipe.getIngredients().size() > 0
                         && recipe.getIngredients().get(0).getMatchingStacks().length > 0) {
                     ItemStack input = recipe.getIngredients().get(0).getMatchingStacks()[0];
                     input.setCount(1);
-
                     output.setCount(2);
-                    addLogRecipe(output, input, "crudeSaw");
 
-                    output.setCount(4);
-                    addLogRecipe(output, input, "ticSaw");
+                    if (woodOreMap.get(input.getItem()) != null) {
+                        String inputType = woodOreMap.get(input.getItem());
 
-                    RecipeHelper.addFakeRecipe(recipe);
-                    TinkerSurvival.logger.info(msg);
+                        if (outputType.equals("plankWood")) {
+                            addLogRecipe(output, input, "crudeSaw");
 
-                }
-                else if (outputName.equals("minecraft:stick")
-                        || outputName.equals("natura:sticks")
-                        || outputName.equals("immersiveengineering:material")) {
-                    RecipeHelper.addFakeRecipe(recipe);
-                    TinkerSurvival.logger.info("Replaced recipe for: " + outputName);
+                            output.setCount(4);
+                            addLogRecipe(output, input, "ticSaw");
+
+                            RecipeHelper.addFakeRecipe(recipe);
+                            TinkerSurvival.logger.info(msg);
+                        }
+                        else if (inputType.contains("plank")
+                                && outputType.contains("stick")) {
+                            addStickPlankRecipe(output, input, "crudeSaw");
+                            addStickPlankRecipe(output, input, "ticSaw");
+
+                            RecipeHelper.addFakeRecipe(recipe);
+                            TinkerSurvival.logger.info(msg);
+                        }
+                    }
                 }
             }
         }
 
-        initSawRecipes(ie);
         initKnifeRecipes();
         initSmeltingRecipes();
         initBowlRecipes();
