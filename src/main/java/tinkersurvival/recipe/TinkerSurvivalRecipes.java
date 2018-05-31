@@ -148,8 +148,8 @@ public class TinkerSurvivalRecipes {
                 String msg = "Replaced recipe for: " + outputName;
 
                 if (outputName.contains("planks")
-                        && recipe.getIngredients().size() > 0
-                        && recipe.getIngredients().size() < 2) {
+                        && recipe.getIngredients().size() == 1
+                        && recipe.getIngredients().get(0).getMatchingStacks().length > 0) {
                     ItemStack input = recipe.getIngredients().get(0).getMatchingStacks()[0];
                     input.setCount(1);
 
