@@ -10,6 +10,7 @@ import net.minecraft.block.BlockTallGrass;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -76,7 +77,7 @@ public class HarvestEventHandler {
         }
 
         if (neededToolClass != null) {
-            if (Event.isValidTool(heldItemStack)) {
+            if (Event.isValidTool(heldItemStack, neededToolClass)) {
                 for (String toolClass : heldItemStack.getItem().getToolClasses(heldItemStack)) {
                     if (neededToolClass.equals(toolClass)) {
                         if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
@@ -149,8 +150,9 @@ public class HarvestEventHandler {
             String neededToolClass = block.getHarvestTool(event.getState());
 
             if (neededToolClass != null) {
-                if (Event.isValidTool(heldItemStack)) {
-                    for (String toolClass : heldItemStack.getItem().getToolClasses(heldItemStack)) {
+                if (Event.isValidTool(heldItemStack, neededToolClass)) {
+                    Item heldItem = heldItemStack.getItem();
+                    for (String toolClass : heldItem.getToolClasses(heldItemStack)) {
                         if (neededToolClass.equals(toolClass)) {
                             if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
                                 return;
@@ -166,6 +168,11 @@ public class HarvestEventHandler {
                         else if (neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
                             return;
                         }
+                    }
+
+                    // Sometimes mods register tools as tools, though they aren't really tools. Fun.
+                    if (Event.isWhitelistTool(heldItem.getRegistryName().toString(), neededToolClass)) {
+                        return;
                     }
 
                     if (!harvestAttempts.containsKey(player)

@@ -15,6 +15,11 @@ public class Config {
             "tconstruct",
             "tinkersurvival"
         };
+
+        @Comment({"List of individual tools that will always work. Format tooltype-modid:item"})
+        public static String[] TOOLS_WHITELIST = new String[] {
+            "shears-minecraft:shears"
+        };
     }
 
     public static Balance balance;
@@ -36,6 +41,12 @@ public class Config {
     public static class Features {
         @Comment({"Stop enderman griefing, wtf Notch."})
         public static boolean NO_GRIEFING = true;
+
+        @Comment({"Ok, I love endermen, make them pick up this stuff. If NO_GRIEFING=true"})
+        public static String[] GRIEFING_WHITELIST = new String[] {
+            "minecraft:red_flower",
+            "minecraft:yellow_flower"
+        };
 
         @Comment({"I cry myself to sleep at night..."})
         public static boolean NO_SLEEPING = true;

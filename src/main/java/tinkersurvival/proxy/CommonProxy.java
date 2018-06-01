@@ -1,5 +1,10 @@
 package tinkersurvival.proxy;
 
+import com.google.common.collect.Sets;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.item.Item;
@@ -32,6 +37,7 @@ import tinkersurvival.event.SomethingNeedsToastEvent;
 import tinkersurvival.event.SomethingNeedsToastHandler;
 import tinkersurvival.event.TooltipEventHandler;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
+import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.world.TinkerSurvivalWorld;
 import tinkersurvival.world.worldgen.RockGenerator;
@@ -64,11 +70,27 @@ public class CommonProxy {
     public void postInit(FMLPostInitializationEvent event) {
         TinkerSurvivalRecipes.updateRecipes();
 
+        // Disable Enderman Griefing!!!
         if (Config.Features.NO_GRIEFING) {
-            // Disable Enderman Griefing!!!
+            final Set<String> griefBlockIds = Sets.newHashSet(Config.Features.GRIEFING_WHITELIST);
+            Set<Block> griefBlocks = new HashSet<Block>();
+
+            for (String id: griefBlockIds) {
+                Block block = Block.getBlockFromName(id);
+                if (block != null) {
+                    griefBlocks.add(block);
+                }
+            }
+
             RegistryNamespacedDefaultedByKey<ResourceLocation, Block> griefBlock = Block.REGISTRY;
             for (Block block : griefBlock) {
-                EntityEnderman.setCarriable(block, false);
+                if (!griefBlocks.contains(block)) {
+                    EntityEnderman.setCarriable(block, false);
+                }
+                else {
+                    //Griefing!!!!
+                    TinkerSurvival.logger.info("Allowing griefing for block: " + block.getUnlocalizedName());
+                }
             }
         }
     }
