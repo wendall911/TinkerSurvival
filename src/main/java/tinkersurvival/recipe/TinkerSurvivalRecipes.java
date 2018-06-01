@@ -101,20 +101,22 @@ public class TinkerSurvivalRecipes {
     }
 
     public static void updateRecipes() {
-	    Map<Item, String> woodOreMap = new HashMap<>();
+	    Map<String, String> woodOreMap = new HashMap<>();
+        int WILDCARD = OreDictionary.WILDCARD_VALUE;
         String[] woodItems = {
+            "logWood",
             "plankWood",
             "stickWood",
             "stickTreatedWood",
             "plankTreatedWood"
         };
 
-        for (String name: woodItems) {
-            for (ItemStack stack : OreDictionary.getOres(name)) {
+        for (String type: woodItems) {
+            for (ItemStack stack : OreDictionary.getOres(type)) {
                 if (!stack.isEmpty()) {
-                    Item item = stack.getItem();
-                    String itemName = item.getRegistryName().toString();
-                    woodOreMap.put(item, name);
+                    String itemName = stack.getItem().getRegistryName().toString();
+                    int itemMeta = stack.getMetadata();
+                    woodOreMap.put(itemName + ":" + itemMeta, type);
                 }
             }
         }
@@ -122,36 +124,53 @@ public class TinkerSurvivalRecipes {
         for (IRecipe recipe : CraftingManager.REGISTRY) {
             ItemStack output = recipe.getRecipeOutput();
 
-            if (!output.isEmpty() && woodOreMap.get(output.getItem()) != null) {
-                String outputName = output.getItem().getRegistryName().toString();
-                String outputType = woodOreMap.get(output.getItem());
-                String msg = "Replaced recipe for: " + outputName;
+            if (!output.isEmpty()) {
+                String outputRegName = output.getItem().getRegistryName().toString();
+                int outputMeta = output.getMetadata();
+                String outputName = outputRegName + ":" + WILDCARD;
 
-                if (recipe.getIngredients().size() > 0
-                        && recipe.getIngredients().get(0).getMatchingStacks().length > 0) {
-                    ItemStack input = recipe.getIngredients().get(0).getMatchingStacks()[0];
-                    input.setCount(1);
-                    output.setCount(2);
+                if (woodOreMap.get(outputName) == null) {
+                    outputName = outputRegName + ":" + outputMeta;
+                }
 
-                    if (woodOreMap.get(input.getItem()) != null) {
-                        String inputType = woodOreMap.get(input.getItem());
+                if (woodOreMap.get(outputName) != null) {
+                    String outputType = woodOreMap.get(outputName);
+                    String msg = "Replaced recipe for: " + outputName;
 
-                        if (outputType.equals("plankWood")) {
-                            addLogRecipe(output, input, "crudeSaw");
+                    if (recipe.getIngredients().size() > 0
+                            && recipe.getIngredients().get(0).getMatchingStacks().length > 0) {
+                        ItemStack input = recipe.getIngredients().get(0).getMatchingStacks()[0];
+                        String inputRegName = input.getItem().getRegistryName().toString();
+                        int inputMeta = input.getMetadata();
+                        String inputName = inputRegName + ":" + WILDCARD;
 
-                            output.setCount(4);
-                            addLogRecipe(output, input, "ticSaw");
-
-                            RecipeHelper.addFakeRecipe(recipe);
-                            TinkerSurvival.logger.info(msg);
+                        if (woodOreMap.get(inputName) == null) {
+                            inputName = inputRegName + ":" + inputMeta;
                         }
-                        else if (inputType.contains("plank")
-                                && outputType.contains("stick")) {
-                            addStickPlankRecipe(output, input, "crudeSaw");
-                            addStickPlankRecipe(output, input, "ticSaw");
+                        if (woodOreMap.get(inputName) != null) {
+                            String inputType = woodOreMap.get(inputName);
 
-                            RecipeHelper.addFakeRecipe(recipe);
-                            TinkerSurvival.logger.info(msg);
+                            input.setCount(1);
+                            output.setCount(2);
+
+                            if (outputType.equals("plankWood")) {
+                                addLogRecipe(output, input, "crudeSaw");
+
+                                output.setCount(4);
+                                addLogRecipe(output, input, "ticSaw");
+
+                                RecipeHelper.addFakeRecipe(recipe);
+                                TinkerSurvival.logger.info(msg);
+                            }
+                            else if (inputType.contains("plank")
+                                    && outputType.contains("stick")) {
+
+                                addStickPlankRecipe(output, input, "crudeSaw");
+                                addStickPlankRecipe(output, input, "ticSaw");
+
+                                RecipeHelper.addFakeRecipe(recipe);
+                                TinkerSurvival.logger.info(msg);
+                            }
                         }
                     }
                 }
