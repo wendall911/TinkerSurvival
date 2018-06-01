@@ -1,13 +1,14 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/tinkersurvival",
   "1.12.2": {
+    "1.0.1.13": "https://github.com/wendall911/TinkerSurvival/releases/tag/1.0.1.13",
     "1.0.1.12": "https://github.com/wendall911/TinkerSurvival/releases/tag/1.0.1.12",
     "1.0.0.25": "https://github.com/wendall911/TinkerSurvival/releases/tag/1.0.0.25",
     "1.0.0.24": "https://github.com/wendall911/TinkerSurvival/releases/tag/1.0.0.24",
     "1.0.0.23": "https://github.com/wendall911/TinkerSurvival/releases/tag/1.0.0.23"
   },
   "promos": {
-    "1.12.2-latest": "1.0.1.12",
-    "1.12.2-recommended": "1.0.1.12"
+    "1.12.2-latest": "1.0.1.13",
+    "1.12.2-recommended": "1.0.1.13"
   }
 }
