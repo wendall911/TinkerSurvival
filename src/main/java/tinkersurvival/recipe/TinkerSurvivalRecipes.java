@@ -1,6 +1,8 @@
 package tinkersurvival.recipe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.minecraft.init.Blocks;
@@ -77,32 +79,29 @@ public class TinkerSurvivalRecipes {
         registerShaped(output, "T", "I", 'I', input, 'T', tool);
     }
 
-    private static void addStickPlankRecipe(ItemStack output, ItemStack input, String tool) {
-        registerShaped(output, "T", "P", 'P', input, 'T', tool);
-    }
-
-    private static void addLogRecipe(ItemStack output, ItemStack input, String tool) {
-        registerShaped(output, "T", "P", 'P', input, 'T', tool);
-    }
-
     private static void registerShaped(ItemStack output, Object... inputs) {
         RecipeHelper.addShapedOreRecipe(output, inputs);
     }
 
-    private static ItemStack getSafeItem(String name) {
-        return getSafeItem(name, 0, 1);
-    }
-    private static ItemStack getSafeItem(String name, int count) {
-        return getSafeItem(name, 0, count);
-    }
     private static ItemStack getSafeItem(String name, int meta, int count) {
         Item item = Item.getByNameOrId(name);
         return item == null ? ItemStack.EMPTY : new ItemStack(item, count, meta);
     }
 
+    private static HashMap getRecipeConfig(ItemStack output, ItemStack input, String tool) {
+        HashMap<String, Object> config = new HashMap<String, Object>();
+
+        config.put("output", output);
+        config.put("input", input);
+        config.put("tool", tool);
+
+        return config;
+    }
+
     public static void updateRecipes() {
 	    Map<String, String> woodOreMap = new HashMap<>();
         int WILDCARD = OreDictionary.WILDCARD_VALUE;
+        List<HashMap> woodOreRecipes = new ArrayList<HashMap>();
         String[] woodItems = {
             "logWood",
             "plankWood",
@@ -135,7 +134,6 @@ public class TinkerSurvivalRecipes {
 
                 if (woodOreMap.get(outputName) != null) {
                     String outputType = woodOreMap.get(outputName);
-                    String msg = "Replaced recipe for: " + outputName;
 
                     if (recipe.getIngredients().size() > 0
                             && recipe.getIngredients().get(0).getMatchingStacks().length > 0) {
@@ -147,27 +145,39 @@ public class TinkerSurvivalRecipes {
                         if (woodOreMap.get(inputName) == null) {
                             inputName = inputRegName + ":" + inputMeta;
                         }
-                        if (woodOreMap.get(inputName) != null) {
+                        if (woodOreMap.get(inputName) != null
+                                && (outputType.equals("plankWood") || outputType.contains("stick"))) {
                             String inputType = woodOreMap.get(inputName);
-
-                            input.setCount(1);
-                            output.setCount(2);
+                            String msg = "Replaced recipe for: " + recipe.getRegistryName();
+                            ItemStack inputItem = getSafeItem(inputRegName, inputMeta, 1);
+                            ItemStack twoOutputItems = getSafeItem(outputRegName, outputMeta, 2);
+                            ItemStack fourOutputItems = getSafeItem(outputRegName, outputMeta, 4);
 
                             if (outputType.equals("plankWood")) {
-                                addLogRecipe(output, input, "crudeSaw");
-
-                                output.setCount(4);
-                                addLogRecipe(output, input, "ticSaw");
-
+                                woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "crudeSaw"));
+                                woodOreRecipes.add(getRecipeConfig(fourOutputItems, inputItem, "ticSaw"));
                                 RecipeHelper.addFakeRecipe(recipe);
                                 TinkerSurvival.logger.info(msg);
                             }
                             else if (inputType.contains("plank")
                                     && outputType.contains("stick")) {
-
-                                addStickPlankRecipe(output, input, "crudeSaw");
-                                addStickPlankRecipe(output, input, "ticSaw");
-
+                                // Not sure how minecraft:stick recipe works
+                                if (outputRegName.equals("minecraft:stick")) {
+                                    woodOreRecipes.add(getRecipeConfig(
+                                        twoOutputItems,
+                                        getSafeItem(inputRegName, WILDCARD, 1),
+                                        "crudeSaw"
+                                    ));
+                                    woodOreRecipes.add(getRecipeConfig(
+                                        twoOutputItems,
+                                        getSafeItem(inputRegName, WILDCARD, 1),
+                                        "ticSaw"
+                                    ));
+                                }
+                                else {
+                                    woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "crudeSaw"));
+                                    woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "ticSaw"));
+                                }
                                 RecipeHelper.addFakeRecipe(recipe);
                                 TinkerSurvival.logger.info(msg);
                             }
@@ -176,6 +186,18 @@ public class TinkerSurvivalRecipes {
                 }
             }
         }
+
+        woodOreRecipes.forEach(config -> {
+            registerShaped(
+                (ItemStack) config.get("output"),
+                "T",
+                "P",
+                'P',
+                (ItemStack) config.get("input"),
+                'T',
+                (String) config.get("tool")
+            );
+        });
 
         initKnifeRecipes();
         initSmeltingRecipes();
