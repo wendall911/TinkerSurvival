@@ -7,12 +7,11 @@ import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.RegistryNamespacedDefaultedByKey;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
@@ -74,6 +73,23 @@ public class CommonProxy {
         if (Config.Features.NO_GRIEFING) {
             final Set<String> griefBlockIds = Sets.newHashSet(Config.Features.GRIEFING_WHITELIST);
             Set<Block> griefBlocks = new HashSet<Block>();
+            Block[] blocks = new Block[] {
+                Blocks.GRASS,
+                Blocks.DIRT,
+                Blocks.SAND,
+                Blocks.GRAVEL,
+                Blocks.YELLOW_FLOWER,
+                Blocks.RED_FLOWER,
+                Blocks.BROWN_MUSHROOM,
+                Blocks.RED_MUSHROOM,
+                Blocks.TNT,
+                Blocks.CACTUS,
+                Blocks.CLAY,
+                Blocks.PUMPKIN,
+                Blocks.MELON_BLOCK,
+                Blocks.MYCELIUM,
+                Blocks.NETHERRACK
+            };
 
             for (String id: griefBlockIds) {
                 Block block = Block.getBlockFromName(id);
@@ -82,8 +98,7 @@ public class CommonProxy {
                 }
             }
 
-            RegistryNamespacedDefaultedByKey<ResourceLocation, Block> griefBlock = Block.REGISTRY;
-            for (Block block : griefBlock) {
+            for (Block block : blocks) {
                 if (!griefBlocks.contains(block)) {
                     EntityEnderman.setCarriable(block, false);
                 }
