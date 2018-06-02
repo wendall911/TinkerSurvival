@@ -1,5 +1,8 @@
 package tinkersurvival.recipe;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -24,6 +27,7 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
 		NonNullList<ItemStack> remains = super.getRemainingItems(inv);
+        Map<Integer, ItemStack> returnItems = new HashMap<>();
 
 		for (int i = 0; i < remains.size(); i++) {
 			ItemStack slot = inv.getStackInSlot(i);
@@ -46,15 +50,18 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                             && (tool.getItem() instanceof Saw || tool.getItem() instanceof Knife)) {
                         ItemStack tool2 = tool.copy();
                         tool = ItemStack.EMPTY;
-                        remains.set(i + 1, tool2);
+                        returnItems.put(i + 1, tool2);
                     }
                 }
                 else {
                     tool = slot.copy();
                 }
-                remains.set(i, tool);
+                returnItems.put(i, tool);
 			}
 		}
+        for (Map.Entry<Integer, ItemStack> entry : returnItems.entrySet()) {
+            remains.set(entry.getKey(), entry.getValue());
+        }
 
 		return remains;
 	}
