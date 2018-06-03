@@ -55,6 +55,7 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                 }
                 else {
                     tool = slot.copy();
+                    tool.setCount(1);
                 }
                 returnItems.put(i, tool);
 			}
