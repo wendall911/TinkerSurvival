@@ -41,37 +41,42 @@ public class TinkerSurvivalRecipes {
         );
     }
 
-    private static void initKnifeRecipes() {
-        String knife = "crudeKnife";
+    private static void initKnifeRecipes(List<ItemStack> saplings) {
+        String[] knives = {
+            "crudeKnife",
+            "ticKnife"
+        };
+        int count = 1;
 
-        for (int i = 1; i < 3; i++) {
-            if (i == 2) {
-                knife = "ticKnife";
-
+        for (String knife: knives) {
+            if (knife != "crudeKnife") {
                 addKnifeRecipe(
                     new ItemStack(Blocks.WOOL),
                     new ItemStack(Items.STRING, 4),
                     knife
                 );
+                count = 2;
             }
 
             addKnifeRecipe(
                 new ItemStack(TinkerSurvivalWorld.rockStone),
-                new ItemStack(TinkerSurvivalWorld.flintShard, i),
+                new ItemStack(TinkerSurvivalWorld.flintShard, count),
                 knife
             );
 
             addKnifeRecipe(
                 new ItemStack(Items.FLINT),
-                new ItemStack(TinkerSurvivalWorld.flintShard, i * 2),
+                new ItemStack(TinkerSurvivalWorld.flintShard, count * 2),
                 knife
             );
 
-            addKnifeRecipe(
-                new ItemStack(Blocks.SAPLING),
-                new ItemStack(Items.STICK, i),
-                knife
-            );
+            for (ItemStack sapling: saplings) {
+                addKnifeRecipe(
+                    sapling,
+                    new ItemStack(Items.STICK, count),
+                    knife
+                );
+            }
         };
     }
 
@@ -83,7 +88,7 @@ public class TinkerSurvivalRecipes {
         RecipeHelper.addShapedOreRecipe(output, inputs);
     }
 
-    private static ItemStack getSafeItem(String name, int meta, int count) {
+    private static ItemStack getSafeItem(String name, int count, int meta) {
         Item item = Item.getByNameOrId(name);
         return item == null ? ItemStack.EMPTY : new ItemStack(item, count, meta);
     }
@@ -102,7 +107,13 @@ public class TinkerSurvivalRecipes {
 	    Map<String, String> woodOreMap = new HashMap<>();
         int WILDCARD = OreDictionary.WILDCARD_VALUE;
         List<HashMap> woodOreRecipes = new ArrayList<HashMap>();
+        Map<String, Integer> hasPlankWood = new HashMap<>();
+        Map<String, Boolean> hasStickWood = new HashMap<>();
+        List<String> plankOreRecipes = new ArrayList<String>();
+        List<ItemStack> saplings = new ArrayList<ItemStack>();
+
         String[] woodItems = {
+            "treeSapling",
             "logWood",
             "plankWood",
             "stickWood",
@@ -115,8 +126,37 @@ public class TinkerSurvivalRecipes {
                 if (!stack.isEmpty()) {
                     String itemName = stack.getItem().getRegistryName().toString();
                     int itemMeta = stack.getMetadata();
-                    woodOreMap.put(itemName + ":" + itemMeta, type);
+
+                    if (type.equals("plankWood")) {
+                        hasPlankWood.put(itemName, itemMeta);
+                    }
+                    /*
+                     * This probably has some mods it could conceivably not work for.
+                     * Problem is that some mods register stuff as stickWood
+                     * that doesn't require planks as the base. So we hope that
+                     * whatever mod decided to have "stick" in the name of their sticks.
+                     */
+                    if (type.equals("stickWood") && itemName.contains("stick")) {
+                        hasStickWood.put(itemName.split(":")[0], true);
+                    }
+                    if (type.equals("treeSapling")) {
+                        saplings.add(getSafeItem(itemName, 1, itemMeta));
+                    }
+                    else {
+                        woodOreMap.put(itemName + ":" + itemMeta, type);
+                    }
                 }
+            }
+        }
+
+        /*
+         * If a mod provides stick recipes, then we won't deal with it in the
+         * wildcard recipe replacement.
+         */
+        for (String plank: hasPlankWood.keySet()) {
+            String mod = plank.split(":")[0];
+            if (mod.equals("minecraft") || hasStickWood.get(mod) == null) {
+                plankOreRecipes.add(plank);
             }
         }
 
@@ -145,13 +185,14 @@ public class TinkerSurvivalRecipes {
                         if (woodOreMap.get(inputName) == null) {
                             inputName = inputRegName + ":" + inputMeta;
                         }
+
                         if (woodOreMap.get(inputName) != null
                                 && (outputType.equals("plankWood") || outputType.contains("stick"))) {
                             String inputType = woodOreMap.get(inputName);
                             String msg = "Replaced recipe for: " + recipe.getRegistryName();
-                            ItemStack inputItem = getSafeItem(inputRegName, inputMeta, 1);
-                            ItemStack twoOutputItems = getSafeItem(outputRegName, outputMeta, 2);
-                            ItemStack fourOutputItems = getSafeItem(outputRegName, outputMeta, 4);
+                            ItemStack inputItem = getSafeItem(inputRegName, 1, inputMeta);
+                            ItemStack twoOutputItems = getSafeItem(outputRegName, 2, outputMeta);
+                            ItemStack fourOutputItems = getSafeItem(outputRegName, 4, outputMeta);
 
                             if (outputType.equals("plankWood")) {
                                 woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "crudeSaw"));
@@ -161,18 +202,21 @@ public class TinkerSurvivalRecipes {
                             }
                             else if (inputType.contains("plank")
                                     && outputType.contains("stick")) {
-                                // Not sure how minecraft:stick recipe works
-                                if (outputRegName.equals("minecraft:stick")) {
-                                    woodOreRecipes.add(getRecipeConfig(
-                                        twoOutputItems,
-                                        getSafeItem(inputRegName, WILDCARD, 1),
-                                        "crudeSaw"
-                                    ));
-                                    woodOreRecipes.add(getRecipeConfig(
-                                        twoOutputItems,
-                                        getSafeItem(inputRegName, WILDCARD, 1),
-                                        "ticSaw"
-                                    ));
+                                // Catch wildcard recipe for plankWood -> stickWood
+                                if (outputRegName.equals("minecraft:stick")
+                                        && inputRegName.equals("minecraft:planks")) {
+                                    for (String plank: plankOreRecipes) {
+                                        woodOreRecipes.add(getRecipeConfig(
+                                            twoOutputItems,
+                                            getSafeItem(plank, 1, WILDCARD),
+                                            "crudeSaw"
+                                        ));
+                                        woodOreRecipes.add(getRecipeConfig(
+                                            twoOutputItems,
+                                            getSafeItem(plank, 1, WILDCARD),
+                                            "ticSaw"
+                                        ));
+                                    }
                                 }
                                 else {
                                     woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "crudeSaw"));
@@ -199,7 +243,7 @@ public class TinkerSurvivalRecipes {
             );
         });
 
-        initKnifeRecipes();
+        initKnifeRecipes(saplings);
         initSmeltingRecipes();
         initBowlRecipes();
     }
