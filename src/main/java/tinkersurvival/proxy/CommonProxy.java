@@ -29,12 +29,14 @@ import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
 import tinkersurvival.event.HarvestEventHandler;
 import tinkersurvival.event.HoeEventHandler;
+import tinkersurvival.event.LootTableHandler;
 import tinkersurvival.event.PlayerContainerEventHandler;
 import tinkersurvival.event.PlayerEventHandler;
 import tinkersurvival.event.SleepEventHandler;
 import tinkersurvival.event.SomethingNeedsToastEvent;
 import tinkersurvival.event.SomethingNeedsToastHandler;
 import tinkersurvival.event.TooltipEventHandler;
+import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
@@ -45,21 +47,26 @@ import tinkersurvival.world.worldgen.RockGenerator;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
+        TinkerSurvivalLootTables.init();
         MinecraftForge.EVENT_BUS.register(new AttackEventHandler());
         MinecraftForge.EVENT_BUS.register(new BowEventHandler());
         MinecraftForge.EVENT_BUS.register(new HoeEventHandler());
         MinecraftForge.EVENT_BUS.register(new HarvestEventHandler());
+
         if (Loader.isModLoaded("tinkertoolleveling")) {
             MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
         }
+
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
+
         if (Config.Features.NO_SLEEPING) {
             MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
         }
+
         MinecraftForge.EVENT_BUS.register(new SomethingNeedsToastHandler());
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
         MinecraftForge.EVENT_BUS.register(new RockGenerator());
-
+        MinecraftForge.EVENT_BUS.register(new LootTableHandler());
     }
 
     public void init(FMLInitializationEvent event) {
