@@ -5,10 +5,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.util.Event;
 
 public class AttackEventHandler {
+
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
         if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) {
@@ -28,4 +30,5 @@ public class AttackEventHandler {
             event.setCanceled(true);
         }
     }
+
 }
