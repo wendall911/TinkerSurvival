@@ -54,7 +54,7 @@ jei.description.flint_shard=Flint shards can be obtained from striking flint on 
 
 # Tooltips
 tooltip.uselessTool1=This tool cannot mine anything!
-tooltip.uselessTool2=It can only be used for crafting.
+tooltip.uselessTool2=Can only be used for crafting.
 tooltip.uselessHoe1=This hoe cannot hoe anything!
 tooltip.uselessWeapon1=This weapon hits like a wet noodle!
 tooltip.uselessBow1=This bows bowstring snapped!

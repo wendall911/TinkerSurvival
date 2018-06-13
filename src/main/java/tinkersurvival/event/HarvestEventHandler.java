@@ -26,7 +26,7 @@ import tinkersurvival.config.Config;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.Knife;
 import tinkersurvival.util.Chat;
-import tinkersurvival.util.Event;
+import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -77,21 +77,21 @@ public class HarvestEventHandler {
         }
 
         if (neededToolClass != null) {
-            if (Event.isValidTool(heldItemStack, neededToolClass)) {
-                for (String toolClass : heldItemStack.getItem().getToolClasses(heldItemStack)) {
-                    if (neededToolClass.equals(toolClass)) {
-                        if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
-                            return;
-                        }
-                    }
-                    else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
+            if (ItemUse.isWhitelistItem(heldItemStack)) {
+                String toolClass = ItemUse.getToolClass(heldItemStack);
+
+                if (neededToolClass.equals(toolClass)) {
+                    if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
                         return;
                     }
-                    else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
-                        return;
-                    } else if(neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
-                        return;
-                    }
+                }
+                else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
+                    return;
+                }
+                else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
+                    return;
+                } else if(neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
+                    return;
                 }
 
                 switch (neededToolClass) {
@@ -150,28 +150,22 @@ public class HarvestEventHandler {
             String neededToolClass = block.getHarvestTool(event.getState());
 
             if (neededToolClass != null) {
-                if (Event.isValidTool(heldItemStack, neededToolClass)) {
-                    Item heldItem = heldItemStack.getItem();
-                    for (String toolClass : heldItem.getToolClasses(heldItemStack)) {
-                        if (neededToolClass.equals(toolClass)) {
-                            if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
-                                return;
-                            }
-                        }
-                        else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
-                            return;
-                        }
-                        else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
-                            return;
-                        }
-                        // Metal Pickaxes and above are allowed to function as shovels with no mining speed penalty + block drops.
-                        else if (neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
+                if (ItemUse.isWhitelistItem(heldItemStack)) {
+                    String toolClass = ItemUse.getToolClass(heldItemStack);
+
+                    if (neededToolClass.equals(toolClass)) {
+                        if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
                             return;
                         }
                     }
-
-                    // Sometimes mods register tools as tools, though they aren't really tools. Fun.
-                    if (Event.isWhitelistTool(heldItem.getRegistryName().toString(), neededToolClass)) {
+                    else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
+                        return;
+                    }
+                    else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
+                        return;
+                    }
+                    // Metal Pickaxes and above are allowed to function as shovels with no mining speed penalty + block drops.
+                    else if (neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
                         return;
                     }
 

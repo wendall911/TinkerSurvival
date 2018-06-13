@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.util.Event;
+import tinkersurvival.util.ItemUse;
 import tinkersurvival.util.ToolLevelNBT;
 
 public class TooltipEventHandler {
@@ -32,28 +32,43 @@ public class TooltipEventHandler {
             return;
         }
 
-        NBTTagCompound tag = TinkerUtil.getModifierTag(event.getItemStack(), TinkerSurvival.modToolLeveling.getModifierIdentifier());
-        if (!tag.hasNoTags()) {
-            ToolLevelNBT data = new ToolLevelNBT(tag);
-            if (data.cxp >= 0) {
-                event.getToolTip().add(1, TextFormatting.GOLD + I18n.translateToLocalFormatted("tooltip.cxp"));
+        ItemStack stack = event.getItemStack();
+
+        if (ItemUse.isWhitelistItem(stack)) {
+            NBTTagCompound tag = TinkerUtil.getModifierTag(stack, TinkerSurvival.modToolLeveling.getModifierIdentifier());
+            if (!tag.hasNoTags()) {
+                ToolLevelNBT data = new ToolLevelNBT(tag);
+                if (data.cxp >= 0) {
+                    event.getToolTip().add(1, TextFormatting.GOLD + I18n.translateToLocalFormatted("tooltip.cxp"));
+                }
+            }
+        }
+        else {
+            String type = ItemUse.getToolClass(stack);
+            String tooltip = "tooltip.uselessTool2";
+
+            if (type != null) {
+                switch (type) {
+                    case "bow":
+                        tooltip = "tooltip.uselessBow1";
+                        break;
+                    case "hoe":
+                        tooltip = "tooltip.uselessHoe1";
+                        break;
+                    case "pickaxe":
+                        tooltip = "tooltip.uselessTool1";
+                        break;
+                    case "sword":
+                        tooltip = "tooltip.uselessWeapon1";
+                        break;
+                    default:
+                        break;
+
+                }
+                event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted(tooltip));
             }
         }
 
-        if (Event.isUselessBow(event.getItemStack())) {
-            event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessBow1"));
-        }
-
-        if (Event.isUselessHoe(event.getItemStack())) {
-            event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessHoe1"));
-        }
-
-        if (Event.isUselessSword(event.getItemStack())) {
-            event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessWeapon1"));
-        }
-        if (Event.isUselessTool(event.getItemStack())) {
-            event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessTool2"));
-        }
     }
 
 }
