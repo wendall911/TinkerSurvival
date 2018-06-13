@@ -40,6 +40,7 @@ import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
+import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.TinkerSurvivalWorld;
 import tinkersurvival.world.worldgen.RockGenerator;
 
@@ -115,6 +116,8 @@ public class CommonProxy {
                 }
             }
         }
+
+        ItemUse.init();
     }
 
     @SubscribeEvent
