@@ -150,9 +150,9 @@ public class HarvestEventHandler {
             String neededToolClass = block.getHarvestTool(event.getState());
 
             if (neededToolClass != null) {
-                if (ItemUse.isWhitelistItem(heldItemStack)) {
-                    String toolClass = ItemUse.getToolClass(heldItemStack);
+                String toolClass = ItemUse.getToolClass(heldItemStack);
 
+                if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
                     if (neededToolClass.equals(toolClass)) {
                         if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
                             return;
