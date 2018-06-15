@@ -22,6 +22,20 @@ public class Config {
         };
     }
 
+    public static Armor armor;
+    public static class Armor {
+        @Comment({"List of mods that armor will always work and be craftable for. All other mod armor will not be equipable or craftable."})
+        public static String[] MOD_ARMOR_WHITELIST = new String[] {
+            "immersiveengineering",
+            "conarm"
+        };
+
+        @Comment({"List of individual armor items that will always work. Format modid:item"})
+        public static String[] ARMOR_WHITELIST = new String[] {
+            "tconstruct:piggybackpack"
+        };
+    }
+
     public static Balance balance;
     public static class Balance {
         @Comment({"Chance for a rocks to generate on surface. Default 100% - 1.0D"})

@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -21,6 +20,7 @@ import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.Knife;
+import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class TinkerSurvivalRecipes {
@@ -227,6 +227,10 @@ public class TinkerSurvivalRecipes {
                             }
                         }
                     }
+                }
+                else if (ItemUse.isArmor(output) && !ItemUse.isWhitelistArmor(output)) {
+                    RecipeHelper.addFakeRecipe(recipe);
+                    TinkerSurvival.logger.info("Removed armor recipe for: " + recipe.getRegistryName());
                 }
             }
         }

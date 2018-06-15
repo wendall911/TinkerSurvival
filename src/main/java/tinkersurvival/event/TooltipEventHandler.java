@@ -15,6 +15,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 import tinkersurvival.TinkerSurvival;
+import tinkersurvival.tools.tool.Knife;
+import tinkersurvival.tools.tool.Saw;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.util.ToolLevelNBT;
 
@@ -34,13 +36,18 @@ public class TooltipEventHandler {
 
         ItemStack stack = event.getItemStack();
 
-        if (ItemUse.isWhitelistItem(stack)) {
+        if (stack.getItem() instanceof Knife || stack.getItem() instanceof Saw) {
             NBTTagCompound tag = TinkerUtil.getModifierTag(stack, TinkerSurvival.modToolLeveling.getModifierIdentifier());
             if (!tag.hasNoTags()) {
                 ToolLevelNBT data = new ToolLevelNBT(tag);
                 if (data.cxp >= 0) {
                     event.getToolTip().add(1, TextFormatting.GOLD + I18n.translateToLocalFormatted("tooltip.cxp"));
                 }
+            }
+        }
+        else if (ItemUse.isArmor(stack)) {
+            if (!ItemUse.isWhitelistArmor(stack)) {
+                event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessArmor1"));
             }
         }
         else {

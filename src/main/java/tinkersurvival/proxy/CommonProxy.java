@@ -29,6 +29,7 @@ import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
 import tinkersurvival.event.HarvestEventHandler;
 import tinkersurvival.event.HoeEventHandler;
+import tinkersurvival.event.LivingEquipmentChangeEventHandler;
 import tinkersurvival.event.LootTableHandler;
 import tinkersurvival.event.PlayerContainerEventHandler;
 import tinkersurvival.event.PlayerEventHandler;
@@ -53,6 +54,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new BowEventHandler());
         MinecraftForge.EVENT_BUS.register(new HoeEventHandler());
         MinecraftForge.EVENT_BUS.register(new HarvestEventHandler());
+        MinecraftForge.EVENT_BUS.register(new LivingEquipmentChangeEventHandler());
 
         if (Loader.isModLoaded("tinkertoolleveling")) {
             MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
@@ -75,6 +77,8 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
+        ItemUse.init();
+
         TinkerSurvivalRecipes.updateRecipes();
 
         // Disable Enderman Griefing!!!
@@ -116,8 +120,6 @@ public class CommonProxy {
                 }
             }
         }
-
-        ItemUse.init();
     }
 
     @SubscribeEvent

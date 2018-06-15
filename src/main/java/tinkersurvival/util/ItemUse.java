@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.fml.common.Loader;
@@ -17,7 +18,9 @@ import tinkersurvival.TinkerSurvival;
 public class ItemUse {
 
     private static Map<String, String> whitelistToolsMap = new HashMap<>();
-    private static Set<String> modids = Sets.newHashSet();
+    private static Set<String> toolModids = Sets.newHashSet();
+    private static Set<String> armorModids = Sets.newHashSet();
+    private static Set<String> armorWhitelist = Sets.newHashSet();
     // Order is important here. Ex. Checking for pickaxe before axe in name as a type fallback.
     private static String[] TOOL_TYPES = new String[] {
         "pickaxe",
@@ -35,9 +38,10 @@ public class ItemUse {
     public static void init() {
         for (String modid : Config.Tools.MOD_TOOL_WHITELIST) {
             if (Loader.isModLoaded(modid)) {
-                modids.add(modid);
+                toolModids.add(modid);
             }
         }
+
         for (String item : Config.Tools.TOOLS_WHITELIST) {
             boolean valid = false;
 
@@ -61,16 +65,39 @@ public class ItemUse {
                         + item + " has an incorrect format.");
             }
         }
+
+        for (String modid : Config.Armor.MOD_ARMOR_WHITELIST) {
+            if (Loader.isModLoaded(modid)) {
+                armorModids.add(modid);
+            }
+        }
+
+        for (String armorName : Config.Armor.ARMOR_WHITELIST) {
+            boolean valid = false;
+
+            Item armor = Item.getByNameOrId(armorName);
+            if (armor != null) {
+                valid = true;
+                armorWhitelist.add(armorName);
+            }
+
+            if (!valid) {
+                TinkerSurvival.logger.warn("ARMOR_WHITELIST item "
+                        + armorName + " has an incorrect format.");
+            }
+        }
+
     }
 
     public static boolean isWhitelistItem(ItemStack stack) {
-        String item = stack.getItem().getRegistryName().toString();
-        String[] nameParts = item.split(":");
-        String modid = item;
-        if (nameParts.length == 2) {
-            modid = nameParts[0];
-        }
-        return modids.contains(modid) || whitelistToolsMap.get(item) != null;
+        String itemName = stack.getItem().getRegistryName().toString();
+        String modid = getModId(itemName);
+        return toolModids.contains(modid) || whitelistToolsMap.get(itemName) != null;
+    }
+
+    private static String getModId(String name) {
+        String[] nameParts = name.split(":");
+        return nameParts.length == 2 ? nameParts[0] : name;
     }
 
     public static String getToolClass(ItemStack stack) {
@@ -92,6 +119,22 @@ public class ItemUse {
         }
 
         return type;
+    }
+
+    public static boolean isArmor(ItemStack stack) {
+        // Disable check if conarm isn't loaded.
+        if (Loader.isModLoaded("conarm")) {
+            return stack.getItem() instanceof ItemArmor ? true : false;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public static boolean isWhitelistArmor(ItemStack stack) {
+        String itemName = stack.getItem().getRegistryName().toString();
+        String modid = getModId(itemName);
+        return armorModids.contains(modid) || armorWhitelist.contains(itemName);
     }
 
 }
