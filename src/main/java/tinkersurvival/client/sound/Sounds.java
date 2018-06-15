@@ -16,8 +16,9 @@ import java.util.List;
 public class Sounds {
     private static final List<SoundEvent> sounds = new ArrayList<>();
 
-    public static final SoundEvent FLINT_KNAPPING = registerSound("knapping");
+    public static final SoundEvent ARMOR_FAIL = registerSound("armor_fail");
     public static final SoundEvent BOW_FAIL = registerSound("bow_fail");
+    public static final SoundEvent FLINT_KNAPPING = registerSound("knapping");
     public static final SoundEvent HOE_FAIL = registerSound("hoe_fail");
     public static final SoundEvent SWORD_FAIL = registerSound("sword_fail");
     public static final SoundEvent TOOL_FAIL = registerSound("tool_fail");

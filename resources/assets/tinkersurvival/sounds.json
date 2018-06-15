@@ -8,6 +8,12 @@
       "tinkersurvival:knapping_4"
     ]
   },
+  "armor_fail": {
+    "category": "player",
+    "sounds": [
+        "tinkersurvival:armor_fail"
+    ]
+  },
   "bow_fail": {
     "category": "player",
     "sounds": [
