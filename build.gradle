@@ -69,6 +69,9 @@ minecraft {
 dependencies {
     deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_short_version}-${config.mantle_version}"
     deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tic_version}"
+
+    deobfProvided "mezz.jei:jei_1.12.2:4.8.5.159:api"
+    runtime "mezz.jei:jei_1.12.2:4.8.5.159"
 }
 
 def commonManifest = {
