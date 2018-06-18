@@ -72,3 +72,9 @@ message.spawn_set=Not sleepy, but spawn set!
 # Potion Effects
 potion.stopbleeding=Stop Bleeding
 potion.zombieessence=Zombie Essence
+
+# Constructs Armory
+material.jelledslime.name=Jelled Slime
+material.wool.name=Wool
+modifier.insulated_armor.name=Insulated
+modifier.chilling_armor.name=Chilling
