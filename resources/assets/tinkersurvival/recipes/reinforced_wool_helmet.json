@@ -6,7 +6,7 @@
         },
         {
             "type": "tinkersurvival:item_exists",
-            "item": "basemetals:adamantine_helmet"
+            "item": "minecraft:diamond_helmet"
         }
     ],
     "type": "forge:ore_shapeless",
@@ -15,7 +15,7 @@
             "item": "toughasnails:wool_helmet"
         },
         {
-            "item": "basemetals:adamantine_helmet"
+            "item": "minecraft:diamond_helmet"
         }
     ],
     "result": {

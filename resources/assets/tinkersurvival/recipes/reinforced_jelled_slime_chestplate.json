@@ -6,7 +6,7 @@
         },
         {
             "type": "tinkersurvival:item_exists",
-            "item": "basemetals:adamantine_chestplate"
+            "item": "minecraft:diamond_chestplate"
         }
     ],
     "type": "forge:ore_shapeless",
@@ -15,7 +15,7 @@
             "item": "toughasnails:jelled_slime_chestplate"
         },
         {
-            "item": "basemetals:adamantine_chestplate"
+            "item": "minecraft:diamond_chestplate"
         }
     ],
     "result": {
