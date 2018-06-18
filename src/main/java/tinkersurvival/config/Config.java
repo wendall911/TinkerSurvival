@@ -1,7 +1,8 @@
 package tinkersurvival.config;
 
-import tinkersurvival.TinkerSurvival;
 import net.minecraftforge.common.config.Config.Comment;
+
+import tinkersurvival.TinkerSurvival;
 
 @net.minecraftforge.common.config.Config(modid=TinkerSurvival.MODID)
 public class Config {
@@ -34,6 +35,24 @@ public class Config {
         public static String[] ARMOR_WHITELIST = new String[] {
             "tconstruct:piggybackpack"
         };
+
+        @Comment({"List of all armor with temperature modifiers. Format modid:item=modifier"})
+        public static String[] ARMOR_TEMP_MODIFIERS = new String[] {
+            "tinkersurvival:reinforced_wool_helmet=1",
+            "tinkersurvival:reinforced_wool_chestplate=1",
+            "tinkersurvival:reinforced_wool_leggings=1",
+            "tinkersurvival:reinforced_wool_boots=1",
+            "tinkersurvival:reinforced_jelled_slime_helmet=-1",
+            "tinkersurvival:reinforced_jelled_slime_chestplate=-1",
+            "tinkersurvival:reinforced_jelled_slime_leggings=-1",
+            "tinkersurvival:reinforced_jelled_slime_boots=-1"
+        };
+
+        @Comment({"Constructs' Armory wool insulation modifier amount."})
+        public static int INSULATED_MODIFIER=1;
+
+        @Comment({"Constructs' Armory jelled slime cooling modifier amount."})
+        public static int CHILLING_MODIFIER=-1;
     }
 
     public static Balance balance;

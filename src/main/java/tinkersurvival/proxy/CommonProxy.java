@@ -37,8 +37,10 @@ import tinkersurvival.event.SleepEventHandler;
 import tinkersurvival.event.SomethingNeedsToastEvent;
 import tinkersurvival.event.SomethingNeedsToastHandler;
 import tinkersurvival.event.TooltipEventHandler;
+import tinkersurvival.integrations.ArmorMaterials;
 import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
+import tinkersurvival.temperature.ArmorModifier;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.util.ItemUse;
@@ -50,6 +52,11 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         TinkerSurvivalLootTables.init();
+
+        if (Loader.isModLoaded("toughasnails") && Loader.isModLoaded("conarm")) {
+            ArmorMaterials.preInit();
+        }
+
         MinecraftForge.EVENT_BUS.register(new AttackEventHandler());
         MinecraftForge.EVENT_BUS.register(new BowEventHandler());
         MinecraftForge.EVENT_BUS.register(new HoeEventHandler());
@@ -73,6 +80,10 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
+        if (Loader.isModLoaded("toughasnails") && Loader.isModLoaded("conarm")) {
+            ArmorMaterials.init();
+        }
+
         initGuis();
     }
 
@@ -119,6 +130,11 @@ public class CommonProxy {
                     TinkerSurvival.logger.info("Allowing griefing for block: " + block.getUnlocalizedName());
                 }
             }
+        }
+
+        // Only do temp modification on armor if we don't have Constructs' Armory.
+        if (Loader.isModLoaded("toughasnails")) {
+            ArmorModifier.init();
         }
     }
 
