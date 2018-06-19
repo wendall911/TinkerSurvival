@@ -10,6 +10,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import net.minecraftforge.oredict.OreDictionary;
+
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.materials.Material;
@@ -29,8 +31,8 @@ public class ArmorMaterials {
         Item jelledSlimeBrick = Item.getByNameOrId("toughasnails:jelled_slime");
 
         wool = new Material("wool", 0xf0eae1, false);
-        wool.addItem(Blocks.WOOL, Material.VALUE_Ingot);
-        wool.setRepresentativeItem(Blocks.WOOL);
+        wool.addItem(new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE), 1, Material.VALUE_Ingot);
+        wool.setRepresentativeItem(new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE));
         MaterialIntegration woolIntegration = new MaterialIntegration(wool);
         TinkerRegistry.integrate(woolIntegration);
         woolIntegration.preInit();
