@@ -110,6 +110,7 @@ curseforge {
             relations {
                 requiredLibrary 'mantle'
                 requiredLibrary 'tinkers-construct'
+                optionalLibrary 'constructs-armory'
                 optionalLibrary 'tinkers-tool-leveling'
                 optionalLibrary 'tough-as-nails'
             }
