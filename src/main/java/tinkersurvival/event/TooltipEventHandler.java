@@ -50,7 +50,7 @@ public class TooltipEventHandler {
                 event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessArmor1"));
             }
         }
-        else {
+        else if (!ItemUse.isWhitelistItem(stack)) {
             String type = ItemUse.getToolClass(stack);
             String tooltip = "tooltip.uselessTool2";
 
@@ -75,7 +75,6 @@ public class TooltipEventHandler {
                 event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted(tooltip));
             }
         }
-
     }
 
 }
