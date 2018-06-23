@@ -19,7 +19,8 @@ public class Config {
 
         @Comment({"List of individual tools that will always work. Format tooltype-modid:item"})
         public static String[] TOOLS_WHITELIST = new String[] {
-            "shears-minecraft:shears"
+            "shears-minecraft:shears",
+            "pickaxe-immersiveengineering:drill"
         };
     }
 
