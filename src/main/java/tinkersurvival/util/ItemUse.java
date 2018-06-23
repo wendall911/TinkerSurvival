@@ -4,6 +4,8 @@ import com.google.common.collect.Sets;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Set;
 
 import net.minecraft.item.Item;
@@ -111,7 +113,9 @@ public class ItemUse {
 
             if (type == null) {
                 for (String toolType : TOOL_TYPES) {
-                    if (item.contains(toolType) && type == null) {
+                    if (item.contains(toolType)
+                            && type == null
+                            && wordMatches(item, toolType)) {
                         type = toolType;
                     }
                 }
@@ -119,6 +123,13 @@ public class ItemUse {
         }
 
         return type;
+    }
+
+    private static boolean wordMatches(String name, String match) {
+        String pattern = "\\b" + match + "\\b";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(name);
+        return m.find();
     }
 
     public static boolean isArmor(ItemStack stack) {
