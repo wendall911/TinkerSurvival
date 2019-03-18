@@ -34,7 +34,7 @@ public class PlayerContainerEventHandler {
         for (int i = 0; i < inventory.size(); i++) {
             ItemStack stack = inventory.get(i);
             NBTTagCompound tag = TinkerUtil.getModifierTag(stack, TinkerSurvival.modToolLeveling.getModifierIdentifier());
-            if (!tag.hasNoTags()) {
+            if (!tag.isEmpty()) {
                 int cxp = TinkerSurvival.modToolLeveling.getLevelData(stack).cxp;
 
                 if (cxp > 0) {

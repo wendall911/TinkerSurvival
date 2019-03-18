@@ -127,7 +127,7 @@ public class CommonProxy {
                 }
                 else {
                     //Griefing!!!!
-                    TinkerSurvival.logger.info("Allowing griefing for block: " + block.getUnlocalizedName());
+                    TinkerSurvival.logger.info("Allowing griefing for block: " + block.getTranslationKey());
                 }
             }
         }

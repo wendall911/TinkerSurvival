@@ -14,7 +14,7 @@ public class TinkerSurvivalArmor extends ItemArmor {
         super(material, 0, slot);
 
         this.name = name;
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(TinkerSurvival.TS_Tab);
     }

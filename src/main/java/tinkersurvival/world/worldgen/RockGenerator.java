@@ -84,7 +84,7 @@ public class RockGenerator {
                         type = STONE;
                 }
             } else {
-                switch (downBl.getUnlocalizedName()) {
+                switch (downBl.getTranslationKey()) {
                     default:
                         type = STONE;
                 }

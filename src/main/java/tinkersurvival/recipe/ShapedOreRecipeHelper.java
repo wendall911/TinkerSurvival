@@ -42,7 +42,7 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                         || slot.getItem() == Items.BOWL)) {
                 if (slot.isItemStackDamageable()) {
                     int calculatedDamage = slot.getMaxDamage() - (slot.getItemDamage() + 1);
-                    String toolName = I18n.translateToLocal(slot.getItem().getUnlocalizedName() + ".name");
+                    String toolName = I18n.translateToLocal(slot.getItem().getTranslationKey() + ".name");
                     
                     tool = setDamage(slot.copy(), toolName, calculatedDamage);
 

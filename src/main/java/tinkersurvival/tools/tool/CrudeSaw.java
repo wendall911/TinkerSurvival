@@ -13,7 +13,7 @@ public class CrudeSaw extends ItemAxe {
         super(material,1.0F,-3.0F);
 
         this.name = name;
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
 
         setNoRepair();

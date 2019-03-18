@@ -25,7 +25,7 @@ public class Saw extends AoeToolCore {
             PartMaterialType.head(TinkerTools.axeHead),
             PartMaterialType.extra(TinkerTools.binding));
 
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         this.name = name;
     }

@@ -15,7 +15,7 @@ public class ItemBase extends Item {
 
         this.name = name;
         this.subItemCount = count;
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         setHasSubtypes(count > 1);
         setCreativeTab(TinkerSurvival.TS_Tab);

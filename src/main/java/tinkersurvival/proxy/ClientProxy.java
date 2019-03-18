@@ -35,11 +35,11 @@ public class ClientProxy extends CommonProxy {
     }
     @Override
     public void registerItemModel(Item item, int meta){
-        registerItemModel(item, meta, item.getRegistryName().getResourcePath());
+        registerItemModel(item, meta, item.getRegistryName().getPath());
     }
     @Override
     public void registerItemModel(Item item) {
-        registerItemModel(item, 0, item.getRegistryName().getResourcePath());
+        registerItemModel(item, 0, item.getRegistryName().getPath());
     }
 
     @Override

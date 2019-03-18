@@ -38,7 +38,7 @@ public class TooltipEventHandler {
 
         if (stack.getItem() instanceof Knife || stack.getItem() instanceof Saw) {
             NBTTagCompound tag = TinkerUtil.getModifierTag(stack, TinkerSurvival.modToolLeveling.getModifierIdentifier());
-            if (!tag.hasNoTags()) {
+            if (!tag.isEmpty()) {
                 ToolLevelNBT data = new ToolLevelNBT(tag);
                 if (data.cxp >= 0) {
                     event.getToolTip().add(1, TextFormatting.GOLD + I18n.translateToLocalFormatted("tooltip.cxp"));

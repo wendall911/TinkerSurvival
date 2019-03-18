@@ -31,7 +31,7 @@ public class CrudeKnife extends ItemTool {
 
     public CrudeKnife(Item.ToolMaterial material, String name){
         super(1.0F, -2.0F, material, EFFECTIVE_ON);
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         this.name = name;
         setCreativeTab(TinkerSurvival.TS_Tab);

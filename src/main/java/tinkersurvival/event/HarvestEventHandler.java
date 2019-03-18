@@ -131,7 +131,7 @@ public class HarvestEventHandler {
 
             // Get Variables for the block and item held
             Block block = event.getState().getBlock();
-            String blockName = block.getRegistryName().getResourceDomain() + ":" + block.getRegistryName().getResourcePath();
+            String blockName = block.getRegistryName().getNamespace() + ":" + block.getRegistryName().getPath();
             ItemStack heldItemStack = player.getHeldItemMainhand();
 
             if (block == Blocks.AIR

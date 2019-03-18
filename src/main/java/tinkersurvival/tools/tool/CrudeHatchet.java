@@ -15,7 +15,7 @@ public class CrudeHatchet extends ItemAxe {
         super(material, 4.0F, -3.0F);
 
         this.name = name;
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
 
         setNoRepair();

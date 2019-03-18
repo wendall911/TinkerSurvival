@@ -50,7 +50,7 @@ public class Knife extends AoeToolCore {
             PartMaterialType.head(TinkerTools.knifeBlade),
             PartMaterialType.extra(TinkerTools.binding));
 
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         this.name = name;
     }
