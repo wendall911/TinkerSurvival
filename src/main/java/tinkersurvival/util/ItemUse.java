@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Set;
+import java.util.Arrays;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -33,7 +34,10 @@ public class ItemUse {
         "mattock",
         "shears",
         "shovel",
-        "sword"
+        "sword",
+        "weapon",
+        "hammer",
+        "wirecutter",
     };
     private static Set<String> toolTypes = Sets.newHashSet(TOOL_TYPES);
 
@@ -103,8 +107,8 @@ public class ItemUse {
     }
 
     public static String getToolClass(ItemStack stack) {
-        String item = stack.getItem().getRegistryName().toString();
-        String type = whitelistToolsMap.get(item);
+        String itemName = stack.getItem().getRegistryName().toString();
+        String type = whitelistToolsMap.get(itemName);
 
         if (type == null) {
             for (String toolClass : stack.getItem().getToolClasses(stack)) {
@@ -112,10 +116,11 @@ public class ItemUse {
             }
 
             if (type == null) {
+                String[] nameParts = itemName.split("[^a-z]+");
                 for (String toolType : TOOL_TYPES) {
-                    if (item.contains(toolType)
+                    if (itemName.contains(toolType)
                             && type == null
-                            && wordMatches(item, toolType)) {
+                            && Arrays.asList(nameParts).contains(toolType)) {
                         type = toolType;
                     }
                 }
@@ -123,13 +128,6 @@ public class ItemUse {
         }
 
         return type;
-    }
-
-    private static boolean wordMatches(String name, String match) {
-        String pattern = "\\b" + match + "\\b";
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(name);
-        return m.find();
     }
 
     public static boolean isArmor(ItemStack stack) {
