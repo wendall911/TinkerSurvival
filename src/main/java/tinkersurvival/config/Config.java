@@ -11,7 +11,6 @@ public class Config {
     public static class Tools {
         @Comment({"List of mods that tools will always work for. All other mod tools will become wet noodles."})
         public static String[] MOD_TOOL_WHITELIST = new String[] {
-            "immersiveengineering",
             "opencomputers",
             "tconstruct",
             "tinkersurvival"
@@ -20,6 +19,10 @@ public class Config {
         @Comment({"List of individual tools that will always work. Format tooltype-modid:item"})
         public static String[] TOOLS_WHITELIST = new String[] {
             "shears-minecraft:shears",
+            "hammer-immersiveengineering:tool",
+            "wirecutter-immersiveengineering:tool",
+            "sword-immersiveengineering:revolver",
+            "sword-immersiveengineering:railgun",
             "pickaxe-immersiveengineering:drill"
         };
     }
