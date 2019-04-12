@@ -28,6 +28,10 @@ public class RockGenerator {
 
     @SubscribeEvent
     public void decorateBiome(DecorateBiomeEvent.Post event) {
+        if(!Config.Balance.ENABLE_ROCKGEN){
+            return;
+        }
+
         World world = event.getWorld();
         Random random = event.getRand();
         int chunkX = event.getPos().getX() >> 4;

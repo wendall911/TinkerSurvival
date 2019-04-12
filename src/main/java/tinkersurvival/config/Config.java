@@ -61,10 +61,19 @@ public class Config {
 
     public static Balance balance;
     public static class Balance {
-        @Comment({"Chance for a rocks to generate on surface. Default 100% - 1.0D"})
+        @Comment({"Enables the generation of rock piles on the surface. Default true"})
+        public static boolean ENABLE_ROCKGEN = true;
+
+        @Comment({"Chance for a rocks to generate on surface. Default 1.0D (= 100%)"})
         public static double ROCKGEN_CHANCE = 1.0D;
 
-        @Comment({"Chance for a sucessful flint knapping. Default 60% - 0.6D"})
+        @Comment({"Enables rock drop from harvesting dirt. (default: false)"})
+        public static boolean ENABLE_ROCK_FROM_DIRT = false;
+
+        @Comment({"Chance for a rocks to drop from harvesting dirt with bare hands. Default 0.4 (= 40%)"})
+        public static double ROCK_FROM_DIRT_CHANCE = 0.4D;
+
+        @Comment({"Chance for a successful flint knapping. Default 60% - 0.6D"})
         public static double FLINT_CHANCE = 0.6D;
 
         @Comment({"Chance for tall grass to drop plant fibers. Default 60% - 0.6D. Knives are 40% more effective."})
@@ -72,6 +81,9 @@ public class Config {
 
         @Comment({"Heal rate for bandages. Crude bandages are 50% less effective."})
         public static double HEAL_RATE = 0.14D;
+
+        @Comment({"Option to adjust slow down on wrong tool usage. Default 1.0)"})
+        public static float SLOW_DOWN_MULTIPLIER = 1.0F;
     }
 
     public static Features features;
@@ -87,6 +99,15 @@ public class Config {
 
         @Comment({"I cry myself to sleep at night..."})
         public static boolean NO_SLEEPING = true;
+
+        @Comment({"Includes dirt in the slowdown of mining speed with bare hands. Default true"})
+        public static boolean SLOW_DOWN_DIRT_PUNCHING = true;
+
+        @Comment({"Removes plank and stick recipes from the game, only craftable with saw. Default true"})
+        public static boolean FORCE_SAW_USAGE = true;
+
+        @Comment({"Enables the fail sound if using the wrong tool."})
+        public static boolean ENABLE_FAIL_SOUND = true;
     }
 
 }
