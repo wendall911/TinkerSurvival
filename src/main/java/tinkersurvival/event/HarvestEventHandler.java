@@ -82,15 +82,8 @@ public class HarvestEventHandler {
             String toolClass = ItemUse.getToolClass(heldItemStack);
 
             if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
-                if (neededToolClass.equals(toolClass)) {
-                    if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
-                        return;
-                    }
-                } else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
-                    return;
-                } else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
-                    return;
-                } else if (neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
+
+                if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass)) {
                     return;
                 }
 
@@ -110,7 +103,25 @@ public class HarvestEventHandler {
                 event.setNewSpeed(event.getOriginalSpeed() / 10);
             }
         }
+    }
 
+    private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass) {
+
+        if (neededToolClass.equals(toolClass)) {
+
+            return heldItemStack.getItem().getHarvestLevel(
+                    heldItemStack, toolClass, null, null) >= neededHarvestLevel;
+
+        } else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
+            return true;
+        } else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
+            return true;
+        } else {
+
+            return neededToolClass.equals("shovel") && toolClass.equals("pickaxe")
+                    && heldItemStack.getItem().getHarvestLevel(
+                            heldItemStack, toolClass, null, null) >= 1;
+        }
     }
 
     // Controls what tool is used for block breaking
@@ -153,17 +164,8 @@ public class HarvestEventHandler {
                 String toolClass = ItemUse.getToolClass(heldItemStack);
 
                 if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
-                    if (neededToolClass.equals(toolClass)) {
-                        if (heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= neededHarvestLevel) {
-                            return;
-                        }
-                    } else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
-                        return;
-                    } else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
-                        return;
-                    }
-                    // Metal Pickaxes and above are allowed to function as shovels with no mining speed penalty + block drops.
-                    else if (neededToolClass.equals("shovel") && toolClass.equals("pickaxe") && heldItemStack.getItem().getHarvestLevel(heldItemStack, toolClass, null, null) >= 1) {
+
+                    if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass)) {
                         return;
                     }
 

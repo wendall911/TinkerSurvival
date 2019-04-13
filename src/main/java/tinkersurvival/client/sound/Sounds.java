@@ -41,7 +41,7 @@ public class Sounds {
     }
 
     public static void play(Entity entity, SoundEvent sound, float volume, float pitch) {
-        if (Config.Features.ENABLE_FAIL_SOUND || sound == FLINT_KNAPPING) {
+        if (Config.Client.ENABLE_FAIL_SOUND || sound == FLINT_KNAPPING) {
 
             if (entity instanceof EntityPlayerMP) {
                 entity.getEntityWorld().playSound(null, entity.getPosition(),

@@ -108,10 +108,12 @@ public class Config {
         public static boolean ENABLE_SAW = true;
 
         @Comment({"Removes plank and stick recipes from the game, only craftable with saw. Default true"})
-        public static final boolean FORCE_SAW_FOR_PLANKS = true;
+        public static boolean FORCE_SAW_FOR_PLANKS = true;
+    }
 
+    public static Client client;
+    public static class Client {
         @Comment({"Enables the fail sound if using the wrong tool."})
         public static boolean ENABLE_FAIL_SOUND = true;
     }
-
 }
