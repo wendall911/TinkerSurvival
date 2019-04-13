@@ -88,6 +88,7 @@ public class Config {
 
     public static Features features;
     public static class Features {
+
         @Comment({"Stop enderman griefing, wtf Notch."})
         public static boolean NO_GRIEFING = true;
 
@@ -103,8 +104,11 @@ public class Config {
         @Comment({"Includes dirt in the slowdown of mining speed with bare hands. Default true"})
         public static boolean SLOW_DOWN_DIRT_PUNCHING = true;
 
+        @Comment({"Enables the saw item to craft planks. Default true"})
+        public static boolean ENABLE_SAW = true;
+
         @Comment({"Removes plank and stick recipes from the game, only craftable with saw. Default true"})
-        public static boolean FORCE_SAW_USAGE = true;
+        public static final boolean FORCE_SAW_FOR_PLANKS = true;
 
         @Comment({"Enables the fail sound if using the wrong tool."})
         public static boolean ENABLE_FAIL_SOUND = true;

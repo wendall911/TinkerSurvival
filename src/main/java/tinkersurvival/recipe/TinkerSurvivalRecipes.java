@@ -79,6 +79,60 @@ public class TinkerSurvivalRecipes {
         }
     }
 
+    private static void initSawRecipeFor(IRecipe recipe, RecipeInfo input, RecipeInfo output, List<String> plankOreRecipes) {
+
+        final String replacedMsg = "Replaced recipe for: " + recipe.getRegistryName();
+        final String addedMsg = "Added Saw recipes for: " + recipe.getRegistryName();
+
+        ItemStack inputItem = getSafeItem(input, 1);
+        ItemStack twoOutputItems = getSafeItem(output, 2);
+        ItemStack fourOutputItems = getSafeItem(output, 4);
+
+        if (output.getItemType().equals("plankWood")) {
+            registerRecipe(twoOutputItems, inputItem, "crudeSaw");
+            registerRecipe(fourOutputItems, inputItem, "ticSaw");
+            TinkerSurvival.logger.info(addedMsg);
+
+            if (Config.Features.FORCE_SAW_FOR_PLANKS) {
+                RecipeHelper.addFakeRecipe(recipe);
+                TinkerSurvival.logger.info(replacedMsg);
+            }
+
+            return;
+        }
+
+        if (input.getItemType().contains("plank") && output.getItemType().contains("stick")) {
+
+            // Catch wildcard recipe for plankWood -> stickWood
+            if (input.getRegName().equals("minecraft:planks") && output.getRegName().equals("minecraft:stick")) {
+
+                for (String plank : plankOreRecipes) {
+                    registerRecipe(
+                            twoOutputItems,
+                            getSafeItem(plank, 1, OreDictionary.WILDCARD_VALUE),
+                            "crudeSaw"
+                    );
+                    registerRecipe(
+                            twoOutputItems,
+                            getSafeItem(plank, 1, OreDictionary.WILDCARD_VALUE),
+                            "ticSaw"
+                    );
+                }
+
+            } else {
+                registerRecipe(twoOutputItems, inputItem, "crudeSaw");
+                registerRecipe(twoOutputItems, inputItem, "ticSaw");
+            }
+
+            TinkerSurvival.logger.info(addedMsg);
+
+            if (Config.Features.FORCE_SAW_FOR_PLANKS) {
+                RecipeHelper.addFakeRecipe(recipe);
+                TinkerSurvival.logger.info(replacedMsg);
+            }
+        }
+    }
+
     private static void addKnifeRecipe(ItemStack input, ItemStack output, String tool) {
         registerShaped(output, "T", "I", 'I', input, 'T', tool);
     }
@@ -93,31 +147,22 @@ public class TinkerSurvivalRecipes {
     }
 
     private static ItemStack getSafeItem(RecipeInfo info, int count) {
-        Item item = Item.getByNameOrId(info.getName());
-        return item == null ? ItemStack.EMPTY : new ItemStack(item, count, info.getMetaData());
+        return getSafeItem(info.getName(), info.getMetaData(), count);
     }
 
-    private static HashMap getRecipeConfig(ItemStack output, ItemStack input, String tool) {
-        HashMap<String, Object> config = new HashMap<>();
-
-        config.put("output", output);
-        config.put("input", input);
-        config.put("tool", tool);
-
-        return config;
+    private static void registerRecipe(ItemStack output, ItemStack input, String tool) {
+        registerShaped(output, "T", "P", 'P', input, 'T', tool);
     }
 
     private static void processRecipes(String type, Acceptor2<String, Integer> acceptor) {
         getRecipeItems(type).forEach(p -> acceptor.accept(p.getKey(), p.getValue()));
     }
 
-
     private static List<ItemStack> getRecipes(String type, Function2<String, Integer, ItemStack> transformer) {
         return getRecipeItems(type).
                 map(p -> transformer.invoke(p.getKey(), p.getValue()))
                 .collect(Collectors.toList());
     }
-
 
     private static Stream<Pair<String, Integer>> getRecipeItems(String type) {
         Iterable<ItemStack> iterable = () -> OreDictionary.getOres(type).iterator();
@@ -131,10 +176,8 @@ public class TinkerSurvivalRecipes {
                 });
     }
 
-
-    private static void replaceWoodRecipes() {
+    private static void processRegisteredRecipes() {
         Map<String, String> woodOreMap = new HashMap<>();
-        List<HashMap> woodOreRecipes = new ArrayList<>();
         Map<String, Boolean> hasStickWood = new HashMap<>();
         List<String> plankOreRecipes = new ArrayList<>();
 
@@ -170,27 +213,15 @@ public class TinkerSurvivalRecipes {
         });
 
         for (IRecipe recipe : CraftingManager.REGISTRY) {
-            handleRecipe(recipe, woodOreMap, plankOreRecipes, woodOreRecipes);
+            handleRecipe(recipe, woodOreMap, plankOreRecipes);
         }
-
-        woodOreRecipes.forEach(config -> {
-            registerShaped(
-                    (ItemStack) config.get("output"),
-                    "T",
-                    "P",
-                    'P',
-                    config.get("input"),
-                    'T',
-                    config.get("tool")
-            );
-        });
     }
 
 
     private static void handleRecipe(IRecipe recipe, Map<String, String> woodOreMap,
-                                     List<String> plankOreRecipes, List<HashMap> woodOreRecipes) {
+                                     List<String> plankOreRecipes) {
 
-        RecipeInfo output = new RecipeInfo(recipe.getRecipeOutput(),woodOreMap);
+        RecipeInfo output = new RecipeInfo(recipe.getRecipeOutput(), woodOreMap);
 
         if (output.getItemsStack().isEmpty()) {
             return;
@@ -219,52 +250,14 @@ public class TinkerSurvivalRecipes {
             return;
         }
 
-        final String msg = "Replaced recipe for: " + recipe.getRegistryName();
-
-        ItemStack inputItem = getSafeItem(input, 1);
-        ItemStack twoOutputItems = getSafeItem(output, 2);
-        ItemStack fourOutputItems = getSafeItem(output, 4);
-
-        if (output.getItemType().equals("plankWood")) {
-            woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "crudeSaw"));
-            woodOreRecipes.add(getRecipeConfig(fourOutputItems, inputItem, "ticSaw"));
-            RecipeHelper.addFakeRecipe(recipe);
-            TinkerSurvival.logger.info(msg);
-            return;
-        }
-
-        if (input.getItemType().contains("plank") && output.getItemType().contains("stick")) {
-
-            // Catch wildcard recipe for plankWood -> stickWood
-            if (input.getRegName().equals("minecraft:planks") && output.getRegName().equals("minecraft:stick")) {
-
-                for (String plank : plankOreRecipes) {
-                    woodOreRecipes.add(getRecipeConfig(
-                            twoOutputItems,
-                            getSafeItem(plank, 1, OreDictionary.WILDCARD_VALUE),
-                            "crudeSaw"
-                    ));
-                    woodOreRecipes.add(getRecipeConfig(
-                            twoOutputItems,
-                            getSafeItem(plank, 1, OreDictionary.WILDCARD_VALUE),
-                            "ticSaw"
-                    ));
-                }
-
-            } else {
-                woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "crudeSaw"));
-                woodOreRecipes.add(getRecipeConfig(twoOutputItems, inputItem, "ticSaw"));
-            }
-
-            RecipeHelper.addFakeRecipe(recipe);
-            TinkerSurvival.logger.info(msg);
+        if (Config.Features.ENABLE_SAW) {
+            initSawRecipeFor(recipe, input, output, plankOreRecipes);
         }
     }
 
     public static void updateRecipes() {
-        if (Config.Features.FORCE_SAW_USAGE) {
-            replaceWoodRecipes();
-        }
+        // also adds saw recipes
+        processRegisteredRecipes();
 
         initKnifeRecipes();
         initSmeltingRecipes();
