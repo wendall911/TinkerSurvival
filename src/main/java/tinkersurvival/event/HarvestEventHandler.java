@@ -177,10 +177,8 @@ public class HarvestEventHandler {
                         player.attackEntityFrom(DamageSource.GENERIC, 0.01f);
                     }
                 } else {
-                    if (Config.Features.ENABLE_FAIL_SOUND) {
-                        //Play fail sound
-                        Sounds.play(player, Sounds.TOOL_FAIL, 0.6F, 1.0F);
-                    }
+                    //Play fail sound
+                    Sounds.play(player, Sounds.TOOL_FAIL, 0.6F, 1.0F);
                 }
                 event.setCanceled(true);
             }
