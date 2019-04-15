@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import javafx.util.Pair;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -167,7 +166,7 @@ public class TinkerSurvivalRecipes {
     private static Stream<Pair<String, Integer>> getRecipeItems(String type) {
         Iterable<ItemStack> iterable = () -> OreDictionary.getOres(type).iterator();
 
-        return StreamSupport.stream(iterable.spliterator(), true)
+        return StreamSupport.stream(iterable.spliterator(), false)
                 .filter(s -> !s.isEmpty())
                 .map(s -> {
                     String itemName = s.getItem().getRegistryName().toString();
@@ -198,7 +197,7 @@ public class TinkerSurvivalRecipes {
                 "stickTreatedWood",
                 "plankTreatedWood"
         }) {
-            processRecipes("logWood", (n, m) -> woodOreMap.put(n + ":" + m, type));
+            processRecipes(type, (n, m) -> woodOreMap.put(n + ":" + m, type));
         }
 
         /*
@@ -228,7 +227,7 @@ public class TinkerSurvivalRecipes {
         }
 
         // if output is not a material
-        if (output.getItemType() == null) {
+        if (woodOreMap.get(output.getItemType()) == null) {
 
             // make other armor useless
             if (ItemUse.isArmor(output.getItemsStack()) && !ItemUse.isWhitelistArmor(output.getItemsStack())) {
@@ -254,6 +253,7 @@ public class TinkerSurvivalRecipes {
             initSawRecipeFor(recipe, input, output, plankOreRecipes);
         }
     }
+
 
     public static void updateRecipes() {
         // also adds saw recipes

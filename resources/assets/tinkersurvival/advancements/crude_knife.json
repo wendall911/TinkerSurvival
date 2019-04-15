@@ -1,0 +1,42 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Crude Knife"
+        },
+        "description": {
+            "text": "Your first knife. It does not look very sharp :(",
+            "italic": true
+        },
+        "icon": {
+            "item": "tinkersurvival:crude_knife"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_knife": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:crude_knife"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_knife"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tinkersurvival:crude_hatchet"
+        ]
+    },
+    "parent": "tinkersurvival:flint_shard"
+}

@@ -1,0 +1,46 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "I found a rock..",
+            "bold": false,
+            "italic": false,
+            "underlined": false,
+            "strikethrough": false,
+            "obfuscated": false
+        },
+        "description": {
+            "text": "It does not seem to do anything.. maybe if i had four?"
+        },
+        "icon": {
+            "item": "tinkersurvival:rock_stone"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_rock_stone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:rock_stone"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_rock_stone"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tinkersurvival:cobblestone"
+        ]
+    },
+    "parent": "tinkersurvival:root"
+}

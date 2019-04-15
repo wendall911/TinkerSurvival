@@ -72,6 +72,7 @@ public class RockGenerator {
                     || atMat == Material.ROCK
                     || atMat == Material.SAND)
                 && atBl.isOpaqueCube(atBl.getDefaultState())) {
+
             BlockRock.EnumMineralType type;
             if (downBl == Blocks.STONE) {
                 switch (downBl.getMetaFromState(world.getBlockState(new BlockPos(i, j - 5, k)))) {
@@ -88,10 +89,7 @@ public class RockGenerator {
                         type = STONE;
                 }
             } else {
-                switch (downBl.getTranslationKey()) {
-                    default:
-                        type = STONE;
-                }
+                type = STONE;
             }
             world.setBlockState(
                 new BlockPos(i, j + 1, k),

@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Crude Hatchet"
+        },
+        "description": {
+            "text": "I dont know, smack it against a tree or something."
+        },
+        "icon": {
+            "item": "tinkersurvival:crude_hatchet"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_crude_knife": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:crude_hatchet"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_crude_knife"
+        ]
+    ],
+    "parent": "tinkersurvival:crude_knife"
+}

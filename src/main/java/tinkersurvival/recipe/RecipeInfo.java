@@ -13,7 +13,7 @@ class RecipeInfo {
     private ItemStack ItemsStack;
     private String ItemType;
 
-    public RecipeInfo(ItemStack items, Map<String, String> woodOreMap) {
+    RecipeInfo(ItemStack items, Map<String, String> woodOreMap) {
         this.ItemsStack = items;
 
         if (ItemsStack.isEmpty()) return;
@@ -33,23 +33,23 @@ class RecipeInfo {
         }
     }
 
-    public int getMetaData(){
+    int getMetaData(){
         return this.MetaData;
     }
 
-    public String getName(){
+    String getName(){
         return this.Name;
     }
 
-    public String getRegName(){
+    String getRegName(){
         return this.RegName;
     }
 
-    public ItemStack getItemsStack(){
+    ItemStack getItemsStack(){
         return this.ItemsStack;
     }
 
-    public String getItemType(){
+    String getItemType(){
         return this.ItemType;
     }
 }
