@@ -2,14 +2,14 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Crude Knife"
+            "text": "Crude Saw"
         },
         "description": {
-            "text": "Your first knife. It does not look very sharp, but maybe you can use it to cut some grass.",
+            "text": "Mr. See owned a saw,\nAnd Mr. Soar owned a seesaw.\nNow See's saw sawed Soar's seesaw\nBefore Soar saw See,\nWhich made Soar sore.\nHad Soar seen See's saw\nBefore See sawed Soar's seesaw,\nSee's saw would not have sawed\nSoar's seesaw.\nSo See's saw sawed Soar's seesaw.\nBut it was sad to see Soar so sore\nJust because See's saw sawed\nSoar's seesaw!",
             "italic": true
         },
         "icon": {
-            "item": "tinkersurvival:crude_knife"
+            "item": "tinkersurvival:crude_saw"
         },
         "frame": "task",
         "show_toast": true,
@@ -17,12 +17,12 @@
         "hidden": false
     },
     "criteria": {
-        "has_knife": {
+        "has_saw": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "tinkersurvival:crude_knife"
+                        "item": "tinkersurvival:crude_saw"
                     }
                 ]
             }
@@ -30,14 +30,8 @@
     },
     "requirements": [
         [
-            "has_knife"
+            "has_saw"
         ]
     ],
-    "rewards": {
-        "recipes": [
-            "tinkersurvival:crude_hatchet",
-            "tinkersurvival:crude_saw"
-        ]
-    },
-    "parent": "tinkersurvival:flint_shard"
+    "parent": "tinkersurvival:crude_knife"
 }

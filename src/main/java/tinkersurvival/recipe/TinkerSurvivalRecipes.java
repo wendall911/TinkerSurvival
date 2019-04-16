@@ -146,7 +146,7 @@ public class TinkerSurvivalRecipes {
     }
 
     private static ItemStack getSafeItem(RecipeInfo info, int count) {
-        return getSafeItem(info.getName(), info.getMetaData(), count);
+        return getSafeItem(info.getRegName(), count, info.getMetaData());
     }
 
     private static void registerRecipe(ItemStack output, ItemStack input, String tool) {
@@ -190,6 +190,8 @@ public class TinkerSurvivalRecipes {
             if (n.contains("stick")) {
                 hasStickWood.put(n.split(":")[0], true);
             }
+
+            woodOreMap.put(n + ":" + m, "stickWood");
         });
 
         for (String type : new String[]{
@@ -209,6 +211,7 @@ public class TinkerSurvivalRecipes {
             if (mod.equals("minecraft") || hasStickWood.get(mod) == null) {
                 plankOreRecipes.add(n);
             }
+            woodOreMap.put(n + ":" + m, "plankWood");
         });
 
         for (IRecipe recipe : CraftingManager.REGISTRY) {
@@ -227,7 +230,7 @@ public class TinkerSurvivalRecipes {
         }
 
         // if output is not a material
-        if (woodOreMap.get(output.getItemType()) == null) {
+        if (output.getItemType() == null) {
 
             // make other armor useless
             if (ItemUse.isArmor(output.getItemsStack()) && !ItemUse.isWhitelistArmor(output.getItemsStack())) {
