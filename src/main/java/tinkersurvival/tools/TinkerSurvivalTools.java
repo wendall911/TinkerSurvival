@@ -46,11 +46,9 @@ public class TinkerSurvivalTools {
         crudeKnife = getCrudeKnife(crudeKnife, toolMaterialFlint, "crude_knife");
         crudeHatchet = getCrudeHatchet(crudeHatchet, toolMaterialStone, "crude_hatchet");
         ticKnife = getKnife(ticKnife, "knife");
-        if (Config.Features.ENABLE_SAW) {
-            ticSaw = getSaw(ticSaw, "saw");
-            crudeSaw = getCrudeSaw(crudeSaw, toolMaterialStone, "crude_saw");
-            crudeSawBlade = getItem(crudeSawBlade, "crude_saw_blade");
-        }
+        ticSaw = getSaw(ticSaw, "saw");
+        crudeSaw = getCrudeSaw(crudeSaw, toolMaterialStone, "crude_saw");
+        crudeSawBlade = getItem(crudeSawBlade, "crude_saw_blade");
     }
 
     private static CrudeKnife getCrudeKnife(CrudeKnife knife, Item.ToolMaterial material, String name) {
@@ -98,9 +96,8 @@ public class TinkerSurvivalTools {
         IForgeRegistry<Item> registry = event.getRegistry();
         all.forEach(registry::register);
         TinkerRegistry.registerToolCrafting(ticKnife);
-        if (Config.Features.ENABLE_SAW) {
-            TinkerRegistry.registerToolCrafting(ticSaw);
-        }
+        TinkerRegistry.registerToolCrafting(ticSaw);
+
         for (Map.Entry<String, ItemStack> entry : oredictItems.entrySet()) {
             OreDictionary.registerOre(entry.getKey(), entry.getValue());
         }
@@ -108,9 +105,8 @@ public class TinkerSurvivalTools {
 
     public static void registerItemModels() {
         ModelRegisterUtil.registerToolModel(ticKnife);
-        if (Config.Features.ENABLE_SAW) {
-            ModelRegisterUtil.registerToolModel(ticSaw);
-        }
+        ModelRegisterUtil.registerToolModel(ticSaw);
+            
         all.forEach(item -> {
             if (!(item == ticKnife || item == ticSaw)) {
                 TinkerSurvival.proxy.registerItemModel(item);
