@@ -54,7 +54,7 @@ public class HarvestEventHandler {
         ItemStack heldItemStack = player.getHeldItemMainhand();
 
         // Always allow certain blocks to break at normal speed
-        if (block == Blocks.AIR || block == Blocks.LEAVES || block == Blocks.SAND || block == Blocks.GRAVEL
+        if (block == Blocks.AIR || block == Blocks.LEAVES || block == Blocks.SAND || block == Blocks.GRAVEL || block == Blocks.SNOW_LAYER
                 || !Config.Features.SLOW_DOWN_DIRT_PUNCHING && (block == Blocks.DIRT || block == Blocks.GRASS)) {
             return;
         }
@@ -152,7 +152,8 @@ public class HarvestEventHandler {
                     || block == Blocks.SAND
                     || block == Blocks.GRASS
                     || block == Blocks.DIRT
-                    || block == Blocks.GRAVEL) {
+                    || block == Blocks.GRAVEL
+                    || block == Blocks.SNOW_LAYER) {
                 return;
             }
 

@@ -1,0 +1,39 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Tool Station"
+        },
+        "description": {
+            "text": "Let's build some fancy tools.",
+            "italic": true
+        },
+        "icon": {
+            "item": "tconstruct:tooltables",
+            "data": 3
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "placed_tool_station": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tconstruct:tooltables",
+                        "data": 3
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "placed_tool_station"
+        ]
+    ],
+    "parent": "tinkersurvival:getting_wood"
+}
