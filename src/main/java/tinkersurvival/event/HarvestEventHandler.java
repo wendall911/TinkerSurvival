@@ -51,9 +51,7 @@ public class HarvestEventHandler {
             return;
         }
 
-        // Get Variables for the block and item held
         Block block = event.getState().getBlock();
-        ItemStack heldItemStack = player.getHeldItemMainhand();
 
         // Always allow certain blocks to break at normal speed
         if (block == Blocks.AIR || block == Blocks.LEAVES || block == Blocks.SAND || block == Blocks.GRAVEL || block == Blocks.SNOW_LAYER
@@ -61,22 +59,29 @@ public class HarvestEventHandler {
             return;
         }
 
-        // Get variables for the required and current harvest levels + tools
         int neededHarvestLevel = block.getHarvestLevel(event.getState());
         String neededToolClass = block.getHarvestTool(event.getState());
+
+        float mainHandSpeed = getNewToolSpeed(player.getHeldItemMainhand(), block, neededHarvestLevel, neededToolClass);
+        float offHandSpeed = getNewToolSpeed(player.getHeldItemOffhand(), block, neededHarvestLevel, neededToolClass);
+
+        event.setNewSpeed(event.getOriginalSpeed() * Math.max(mainHandSpeed, offHandSpeed));
+    }
+
+    private float getNewToolSpeed(ItemStack heldItemStack, Block block, int neededHarvestLevel, String neededToolClass) {
 
         // Allows knifes to break at normal speeds
         if (heldItemStack.getItem() instanceof CrudeKnife) {
             CrudeKnife knife = (CrudeKnife) heldItemStack.getItem();
             if (knife.shouldBreakBlock(block)) {
-                return;
+                return 1.0F;
             }
         }
 
         if (heldItemStack.getItem() instanceof Knife) {
             Knife knife = (Knife) heldItemStack.getItem();
             if (knife.shouldBreakBlock(block)) {
-                return;
+                return 1.0F;
             }
         }
 
@@ -86,25 +91,24 @@ public class HarvestEventHandler {
             if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
 
                 if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass)) {
-                    return;
+                    return 1.0F;
                 }
 
                 switch (neededToolClass) {
                     case "axe":
-                        event.setNewSpeed(event.getOriginalSpeed() / 5 / Config.Balance.SLOW_DOWN_MULTIPLIER);
-                        break;
-                    case "shovel":
-                        event.setNewSpeed(event.getOriginalSpeed() / 3 / Config.Balance.SLOW_DOWN_MULTIPLIER);
-                        break;
+                        return 0.2F / Config.Balance.SLOW_DOWN_MULTIPLIER;
                     case "pickaxe":
-                        event.setNewSpeed(event.getOriginalSpeed() / 8 / Config.Balance.SLOW_DOWN_MULTIPLIER);
+                        return 0.125F / Config.Balance.SLOW_DOWN_MULTIPLIER;
+                    case "shovel":
                     default:
-                        event.setNewSpeed(event.getOriginalSpeed() / 3 / Config.Balance.SLOW_DOWN_MULTIPLIER);
+                        return 0.33F / Config.Balance.SLOW_DOWN_MULTIPLIER;
                 }
             } else {
-                event.setNewSpeed(event.getOriginalSpeed() / 10);
+                return 0.1F;
             }
         }
+
+        return 1.0F;
     }
 
     private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass) {
@@ -142,10 +146,7 @@ public class HarvestEventHandler {
                 return;
             }
 
-            // Get Variables for the block and item held
             Block block = event.getState().getBlock();
-            String blockName = block.getRegistryName().getNamespace() + ":" + block.getRegistryName().getPath();
-            ItemStack heldItemStack = player.getHeldItemMainhand();
 
             if (block == Blocks.AIR
                     || block == Blocks.MOB_SPAWNER
@@ -159,33 +160,49 @@ public class HarvestEventHandler {
                 return;
             }
 
-            // Final case: Get variables for the required and current harvest levels + tools
+            String blockName = block.getRegistryName().getNamespace() + ":" + block.getRegistryName().getPath();
+
             int neededHarvestLevel = block.getHarvestLevel(event.getState());
             String neededToolClass = block.getHarvestTool(event.getState());
 
             if (neededToolClass != null) {
-                String toolClass = ItemUse.getToolClass(heldItemStack);
 
-                if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
+                ItemStack mainhandItemStack = player.getHeldItemMainhand();
+                String mainhandToolClass = ItemUse.getToolClass(mainhandItemStack);
 
-                    if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass)) {
+                if (ItemUse.isWhitelistItem(mainhandItemStack) && mainhandToolClass != null) {
+                    if (isRightTool(mainhandItemStack, neededHarvestLevel, neededToolClass, mainhandToolClass)) {
                         return;
                     }
-
-                    if (!harvestAttempts.containsKey(player)
-                            || harvestAttempts.get(player) == null
-                            || !harvestAttempts.get(player).equals(pos)) {
-                        harvestAttempts.put(player, pos);
-                        Chat.sendMessage(player, "message.wrong_tool", neededToolClass);
-                    } else {
-                        Chat.sendMessage(player, "message.wrong_tool2", neededToolClass);
-                        player.attackEntityFrom(DamageSource.GENERIC, 0.01f);
-                    }
-                } else {
-                    //Play fail sound
-                    Sounds.play(player, Sounds.TOOL_FAIL, 0.6F, 1.0F);
                 }
-                event.setCanceled(true);
+
+                ItemStack offhandItemStack = player.getHeldItemOffhand();
+                String offhandToolClass = ItemUse.getToolClass(offhandItemStack);
+
+                if (ItemUse.isWhitelistItem(offhandItemStack) && offhandToolClass != null) {
+
+                    if (isRightTool(offhandItemStack, neededHarvestLevel, neededToolClass, offhandToolClass)) {
+                        return;
+                    }
+                }
+
+                if (!ItemUse.isWhitelistItem(mainhandItemStack) && !ItemUse.isWhitelistItem(offhandItemStack)) {
+                    Sounds.play(player, Sounds.TOOL_FAIL, 0.6F, 1.0F);
+                    event.setCanceled(true);
+                    return;
+                }
+
+                if (!harvestAttempts.containsKey(player)
+                        || harvestAttempts.get(player) == null
+                        || !harvestAttempts.get(player).equals(pos)) {
+
+                    harvestAttempts.put(player, pos);
+                    Chat.sendMessage(player, "message.wrong_tool", neededToolClass);
+
+                } else {
+                    Chat.sendMessage(player, "message.wrong_tool2", neededToolClass);
+                    player.attackEntityFrom(DamageSource.GENERIC, 0.01f);
+                }
             }
         }
     }
