@@ -89,7 +89,10 @@ public class RockGenerator {
                         type = STONE;
                 }
             } else {
-                type = STONE;
+                switch (downBl.getTranslationKey()) {
+                    default:
+                        type = STONE;
+                }
             }
             world.setBlockState(
                 new BlockPos(i, j + 1, k),

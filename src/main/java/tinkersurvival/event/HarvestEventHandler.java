@@ -23,7 +23,9 @@ import slimeknights.tconstruct.library.tinkering.Category;
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.Config;
 import tinkersurvival.tools.TinkerSurvivalTools;
+import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeKnife;
+import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.Knife;
 import tinkersurvival.util.Chat;
 import tinkersurvival.util.ItemUse;
@@ -120,7 +122,7 @@ public class HarvestEventHandler {
 
             return neededToolClass.equals("shovel") && toolClass.equals("pickaxe")
                     && heldItemStack.getItem().getHarvestLevel(
-                            heldItemStack, toolClass, null, null) >= 1;
+                    heldItemStack, toolClass, null, null) >= 1;
         }
     }
 
@@ -236,6 +238,7 @@ public class HarvestEventHandler {
                 return;
             }
 
+            // Leaves now drop sticks 20% without a knife. 50% with a knife
             if (heldItemStack.getItem() instanceof Knife) {
                 Knife knife = (Knife) heldItemStack.getItem();
                 if (ToolHelper.isBroken(heldItemStack)) {
@@ -255,26 +258,35 @@ public class HarvestEventHandler {
                 return;
             }
 
-            if (Config.Balance.ENABLE_ROCK_FROM_DIRT) {
-                // Leaves now drop sticks 20% without a knife. 50% with a knife
-                if (block instanceof BlockDirt || block instanceof BlockGrass) {
-                    Item held = heldItemStack.getItem();
-                    // only drop rocks if searching the dirt by hand
-                    if (held instanceof ItemAir
-                            || held instanceof ItemBase && ((ItemBase) held).name.equalsIgnoreCase("rock_stone")
-                            || held == Item.getItemFromBlock(Blocks.DIRT)) {
+            // rock drop chance
+            if (Config.Balance.ENABLE_ROCK_FROM_DIRT
+                    && (block instanceof BlockDirt || block instanceof BlockGrass)) {
 
-                        double rockDropChance = Config.Balance.ROCK_FROM_DIRT_CHANCE;
-                        if (event.getWorld().rand.nextFloat() <= rockDropChance) {
-                            event.getDrops().add(new ItemStack(TinkerSurvivalWorld.rockStone));
-                        }
-                        return;
-
-                    } else {
-                        return;
+                // check if the dirt is searched by hand - to avoid conflicts and ease usage,
+                // this checks if the held item is a shovel or similar and drops rock otherwise
+                String toolClass = ItemUse.getToolClass(heldItemStack);
+                if (toolClass != null) {
+                    switch (toolClass) {
+                        case "shovel":
+                        case "pickaxe":
+                        case "axe":
+                        case "mattock":
+                            // do not drop rocks
+                            return;
                     }
                 }
+                Item held = heldItemStack.getItem();
+                if (held instanceof CrudeKnife || held instanceof CrudeHatchet || held instanceof CrudeSaw) {
+                    // do not drop rocks
+                    return;
+                }
+
+                double rockDropChance = Config.Balance.ROCK_FROM_DIRT_CHANCE;
+                if (event.getWorld().rand.nextFloat() <= rockDropChance) {
+                    event.getDrops().add(new ItemStack(TinkerSurvivalWorld.rockStone));
+                }
             }
+
 
         }
     }

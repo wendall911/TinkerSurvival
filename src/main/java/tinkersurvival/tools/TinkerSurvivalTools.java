@@ -45,10 +45,10 @@ public class TinkerSurvivalTools {
         toolMaterialFlint = EnumHelper.addToolMaterial("TS_FLINT", 0, 20, 1.5F, 0.5F, 0);
         crudeKnife = getCrudeKnife(crudeKnife, toolMaterialFlint, "crude_knife");
         crudeHatchet = getCrudeHatchet(crudeHatchet, toolMaterialStone, "crude_hatchet");
-        ticKnife = getKnife(ticKnife, "knife");
-        ticSaw = getSaw(ticSaw, "saw");
         crudeSaw = getCrudeSaw(crudeSaw, toolMaterialStone, "crude_saw");
         crudeSawBlade = getItem(crudeSawBlade, "crude_saw_blade");
+        ticKnife = getKnife(ticKnife, "knife");
+        ticSaw = getSaw(ticSaw, "saw");
     }
 
     private static CrudeKnife getCrudeKnife(CrudeKnife knife, Item.ToolMaterial material, String name) {
