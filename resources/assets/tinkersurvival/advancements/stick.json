@@ -2,7 +2,7 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "I found a rock..",
+            "text": "A \"Sticky\" situation.",
             "bold": false,
             "italic": false,
             "underlined": false,
@@ -10,10 +10,10 @@
             "obfuscated": false
         },
         "description": {
-            "text": "They either lie around or can be obtained by digging through some dirt with your hands. It does not seem to do anything.. maybe if i had four?"
+            "text": "You may find some sticks if you go and punch some leaves.\n\nSticks and stones may break my bones, but words will ... also hurt me, because everyone cares about words thrown in their face.."
         },
         "icon": {
-            "item": "tinkersurvival:rock_stone"
+            "item": "stick"
         },
         "frame": "task",
         "show_toast": true,
@@ -26,7 +26,7 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "tinkersurvival:rock_stone"
+                        "item": "stick"
                     }
                 ]
             }
@@ -37,10 +37,5 @@
             "has_rock_stone"
         ]
     ],
-    "rewards": {
-        "recipes": [
-            "tinkersurvival:cobblestone"
-        ]
-    },
     "parent": "tinkersurvival:root"
 }

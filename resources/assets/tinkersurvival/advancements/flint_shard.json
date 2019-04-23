@@ -8,7 +8,7 @@
             "underlined": true
         },
         "description": {
-            "text": "Obtain a flint by digging through gravel with your bare hands. Then smash it at a rock to get flint shards. Be careful they have sharp edges!",
+            "text": "Obtain a flint by digging through gravel with your bare hands. Then smash the flint against a rocky surface (R-Click e.g. Cobblestone) to get two flint shards. Be careful they have sharp edges!",
             "color": "yellow",
             "italic": true
         },

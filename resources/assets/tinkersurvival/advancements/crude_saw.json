@@ -5,7 +5,7 @@
             "text": "Crude Saw"
         },
         "description": {
-            "text": "Mr. See owned a saw,\nAnd Mr. Soar owned a seesaw.\nNow See's saw sawed Soar's seesaw\nBefore Soar saw See,\nWhich made Soar sore.\nHad Soar seen See's saw\nBefore See sawed Soar's seesaw,\nSee's saw would not have sawed\nSoar's seesaw.\nSo See's saw sawed Soar's seesaw.\nBut it was sad to see Soar so sore\nJust because See's saw sawed\nSoar's seesaw!",
+            "text": "Splits wood logs into planks and planks into sticks if enabled in the TinkerSurvival config. Otherwise does nothing.",
             "italic": true
         },
         "icon": {
