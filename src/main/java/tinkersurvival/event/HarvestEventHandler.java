@@ -3,12 +3,15 @@ package tinkersurvival.event;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.block.BlockTallGrass;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemAir;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -19,10 +22,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import slimeknights.tconstruct.library.tinkering.Category;
+import slimeknights.tconstruct.library.utils.ToolHelper;
+
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.Config;
-import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
@@ -31,10 +34,6 @@ import tinkersurvival.util.Chat;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
-
-import slimeknights.tconstruct.library.utils.ToolHelper;
-import tinkersurvival.world.item.ItemBase;
-
 
 public class HarvestEventHandler {
     public static final Map<EntityPlayer, BlockPos> harvestAttempts = new HashMap<>();
@@ -69,7 +68,6 @@ public class HarvestEventHandler {
     }
 
     private float getNewToolSpeed(ItemStack heldItemStack, Block block, int neededHarvestLevel, String neededToolClass) {
-
         // Allows knifes to break at normal speeds
         if (heldItemStack.getItem() instanceof CrudeKnife) {
             CrudeKnife knife = (CrudeKnife) heldItemStack.getItem();
@@ -89,7 +87,6 @@ public class HarvestEventHandler {
             String toolClass = ItemUse.getToolClass(heldItemStack);
 
             if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
-
                 if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass)) {
                     return 1.0F;
                 }
@@ -112,21 +109,17 @@ public class HarvestEventHandler {
     }
 
     private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass) {
-
         if (neededToolClass.equals(toolClass)) {
-
             return heldItemStack.getItem().getHarvestLevel(
                     heldItemStack, toolClass, null, null) >= neededHarvestLevel;
-
         } else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
             return true;
         } else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
             return true;
         } else {
-
             return neededToolClass.equals("shovel") && toolClass.equals("pickaxe")
                     && heldItemStack.getItem().getHarvestLevel(
-                    heldItemStack, toolClass, null, null) >= 1;
+                        heldItemStack, toolClass, null, null) >= 1;
         }
     }
 
@@ -186,9 +179,10 @@ public class HarvestEventHandler {
                     }
                 }
 
+                event.setCanceled(true);
+
                 if (!ItemUse.isWhitelistItem(mainhandItemStack) && !ItemUse.isWhitelistItem(offhandItemStack)) {
                     Sounds.play(player, Sounds.TOOL_FAIL, 0.6F, 1.0F);
-                    event.setCanceled(true);
                     return;
                 }
 
@@ -217,6 +211,7 @@ public class HarvestEventHandler {
             if (player == null || player instanceof FakePlayer) {
                 return;
             }
+
             // Always allow creative mode
             if (player.capabilities.isCreativeMode) {
                 return;
@@ -303,8 +298,6 @@ public class HarvestEventHandler {
                     event.getDrops().add(new ItemStack(TinkerSurvivalWorld.rockStone));
                 }
             }
-
-
         }
     }
 
