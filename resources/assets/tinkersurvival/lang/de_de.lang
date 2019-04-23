@@ -1,0 +1,80 @@
+# Creative Tabs
+
+itemGroup.tinkersurvival=Tinker Survival
+
+# Items
+
+item.rock_stone.name=Steinbrocken
+item.rock_andesite.name=Andesitbrocken
+item.rock_diorite.name=Dioritbrocken
+item.rock_granite.name=Granitbrocken
+
+item.grass_fiber.name=Pflanzenfasern
+item.grass_string.name=Pflanzenschnur
+item.flint_shard.name=Feuersteinsplitter
+
+item.crude_knife.name=Primitives Messer
+item.crude_hatchet.name=Primitive Axt
+item.crude_saw.name=Primitive Säge
+item.crude_saw_blade.name=Primitives Sägeblatt
+item.knife.name=Messer
+item.knife.desc=Zum Schneiden von Materialien.
+item.saw.name=Säge
+item.saw.desc=Zum Sägen von Holz!
+
+item.reinforced_wool_helmet.name=Verstärkter Wollhelm
+item.reinforced_wool_chestplate.name=Verstärkte Wollbrustplatte
+item.reinforced_wool_leggings.name=Verstärkter Wollbeinschutz
+item.reinforced_wool_boots.name=Verstärkte Wollstiefel
+item.reinforced_jelled_slime_helmet.name=Verstärkter Schleimhelm
+item.reinforced_jelled_slime_chestplate.name=Verstärkte Schleimbrustplatte
+item.reinforced_jelled_slime_leggings.name=Verstärkter Schleimbeinschutz
+item.reinforced_jelled_slime_boots.name=Verstärkte Schleimstiefel
+
+item.bandages.name=Bandagen
+item.cloth.name=Stoff
+item.crude_bandages.name=Primitive Bandagen
+item.ointment.name=Salbe
+item.plant_paste.name=Pflanzenpaste
+item.wooden_cup.name=Geheimnisvoller Holzbecher
+
+# Blocks
+
+tile.loose_rock.stone.name=Lockeres Gestein (Stein)
+tile.loose_rock.andesite.name=Lockeres Gestein (Andesit)
+tile.loose_rock.diorite.name=Lockeres Gestein (Diorit)
+tile.loose_rock.granite.name=Lockeres Gestein (Granit)
+
+# JEI
+
+jei.description.rock=Auf dem Boden liegende Steinbrocken. Diese können mit einem Messer in einer Werkbank verwendet werden, um Feuersteinsplitter herzustellen.
+jei.description.grass_fiber=Pflanzenfasern können beim Abbau von Gras mit einem Messer erhalten werden. Sie werden zur Herstellung von Pflanzenschnüren für Werkzeuge und Pflanzenpaste für Verbandsalben verwendet.
+jei.description.stick=Stöcke können beim Abbau von Blättern erhalten werden. Die Verwendung eines Messers verdoppelt die Chance auf einen Stock.
+jei.description.flint_shard=Feuersteinsplitter können erhalten werden, indem man Feuerstein auf eine beliebige felsige Oberfläche schlägt. Wenn ein Feuerstein auf einen steinartigen Block geschlagen wird, könnte er sich in zwei Feuersteinsplitter aufteilen.
+
+# Tooltips
+tooltip.uselessTool1=Dieses Werkzeug kann nichts abbauen!
+tooltip.uselessTool2=Kann nur zur Herstellung verwendet werden.
+tooltip.uselessHoe1=Diese Hacke kann nichts hacken!
+tooltip.uselessWeapon1=Diese Waffe schlägt wie eine nasse Nudel!
+tooltip.uselessBow1=Die Bogenschnur ist gerissen!
+tooltip.uselessArmor1=Größe: XXXL. Passt wahrscheinlich nicht.
+tooltip.cxp=Handwerklich
+
+# Messages
+message.notice=Hinweis
+message.warning=Warnung
+message.wrong_tool=%s wird benötigt.
+message.wrong_tool2=Ähm ... %s?
+message.tool_broke=%s ist zerbrochen.
+message.spawn_set=Nicht müde, aber Spawnpunkt gesetzt!
+
+# Potion Effects
+potion.stopbleeding=Blutungs-Stopp
+potion.zombieessence=Zombie-Essenz
+
+# Constructs Armory
+material.jelledslime.name=Gelierter Schleim
+material.wool.name=Wolle
+modifier.insulated_armor.name=Isolierend
+modifier.chilling_armor.name=Abkühlend
