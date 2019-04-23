@@ -13,9 +13,11 @@ public class AttackEventHandler {
 
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
+
         if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) {
             return;
         }
+
         EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
 
         if (player instanceof FakePlayer || player.capabilities.isCreativeMode) {

@@ -1,0 +1,37 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Getting Wood"
+        },
+        "description": {
+            "text": "I got some wood.",
+            "italic": true
+        },
+        "icon": {
+            "item": "minecraft:log"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_wood": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:log"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_wood"
+        ]
+    ],
+    "parent": "tinkersurvival:crude_hatchet"
+}

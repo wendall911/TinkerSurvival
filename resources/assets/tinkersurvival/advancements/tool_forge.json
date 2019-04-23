@@ -1,0 +1,37 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Tool Forge"
+        },
+        "description": {
+            "text": "Let's build some even fancier tools.",
+            "italic": true
+        },
+        "icon": {
+            "item": "tconstruct:toolforge"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "placed_tool_forge": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tconstruct:toolforge"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "placed_tool_forge"
+        ]
+    ],
+    "parent": "tinkersurvival:tool_station"
+}

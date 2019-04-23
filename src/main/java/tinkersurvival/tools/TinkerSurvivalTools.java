@@ -14,6 +14,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tinkersurvival.TinkerSurvival;
+import tinkersurvival.config.Config;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.CrudeKnife;
@@ -27,7 +28,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 public class TinkerSurvivalTools {
 
     private static final List<Item> all = new ArrayList<>();
-	private static final Map<String, ItemStack> oredictItems = new HashMap<>();
+    private static final Map<String, ItemStack> oredictItems = new HashMap<>();
 
     public static Item.ToolMaterial toolMaterialStone;
     public static Item.ToolMaterial toolMaterialFlint;
@@ -96,6 +97,7 @@ public class TinkerSurvivalTools {
         all.forEach(registry::register);
         TinkerRegistry.registerToolCrafting(ticKnife);
         TinkerRegistry.registerToolCrafting(ticSaw);
+
         for (Map.Entry<String, ItemStack> entry : oredictItems.entrySet()) {
             OreDictionary.registerOre(entry.getKey(), entry.getValue());
         }
@@ -104,6 +106,7 @@ public class TinkerSurvivalTools {
     public static void registerItemModels() {
         ModelRegisterUtil.registerToolModel(ticKnife);
         ModelRegisterUtil.registerToolModel(ticSaw);
+            
         all.forEach(item -> {
             if (!(item == ticKnife || item == ticSaw)) {
                 TinkerSurvival.proxy.registerItemModel(item);

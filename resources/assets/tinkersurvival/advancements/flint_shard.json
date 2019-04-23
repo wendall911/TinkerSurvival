@@ -1,0 +1,47 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Flint Shard",
+            "color": "gold",
+            "bold": true,
+            "underlined": true
+        },
+        "description": {
+            "text": "Obtain a flint by digging through gravel with your bare hands. Then smash the flint against a rocky surface (R-Click e.g. Cobblestone) to get two flint shards. Be careful they have sharp edges!",
+            "color": "yellow",
+            "italic": true
+        },
+        "icon": {
+            "item": "tinkersurvival:flint_shard"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_flint_shard": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:flint_shard"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_flint_shard"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tinkersurvival:flint",
+            "tinkersurvival:crude_knife"
+        ]
+    },
+    "parent": "tinkersurvival:root"
+}

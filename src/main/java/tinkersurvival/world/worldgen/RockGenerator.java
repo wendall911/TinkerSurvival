@@ -28,6 +28,10 @@ public class RockGenerator {
 
     @SubscribeEvent
     public void decorateBiome(DecorateBiomeEvent.Post event) {
+        if(!Config.Balance.ENABLE_ROCKGEN){
+            return;
+        }
+
         World world = event.getWorld();
         Random random = event.getRand();
         int chunkX = event.getPos().getX() >> 4;
@@ -68,6 +72,7 @@ public class RockGenerator {
                     || atMat == Material.ROCK
                     || atMat == Material.SAND)
                 && atBl.isOpaqueCube(atBl.getDefaultState())) {
+
             BlockRock.EnumMineralType type;
             if (downBl == Blocks.STONE) {
                 switch (downBl.getMetaFromState(world.getBlockState(new BlockPos(i, j - 5, k)))) {

@@ -1,0 +1,37 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Crude Saw"
+        },
+        "description": {
+            "text": "Splits wood logs into planks and planks into sticks if enabled in the TinkerSurvival config. Otherwise does nothing.",
+            "italic": true
+        },
+        "icon": {
+            "item": "tinkersurvival:crude_saw"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_saw": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:crude_saw"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_saw"
+        ]
+    ],
+    "parent": "tinkersurvival:crude_knife"
+}

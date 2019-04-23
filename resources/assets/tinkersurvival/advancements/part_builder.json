@@ -1,0 +1,39 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Part Builder"
+        },
+        "description": {
+            "text": "For building the separate parts of a tool.",
+            "italic": true
+        },
+        "icon": {
+            "item": "tconstruct:tooltables",
+            "data": 2
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "placed_part_builder": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tconstruct:tooltables",
+                        "data": 2
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "placed_part_builder"
+        ]
+    ],
+    "parent": "tinkersurvival:getting_wood"
+}

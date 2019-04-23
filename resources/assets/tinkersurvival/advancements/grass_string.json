@@ -1,0 +1,41 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Grass String"
+        },
+        "description": {
+            "text": "If used to craft pants, they make a feeping sound when you ... FEEEP"
+        },
+        "icon": {
+            "item": "tinkersurvival:grass_string"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_grass_fiber": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:grass_fiber"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_grass_fiber"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tinkersurvival:grass_string"
+        ]
+    },
+    "parent": "tinkersurvival:crude_knife"
+}

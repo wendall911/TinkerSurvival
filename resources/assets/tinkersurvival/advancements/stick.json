@@ -1,0 +1,41 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "A \"Sticky\" situation.",
+            "bold": false,
+            "italic": false,
+            "underlined": false,
+            "strikethrough": false,
+            "obfuscated": false
+        },
+        "description": {
+            "text": "You may find some sticks if you go and punch some leaves.\n\nSticks and stones may break my bones, but words will ... also hurt me, because everyone cares about words thrown in their face.."
+        },
+        "icon": {
+            "item": "stick"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_rock_stone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "stick"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_rock_stone"
+        ]
+    ],
+    "parent": "tinkersurvival:root"
+}

@@ -75,7 +75,10 @@ public class CommonProxy {
 
         MinecraftForge.EVENT_BUS.register(new SomethingNeedsToastHandler());
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
-        MinecraftForge.EVENT_BUS.register(new RockGenerator());
+
+        if (Config.Balance.ENABLE_ROCKGEN) {
+            MinecraftForge.EVENT_BUS.register(new RockGenerator());
+        }
         MinecraftForge.EVENT_BUS.register(new LootTableHandler());
     }
 

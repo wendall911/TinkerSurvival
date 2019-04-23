@@ -1,0 +1,39 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Stencil Table"
+        },
+        "description": {
+            "text": "For making patterns.",
+            "italic": true
+        },
+        "icon": {
+            "item": "tconstruct:tooltables",
+            "data": 1
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "placed_stencil_table": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tconstruct:tooltables",
+                        "data": 1
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "placed_stencil_table"
+        ]
+    ],
+    "parent": "tinkersurvival:getting_wood"
+}
