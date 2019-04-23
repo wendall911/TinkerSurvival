@@ -1,5 +1,4 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
             "text": "Tinker Survival",
@@ -10,7 +9,7 @@
             "obfuscated": false
         },
         "description": {
-            "text": "Tinker Survival Recipes. Hint: start by digging through some gravel!",
+            "translate": "advancements.tinkersurvival.root.desc",
             "color": "gold",
             "bold": false,
             "italic": true

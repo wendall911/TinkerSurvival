@@ -1,8 +1,7 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "I found a rock..",
+            "translate": "advancements.tinkersurvival.rock.title",
             "bold": false,
             "italic": false,
             "underlined": false,
@@ -10,7 +9,7 @@
             "obfuscated": false
         },
         "description": {
-            "text": "They either lie around or can be obtained by digging through some dirt with your hands. It does not seem to do anything.. maybe if i had four?"
+            "translate": "advancements.tinkersurvival.rock.desc"
         },
         "icon": {
             "item": "tinkersurvival:rock_stone"

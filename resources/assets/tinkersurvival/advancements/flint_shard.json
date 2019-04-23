@@ -1,14 +1,13 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Flint Shard",
+            "translate": "item.flint_shard.name",
             "color": "gold",
             "bold": true,
             "underlined": true
         },
         "description": {
-            "text": "Obtain a flint by digging through gravel with your bare hands. Then smash the flint against a rocky surface (R-Click e.g. Cobblestone) to get two flint shards. Be careful they have sharp edges!",
+            "translate": "advancements.tinkersurvival.flint_shard.desc",
             "color": "yellow",
             "italic": true
         },

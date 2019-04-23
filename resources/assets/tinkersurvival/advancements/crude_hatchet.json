@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Crude Hatchet"
+            "translate": "item.crude_hatchet.name"
         },
         "description": {
-            "text": "The hatchet allows you to harvest wood and other basic materials."
+            "translate": "advancements.tinkersurvival.crude_hatchet.desc"
         },
         "icon": {
             "item": "tinkersurvival:crude_hatchet"

@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Part Builder"
+            "translate": "gui.partbuilder.name"
         },
         "description": {
-            "text": "For building the separate parts of a tool.",
+            "translate": "gui.partbuilder.info",
             "italic": true
         },
         "icon": {

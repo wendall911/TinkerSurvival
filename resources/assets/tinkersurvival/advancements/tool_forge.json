@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Tool Forge"
+            "translate": "gui.toolforge.name"
         },
         "description": {
-            "text": "Let's build some even fancier tools.",
+            "translate": "advancements.tinkersurvival.toolforge.desc",
             "italic": true
         },
         "icon": {
