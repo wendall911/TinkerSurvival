@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Tool Station"
+            "translate": "gui.toolstation.name"
         },
         "description": {
-            "text": "Let's build some fancy tools.",
+            "translate": "gui.toolstation.info",
             "italic": true
         },
         "icon": {

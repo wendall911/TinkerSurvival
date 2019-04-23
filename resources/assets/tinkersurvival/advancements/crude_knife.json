@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Crude Knife"
+            "translate": "item.crude_knife.name"
         },
         "description": {
-            "text": "Your first knife. It does not look very sharp, but maybe you can use it to cut some grass.",
+            "translate": "advancements.tinkersurvival.crude_knife.desc",
             "italic": true
         },
         "icon": {

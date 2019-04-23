@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Getting Wood"
+            "translate": "advancements.tinkersurvival.getting_wood.title"
         },
         "description": {
-            "text": "I got some wood.",
+            "translate": "advancements.tinkersurvival.getting_wood.desc",
             "italic": true
         },
         "icon": {

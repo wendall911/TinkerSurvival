@@ -1,11 +1,10 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Crude Saw"
+            "translate": "item.crude_saw.name"
         },
         "description": {
-            "text": "Splits wood logs into planks and planks into sticks if enabled in the TinkerSurvival config. Otherwise does nothing.",
+            "translate": "advancements.tinkersurvival.crude_saw.desc",
             "italic": true
         },
         "icon": {

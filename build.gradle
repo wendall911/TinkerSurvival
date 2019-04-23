@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.55"
+        classpath 'gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.55'
     }
 }
 
@@ -16,7 +16,7 @@ plugins {
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
+apply plugin: 'se.bjurr.gitchangelog.git-changelog-gradle-plugin'
 
 // External properties
 ext.configFile = file 'build.properties'

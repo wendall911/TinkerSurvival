@@ -1,8 +1,7 @@
 {
-    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "A \"Sticky\" situation.",
+            "translate": "advancements.tinkersurvival.stick.title",
             "bold": false,
             "italic": false,
             "underlined": false,
@@ -10,7 +9,7 @@
             "obfuscated": false
         },
         "description": {
-            "text": "You may find some sticks if you go and punch some leaves.\n\nSticks and stones may break my bones, but words will ... also hurt me, because everyone cares about words thrown in their face.."
+            "translate": "advancements.tinkersurvival.stick.desc"
         },
         "icon": {
             "item": "stick"
