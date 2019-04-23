@@ -77,4 +77,6 @@ potion.zombieessence=Zombie-Essenz
 material.jelledslime.name=Gelierter Schleim
 material.wool.name=Wolle
 modifier.insulated_armor.name=Isolierend
+modifier.insulated_armor.desc=Adds a +1 heating modifier to an armor piece. Not stackable.
 modifier.chilling_armor.name=Abkühlend
+modifier.chilling_armor.desc=Adds a -1 cooling modifier to an armor piece. Not stackable.
