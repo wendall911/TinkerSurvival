@@ -90,7 +90,7 @@ public class TinkerSurvivalRecipes {
         ItemStack twoOutputItems = getSafeItem(output, 2);
         ItemStack fourOutputItems = getSafeItem(output, 4);
 
-        if (output.getItemType().equals("plankWood")) {
+        if (input.getItemType().contains("logWood") && output.getItemType().equals("plankWood")) {
             registerRecipe(twoOutputItems, inputItem, "crudeSaw");
             registerRecipe(fourOutputItems, inputItem, "ticSaw");
             TinkerSurvival.logger.info(addedMsg);
