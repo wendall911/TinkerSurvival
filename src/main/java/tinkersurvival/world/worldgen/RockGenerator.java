@@ -65,12 +65,13 @@ public class RockGenerator {
 
         if (random.nextDouble() < Config.Balance.ROCKGEN_CHANCE
                 && (world.isAirBlock(new BlockPos(i, j + 1, k))
-                    || upBl== Blocks.SNOW_LAYER
+                    || upBl == Blocks.SNOW_LAYER
                     || upBl == Blocks.TALLGRASS
                     || upBl == Blocks.SNOW)
                 && (atMat == Material.GRASS
                     || atMat == Material.ROCK
-                    || atMat == Material.SAND)
+                    || atMat == Material.SAND
+                    || atMat == Material.GROUND)
                 && atBl.isOpaqueCube(atBl.getDefaultState())) {
 
             BlockRock.EnumMineralType type;
