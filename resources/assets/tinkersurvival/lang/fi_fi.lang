@@ -3,9 +3,6 @@ itemGroup.tinkersurvival=Tinker Survival
 
 # Items
 item.rock_stone.name=Kivi
-item.rock_andesite.name=Andesiitti kivi
-item.rock_diorite.name=Dioriitti kivi
-item.rock_granite.name=Graniitti kivi
 
 item.grass_fiber.name=Kasvikuidut
 item.grass_string.name=Kasvi lanka

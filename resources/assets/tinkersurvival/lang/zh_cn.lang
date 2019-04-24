@@ -5,9 +5,6 @@ itemGroup.tinkersurvival=Tinker Survival
 # Items
 
 item.rock_stone.name=小块石头
-item.rock_andesite.name=小块安山岩
-item.rock_diorite.name=小块闪长岩
-item.rock_granite.name=小块花岗岩
 
 item.grass_fiber.name=植物纤维
 item.grass_string.name=草绳

@@ -5,9 +5,6 @@ itemGroup.tinkersurvival=Tinker Survival
 # Items
 
 item.rock_stone.name=Steinbrocken
-item.rock_andesite.name=Andesitbrocken
-item.rock_diorite.name=Dioritbrocken
-item.rock_granite.name=Granitbrocken
 
 item.grass_fiber.name=Pflanzenfasern
 item.grass_string.name=Pflanzenschnur
