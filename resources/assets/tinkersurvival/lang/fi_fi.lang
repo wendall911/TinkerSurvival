@@ -1,0 +1,95 @@
+# Creative Tabs
+itemGroup.tinkersurvival=Tinker Survival
+
+# Items
+item.rock_stone.name=Kivi
+item.rock_andesite.name=Andesiitti kivi
+item.rock_diorite.name=Dioriitti kivi
+item.rock_granite.name=Graniitti kivi
+
+item.grass_fiber.name=Kasvikuidut
+item.grass_string.name=Kasvi lanka
+item.flint_shard.name=Piikiven sirpale
+
+item.crude_knife.name=Raaka Puukko
+item.crude_hatchet.name=Raaka Kirves
+item.crude_saw.name=Raaka Saha
+item.crude_saw_blade.name=Raaka Sahan terä
+item.knife.name=Puukko
+item.knife.desc=For cutting stuff.
+item.saw.name=Saha
+item.saw.desc=Puun leikkaamiseen!
+
+item.reinforced_wool_helmet.name=Vahvistettu villakypärä
+item.reinforced_wool_chestplate.name=Vahvistettu villatakki
+item.reinforced_wool_leggings.name=Vahvistetut villahousut
+item.reinforced_wool_boots.name=Vahvistetut villakengät
+item.reinforced_jelled_slime_helmet.name=Vahvistettu limakypärä
+item.reinforced_jelled_slime_chestplate.name=Vahvistettu limatakki
+item.reinforced_jelled_slime_leggings.name=Vahvistetut limahousut
+item.reinforced_jelled_slime_boots.name=Vahvistetut limakengät
+
+item.bandages.name=Siteet
+item.cloth.name=Kangas
+item.crude_bandages.name=Raaka sidokset
+item.ointment.name=Voide
+item.plant_paste.name=Kasvien liima
+item.wooden_cup.name=Salaperäinen puukuppi
+
+# Blocks
+tile.loose_rock.stone.name=Loose Rock (Kivi)
+tile.loose_rock.andesite.name=Loose Rock (Andesiitti)
+tile.loose_rock.diorite.name=Loose Rock (Dioriitti)
+tile.loose_rock.granite.name=Loose Rock (Graniitti)
+
+# JEI
+jei.description.rock=Maapallolla makaa kiviä. Näitä voidaan käyttää veitsen kanssa käsityötaulukkoon, jolloin saadaan särmikkäsiruja.
+jei.description.grass_fiber=Kasvikuidut putoavat ruohon rikkoutuessa veitsellä. Niitä käytetään tehtaiden merkkijonon valmistukseen työkaluille ja kasvi- tahnamelle voidetta varten.
+jei.description.stick=Kepit putoavat lehdistä. Käyttämällä jotakin veistä kaksinkertaistaa mahdollisuuden saada kiinni.
+jei.description.flint_shard=Piikiven sirpaleita saadaan lyömällä piikevellä kiveä.
+
+# Tooltips
+tooltip.uselessTool1=Tämä työkalu ei voi kaivaa mitään!
+tooltip.uselessTool2=Voidaan käyttää vain craftissä.
+tooltip.uselessHoe1=Tämä kuokka voi kuokkia mitään!
+tooltip.uselessWeapon1=Tämä ase osuu kuin märkä nuudeli!
+tooltip.uselessBow1=Tämän jousin jänne on tiukas!
+tooltip.uselessArmor1=Axiom-mitoitus: XXXL. Luultavasti ei sovi.
+tooltip.cxp=Ovela
+
+# Messages
+message.notice=Ilmoitus
+message.warning=Varoitus
+message.wrong_tool=Tarvitaan %s.
+message.wrong_tool2=Ummm ... %s?
+message.tool_broke=Sinun %s särkyi.
+message.spawn_set=Ei unelias, mutta respawn piste on asennettu!
+
+# Potion Effects
+potion.stopbleeding=Lopeta verenvuoto
+potion.zombieessence=Zombi ydin
+
+# Constructs Armory
+material.jelledslime.name=Hyytelölima
+
+material.wool.name=Villa
+modifier.insulated_armor.name=Eristetty
+modifier.insulated_armor.desc=Lisää +1-lämmitysmodifiilin panssarikappaleeseen. Ei stakaa.
+modifier.chilling_armor.name=Hyytävä
+modifier.chilling_armor.desc=Lisää -1 jäähdytysmodifioijan panssarikappaleeseen. Ei stakaa.
+
+# Advancements
+advancements.tinkersurvival.crude_knife.desc=Ensimmäinen veitsi. Se ei näytä kovin terävältä, mutta ehkä voit käyttää sitä leikkaamaan ruohoa.
+advancements.tinkersurvival.crude_hatchet.desc=Raaka hatchetilla voit hakata puuta ja muita perusmateriaaleja.
+advancements.tinkersurvival.crude_saw.desc=Puu palaa lokeihin ja lankkeihin tikkuihin, jos se on käytössä TinkerSurvival-määrityksessä. Muuten ei tee mitään.
+advancements.tinkersurvival.flint_shard.desc=Saamiseksi Flint kaivella sora paljain käsin. Sitten murskataan kalvon kallioinen pinta (R-Click, esim. Stone), jolloin saat kaksi särmikkäsirua. Ole varovainen, sillä niissä on terävät reunat!
+advancements.tinkersurvival.getting_wood.title=Puun saaminen
+advancements.tinkersurvival.getting_wood.desc=Sain puun.
+advancements.tinkersurvival.grass_string.desc=Jos niitä käytetään käsityönä, he tekevät äänimerkin, kuin ... FEEL
+advancements.tinkersurvival.rock.title=Löysin kiven...
+advancements.tinkersurvival.rock.desc=He joko sijaitsevat ympäri tai voidaan saada kaivella hieman multaa kädet. Se ei näytä tekevän mitään ... ehkä jos minulla olisi neljä?
+advancements.tinkersurvival.root.desc=Tinker Survival Reseptit. Vihje: aloita kaivamalla soraa!
+advancements.tinkersurvival.stenciltable.desc=Kuvioiden tekeminen.
+advancements.tinkersurvival.stick.title="Limainen" tilanne.
+advancements.tinkersurvival.stick.desc=Saatat löytää tikkuja jos menet ja lyöt joitakin lehtiä. Kepit ja kivet voivat rikkoa luut, mutta sanat ... myös satuttavat minua, koska kaikki välittävät heidän kasvoilleen heitetyt sanat.
+advancements.tinkersurvival.toolforge.desc=Rakentakaamme vielä parempia työkaluja.
