@@ -37,6 +37,7 @@ import tinkersurvival.event.SleepEventHandler;
 import tinkersurvival.event.SomethingNeedsToastEvent;
 import tinkersurvival.event.SomethingNeedsToastHandler;
 import tinkersurvival.event.TooltipEventHandler;
+import tinkersurvival.event.WorldLoadEventHandler;
 import tinkersurvival.integrations.ArmorMaterials;
 import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
@@ -80,6 +81,7 @@ public class CommonProxy {
             MinecraftForge.EVENT_BUS.register(new RockGenerator());
         }
         MinecraftForge.EVENT_BUS.register(new LootTableHandler());
+        MinecraftForge.EVENT_BUS.register(new WorldLoadEventHandler());
     }
 
     public void init(FMLInitializationEvent event) {
