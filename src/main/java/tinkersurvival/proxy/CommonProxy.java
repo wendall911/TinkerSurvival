@@ -156,8 +156,8 @@ public class CommonProxy {
         TinkerSurvivalWorld.initItemRepairMaterials();
     }
 
-	public static void toastHint(String title, String subtitle, String replace) {
-		SomethingNeedsToastEvent.fireEvent(title, subtitle, replace);
+    public static void toastHint(String title, String subtitle, String replace) {
+        SomethingNeedsToastEvent.fireEvent(title, subtitle, replace);
     }
 
     public void registerItemModel(Item item, int meta, String id) {

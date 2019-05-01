@@ -11,13 +11,13 @@ public class ZombieEssence extends PotionBase {
 
     private int since = 0;
 
-	public ZombieEssence() {
-		super("zombieessence", false, 0x8db7c4);
-	}
+    public ZombieEssence() {
+        super("zombieessence", false, 0x8db7c4);
+    }
 
-	@Override
+    @Override
     public void performEffect(EntityLivingBase entity, int amplifier) {
-		World world = entity.getEntityWorld();
+        World world = entity.getEntityWorld();
         boolean noGravity = false;
         boolean noClip = false;
         boolean faith = true;
@@ -36,17 +36,17 @@ public class ZombieEssence extends PotionBase {
             faith = false;
         }
 
-		if (world.getBlockState(entity.getPosition().down()).getBlock() == Blocks.WATER
-				&& world.isAirBlock(entity.getPosition().up()) && faith) {
+        if (world.getBlockState(entity.getPosition().down()).getBlock() == Blocks.WATER
+                && world.isAirBlock(entity.getPosition().up()) && faith) {
             noGravity = true;
             noClip = true;
             entity.motionY += 0.4d;
             entity.onGround = true;
-		}
+        }
 
         entity.setNoGravity(noGravity);
         entity.noClip = noClip;
-	}
+    }
 
     @Override
     public boolean isReady(int duration, int amplifier) {

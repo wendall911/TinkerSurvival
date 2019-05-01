@@ -12,8 +12,8 @@ import tinkersurvival.util.Chat;
 
 public class SleepEventHandler {
 
-	@SubscribeEvent
-	public void onPlayerSleep(PlayerSleepInBedEvent event) {
+    @SubscribeEvent
+    public void onPlayerSleep(PlayerSleepInBedEvent event) {
         if (ConfigHandler.features.NO_SLEEPING) {
             EntityPlayer player = event.getEntityPlayer();
             World world = player.getEntityWorld();
@@ -26,6 +26,6 @@ public class SleepEventHandler {
                 Chat.sendMessage(player, "message.spawn_set", null);
             }
         }
-	}
+    }
 
 }

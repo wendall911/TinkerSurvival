@@ -12,7 +12,7 @@ public class SomethingNeedsToastHandler {
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
-	public void onHint(SomethingNeedsToastEvent event) {
+    public void onHint(SomethingNeedsToastEvent event) {
         String title = event.getTitle();
         String subtitle = event.getSubtitle();
         String replace = event.getReplace();
@@ -24,6 +24,6 @@ public class SomethingNeedsToastHandler {
                 replace == null ? new TextComponentTranslation(subtitle) : new TextComponentTranslation(subtitle, replace)
             )
         );
-	}
+    }
 
 }

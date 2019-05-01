@@ -19,7 +19,7 @@ public class ItemExists implements IConditionFactory {
         return () -> isExistingItem(key) == value;
     }
     
-	public static boolean isExistingItem(String name) {    
+    public static boolean isExistingItem(String name) {    
         return Item.getByNameOrId(name) != null;
     }
 

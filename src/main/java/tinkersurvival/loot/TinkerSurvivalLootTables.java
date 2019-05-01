@@ -15,6 +15,6 @@ public class TinkerSurvivalLootTables {
 
     private static ResourceLocation register(String path) {
         return LootTableList.register(new ResourceLocation(TinkerSurvival.MODID + ":" + path));
-	}
+    }
 
 }

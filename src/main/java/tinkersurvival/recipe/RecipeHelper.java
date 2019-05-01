@@ -30,7 +30,7 @@ public class RecipeHelper {
         GameRegistry.addSmelting(input, output, 1F);
     }
 
-	public static ResourceLocation getSafeNameForRecipe(ItemStack output) {
+    public static ResourceLocation getSafeNameForRecipe(ItemStack output) {
         ModContainer activeContainer = Loader.instance().activeModContainer();
         ResourceLocation baseLoc = new ResourceLocation(activeContainer.getModId(), output.getItem().getRegistryName().getPath());
         ResourceLocation recipeLoc = baseLoc;

@@ -15,10 +15,10 @@ public class SomethingNeedsToastEvent extends Event {
         this.replace = replace;
     }
 
-	public static SomethingNeedsToastEvent fireEvent(String title, String subtitle, String replace) {
-		SomethingNeedsToastEvent event = new SomethingNeedsToastEvent(title, subtitle, replace);
-		MinecraftForge.EVENT_BUS.post(event);
-		return event;
+    public static SomethingNeedsToastEvent fireEvent(String title, String subtitle, String replace) {
+        SomethingNeedsToastEvent event = new SomethingNeedsToastEvent(title, subtitle, replace);
+        MinecraftForge.EVENT_BUS.post(event);
+        return event;
     }
 
     public String getTitle() {

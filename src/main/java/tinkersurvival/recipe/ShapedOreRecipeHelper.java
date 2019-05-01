@@ -21,20 +21,20 @@ import tinkersurvival.tools.tool.Saw;
 public class ShapedOreRecipeHelper extends ShapedOreRecipe {
 
     public ShapedOreRecipeHelper(ResourceLocation group, ItemStack result, Object... recipe) {
-		super(group, result, recipe);
+        super(group, result, recipe);
     }
 
-	@Override
-	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
-		NonNullList<ItemStack> remains = super.getRemainingItems(inv);
+    @Override
+    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+        NonNullList<ItemStack> remains = super.getRemainingItems(inv);
         Map<Integer, ItemStack> returnItems = new HashMap<>();
 
-		for (int i = 0; i < remains.size(); i++) {
-			ItemStack slot = inv.getStackInSlot(i);
-			ItemStack remain = remains.get(i);
+        for (int i = 0; i < remains.size(); i++) {
+            ItemStack slot = inv.getStackInSlot(i);
+            ItemStack remain = remains.get(i);
             ItemStack tool = ItemStack.EMPTY;
 
-			if (!slot.isEmpty()
+            if (!slot.isEmpty()
                     && (slot.getItem() instanceof Knife
                         || slot.getItem() instanceof Saw
                         || slot.getItem() instanceof CrudeKnife
@@ -58,14 +58,14 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                     tool.setCount(1);
                 }
                 returnItems.put(i, tool);
-			}
-		}
+            }
+        }
         for (Map.Entry<Integer, ItemStack> entry : returnItems.entrySet()) {
             remains.set(entry.getKey(), entry.getValue());
         }
 
-		return remains;
-	}
+        return remains;
+    }
 
     private ItemStack setDamage(ItemStack tool, String toolName, int calculatedDamage) {
         if (calculatedDamage == 0

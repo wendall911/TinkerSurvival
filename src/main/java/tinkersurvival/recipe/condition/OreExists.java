@@ -19,7 +19,7 @@ public class OreExists implements IConditionFactory {
         return () -> isExistingOreName(key) == value;
     }
     
-	public static boolean isExistingOreName(String name) {    
+    public static boolean isExistingOreName(String name) {    
         if (!OreDictionary.doesOreNameExist(name)) {
             return false;
         }

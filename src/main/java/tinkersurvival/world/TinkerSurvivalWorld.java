@@ -33,7 +33,7 @@ public class TinkerSurvivalWorld {
     public static ArmorMaterial reinforced_wool_armor_material;
     public static ArmorMaterial reinforced_jelled_slime_armor_material;
     
-	public static TinkerSurvivalArmor reinforced_wool_helmet;
+    public static TinkerSurvivalArmor reinforced_wool_helmet;
     public static TinkerSurvivalArmor reinforced_wool_chestplate;
     public static TinkerSurvivalArmor reinforced_wool_leggings;
     public static TinkerSurvivalArmor reinforced_wool_boots;
@@ -117,7 +117,7 @@ public class TinkerSurvivalWorld {
 
     }
 
-	private static TinkerSurvivalArmor getArmor(TinkerSurvivalArmor armor, ArmorMaterial material, EntityEquipmentSlot slot, String name) {
+    private static TinkerSurvivalArmor getArmor(TinkerSurvivalArmor armor, ArmorMaterial material, EntityEquipmentSlot slot, String name) {
         armor = new TinkerSurvivalArmor(material, slot, name);
         all.add(armor);
         return armor;
@@ -189,19 +189,19 @@ public class TinkerSurvivalWorld {
         }
     }
 
-	public static int[] getDamageReduction(float hardness) {
-		int[] protection = new int[4];
-		float minimum = 5f;
-		float hardnessFactor = 1.25f;
-		float total = (hardnessFactor * hardness) + minimum;
-		int feetIndex = EntityEquipmentSlot.FEET.getIndex();
-		int legsIndex = EntityEquipmentSlot.LEGS.getIndex();
-		int chestIndex = EntityEquipmentSlot.CHEST.getIndex();
-		int headIndex = EntityEquipmentSlot.HEAD.getIndex();
-		protection[headIndex] = Math.round(0.1f * total); // head
-		protection[chestIndex] = Math.round(0.4f * total); // torso
-		protection[legsIndex] = Math.round(0.35f * total); // legs
-		protection[feetIndex] = Math.round(0.15f * total); // feet
-		return protection;
+    public static int[] getDamageReduction(float hardness) {
+        int[] protection = new int[4];
+        float minimum = 5f;
+        float hardnessFactor = 1.25f;
+        float total = (hardnessFactor * hardness) + minimum;
+        int feetIndex = EntityEquipmentSlot.FEET.getIndex();
+        int legsIndex = EntityEquipmentSlot.LEGS.getIndex();
+        int chestIndex = EntityEquipmentSlot.CHEST.getIndex();
+        int headIndex = EntityEquipmentSlot.HEAD.getIndex();
+        protection[headIndex] = Math.round(0.1f * total); // head
+        protection[chestIndex] = Math.round(0.4f * total); // torso
+        protection[legsIndex] = Math.round(0.35f * total); // legs
+        protection[feetIndex] = Math.round(0.15f * total); // feet
+        return protection;
     }
 }

@@ -7,10 +7,10 @@ import tinkersurvival.TinkerSurvival;
 
 public class PotionBase extends Potion {
 
-	public PotionBase(String name, boolean harmful, int color) {
-		super(harmful, color);
+    public PotionBase(String name, boolean harmful, int color) {
+        super(harmful, color);
         setPotionName("effect." + name);
         setRegistryName(new ResourceLocation(TinkerSurvival.MODID + ":" + name));
-	}
+    }
 
 }

@@ -39,18 +39,18 @@ public class ArmorModifier extends TemperatureModifier {
 
                 if (nameParts.length == 2) {
                     String armorName = nameParts[0];
-					int modifier = 0;
+                    int modifier = 0;
 
                     try {
-						modifier = Integer.parseInt(nameParts[1]);
-					} catch (NumberFormatException e) {}
+                        modifier = Integer.parseInt(nameParts[1]);
+                    } catch (NumberFormatException e) {}
 
                     if (modifier != 0) {
-						Item armor = Item.getByNameOrId(armorName);
-						if (armor != null) {
-							valid = true;
-							armorTempMap.put(armorName, modifier);
-						}
+                        Item armor = Item.getByNameOrId(armorName);
+                        if (armor != null) {
+                            valid = true;
+                            armorTempMap.put(armorName, modifier);
+                        }
                     }
                 }
             }
