@@ -96,3 +96,32 @@ advancements.tinkersurvival.stenciltable.desc=Zur Herstellung von Schablonen.
 advancements.tinkersurvival.stick.title=Eine "stocksteife" Situation.
 advancements.tinkersurvival.stick.desc=Du kannst ein paar Stöcke finden, indem du ein paar Blätter abbaust. Stock und Stein brechen mein Gebein, doch Worte bringen ... doch Pein, denn jeder kümmert sich um Worte, die einem ins Gesicht gesagt werden.
 advancements.tinkersurvival.toolforge.desc=Lass uns einige noch aufwändigere Werkzeuge bauen.
+
+# Configuration
+tools=Tools
+MOD_TOOL_WHITELIST.tooltip=List of mods that tools will always work for. All other mod tools will become wet noodles.
+TOOLS_WHITELIST.tooltip=List of individual tools that will always work. Format tooltype-modid:item
+armor=Armor
+MOD_ARMOR_WHITELIST.tooltip=List of mods that armor will always work and be craftable for. All other mod armor will not be equipable or craftable.
+ARMOR_WHITELIST.tooltip=List of individual armor items that will always work. Format modid:item
+ARMOR_TEMP_MODIFIERS.tooltip=List of all armor with temperature modifiers. Format modid:item=modifier
+INSULATED_MODIFIER.tooltip=Construct's Armory wool insulation modifier amount.
+CHILLING_MODIFIER.tooltip=Construct's Armory jelled slime cooling modifier amount.
+balance=Balance
+ENABLE_ROCKGEN.tooltip=Enables the generation of rock piles on the surface. Default true
+ROCKGEN_CHANCE.tooltip=Chance for a rocks to generate on surface. Default 1.0D (= 100%)
+ENABLE_ROCK_FROM_DIRT.tooltip=Enables rock drop from harvesting dirt. (default: false)
+ROCK_FROM_DIRT_CHANCE.tooltip=Chance for a rocks to drop from harvesting dirt with bare hands. Default 0.4 (= 40%)
+FLINT_CHANCE.tooltip=Chance for a successful flint knapping. Default 60% - 0.6D
+GRASS_FIBER_CHANCE.tooltip=Chance for tall grass to drop plant fibers. Default 60% - 0.6D. Knives are 40% more effective.
+HEAL_RATE.tooltip=Heal rate for bandages. Crude bandages are 50% less effective.
+SLOW_DOWN_MULTIPLIER.tooltip=Option to adjust slow down on wrong tool usage. Default 1.0)
+features=Gameplay Features
+NO_GRIEFING.tooltip=Stop enderman griefing, wtf Notch.
+GRIEFING_WHITELIST.tooltip=Ok, I love endermen, make them pick up this stuff. If NO_GRIEFING=true
+NO_SLEEPING.tooltip=I cry myself to sleep at night...
+SLOW_DOWN_DIRT_PUNCHING.tooltip=Includes dirt in the slowdown of mining speed with bare hands. Default true
+ENABLE_SAW.tooltip=Enables the saw item to craft planks. Default true
+FORCE_SAW_FOR_PLANKS.tooltip=Removes plank and stick recipes from the game, only craftable with saw. Default true
+client=Client
+ENABLE_FAIL_SOUND.tooltip=Enables the fail sound if using the wrong tool.
