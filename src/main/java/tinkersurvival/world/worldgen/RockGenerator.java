@@ -16,7 +16,7 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -28,7 +28,7 @@ public class RockGenerator {
 
     @SubscribeEvent
     public void decorateBiome(DecorateBiomeEvent.Post event) {
-        if(!Config.Balance.ENABLE_ROCKGEN){
+        if(!ConfigHandler.balance.ENABLE_ROCKGEN){
             return;
         }
 
@@ -63,7 +63,7 @@ public class RockGenerator {
 
         Material atMat = atBl.getMaterial(atBl.getBlockState().getBaseState());
 
-        if (random.nextDouble() < Config.Balance.ROCKGEN_CHANCE
+        if (random.nextDouble() < ConfigHandler.balance.ROCKGEN_CHANCE
                 && (world.isAirBlock(new BlockPos(i, j + 1, k))
                     || upBl == Blocks.SNOW_LAYER
                     || upBl == Blocks.TALLGRASS

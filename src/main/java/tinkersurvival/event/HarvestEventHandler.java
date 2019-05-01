@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
 import tinkersurvival.client.sound.Sounds;
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
@@ -55,7 +55,7 @@ public class HarvestEventHandler {
 
         // Always allow certain blocks to break at normal speed
         if (block == Blocks.AIR || block == Blocks.LEAVES || block == Blocks.SAND || block == Blocks.GRAVEL || block == Blocks.SNOW_LAYER
-                || !Config.Features.SLOW_DOWN_DIRT_PUNCHING && (block == Blocks.DIRT || block == Blocks.GRASS)) {
+                || !ConfigHandler.features.SLOW_DOWN_DIRT_PUNCHING && (block == Blocks.DIRT || block == Blocks.GRASS)) {
             return;
         }
 
@@ -94,12 +94,12 @@ public class HarvestEventHandler {
 
                 switch (neededToolClass) {
                     case "axe":
-                        return 0.2F / Config.Balance.SLOW_DOWN_MULTIPLIER;
+                        return 0.2F / ConfigHandler.balance.SLOW_DOWN_MULTIPLIER;
                     case "pickaxe":
-                        return 0.125F / Config.Balance.SLOW_DOWN_MULTIPLIER;
+                        return 0.125F / ConfigHandler.balance.SLOW_DOWN_MULTIPLIER;
                     case "shovel":
                     default:
-                        return 0.33F / Config.Balance.SLOW_DOWN_MULTIPLIER;
+                        return 0.33F / ConfigHandler.balance.SLOW_DOWN_MULTIPLIER;
                 }
             } else {
                 return 0.1F;
@@ -240,7 +240,7 @@ public class HarvestEventHandler {
                 CrudeKnife knife = (CrudeKnife) heldItemStack.getItem();
                 if (knife.shouldBreakBlock(block)) {
                     if (block instanceof BlockDoublePlant || block instanceof BlockTallGrass) {
-                        if (Math.random() < Config.Balance.GRASS_FIBER_CHANCE) {
+                        if (Math.random() < ConfigHandler.balance.GRASS_FIBER_CHANCE) {
                             event.getDrops().add(new ItemStack(TinkerSurvivalWorld.grassFiber, 1, 0));
                         }
                     }
@@ -259,7 +259,7 @@ public class HarvestEventHandler {
                 }
                 if (knife.shouldBreakBlock(block)) {
                     if (block instanceof BlockDoublePlant || block instanceof BlockTallGrass) {
-                        if (Math.random() < Config.Balance.GRASS_FIBER_CHANCE + 0.4D) {
+                        if (Math.random() < ConfigHandler.balance.GRASS_FIBER_CHANCE + 0.4D) {
                             event.getDrops().add(new ItemStack(TinkerSurvivalWorld.grassFiber, 1, 0));
                         }
                     }
@@ -272,7 +272,7 @@ public class HarvestEventHandler {
             }
 
             // rock drop chance
-            if (Config.Balance.ENABLE_ROCK_FROM_DIRT
+            if (ConfigHandler.balance.ENABLE_ROCK_FROM_DIRT
                     && (block instanceof BlockDirt || block instanceof BlockGrass)) {
 
                 // check if the dirt is searched by hand - to avoid conflicts and ease usage,
@@ -294,7 +294,7 @@ public class HarvestEventHandler {
                     return;
                 }
 
-                double rockDropChance = Config.Balance.ROCK_FROM_DIRT_CHANCE;
+                double rockDropChance = ConfigHandler.balance.ROCK_FROM_DIRT_CHANCE;
                 if (event.getWorld().rand.nextFloat() <= rockDropChance) {
                     event.getDrops().add(new ItemStack(TinkerSurvivalWorld.rockStone));
                 }

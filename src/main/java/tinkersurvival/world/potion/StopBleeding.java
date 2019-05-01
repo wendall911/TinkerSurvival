@@ -5,12 +5,12 @@ import java.util.List;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.world.potion.PotionBase;
 
 public class StopBleeding extends PotionBase {
 
-    static final float HEAL_RATE = (float)Config.Balance.HEAL_RATE;
+    static final float HEAL_RATE = (float)ConfigHandler.balance.HEAL_RATE;
 
     public StopBleeding() {
         super("stopbleeding", false, 0xf7b7ad);

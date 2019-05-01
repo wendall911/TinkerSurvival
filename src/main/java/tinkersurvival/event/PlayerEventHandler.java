@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tinkersurvival.client.sound.Sounds;
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class PlayerEventHandler {
@@ -27,7 +27,7 @@ public class PlayerEventHandler {
                 && state.getBlock().isFullCube(state)) {
             if (!world.isRemote){
                 if (Math.random() < 0.7) {
-                    if (Math.random() < Config.Balance.FLINT_CHANCE) {
+                    if (Math.random() < ConfigHandler.balance.FLINT_CHANCE) {
                         // Create flint shard
                         ItemStack stack = new ItemStack(TinkerSurvivalWorld.flintShard, 2);
                         EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack);

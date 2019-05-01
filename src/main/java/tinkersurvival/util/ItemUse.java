@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.fml.common.Loader;
 
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 
 public class ItemUse {
@@ -42,13 +42,13 @@ public class ItemUse {
     private static Set<String> toolTypes = Sets.newHashSet(TOOL_TYPES);
 
     public static void init() {
-        for (String modid : Config.Tools.MOD_TOOL_WHITELIST) {
+        for (String modid : ConfigHandler.tools.MOD_TOOL_WHITELIST) {
             if (Loader.isModLoaded(modid)) {
                 toolModids.add(modid);
             }
         }
 
-        for (String item : Config.Tools.TOOLS_WHITELIST) {
+        for (String item : ConfigHandler.tools.TOOLS_WHITELIST) {
             boolean valid = false;
 
             if (item.contains("-")) {
@@ -72,13 +72,13 @@ public class ItemUse {
             }
         }
 
-        for (String modid : Config.Armor.MOD_ARMOR_WHITELIST) {
+        for (String modid : ConfigHandler.armor.MOD_ARMOR_WHITELIST) {
             if (Loader.isModLoaded(modid)) {
                 armorModids.add(modid);
             }
         }
 
-        for (String armorName : Config.Armor.ARMOR_WHITELIST) {
+        for (String armorName : ConfigHandler.armor.ARMOR_WHITELIST) {
             boolean valid = false;
 
             Item armor = Item.getByNameOrId(armorName);

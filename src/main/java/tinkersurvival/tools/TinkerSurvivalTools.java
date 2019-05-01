@@ -14,7 +14,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.config.Config;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.CrudeKnife;

@@ -24,9 +24,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Loader;
 
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
+import tinkersurvival.event.ConfigEventHandler;
 import tinkersurvival.event.HarvestEventHandler;
 import tinkersurvival.event.HoeEventHandler;
 import tinkersurvival.event.LivingEquipmentChangeEventHandler;
@@ -63,23 +64,17 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new HoeEventHandler());
         MinecraftForge.EVENT_BUS.register(new HarvestEventHandler());
         MinecraftForge.EVENT_BUS.register(new LivingEquipmentChangeEventHandler());
+        MinecraftForge.EVENT_BUS.register(new ConfigEventHandler());
 
         if (Loader.isModLoaded("tinkertoolleveling")) {
             MinecraftForge.EVENT_BUS.register(new PlayerContainerEventHandler());
         }
 
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
-
-        if (Config.Features.NO_SLEEPING) {
-            MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
-        }
-
+        MinecraftForge.EVENT_BUS.register(new SleepEventHandler());
         MinecraftForge.EVENT_BUS.register(new SomethingNeedsToastHandler());
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
-
-        if (Config.Balance.ENABLE_ROCKGEN) {
-            MinecraftForge.EVENT_BUS.register(new RockGenerator());
-        }
+        MinecraftForge.EVENT_BUS.register(new RockGenerator());
         MinecraftForge.EVENT_BUS.register(new LootTableHandler());
         MinecraftForge.EVENT_BUS.register(new WorldLoadEventHandler());
     }
@@ -98,8 +93,8 @@ public class CommonProxy {
         TinkerSurvivalRecipes.updateRecipes();
 
         // Disable Enderman Griefing!!!
-        if (Config.Features.NO_GRIEFING) {
-            final Set<String> griefBlockIds = Sets.newHashSet(Config.Features.GRIEFING_WHITELIST);
+        if (ConfigHandler.features.NO_GRIEFING) {
+            final Set<String> griefBlockIds = Sets.newHashSet(ConfigHandler.features.GRIEFING_WHITELIST);
             Set<Block> griefBlocks = new HashSet<Block>();
             Block[] blocks = new Block[] {
                 Blocks.GRASS,

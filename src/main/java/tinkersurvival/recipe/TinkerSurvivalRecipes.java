@@ -18,7 +18,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.TinkerSurvivalWorld;
 import tinkersurvival.util.functionalInterfaces.*;
@@ -95,7 +95,7 @@ public class TinkerSurvivalRecipes {
             registerRecipe(fourOutputItems, inputItem, "ticSaw");
             TinkerSurvival.logger.info(addedMsg);
 
-            if (Config.Features.FORCE_SAW_FOR_PLANKS) {
+            if (ConfigHandler.features.FORCE_SAW_FOR_PLANKS) {
                 RecipeHelper.addFakeRecipe(recipe);
                 TinkerSurvival.logger.info(replacedMsg);
             }
@@ -128,7 +128,7 @@ public class TinkerSurvivalRecipes {
 
             TinkerSurvival.logger.info(addedMsg);
 
-            if (Config.Features.FORCE_SAW_FOR_PLANKS) {
+            if (ConfigHandler.features.FORCE_SAW_FOR_PLANKS) {
                 RecipeHelper.addFakeRecipe(recipe);
                 TinkerSurvival.logger.info(replacedMsg);
             }
@@ -255,7 +255,7 @@ public class TinkerSurvivalRecipes {
             return;
         }
 
-        if (Config.Features.ENABLE_SAW) {
+        if (ConfigHandler.features.ENABLE_SAW) {
             initSawRecipeFor(recipe, input, output, plankOreRecipes);
         }
     }

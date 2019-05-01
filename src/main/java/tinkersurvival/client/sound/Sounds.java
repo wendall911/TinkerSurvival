@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class Sounds {
     }
 
     public static void play(Entity entity, SoundEvent sound, float volume, float pitch) {
-        if (Config.Client.ENABLE_FAIL_SOUND || sound == FLINT_KNAPPING) {
+        if (ConfigHandler.client.ENABLE_FAIL_SOUND || sound == FLINT_KNAPPING) {
 
             if (entity instanceof EntityPlayerMP) {
                 entity.getEntityWorld().playSound(null, entity.getPosition(),

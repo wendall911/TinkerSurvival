@@ -16,7 +16,6 @@ import slimeknights.tconstruct.library.client.ToolBuildGuiInfo;
 import slimeknights.tconstruct.library.TinkerRegistryClient;
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.config.Config;
 import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.world.TinkerSurvivalWorld;
 

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.fml.common.Loader;
 
-import tinkersurvival.config.Config;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.temperature.ConArmHelper;
 import tinkersurvival.TinkerSurvival;
 
@@ -31,7 +31,7 @@ public class ArmorModifier extends TemperatureModifier {
     }
 
     public static void init() {
-        for (String item : Config.Armor.ARMOR_TEMP_MODIFIERS) {
+        for (String item : ConfigHandler.armor.ARMOR_TEMP_MODIFIERS) {
             boolean valid = false;
 
             if (item.contains("=")) {
@@ -61,18 +61,18 @@ public class ArmorModifier extends TemperatureModifier {
             }
         }
 
-        if (Config.Armor.INSULATED_MODIFIER <= 0) {
+        if (ConfigHandler.armor.INSULATED_MODIFIER <= 0) {
             TinkerSurvival.logger.warn("INSULATED_MODIFIER must be a positive integer. Using Default");
         }
         else {
-            insulate = Config.Armor.INSULATED_MODIFIER;
+            insulate = ConfigHandler.armor.INSULATED_MODIFIER;
         }
 
-        if (Config.Armor.CHILLING_MODIFIER >= 0) {
+        if (ConfigHandler.armor.CHILLING_MODIFIER >= 0) {
             TinkerSurvival.logger.warn("CHILLING_MODIFIER must be a negative integer. Using Default");
         }
         else {
-            chill = Config.Armor.CHILLING_MODIFIER;
+            chill = ConfigHandler.armor.CHILLING_MODIFIER;
         }
 
         registerTemperatureModifier(new ArmorModifier(TinkerSurvival.MODID + ":armor"));
