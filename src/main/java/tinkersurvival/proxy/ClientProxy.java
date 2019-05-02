@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import slimeknights.tconstruct.library.client.ToolBuildGuiInfo;
 import slimeknights.tconstruct.library.TinkerRegistryClient;
 
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.world.TinkerSurvivalWorld;
@@ -60,14 +61,19 @@ public class ClientProxy extends CommonProxy {
         knifeInfo.addSlotPosition(30, 44); // binding
         TinkerRegistryClient.addToolBuilding(knifeInfo);
 
-        ToolBuildGuiInfo sawInfo = new ToolBuildGuiInfo(TinkerSurvivalTools.ticSaw);
-        sawInfo.addSlotPosition(49, 61); // handle
-        sawInfo.addSlotPosition(11, 39); // head
-        sawInfo.addSlotPosition(22, 20); // head
-        sawInfo.addSlotPosition(31, 44); // binding
-        TinkerRegistryClient.addToolBuilding(sawInfo);
-
         TinkerSurvival.TS_Tab.setTabItem(TinkerSurvivalTools.crudeHatchet);
+
+        if (ConfigHandler.features.ENABLE_SAW) {
+            ToolBuildGuiInfo sawInfo = new ToolBuildGuiInfo(TinkerSurvivalTools.ticSaw);
+            sawInfo.addSlotPosition(49, 61); // handle
+            sawInfo.addSlotPosition(11, 39); // head
+            sawInfo.addSlotPosition(22, 20); // head
+            sawInfo.addSlotPosition(31, 44); // binding
+            TinkerRegistryClient.addToolBuilding(sawInfo);
+
+            TinkerSurvival.TS_Tab.setTabItem(TinkerSurvivalTools.crudeSaw);
+        }
+
     }
 
 }

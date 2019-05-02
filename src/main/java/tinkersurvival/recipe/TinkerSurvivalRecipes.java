@@ -95,7 +95,8 @@ public class TinkerSurvivalRecipes {
             registerRecipe(fourOutputItems, inputItem, "ticSaw");
             TinkerSurvival.logger.info(addedMsg);
 
-            if (ConfigHandler.features.FORCE_SAW_FOR_PLANKS) {
+            if (ConfigHandler.features.FORCE_SAW_FOR_PLANKS
+                    && ConfigHandler.features.ENABLE_SAW) {
                 RecipeHelper.addFakeRecipe(recipe);
                 TinkerSurvival.logger.info(replacedMsg);
             }
@@ -128,7 +129,8 @@ public class TinkerSurvivalRecipes {
 
             TinkerSurvival.logger.info(addedMsg);
 
-            if (ConfigHandler.features.FORCE_SAW_FOR_PLANKS) {
+            if (ConfigHandler.features.FORCE_SAW_FOR_PLANKS
+                    && ConfigHandler.features.ENABLE_SAW) {
                 RecipeHelper.addFakeRecipe(recipe);
                 TinkerSurvival.logger.info(replacedMsg);
             }

@@ -13,6 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeSaw;
@@ -44,10 +45,13 @@ public class TinkerSurvivalTools {
         toolMaterialFlint = EnumHelper.addToolMaterial("TS_FLINT", 0, 20, 1.5F, 0.5F, 0);
         crudeKnife = getCrudeKnife(crudeKnife, toolMaterialFlint, "crude_knife");
         crudeHatchet = getCrudeHatchet(crudeHatchet, toolMaterialStone, "crude_hatchet");
-        crudeSaw = getCrudeSaw(crudeSaw, toolMaterialStone, "crude_saw");
-        crudeSawBlade = getItem(crudeSawBlade, "crude_saw_blade");
         ticKnife = getKnife(ticKnife, "knife");
-        ticSaw = getSaw(ticSaw, "saw");
+
+        if (ConfigHandler.features.ENABLE_SAW) {
+            crudeSaw = getCrudeSaw(crudeSaw, toolMaterialStone, "crude_saw");
+            crudeSawBlade = getItem(crudeSawBlade, "crude_saw_blade");
+            ticSaw = getSaw(ticSaw, "saw");
+        }
     }
 
     private static CrudeKnife getCrudeKnife(CrudeKnife knife, Item.ToolMaterial material, String name) {
@@ -95,7 +99,10 @@ public class TinkerSurvivalTools {
         IForgeRegistry<Item> registry = event.getRegistry();
         all.forEach(registry::register);
         TinkerRegistry.registerToolCrafting(ticKnife);
-        TinkerRegistry.registerToolCrafting(ticSaw);
+
+        if (ConfigHandler.features.ENABLE_SAW) {
+            TinkerRegistry.registerToolCrafting(ticSaw);
+        }
 
         for (Map.Entry<String, ItemStack> entry : oredictItems.entrySet()) {
             OreDictionary.registerOre(entry.getKey(), entry.getValue());
@@ -104,7 +111,10 @@ public class TinkerSurvivalTools {
 
     public static void registerItemModels() {
         ModelRegisterUtil.registerToolModel(ticKnife);
-        ModelRegisterUtil.registerToolModel(ticSaw);
+
+        if (ConfigHandler.features.ENABLE_SAW) {
+            ModelRegisterUtil.registerToolModel(ticSaw);
+        }
             
         all.forEach(item -> {
             if (!(item == ticKnife || item == ticSaw)) {
