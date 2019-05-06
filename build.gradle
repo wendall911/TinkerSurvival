@@ -54,6 +54,7 @@ minecraft {
     replace '@MOD_NAME@', archivesBaseName
     replace '@MODID@', modid
     replace '@MOD_VERSION@', config.mod_version
+    replace '@MC_VERSION@', config.minecraft_short_version
     replace '@FORGE_VERSION@', config.forge_version
     replace '@TTL_VERSION@', config.ttl_version
 	if (project.hasProperty('keyFingerprint')) {

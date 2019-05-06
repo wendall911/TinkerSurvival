@@ -25,7 +25,7 @@ import tinkersurvival.util.TinkerSurvivalToolLeveling;
      dependencies = "required-after:forge@[@FORGE_VERSION@,);"
          + "after:tinkertoollevling@[@TTL_VERSION@,);"
          + "after:*",
-     acceptedMinecraftVersions = "[1.12,)"
+     acceptedMinecraftVersions = "[@MC_VERSION@,)"
 )
 
 public class TinkerSurvival {

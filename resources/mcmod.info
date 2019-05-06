@@ -6,7 +6,7 @@
   "version": "${mod_version}",
   "mcversion": "${minecraft_version}",
   "url": "https://github.com/wendall911/TinkerSurvival",
-  "updateUrl": "https://raw.githubusercontent.com/wendall911/TinkerSurvival/master/files/updates.json",
+  "updateJSON": "https://raw.githubusercontent.com/wendall911/TinkerSurvival/master/files/updates.json",
   "authorList": ["wendall911"],
   "credits": "ashar42 inspired and guided all of the mod concepts.",
   "logoFile": "assets/tinkersurvival/textures/gui/logo.png"
