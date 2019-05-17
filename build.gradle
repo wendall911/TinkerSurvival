@@ -101,9 +101,9 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 build.dependsOn signJar
 
 curseforge {
-    apiKey = project.curseApiKey
+    apiKey = project.tscurseApiKey
     project {
-        id = project.curseId
+        id = project.tscurseId
         changelog = file('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt')
         releaseType = config.cf_release_type
         addGameVersion(config.minecraft_version)
