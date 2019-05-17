@@ -34,8 +34,8 @@ public class RockGenerator {
 
         World world = event.getWorld();
         Random random = event.getRand();
-        int chunkX = event.getPos().getX() >> 4;
-        int chunkZ = event.getPos().getZ() >> 4;
+        int chunkX = event.getChunkPos().x;
+        int chunkZ = event.getChunkPos().z;
         // Generate Surface Loose Rocks
         if (world.provider.getDimension() == 0) {
             for (int i = 0; i < 3; i++) {
@@ -61,7 +61,7 @@ public class RockGenerator {
         Block atBl = world.getBlockState(new BlockPos(i, j, k)).getBlock();
         Block downBl = world.getBlockState(new BlockPos(i, j - 5, k)).getBlock();
 
-        Material atMat = atBl.getMaterial(atBl.getBlockState().getBaseState());
+        Material atMat = atBl.getBlockState().getBaseState().getMaterial();
 
         if (random.nextDouble() < ConfigHandler.balance.ROCKGEN_CHANCE
                 && (world.isAirBlock(new BlockPos(i, j + 1, k))
@@ -72,7 +72,7 @@ public class RockGenerator {
                     || atMat == Material.ROCK
                     || atMat == Material.SAND
                     || atMat == Material.GROUND)
-                && atBl.isOpaqueCube(atBl.getDefaultState())) {
+                && atBl.getDefaultState().isOpaqueCube()) {
 
             BlockRock.EnumMineralType type;
             if (downBl == Blocks.STONE) {

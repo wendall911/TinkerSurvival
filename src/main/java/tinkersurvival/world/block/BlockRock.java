@@ -28,6 +28,7 @@ import tinkersurvival.world.TinkerSurvivalWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class BlockRock extends BlockBase {
 
     public static final IProperty<EnumMineralType> TYPE = PropertyEnum.create("type",EnumMineralType.class);

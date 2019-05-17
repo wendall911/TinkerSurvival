@@ -24,7 +24,7 @@ public class PlayerEventHandler {
         IBlockState state = world.getBlockState(pos);
         if (event.getItemStack().getItem() == Items.FLINT
                 && world.getBlockState(pos).getMaterial() == Material.ROCK
-                && state.getBlock().isFullCube(state)) {
+                && state.isFullCube()) {
             if (!world.isRemote){
                 if (Math.random() < 0.7) {
                     if (Math.random() < ConfigHandler.balance.FLINT_CHANCE) {

@@ -84,6 +84,12 @@ public class ConfigHandler {
 
         @Config.Comment({"Option to adjust slow down on wrong tool usage. Default 1.0)"})
         public static float SLOW_DOWN_MULTIPLIER = 1.0F;
+
+        @Config.Comment({"Chance for stick drip from breaking leaves by hand. Default 20% - 0.2F)"})
+        public static float STICK_DROP_CHANCE_HAND = 0.2F;
+
+        @Config.Comment({"Chance for stick drip from breaking leaves with a knife Default 50% - 0.5F)"})
+        public static float STICK_DROP_CHANCE_KNIFE = 0.5F;
     }
 
     public static Features features;

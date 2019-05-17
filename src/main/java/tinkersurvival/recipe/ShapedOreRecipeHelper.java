@@ -3,12 +3,12 @@ package tinkersurvival.recipe;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -42,7 +42,7 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
                         || slot.getItem() == Items.BOWL)) {
                 if (slot.isItemStackDamageable()) {
                     int calculatedDamage = slot.getMaxDamage() - (slot.getItemDamage() + 1);
-                    String toolName = I18n.translateToLocal(slot.getItem().getTranslationKey() + ".name");
+                    String toolName = I18n.format(slot.getItem().getTranslationKey() + ".name");
                     
                     tool = setDamage(slot.copy(), toolName, calculatedDamage);
 

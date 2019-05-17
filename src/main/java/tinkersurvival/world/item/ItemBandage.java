@@ -63,7 +63,7 @@ public class ItemBandage extends ItemBase {
 
         if (player.getHealth() < player.getMaxHealth() && !player.isPotionActive(TinkerSurvivalWorld.stopBleeding)) {
             player.setActiveHand(hand);
-            return new ActionResult(EnumActionResult.PASS, stack);
+            return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
         }
 
         return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);

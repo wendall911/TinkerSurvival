@@ -1,10 +1,10 @@
 package tinkersurvival.event;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -41,13 +41,13 @@ public class TooltipEventHandler {
             if (!tag.isEmpty()) {
                 ToolLevelNBT data = new ToolLevelNBT(tag);
                 if (data.cxp >= 0) {
-                    event.getToolTip().add(1, TextFormatting.GOLD + I18n.translateToLocalFormatted("tooltip.cxp"));
+                    event.getToolTip().add(1, TextFormatting.GOLD + I18n.format("tooltip.cxp"));
                 }
             }
         }
         else if (ItemUse.isArmor(stack)) {
             if (!ItemUse.isWhitelistArmor(stack)) {
-                event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted("tooltip.uselessArmor1"));
+                event.getToolTip().add(TextFormatting.DARK_RED + I18n.format("tooltip.uselessArmor1"));
             }
         }
         else if (!ItemUse.isWhitelistItem(stack)) {
@@ -72,7 +72,7 @@ public class TooltipEventHandler {
                         break;
 
                 }
-                event.getToolTip().add(TextFormatting.DARK_RED + I18n.translateToLocalFormatted(tooltip));
+                event.getToolTip().add(TextFormatting.DARK_RED + I18n.format(tooltip));
             }
         }
     }

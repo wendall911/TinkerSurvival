@@ -100,6 +100,10 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 
 build.dependsOn signJar
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
+}
+
 curseforge {
     apiKey = project.tscurseApiKey
     project {
