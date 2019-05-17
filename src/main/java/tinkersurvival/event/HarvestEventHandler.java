@@ -224,10 +224,11 @@ public class HarvestEventHandler {
 
             // Leaves now drop sticks 20% without a knife. 50% with a knife
             if (block instanceof BlockLeaves) {
-                float stickDropChance = 0.2F;
+                float stickDropChance = ConfigHandler.balance.STICK_DROP_CHANCE_HAND;
+
                 if (heldItemStack.getItem() instanceof CrudeKnife
                         || heldItemStack.getItem() instanceof Knife) {
-                    stickDropChance += 0.3F;
+                    stickDropChance = ConfigHandler.balance.STICK_DROP_CHANCE_KNIFE;
                 }
                 if (event.getWorld().rand.nextFloat() <= stickDropChance) {
                     event.getDrops().add(new ItemStack(Items.STICK));
