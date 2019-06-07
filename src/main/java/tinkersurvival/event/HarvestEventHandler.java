@@ -86,9 +86,10 @@ public class HarvestEventHandler {
 
         if (neededToolClass != null) {
             String toolClass = ItemUse.getToolClass(heldItemStack);
+            String blockMod = block.getRegistryName().getNamespace();
 
             if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
-                if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass)) {
+                if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass, blockMod)) {
                     return 1.0F;
                 }
 
@@ -109,7 +110,7 @@ public class HarvestEventHandler {
         return 1.0F;
     }
 
-    private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass) {
+    private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass, String blockMod) {
         if (neededToolClass.equals(toolClass)) {
             return heldItemStack.getItem().getHarvestLevel(
                     heldItemStack, toolClass, null, null) >= neededHarvestLevel;
@@ -117,6 +118,8 @@ public class HarvestEventHandler {
             return true;
         } else if (neededToolClass.equals("shovel") && toolClass.equals("mattock")) {
             return true;
+        } else if (toolClass.equals("wrench")) {
+            return heldItemStack.getItem().getRegistryName().getNamespace().equals(blockMod);
         } else {
             return neededToolClass.equals("shovel") && toolClass.equals("pickaxe")
                     && heldItemStack.getItem().getHarvestLevel(
@@ -154,8 +157,7 @@ public class HarvestEventHandler {
                 return;
             }
 
-            String blockName = block.getRegistryName().getNamespace() + ":" + block.getRegistryName().getPath();
-
+            String blockMod = block.getRegistryName().getNamespace();
             int neededHarvestLevel = block.getHarvestLevel(event.getState());
             String neededToolClass = block.getHarvestTool(event.getState());
 
@@ -165,7 +167,7 @@ public class HarvestEventHandler {
                 String mainhandToolClass = ItemUse.getToolClass(mainhandItemStack);
 
                 if (ItemUse.isWhitelistItem(mainhandItemStack) && mainhandToolClass != null) {
-                    if (isRightTool(mainhandItemStack, neededHarvestLevel, neededToolClass, mainhandToolClass)) {
+                    if (isRightTool(mainhandItemStack, neededHarvestLevel, neededToolClass, mainhandToolClass, blockMod)) {
                         return;
                     }
                 }
@@ -175,7 +177,7 @@ public class HarvestEventHandler {
 
                 if (ItemUse.isWhitelistItem(offhandItemStack) && offhandToolClass != null) {
 
-                    if (isRightTool(offhandItemStack, neededHarvestLevel, neededToolClass, offhandToolClass)) {
+                    if (isRightTool(offhandItemStack, neededHarvestLevel, neededToolClass, offhandToolClass, blockMod)) {
                         return;
                     }
                 }

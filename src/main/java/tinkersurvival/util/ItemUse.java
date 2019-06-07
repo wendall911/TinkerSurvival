@@ -38,6 +38,7 @@ public class ItemUse {
         "weapon",
         "hammer",
         "wirecutter",
+        "wrench",
     };
     private static Set<String> toolTypes = Sets.newHashSet(TOOL_TYPES);
 

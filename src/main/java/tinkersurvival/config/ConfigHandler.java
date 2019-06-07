@@ -23,7 +23,9 @@ public class ConfigHandler {
             "wirecutter-immersiveengineering:tool",
             "sword-immersiveengineering:revolver",
             "sword-immersiveengineering:railgun",
-            "pickaxe-immersiveengineering:drill"
+            "pickaxe-immersiveengineering:drill",
+            "wrench-ic2:wrench",
+            "wrench-ic2:electric_wrench"
         };
     }
 
