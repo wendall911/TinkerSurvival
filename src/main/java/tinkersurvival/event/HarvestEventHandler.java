@@ -130,7 +130,10 @@ public class HarvestEventHandler {
     // Controls what tool is used for block breaking
     @SubscribeEvent
     public void breakBlock(BlockEvent.BreakEvent event) {
-        if (!event.getWorld().isRemote) {
+      // If we are allowed to break blocks, then do nothing!
+      if (ConfigHandler.Features.BREAK_BLOCKS_ANY_TOOL) return;
+      
+      if (!event.getWorld().isRemote) {
             EntityPlayer player = event.getPlayer();
             BlockPos pos = event.getPos();
 

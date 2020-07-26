@@ -120,6 +120,10 @@ public class ConfigHandler {
         @Config.RequiresMcRestart
         @Config.Comment({"Removes plank and stick recipes from the game, only craftable with saw. Default true"})
         public static boolean FORCE_SAW_FOR_PLANKS = true;
+        
+        @Config.RequiresMcRestart
+        @Config.Comment({"Setting this to true will allow you to break blocks with any tool again. Default false"})
+        public static boolean BREAK_BLOCKS_ANY_TOOL = false;
     }
 
     public static Client client;
