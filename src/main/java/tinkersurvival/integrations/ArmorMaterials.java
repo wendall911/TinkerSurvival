@@ -1,9 +1,9 @@
 package tinkersurvival.integrations;
 
 import c4.conarm.lib.materials.ArmorMaterialType;
-import c4.conarm.lib.materials.CoreMaterialStats;;
-import c4.conarm.lib.materials.PlatesMaterialStats;;
-import c4.conarm.lib.materials.TrimMaterialStats;;
+import c4.conarm.lib.materials.CoreMaterialStats;
+import c4.conarm.lib.materials.PlatesMaterialStats;
+import c4.conarm.lib.materials.TrimMaterialStats;
 import c4.conarm.common.ConstructsRegistry;
 
 import net.minecraft.init.Blocks;
