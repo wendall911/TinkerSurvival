@@ -1,0 +1,16 @@
+{
+	"pools": [
+		{
+			"name": "grail",
+			"rolls": 1,
+			"entries": [
+                {
+                    "type": "item",
+                    "name": "tinkersurvival:wooden_cup",
+                    "entryName": "wooden_cup",
+                    "weight": 1
+                }
+            ]
+		}
+	]
+}

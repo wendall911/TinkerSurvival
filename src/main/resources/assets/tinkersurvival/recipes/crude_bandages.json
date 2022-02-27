@@ -1,0 +1,22 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "SF",
+        "GF"
+    ],
+    "key": {
+        "G": {
+            "item": "tinkersurvival:grass_string"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "F": {
+            "item": "tinkersurvival:grass_fiber"
+        }
+    },
+    "result": {
+        "item": "tinkersurvival:bandage",
+        "data": 0
+    }
+}

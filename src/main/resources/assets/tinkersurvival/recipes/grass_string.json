@@ -1,0 +1,16 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "FF",
+        "F "
+    ],
+    "key": {
+        "F": {
+            "item": "tinkersurvival:grass_fiber"
+        }
+    },
+    "result": {
+        "item": "tinkersurvival:grass_string",
+        "data": 0
+    }
+}

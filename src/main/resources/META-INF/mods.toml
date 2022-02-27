@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[38,)"
+license="MIT"
+
+[[mods]]
+  modId="tinkersurvival"
+  displayName="Simple Text Overlay"
+  description="A small mod to make the first day or two of play more believable. New early game tools, Tinkers' Construct tools, and more!"
+  version="${file.jarVersion}"
+  displayURL="https://github.com/wendall911/TinkerSurvival"
+  updateJSONURL="https://raw.githubusercontent.com/wendall911/TinkerSurvival/1.18.1/files/updates.json"
+  authors="wendall911"
+  credits="DaftPVF, bspkrs, Lunatrius, ashar42"
+  logoFile=""
+
+[[dependencies.tinkersurvival]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1]"
+    ordering="NONE"
+    side="BOTH"

@@ -1,0 +1,36 @@
+{
+    "display": {
+        "title": {
+            "translate": "gui.toolforge.name"
+        },
+        "description": {
+            "translate": "advancements.tinkersurvival.toolforge.desc",
+            "italic": true
+        },
+        "icon": {
+            "item": "tconstruct:toolforge"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "placed_tool_forge": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tconstruct:toolforge"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "placed_tool_forge"
+        ]
+    ],
+    "parent": "tinkersurvival:tool_station"
+}

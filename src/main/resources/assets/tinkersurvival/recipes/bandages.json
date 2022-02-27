@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "SC",
+        "GO"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:string"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "C": {
+            "item": "tinkersurvival:cloth"
+        },
+        "O": {
+            "item": "tinkersurvival:ointment"
+        }
+    },
+    "result": {
+        "item": "tinkersurvival:bandage",
+        "data": 1
+    }
+}

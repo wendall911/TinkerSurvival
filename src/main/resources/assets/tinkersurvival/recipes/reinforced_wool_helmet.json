@@ -1,0 +1,24 @@
+{
+    "conditions": [
+        {
+            "type": "tinkersurvival:item_exists",
+            "item": "toughasnails:wool_helmet"
+        },
+        {
+            "type": "tinkersurvival:item_exists",
+            "item": "minecraft:diamond_helmet"
+        }
+    ],
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "toughasnails:wool_helmet"
+        },
+        {
+            "item": "minecraft:diamond_helmet"
+        }
+    ],
+    "result": {
+        "item": "tinkersurvival:reinforced_wool_helmet"
+    }
+}

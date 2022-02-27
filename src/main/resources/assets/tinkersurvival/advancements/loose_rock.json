@@ -1,0 +1,45 @@
+{
+    "display": {
+        "title": {
+            "translate": "advancements.tinkersurvival.rock.title",
+            "bold": false,
+            "italic": false,
+            "underlined": false,
+            "strikethrough": false,
+            "obfuscated": false
+        },
+        "description": {
+            "translate": "advancements.tinkersurvival.rock.desc"
+        },
+        "icon": {
+            "item": "tinkersurvival:rock_stone"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_rock_stone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:rock_stone"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_rock_stone"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tinkersurvival:cobblestone"
+        ]
+    },
+    "parent": "tinkersurvival:root"
+}

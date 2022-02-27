@@ -1,0 +1,42 @@
+{
+    "display": {
+        "title": {
+            "translate": "item.crude_knife.name"
+        },
+        "description": {
+            "translate": "advancements.tinkersurvival.crude_knife.desc",
+            "italic": true
+        },
+        "icon": {
+            "item": "tinkersurvival:crude_knife"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "has_knife": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tinkersurvival:crude_knife"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_knife"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tinkersurvival:crude_hatchet",
+            "tinkersurvival:crude_saw"
+        ]
+    },
+    "parent": "tinkersurvival:flint_shard"
+}

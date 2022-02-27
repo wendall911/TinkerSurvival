@@ -1,0 +1,24 @@
+{
+    "conditions": [
+        {
+            "type": "tinkersurvival:item_exists",
+            "item": "toughasnails:wool_boots"
+        },
+        {
+            "type": "tinkersurvival:item_exists",
+            "item": "minecraft:diamond_boots"
+        }
+    ],
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "toughasnails:wool_boots"
+        },
+        {
+            "item": "minecraft:diamond_boots"
+        }
+    ],
+    "result": {
+        "item": "tinkersurvival:reinforced_wool_boots"
+    }
+}

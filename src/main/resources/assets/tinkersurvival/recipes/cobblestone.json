@@ -1,0 +1,15 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "RR",
+        "RR"
+    ],
+    "key": {
+        "R": {
+            "item": "tinkersurvival:rock_stone"
+        }
+    },
+    "result": {
+        "item": "minecraft:cobblestone"
+    }
+}
