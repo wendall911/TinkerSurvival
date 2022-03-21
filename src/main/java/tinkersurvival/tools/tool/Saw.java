@@ -1,57 +1,50 @@
 package tinkersurvival.tools.tool;
 
-import java.util.List;
+import javax.annotation.Nonnull;
+import java.util.Random;
 
-/*
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
-import slimeknights.tconstruct.library.materials.Material;
-import slimeknights.tconstruct.library.tinkering.Category;
-import slimeknights.tconstruct.library.tinkering.PartMaterialType;
-import slimeknights.tconstruct.library.tools.AoeToolCore;
-import slimeknights.tconstruct.library.tools.ToolNBT;
-import slimeknights.tconstruct.tools.TinkerTools;
+import net.minecraftforge.common.ForgeHooks;
 
-public class Saw extends AoeToolCore {
+import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-    public Saw(PartMaterialType... requiredComponents) {
-        super(requiredComponents);
+public class Saw extends ModifiableItem {
 
-        addCategory(Category.HARVEST);
+    public Saw(Properties properties, ToolDefinition toolDefinition) {
+        super(properties, toolDefinition);
     }
 
-    public Saw(String name) {
-        this(PartMaterialType.handle(TinkerTools.toolRod),
-            PartMaterialType.head(TinkerTools.axeHead),
-            PartMaterialType.head(TinkerTools.axeHead),
-            PartMaterialType.extra(TinkerTools.binding));
-
-        setTranslationKey(name);
-        setRegistryName(name);
-        this.name = name;
-    }
-
-    public String name;
-
+    @Nonnull
     @Override
-    public float damagePotential() {
-        return 0.01f;
-    }
+    public ItemStack getContainerItem(@Nonnull ItemStack stack) {
+        ItemStack container = stack.copy();
+        ToolStack tool = ToolStack.from(container);
+        Player player = ForgeHooks.getCraftingPlayer();
 
-    @Override
-    public double attackSpeed() {
-        return 1;
+        if (tool.isBroken()) {
+            // Don't do that!
+            player.hurt(DamageSource.GENERIC, 0.5f);
+        }
+        else if (!ToolDamageUtil.damage(tool, 1, null, container)) {
+            return container;
+        }
+
+        player.addItem(container);
+
+        return ItemStack.EMPTY;
     }
 
     @Override
-    public boolean isEffective(IBlockState state) {
-        return false;
+    public boolean hasContainerItem(@Nonnull ItemStack stack) {
+        return true;
     }
 
-    @Override
-    protected ToolNBT buildTagData(List<Material> materials) {
-        return buildDefaultTag(materials);
-    }
 
 }
-*/

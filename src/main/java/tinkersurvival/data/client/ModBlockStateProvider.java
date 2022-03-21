@@ -30,7 +30,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
 		generateLooseRockBaseModel();
 
-        TinkerSurvivalWorld.BLOCK_REGISTRY.getEntries().stream()
+        TinkerSurvivalWorld.getBlockEntries().stream()
                 .map(RegistryObject::get)
                 .forEach(this::generateLooseRockVariants);
     }

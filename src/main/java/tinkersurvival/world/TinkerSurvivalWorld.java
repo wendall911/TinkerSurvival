@@ -1,5 +1,6 @@
 package tinkersurvival.world;
 
+import java.util.Collection;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -29,6 +30,7 @@ import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 import tinkersurvival.client.CreativeTabBase;
 import tinkersurvival.config.ConfigHandler;
@@ -36,6 +38,7 @@ import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
+import tinkersurvival.tools.tool.Saw;
 import tinkersurvival.world.block.LooseRockBlock;
 import tinkersurvival.world.item.Bandage;
 import tinkersurvival.world.item.CrudeBandage;
@@ -49,11 +52,11 @@ import tinkersurvival.world.effect.ZombieEssence;
 
 public class TinkerSurvivalWorld {
 
-    public static DeferredRegister<Block> BLOCK_REGISTRY;
-    public static DeferredRegister<Item> ITEM_REGISTRY;
-    public static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
-    public static DeferredRegister<MobEffect> MOBEFFECT_REGISTRY;
-    public static ItemDeferredRegisterExtension TOOL_REGISTRY;
+    protected static DeferredRegister<Block> BLOCK_REGISTRY;
+    protected static DeferredRegister<Item> ITEM_REGISTRY;
+    protected static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
+    protected static DeferredRegister<MobEffect> MOBEFFECT_REGISTRY;
+    protected static ItemDeferredRegisterExtension TOOL_REGISTRY;
 
     public static ConfiguredFeature<?, ?> LOOSE_ROCKS_CONFIGURED;
     public static PlacedFeature LOOSE_ROCKS_PLACED;
@@ -139,18 +142,18 @@ public class TinkerSurvivalWorld {
         WOOD_TIER = new CrudeItemTier().setMaxUses(20).setEfficiency(0.0F)
             .setAttackDamage(0.0F).setRepairMat(ItemTags.PLANKS);
 
-        SAW_DEFINITION = ToolDefinition.builder(SAW).meleeHarvest().build();
-
         CRUDE_SAW_BLADE = registerItem("crude_saw_blade");
         CRUDE_KNIFE = registerKnifeTool("crude_knife", FLINT_TIER);
         CRUDE_HATCHET = registerHatchetTool("crude_hatchet", STONE_TIER);
         CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", WOOD_TIER, 0, -8.0F);
         CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
         MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
-        SAW = TOOL_REGISTRY.register("saw", () -> new ModifiableItem(
+        SAW = TOOL_REGISTRY.register("saw", () -> new Saw(
             (new Item.Properties()).stacksTo(1).tab(TAB_GROUP),
             SAW_DEFINITION
         ));
+
+        SAW_DEFINITION = ToolDefinition.builder(SAW).meleeHarvest().build();
 
         // Effects
         STOP_BLEEDING = MOBEFFECT_REGISTRY.register(
@@ -238,6 +241,10 @@ public class TinkerSurvivalWorld {
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
         return ITEM_REGISTRY.register(name, item);
+    }
+
+    public static Collection<RegistryObject<Block>> getBlockEntries() {
+        return BLOCK_REGISTRY.getEntries();
     }
 
     /*

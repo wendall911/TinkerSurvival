@@ -14,6 +14,14 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.Tags;
 
+import slimeknights.tconstruct.common.TinkerTags;
+
+import static slimeknights.tconstruct.common.TinkerTags.Items.DURABILITY;
+import static slimeknights.tconstruct.common.TinkerTags.Items.HARVEST_PRIMARY;
+import static slimeknights.tconstruct.common.TinkerTags.Items.MULTIPART_TOOL;
+import static slimeknights.tconstruct.common.TinkerTags.Items.ONE_HANDED;
+
+
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
@@ -61,6 +69,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TinkerSurvivalWorld.CRUDE_BANDAGE.get(),
             TinkerSurvivalWorld.BANDAGE.get()
         );
+
+        this.tag(MULTIPART_TOOL).add(TinkerSurvivalWorld.SAW.get());
+        this.tag(DURABILITY).add(TinkerSurvivalWorld.SAW.get());
+        this.tag(ONE_HANDED).add(TinkerSurvivalWorld.SAW.get());
+        this.tag(HARVEST_PRIMARY).add(TinkerSurvivalWorld.SAW.get());
+
     }
 
     private void builder(Tag.Named<Item> tag) {

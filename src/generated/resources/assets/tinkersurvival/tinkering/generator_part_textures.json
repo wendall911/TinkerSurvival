@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "parts": [
+    {
+      "path": "tinkersurvival:item/tool/saw/head",
+      "statType": "tconstruct:head"
+    },
+    {
+      "path": "tinkersurvival:item/tool/saw/binding",
+      "statType": "tconstruct:extra"
+    },
+    {
+      "path": "tinkersurvival:item/tool/saw/broken_head",
+      "statType": "tconstruct:head"
+    }
+  ]
+}

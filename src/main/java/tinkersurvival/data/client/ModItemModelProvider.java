@@ -29,7 +29,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        TinkerSurvivalWorld.BLOCK_REGISTRY.getEntries().stream()
+        TinkerSurvivalWorld.getBlockEntries().stream()
                 .forEach(this::blockItem);
 
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));

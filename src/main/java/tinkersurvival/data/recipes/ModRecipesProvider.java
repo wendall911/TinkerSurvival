@@ -2,6 +2,7 @@ package tinkersurvival.data.recipes;
 
 import java.util.function.Consumer;
 
+import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -47,6 +48,7 @@ public class ModRecipesProvider extends RecipeProvider {
         ItemLike ointment = TinkerSurvivalWorld.OINTMENT.get();
         ItemLike cloth = TinkerSurvivalWorld.CLOTH.get();
         ItemLike crudeKnife = TinkerSurvivalWorld.CRUDE_KNIFE.get();
+        String sticksName = Registry.ITEM.getKey(Items.STICK.asItem()).getPath().toString();
 
         // Material Recipes
         ShapedRecipeBuilder.shaped(Blocks.COBBLESTONE)
@@ -210,6 +212,15 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_planks", has(ItemTags.PLANKS))
                 .save(consumer);
 
+        // TODO consider making this unlock when player gets a tool table
+        ShapelessRecipeBuilder.shapeless(Items.STICK, 4)
+                .requires(ItemTags.PLANKS)
+                .requires(TinkerSurvivalWorld.SAW.get())
+                .group("sticks")
+                .unlockedBy("has_planks", has(ItemTags.PLANKS))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, sticksName));
+
+
     }
 
     private static void plankRecipeBuilder(Consumer<FinishedRecipe> consumer, ItemLike item, Tag<Item> itemTag, String label) {
@@ -219,6 +230,16 @@ public class ModRecipesProvider extends RecipeProvider {
                 .group("planks")
                 .unlockedBy(label, has(itemTag))
                 .save(consumer);
+
+        String name = Registry.ITEM.getKey(item.asItem()).getPath().toString();
+
+        // TODO consider making this unlock when player gets a tool table
+        ShapelessRecipeBuilder.shapeless(item, 4)
+                .requires(itemTag)
+                .requires(TinkerSurvivalWorld.SAW.get())
+                .group("planks")
+                .unlockedBy(label, has(itemTag))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, name));
     }
 
 }
