@@ -1,44 +1,32 @@
 buildscript {
     repositories {
-        jcenter()
         maven {
-            url = 'http://files.minecraftforge.net/maven'
+            name = 'gradle plugins'
+            url "https://plugins.gradle.org/m2/"
         }
+        maven {
+            name = 'forge'
+            url = 'https://files.minecraftforge.net/maven'
+        }
+        mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.55'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.4.0'
+        classpath 'se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.71.8'
     }
 }
 
-plugins {
-	id 'com.matthewprenger.cursegradle' version '1.2.0'
-}
-
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'maven-publish'
 apply plugin: 'se.bjurr.gitchangelog.git-changelog-gradle-plugin'
-
-// External properties
-ext.configFile = file 'build.properties'
-configFile.withReader {
-    // Load config.  It shall from now be referenced as simply config or project.config
-    def prop = new Properties()
-    prop.load(it)
-    project.ext.config = new ConfigSlurper().parse prop
-}
-
-group = 'com.github.wendall911.tinkersurvival'
-version = "${config.minecraft_version}-${config.mod_version}"
-archivesBaseName = "${config.mod_name}"
-def mcversion = "${config.minecraft_version}"
-def modid = "${config.modid}"
-
+apply plugin: 'com.matthewprenger.cursegradle'
 
 repositories {
     maven {
         // location of the maven that hosts JEI files
         name = 'Progwml6 maven'
-        url = 'http://dvs1.progwml6.com/files/maven'
+        url = 'https://dvs1.progwml6.com/files/maven'
     }
     maven {
         // location of a maven mirror for JEI files, as a fallback
@@ -47,34 +35,41 @@ repositories {
     }
 }
 
+group = 'com.github.wendall911.tinkersurvival'
+version = "${minecraft_version}-${mod_version}"
+archivesBaseName = "${mod_name}"
+def mcversion = "${minecraft_version}"
+def modid = "${modid}"
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '17'
+
 minecraft {
-    version = config.minecraft_version + '-' + config.forge_version
-    mappings = config.mappings
-    runDir = 'run'
-    replace '@MOD_NAME@', archivesBaseName
-    replace '@MODID@', modid
-    replace '@MOD_VERSION@', config.mod_version
-    replace '@MC_VERSION@', config.minecraft_short_version
-    replace '@FORGE_VERSION@', config.forge_version
-    replace '@TTL_VERSION@', config.ttl_version
-	if (project.hasProperty('keyFingerprint')) {
-		replace '@FINGERPRINT@', project.keyFingerprint
-	}
-    else {
-		replace '@FINGERPRINT@', ''
+    mappings channel: "${mappings_channel}", version: mappings_version
+
+    runs {
+        client {
+            workingDirectory project.file("run").canonicalPath
+
+            mods {
+                tinkersurvival {
+                    source sourceSets.main
+                }
+            }
+        }
     }
-    replaceIn 'TinkerSurvival.java'
-    useDepAts = true
 }
 
 dependencies {
-    deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_short_version}-${config.mantle_version}"
-    deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tic_version}"
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+/*
+    deobfCompile "slimeknights.mantle:Mantle:${minecraft_short_version}-${mantle_version}"
+    deobfCompile "slimeknights:TConstruct:${minecraft_version}-${tic_version}"
 
-    deobfProvided "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}:api"
-    runtime "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
+    deobfProvided "mezz.jei:jei_${minecraft_version}:${jei_version}:api"
+    runtime "mezz.jei:jei_${minecraft_version}:${jei_version}"
 
-    deobfProvided "com.github.glitchfiend.biomesoplenty:ToughAsNails:${config.minecraft_version}-${config.tan_version}:api"
+    deobfProvided "com.github.glitchfiend.biomesoplenty:ToughAsNails:${minecraft_version}-${tan_version}:api"
+*/
 }
 
 def commonManifest = {
@@ -82,35 +77,48 @@ def commonManifest = {
 }
 
 jar {
-    manifest commonManifest
-}
-
-task signJar(type: SignJar, dependsOn: reobfJar) {
-    onlyIf { // Skip the task if our secret data isn't available
-        project.hasProperty('keyStore')
+    manifest {
+        attributes([
+            "Specification-Title": mod_name,
+            "Specification-Vendor": "${mod_author}",
+            "Specification-Version": "${version}",
+            "Implementation-Title": "${mod_name}",
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"${mod_author}",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
-
-    keyStore = project.keyStore // This needs to be a path to the keystore file
-    alias = project.keyStoreAlias
-    storePass = project.keyStorePass
-    keyPass = project.keyStoreKeyPass
-    inputFile = jar.archivePath
-    outputFile = jar.archivePath
 }
 
-build.dependsOn signJar
+jar.finalizedBy('reobfJar', 'signJar')
 
-tasks.withType(JavaCompile) {
-    options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
+def reobfFile = file("$buildDir/reobfJar/output.jar")
+def reobfArtifact = artifacts.add('default', reobfFile) {
+    type 'jar'
+    builtBy 'reobfJar'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact reobfArtifact
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
 }
 
 curseforge {
+    if (project.hasProperty('tscurseApiKey')) {
     apiKey = project.tscurseApiKey
     project {
         id = project.tscurseId
         changelog = file('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt')
-        releaseType = config.cf_release_type
-        addGameVersion(config.minecraft_version)
+        releaseType = cf_release_type
+        addGameVersion(minecraft_version)
         mainArtifact(jar) {
             relations {
                 requiredLibrary 'mantle'
@@ -121,15 +129,17 @@ curseforge {
             }
         }
     }
+    }
 }
 
 tasks.curseforge.dependsOn build
 
 task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
-	file = new File('build/libs/' + project.getName() + '-' + project.version + '-changelog.txt');
+    file = new File('build/libs/' + project.getName() + '-' + version + '-changelog.txt');
     templateContent = file('files/templates/changelog.mustache').getText('UTF-8');
-	toRef = "${config.mod_version}";
-	fromRef = "${config.last_mod_version}";
+    fromRepo = file("$projectDir");
+    toRef = "${mod_version}";
+    fromRef = "${last_mod_version}";
 }
 
 tasks.build.dependsOn('changelog')
@@ -150,27 +160,21 @@ task deobfJar(type: Jar) {
     classifier = 'deobf'
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDir 'resources'
-        }   
-    }   
-}
+// Jar Signing
+import net.minecraftforge.gradle.common.tasks.SignJar
 
-processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
+task signJar(type: SignJar, dependsOn: jar) {
+    dependsOn 'reobfJar'
 
-        // replaces
-        expand ([
-            'modid': modid,
-            'mod_version': version,
-            'minecraft_version': mcversion
-        ])
+    // Skip the task if our secret data isn't available
+    onlyIf {
+        project.hasProperty('keyStore')
     }
 
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
+    keyStore = project.keyStore // This needs to be a path to the keystore file
+    alias = project.keyStoreAlias
+    storePass = project.keyStorePass
+    keyPass = project.keyStoreKeyPass
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
 }
