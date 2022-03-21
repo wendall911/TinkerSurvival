@@ -33,6 +33,9 @@ repositories {
         name = 'BlameJared Maven'
         url = 'https://maven.blamejared.com'
     }
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 group = 'com.github.wendall911.tinkersurvival'
@@ -49,6 +52,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file("run").canonicalPath
+            property 'forge.logging.console.level', 'debug'
 
             mods {
                 tinkersurvival {
@@ -98,6 +102,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
+    implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
 }
 
 def commonManifest = {
@@ -185,6 +190,14 @@ task deobfJar(type: Jar) {
     classifier = 'deobf'
 }
 
+tasks.build.dependsOn('sourcesJar', 'deobfJar')
+
+artifacts {
+    archives deobfJar
+    archives sourcesJar
+    archives jar
+}
+
 // Jar Signing
 import net.minecraftforge.gradle.common.tasks.SignJar
 
@@ -203,3 +216,4 @@ task signJar(type: SignJar, dependsOn: jar) {
     inputFile = jar.archivePath
     outputFile = jar.archivePath
 }
+
