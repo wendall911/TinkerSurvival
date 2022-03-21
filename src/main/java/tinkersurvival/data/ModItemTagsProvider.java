@@ -58,14 +58,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.pickaxe.asItem())
             .add(TinkerTools.pickadze.asItem())
             .add(TinkerTools.sledgeHammer.asItem())
-            .add(TinkerTools.veinHammer.asItem())
-            .addOptional(ModIntegration.ieLoc("buzzsaw"))
-            .addOptional(ModIntegration.ieLoc("drill"));
+            //.addOptional(ModIntegration.ieLoc("buzzsaw"));
+            .add(TinkerTools.veinHammer.asItem());
         getBuilder(TagManager.Items.AXE_TOOLS)
             .add(TinkerSurvivalItems.CRUDE_HATCHET.get().asItem())
             .add(TinkerTools.handAxe.asItem())
-            .add(TinkerTools.broadAxe.asItem())
-            .addOptional(ModIntegration.ieLoc("buzzsaw"));
+            .add(TinkerTools.broadAxe.asItem());
         builder(
             TagManager.Items.SAW_TOOLS,
             TinkerSurvivalItems.CRUDE_SAW.get(),
@@ -74,8 +72,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         getBuilder(TagManager.Items.SHOVEL_TOOLS)
             .add(TinkerTools.mattock.asItem())
             .add(TinkerTools.pickadze.asItem())
-            .add(TinkerTools.excavator.asItem())
-            .addOptional(ModIntegration.ieLoc("drill"));
+            .add(TinkerTools.excavator.asItem());
         builder(
             TagManager.Items.HOE_TOOLS,
             TinkerTools.kama,

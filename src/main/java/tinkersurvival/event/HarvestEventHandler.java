@@ -61,7 +61,9 @@ public class HarvestEventHandler {
 
                 if (!isWhitelisted) {
                     cancel = true;
-                    level.playSound(null, player.getOnPos(), Sounds.TOOL_FAIL.get(), SoundSource.BLOCKS, 0.6F, 1.0F);
+                    if (ConfigHandler.Client.enableFailSound()) {
+                        level.playSound(null, player.getOnPos(), Sounds.TOOL_FAIL.get(), SoundSource.BLOCKS, 0.6F, 1.0F);
+                    }
                 }
 
                 if (isWhitelisted && !correctTool) {

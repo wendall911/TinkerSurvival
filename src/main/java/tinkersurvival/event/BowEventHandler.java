@@ -10,6 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import tinkersurvival.client.sound.Sounds;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.ItemUse;
 
@@ -25,7 +26,9 @@ public class BowEventHandler {
                 final Level level = player.getLevel();
 
                 if (!ItemUse.isWhitelistItem(handStack)) {
-                    level.playSound(null, player.getOnPos(), Sounds.BOW_FAIL.get(), SoundSource.BLOCKS, 0.6F, 1.0F);
+                    if (ConfigHandler.Client.enableFailSound()) {
+                        level.playSound(null, player.getOnPos(), Sounds.BOW_FAIL.get(), SoundSource.BLOCKS, 0.6F, 1.0F);
+                    }
                     event.setCanceled(true);
                 }
             }

@@ -21,6 +21,8 @@ import tinkersurvival.util.ToolType;
 
 public class ItemUse {
 
+    private static Map<String, String> whitelistToolsMap = new HashMap<>();
+
 	private static List<String> TOOL_TYPES = new ArrayList<String>(
         Arrays.asList(
             "pickaxe",
@@ -39,8 +41,23 @@ public class ItemUse {
     
     public static void init() {
         if (ModList.get().isLoaded("tinkersarchery")) {
-		    TOOL_TYPES.add("crossbow");
-            TOOL_TYPES.add("bow");
+            if (!TOOL_TYPES.contains("crossbow")) {
+                TOOL_TYPES.add("crossbow");
+            }
+            if (!TOOL_TYPES.contains("bow")) {
+                TOOL_TYPES.add("bow");
+            }
+        }
+
+        whitelistToolsMap.clear();
+
+        for (String item : ConfigHandler.Server.whitelistItems()) {
+            String[] nameParts = item.split("-");
+            String toolType = nameParts[0];
+
+            if (TOOL_TYPES.contains(toolType)) {
+                whitelistToolsMap.put(nameParts[1], nameParts[0]);
+            }
         }
     }
 
@@ -48,8 +65,8 @@ public class ItemUse {
         String itemName = stack.getItem().getRegistryName().toString();
         String modid = getModId(itemName);
 
-        return ConfigHandler.Common.whitelistMods().contains(modid)
-            || ConfigHandler.Common.whitelistItems().contains(itemName);
+        return ConfigHandler.Server.whitelistMods().contains(modid)
+                || whitelistToolsMap.get(itemName) != null;
     }
 
     public static String getModId(String name) {
@@ -64,15 +81,17 @@ public class ItemUse {
 
     public static String getToolClass(ItemStack stack) {
         String itemName = stack.getItem().getRegistryName().toString();
-        String type = null;
+		String type = whitelistToolsMap.get(itemName);
 
-        String[] nameParts = itemName.split("[^a-z]+");
-        for (String toolType : TOOL_TYPES) {
-            if (itemName.contains(toolType)
-                    && Arrays.asList(nameParts).contains(toolType)) {
-                type = toolType;
-            }
-        }
+        if (type == null) {
+			String[] nameParts = itemName.split("[^a-z]+");
+			for (String toolType : TOOL_TYPES) {
+				if (itemName.contains(toolType)
+						&& Arrays.asList(nameParts).contains(toolType)) {
+					type = toolType;
+				}
+			}
+		}
 
         return type;
     }

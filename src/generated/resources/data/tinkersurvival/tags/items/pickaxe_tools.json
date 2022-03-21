@@ -4,14 +4,6 @@
     "tconstruct:pickaxe",
     "tconstruct:pickadze",
     "tconstruct:sledge_hammer",
-    "tconstruct:vein_hammer",
-    {
-      "id": "immersiveengineering:buzzsaw",
-      "required": false
-    },
-    {
-      "id": "immersiveengineering:drill",
-      "required": false
-    }
+    "tconstruct:vein_hammer"
   ]
 }

@@ -61,6 +61,28 @@ public final class ConfigHandler {
 
         private static final Common CONFIG;
 
+        static {
+            Pair<Common,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+
+            CONFIG_SPEC = specPair.getRight();
+            CONFIG = specPair.getLeft();
+        }
+
+        Common(ForgeConfigSpec.Builder builder) {}
+
+    }
+
+    public static final class Server {
+
+        public static final ForgeConfigSpec CONFIG_SPEC;
+        private static final Server CONFIG;
+
+        private static BooleanValue ENABLE_ROCK_GEN;
+        private static IntValue ROCK_GEN_FREQUENCY;
+        private static DoubleValue FLINT_CHANCE;
+        private static DoubleValue HEAL_RATE;
+        private static DoubleValue SLOW_DOWN_MULTIPLIER;
+
         private static final List<String> MODS_LIST = Arrays.asList("mods");
         private static String[] modsStrings = new String[] {
             "tconstruct",
@@ -72,60 +94,18 @@ public final class ConfigHandler {
 
         private static final List<String> ITEMS_LIST = Arrays.asList("items");
         private static String[] itemsStrings = new String[] {
-            "immersiveengineering:drill",
-            "immersiveengineering:buzzsaw",
-            "immersiveengineering:revolver",
+            "shovel-immersiveengineering:drill",
+            "pickaxe-immersiveengineering:drill",
+            "axe-immersiveengineering:buzzsaw",
+            "pickaxe-immersiveengineering:buzzsaw",
+            "weapon-immersiveengineering:revolver",
+            "weapon-immersiveengineering:revolver",
+            "hammer-immersiveengineering:hammer",
+            "wirecutter-immersiveengineering:wirecutter",
         };
         private static Predicate<Object> itemidValidator = s -> s instanceof String
-                && ((String) s).matches("[a-z]+[:]{1}[a-z]+");
+                && ((String) s).matches("[a-z]+[-]{1}[a-z]+[:]{1}[a-z_]+");
         private final ConfigValue<List<? extends String>> ITEMS;
-
-        static {
-            Pair<Common,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
-
-            CONFIG_SPEC = specPair.getRight();
-            CONFIG = specPair.getLeft();
-        }
-
-        Common(ForgeConfigSpec.Builder builder) {
-            MODS = builder
-                .comment("List of mods that tools will always work for. All other mod tools will become wet noodles. Default: "
-                        + "[\"" + String.join("\", \"", modsStrings) + "\"]")
-                .defineListAllowEmpty(MODS_LIST, getFields(modsStrings), modidValidator);
-            ITEMS = builder
-                .comment("List of individual tools that will always work. Format modid:item Default: "
-                        + "[\"" + String.join("\", \"", itemsStrings) + "\"]")
-                .defineListAllowEmpty(ITEMS_LIST, getFields(itemsStrings), itemidValidator);
-        }
-
-        private static Supplier<List<? extends String>> getFields(String[] strings) {
-            return () -> Arrays.asList(strings);
-        }
-
-        public static List<String> whitelistMods() {
-            List<String> mods = (List<String>) CONFIG.MODS.get();
-
-            return mods;
-        }
-
-        public static List<String> whitelistItems() {
-            List<String> items = (List<String>) CONFIG.ITEMS.get();
-
-            return items;
-        }
-
-    }
-
-    public static final class Server {
-
-        public static final ForgeConfigSpec CONFIG_SPEC;
-        private static final Server CONFIG;
-
-        public static BooleanValue ENABLE_ROCK_GEN;
-        public static IntValue ROCK_GEN_FREQUENCY;
-        public static DoubleValue FLINT_CHANCE;
-        public static DoubleValue HEAL_RATE;
-        public static DoubleValue SLOW_DOWN_MULTIPLIER;
 
         static {
             Pair<Server,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
@@ -150,59 +130,52 @@ public final class ConfigHandler {
             SLOW_DOWN_MULTIPLIER = builder
                 .comment("Option to adjust slow down on wrong tool usage. (1.0 = 100%, 2.0 = 200%, etc.)")
                 .defineInRange("SLOW_DOWN_MULTIPLIER", 1.0, 1.0, 5.0);
+            MODS = builder
+                .comment("List of mods that tools will always work for. All other mod tools will become wet noodles. Default: "
+                        + "[\"" + String.join("\", \"", modsStrings) + "\"]")
+                .defineListAllowEmpty(MODS_LIST, getFields(modsStrings), modidValidator);
+            ITEMS = builder
+                .comment("List of individual tools that will always work. Format tooltype-modid:item Default: "
+                        + "[\"" + String.join("\", \"", itemsStrings) + "\"]")
+                .defineListAllowEmpty(ITEMS_LIST, getFields(itemsStrings), itemidValidator);
         }
 
         public static boolean enableRockGen() {
             return CONFIG.ENABLE_ROCK_GEN.get();
         }
-        
+
         public static int rockGenFrequency() {
             return CONFIG.ROCK_GEN_FREQUENCY.get();
         }
-        
+
         public static double flintChance() {
             return CONFIG.FLINT_CHANCE.get();
         }
-        
+
         public static double healRate() {
             return CONFIG.HEAL_RATE.get();
         }
-        
+
         public static double slowDownMultiplier() {
             return CONFIG.SLOW_DOWN_MULTIPLIER.get();
         }
-        
+
+        private static Supplier<List<? extends String>> getFields(String[] strings) {
+            return () -> Arrays.asList(strings);
+        }
+
+        public static List<String> whitelistMods() {
+            List<String> mods = (List<String>) CONFIG.MODS.get();
+
+            return mods;
+        }
+
+        public static List<String> whitelistItems() {
+            List<String> items = (List<String>) CONFIG.ITEMS.get();
+
+            return items;
+        }
+
     }
-
-    /*
-    public static Features features;
-    public static class Features {
-
-        @Config.RequiresMcRestart
-        @Config.Comment({"Stop enderman griefing, wtf Notch."})
-        public static boolean NO_GRIEFING = true;
-
-        @Config.Comment({"Ok, I love endermen, make them pick up this stuff. If NO_GRIEFING=true"})
-        public static String[] GRIEFING_WHITELIST = new String[] {
-            "minecraft:red_flower",
-            "minecraft:yellow_flower"
-        };
-
-        @Config.Comment({"I cry myself to sleep at night..."})
-        public static boolean NO_SLEEPING = true;
-
-        @Config.Comment({"Includes dirt in the slowdown of mining speed with bare hands. Default true"})
-        public static boolean SLOW_DOWN_DIRT_PUNCHING = true;
-
-        @Config.RequiresMcRestart
-        @Config.Comment({"Enables the saw item to craft planks. Default true"})
-        public static boolean ENABLE_SAW = true;
-
-        @Config.RequiresMcRestart
-        @Config.Comment({"Removes plank and stick recipes from the game, only craftable with saw. Default true"})
-        public static boolean FORCE_SAW_FOR_PLANKS = true;
-    }
-
-    */
 
 }
