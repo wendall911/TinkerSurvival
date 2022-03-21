@@ -4,6 +4,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,16 +24,22 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import slimeknights.mantle.registration.object.ItemObject;
+
+import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
+import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+
 import tinkersurvival.client.CreativeTabBase;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
-import tinkersurvival.util.DynamicItemTier;
 import tinkersurvival.world.block.LooseRockBlock;
 import tinkersurvival.world.item.Bandage;
 import tinkersurvival.world.item.CrudeBandage;
+import tinkersurvival.world.item.CrudeItemTier;
 import tinkersurvival.world.item.Mortar;
 import tinkersurvival.world.item.RockStone;
 import tinkersurvival.world.item.WoodenCup;
@@ -46,6 +53,7 @@ public class TinkerSurvivalWorld {
     public static DeferredRegister<Item> ITEM_REGISTRY;
     public static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
     public static DeferredRegister<MobEffect> MOBEFFECT_REGISTRY;
+    public static ItemDeferredRegisterExtension TOOL_REGISTRY;
 
     public static ConfiguredFeature<?, ?> LOOSE_ROCKS_CONFIGURED;
     public static PlacedFeature LOOSE_ROCKS_PLACED;
@@ -67,6 +75,8 @@ public class TinkerSurvivalWorld {
     public static RegistryObject<Item> CRUDE_SAW_HANDLE;
     public static RegistryObject<Item> CRUDE_SAW;
     public static RegistryObject<Item> MORTAR_AND_PESTLE;
+    public static ItemObject<ModifiableItem> SAW;
+    public static ToolDefinition SAW_DEFINITION;
 
     public static RegistryObject<Item> CRUDE_BANDAGE;
     public static RegistryObject<Item> BANDAGE;
@@ -94,10 +104,12 @@ public class TinkerSurvivalWorld {
         MOBEFFECT_REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, TinkerSurvival.MODID);
         BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
         ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
+        TOOL_REGISTRY = new ItemDeferredRegisterExtension(TinkerSurvival.MODID);
 
         MOBEFFECT_REGISTRY.register(bus);
         BLOCK_REGISTRY.register(bus);
         ITEM_REGISTRY.register(bus);
+        TOOL_REGISTRY.register(bus);
 
         TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(FLINT_SHARD.get()));
 
@@ -120,12 +132,14 @@ public class TinkerSurvivalWorld {
         CLOTH = registerItem("cloth");
 
         // Tools
-        FLINT_TIER = new DynamicItemTier().setMaxUses(20).setEfficiency(1.5F)
-            .setAttackDamage(0.5F).setHarvestLvl(0).setEnchantability(0).setRepairMats(Items.FLINT);
-        STONE_TIER = new DynamicItemTier().setMaxUses(5).setEfficiency(1.5F)
-            .setAttackDamage(0.5F).setHarvestLvl(0).setEnchantability(0).setRepairMats(Items.FLINT);
-        WOOD_TIER = new DynamicItemTier().setMaxUses(20).setEfficiency(0.0F)
-            .setAttackDamage(0.0F).setHarvestLvl(0).setEnchantability(0).setRepairMats(Items.FLINT);
+        FLINT_TIER = new CrudeItemTier().setMaxUses(20).setEfficiency(1.5F)
+            .setAttackDamage(0.5F).setRepairMat(Items.FLINT);
+        STONE_TIER = new CrudeItemTier().setMaxUses(5).setEfficiency(1.5F)
+            .setAttackDamage(0.5F).setRepairMat(Items.COBBLESTONE);
+        WOOD_TIER = new CrudeItemTier().setMaxUses(20).setEfficiency(0.0F)
+            .setAttackDamage(0.0F).setRepairMat(ItemTags.PLANKS);
+
+        SAW_DEFINITION = ToolDefinition.builder(SAW).meleeHarvest().build();
 
         CRUDE_SAW_BLADE = registerItem("crude_saw_blade");
         CRUDE_KNIFE = registerKnifeTool("crude_knife", FLINT_TIER);
@@ -133,6 +147,10 @@ public class TinkerSurvivalWorld {
         CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", WOOD_TIER, 0, -8.0F);
         CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
         MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
+        SAW = TOOL_REGISTRY.register("saw", () -> new ModifiableItem(
+            (new Item.Properties()).stacksTo(1).tab(TAB_GROUP),
+            SAW_DEFINITION
+        ));
 
         // Effects
         STOP_BLEEDING = MOBEFFECT_REGISTRY.register(

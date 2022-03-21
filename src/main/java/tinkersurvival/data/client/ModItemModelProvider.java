@@ -33,6 +33,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .forEach(this::blockItem);
 
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
+        ModelFile itemHandheld = getExistingFile(mcLoc("item/handheld"));
 
         builder(itemGenerated, TinkerSurvivalWorld.ROCK_STONE.get());
         builder(itemGenerated, TinkerSurvivalWorld.FLINT_SHARD.get());
@@ -42,10 +43,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, TinkerSurvivalWorld.PLANT_PASTE.get());
         builder(itemGenerated, TinkerSurvivalWorld.CLOTH.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_BLADE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_KNIFE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_HATCHET.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW.get());
+        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_KNIFE.get());
+        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_HATCHET.get());
+        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get());
+        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_SAW.get());
         builder(itemGenerated, TinkerSurvivalWorld.MORTAR_AND_PESTLE.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_BANDAGE.get());
         builder(itemGenerated, TinkerSurvivalWorld.BANDAGE.get());
