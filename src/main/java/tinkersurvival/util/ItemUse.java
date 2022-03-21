@@ -60,6 +60,10 @@ public class ItemUse {
         return nameParts.length == 2 ? nameParts[0] : name;
     }
 
+    public static boolean hasTinkerBow() {
+        return ItemUse.TOOL_TYPES.contains("bow");
+    }
+
     public static String getToolClass(ItemStack stack) {
         String itemName = stack.getItem().getRegistryName().toString();
         String type = whitelistToolsMap.get(itemName);
