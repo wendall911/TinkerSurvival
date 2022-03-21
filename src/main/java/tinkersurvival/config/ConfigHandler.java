@@ -74,9 +74,8 @@ public final class ConfigHandler {
 
         public static BooleanValue ENABLE_ROCK_GEN;
         public static IntValue ROCK_GEN_FREQUENCY;
-        public static DoubleValue FLINT_FROM_LOOSE_ROCKS_CHANCE;
         public static DoubleValue FLINT_CHANCE;
-        public static DoubleValue GRASS_FIBER_CHANCE;
+        public static DoubleValue GRASS_FIBER_BONUS_CHANCE;
         public static DoubleValue HEAL_RATE;
         public static DoubleValue SLOW_DOWN_MULTIPLIER;
 
@@ -94,15 +93,12 @@ public final class ConfigHandler {
             ROCK_GEN_FREQUENCY = builder
                 .comment("RockGeneration frequency. (1 = low, 5 = all over)")
                 .defineInRange("ROCK_GEN_FREQUENCY", 2, 1, 5);
-            FLINT_FROM_LOOSE_ROCKS_CHANCE = builder
-                .comment("Chance for a rocks to drop from harvesting dirt with bare hands. (1.0 = 100%, 0.25 = 25%, etc.)")
-                .defineInRange("FLINT_FROM_LOOSE_ROCKS_CHANCE", 0.25, 0.1, 1.0);
             FLINT_CHANCE = builder
                 .comment("Chance for a successful flint knapping. (1.0 = 100%, 0.4 = 40%, etc.)")
                 .defineInRange("FLINT_CHANCE", 0.6, 0.1, 1.0);
-            GRASS_FIBER_CHANCE = builder
-                .comment("Chance for grass to drop plant fibers with a knife. (1.0 = 100%, 0.4 = 40%, etc.)")
-                .defineInRange("GRASS_FIBER_CHANCE", 0.5, 0.1, 1.0);
+            GRASS_FIBER_BONUS_CHANCE = builder
+                .comment("Chance for grass to drop bonus plant fibers with a knife. (1.0 = 100%, 0.4 = 40%, etc.)")
+                .defineInRange("GRASS_FIBER_BONUS_CHANCE", 0.5, 0.1, 1.0);
             HEAL_RATE = builder
                 .comment("Heal rate for bandages. Crude bandages are 50% less effective. (1.0 = 100%, 0.4 = 40%, etc.)")
                 .defineInRange("HEAL_RATE", 0.14, 0.1, 1.0);
@@ -119,18 +115,12 @@ public final class ConfigHandler {
             return CONFIG.ROCK_GEN_FREQUENCY.get();
         }
         
-        public static float flintFromLooseRocksChance() {
-            double chance = CONFIG.FLINT_FROM_LOOSE_ROCKS_CHANCE.get();
-
-            return (float)chance;
-        }
-        
         public static double flintChance() {
             return CONFIG.FLINT_CHANCE.get();
         }
         
-        public static double grassFiberChance() {
-            return CONFIG.GRASS_FIBER_CHANCE.get();
+        public static double grassFiberBonusChance() {
+            return CONFIG.GRASS_FIBER_BONUS_CHANCE.get();
         }
         
         public static double healRate() {

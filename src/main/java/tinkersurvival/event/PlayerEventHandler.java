@@ -40,7 +40,7 @@ public class PlayerEventHandler {
                     && TagManager.Blocks.GRASS.contains(state.getBlock())) {
                 if (!level.isClientSide) {
                     if (level.random.nextFloat() < 0.3) {
-                        if (level.random.nextFloat() < ConfigHandler.Server.grassFiberChance()) {
+                        if (level.random.nextFloat() < ConfigHandler.Server.grassFiberBonusChance()) {
                             NonNullList<ItemStack> dropStack =
                                 NonNullList.withSize(1, new ItemStack(TinkerSurvivalWorld.GRASS_FIBER.get(), 1));
 
