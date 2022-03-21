@@ -19,7 +19,7 @@ import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-import tinkersurvival.TinkerSurvival;
+import tinkersurvival.util.Chat;
 
 public class TicToolBase extends ModifiableItem {
 
@@ -37,6 +37,8 @@ public class TicToolBase extends ModifiableItem {
         if (tool.isBroken()) {
             // Don't do that!
             player.hurt(DamageSource.GENERIC, 0.5f);
+
+            Chat.sendMessage(player, Chat.WARNING);
         }
 
         return returnOrDropTool(tool, container, player);
@@ -50,6 +52,7 @@ public class TicToolBase extends ModifiableItem {
 
     public ItemStack returnOrDropTool(ToolStack tool, ItemStack container, Player player) {
         Inventory inventory = player.getInventory();
+        ItemStack stack = container.copy();
 
         ToolDamageUtil.directDamage(tool, 1, null, container);
 
@@ -62,6 +65,8 @@ public class TicToolBase extends ModifiableItem {
 
             Containers.dropContents(player.getLevel(), new BlockPos(player.getEyePosition()), dropStack);
         }
+
+        Chat.sendMessage(player, Chat.TOOL_BROKE, stack, true);
 
         return ItemStack.EMPTY;
     }
