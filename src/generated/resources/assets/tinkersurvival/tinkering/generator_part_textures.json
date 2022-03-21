@@ -12,6 +12,10 @@
     {
       "path": "tinkersurvival:item/tool/saw/broken_head",
       "statType": "tconstruct:head"
+    },
+    {
+      "path": "tinkersurvival:item/tool/saw/handle",
+      "statType": "tconstruct:handle"
     }
   ]
 }

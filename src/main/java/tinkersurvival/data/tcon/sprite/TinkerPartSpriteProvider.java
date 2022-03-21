@@ -17,7 +17,7 @@ public class TinkerPartSpriteProvider extends AbstractPartSpriteProvider {
 
     @Override
     protected void addAllSpites() {
-        buildTool("saw").addBreakableHead("head").addBinding("binding"); // handle provided by pickaxe
+        buildTool("saw").addBreakableHead("head").addBinding("binding").addHandle("handle");
     }
 
 }
