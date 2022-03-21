@@ -1,9 +1,8 @@
-package tinkersurvival.world.worldgen;
+package tinkersurvival.world.feature;
 
 import com.google.common.collect.ImmutableMap;
 
 import java.util.Map;
-import java.util.Random;
 import java.util.function.Supplier;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -20,11 +19,10 @@ import net.minecraft.world.level.WorldGenLevel;
 
 import net.minecraftforge.common.util.Lazy;
 
-import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
-public class RockGenerator extends Feature<NoneFeatureConfiguration> {
+public class LooseRocks extends Feature<NoneFeatureConfiguration> {
 
     private static final Lazy<Map<Block, Supplier<? extends Block>>> looseRockSupplier = Lazy.of(() -> new ImmutableMap.Builder<Block, Supplier<? extends Block>>()
         .put(Blocks.STONE, TinkerSurvivalWorld.stoneLooseRock)
@@ -39,7 +37,7 @@ public class RockGenerator extends Feature<NoneFeatureConfiguration> {
         .build()
     );
 
-    public RockGenerator() {
+    public LooseRocks() {
         super(NoneFeatureConfiguration.CODEC);
     }
 
@@ -52,7 +50,7 @@ public class RockGenerator extends Feature<NoneFeatureConfiguration> {
         final BlockState stateAt = level.getBlockState(pos);
         final BlockState stateDown = level.getBlockState(pos.below());
 
-        if (stateAt.isAir() && TagManager.Blocks.looseRockPlaceableOn.contains(stateDown.getBlock())) {
+        if (stateAt.isAir() && TagManager.Blocks.LOOSE_ROCK_PLACEABLE_ON.contains(stateDown.getBlock())) {
             for (int y = 1; y <= 8; y++) {
                 final BlockPos stonePos = pos.below(y);
                 final BlockState stoneState = level.getBlockState(stonePos);

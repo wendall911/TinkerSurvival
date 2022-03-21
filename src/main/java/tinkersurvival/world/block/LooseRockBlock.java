@@ -1,24 +1,24 @@
 package tinkersurvival.world.block;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public class LooseRockBlock extends Block {
 
@@ -26,7 +26,7 @@ public class LooseRockBlock extends Block {
     public static final VoxelShape rockHitbox = box(4, 0, 3, 12, 2, 11);
 
     public LooseRockBlock() {
-        super(Properties.of(Material.CLAY).sound(SoundType.STONE).strength(0.15F).noCollission().noOcclusion());
+        super(Properties.of(Material.CLAY).sound(SoundType.GRAVEL).strength(0.15F).noCollission().noOcclusion());
     }
 
     @Override

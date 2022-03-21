@@ -38,14 +38,18 @@ public class TinkerSurvival {
     }
 
     public void setup(final FMLCommonSetupEvent event) {
-        TinkerSurvivalWorld.setup(FMLJavaModLoadingContext.get().getModEventBus());
+        if (ConfigHandler.enableRockGen()) {
+            TinkerSurvivalWorld.setup(FMLJavaModLoadingContext.get().getModEventBus());
+        }
     }
 
     @SubscribeEvent
     public void onBiomesLoaded(BiomeLoadingEvent evt) {
         BiomeGenerationSettingsBuilder gen = evt.getGeneration();
 
-        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TinkerSurvivalWorld.looseRocksPlaced);
+        if (ConfigHandler.enableRockGen()) {
+            gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TinkerSurvivalWorld.looseRocksPlaced);
+        }
     }
 
 }

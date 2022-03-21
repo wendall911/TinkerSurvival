@@ -16,7 +16,7 @@ public class ConfigHandler {
     private static final ConfigHandler CONFIG;
 
     public static BooleanValue enableRockGen;
-    public static DoubleValue rockGenChance;
+    public static IntValue rockGenFrequency;
     public static BooleanValue enableRockFromDirt;
     public static DoubleValue rockFromDirtChance;
     public static DoubleValue flintChance;
@@ -37,9 +37,9 @@ public class ConfigHandler {
         enableRockGen = builder
             .comment("Enables the generation of rock piles on the surface.")
             .define("enableRockGen", true);
-        rockGenChance = builder
-            .comment("Chance for a rocks to generate on surface. (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("rockGenChance", 1.0, 0.1, 1.0);
+        rockGenFrequency = builder
+            .comment("RockGeneration frequency. (1 = low, 5 = all over)")
+            .defineInRange("rockGenFrequency", 2, 1, 5);
         enableRockFromDirt = builder
             .comment("Enables rock drop from harvesting dirt.")
             .define("enableRockFromDirt", false);
@@ -105,8 +105,8 @@ public class ConfigHandler {
         return CONFIG.enableRockGen.get();
     }
     
-    public static double rockGenChance() {
-        return CONFIG.rockGenChance.get();
+    public static int rockGenFrequency() {
+        return CONFIG.rockGenFrequency.get();
     }
     
     public static boolean enableRockFromDirt() {

@@ -3,12 +3,8 @@ package tinkersurvival.world;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -19,17 +15,16 @@ import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-
-import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import tinkersurvival.client.CreativeTabBase;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.block.LooseRockBlock;
-import tinkersurvival.world.worldgen.RockGenerator;
+import tinkersurvival.world.feature.LooseRocks;
 
 public class TinkerSurvivalWorld {
 
@@ -45,12 +40,12 @@ public class TinkerSurvivalWorld {
     public static RegistryObject<Item> flintShard;
     public static RegistryObject<Item> rockStone;
 
-    public static RegistryObject<LooseRockBlock> andesiteLooseRock;
-    public static RegistryObject<LooseRockBlock> dioriteLooseRock;
-    public static RegistryObject<LooseRockBlock> graniteLooseRock;
-    public static RegistryObject<LooseRockBlock> stoneLooseRock;
-    public static RegistryObject<LooseRockBlock> sandstoneLooseRock;
-    public static RegistryObject<LooseRockBlock> redSandstoneLooseRock;
+    public static RegistryObject<Block> andesiteLooseRock;
+    public static RegistryObject<Block> dioriteLooseRock;
+    public static RegistryObject<Block> graniteLooseRock;
+    public static RegistryObject<Block> stoneLooseRock;
+    public static RegistryObject<Block> sandstoneLooseRock;
+    public static RegistryObject<Block> redSandstoneLooseRock;
 
     public static Feature<NoneFeatureConfiguration> looseRocksFeature;
 
@@ -74,7 +69,6 @@ public class TinkerSurvivalWorld {
         // Items
         flintShard = registerItem("flint_shard");
         rockStone = registerItem("rock_stone");
-
     }
 
     public static void setup(IEventBus bus) {
@@ -82,14 +76,14 @@ public class TinkerSurvivalWorld {
         featureRegistry.register(bus);
 
         // Worldgen Features
-        looseRocksFeature = new RockGenerator();
+        looseRocksFeature = new LooseRocks();
 
         // Worldgen Feature Configuration
         looseRocksConfigured = looseRocksFeature
             .configured(NoneFeatureConfiguration.INSTANCE);
 
         looseRocksPlaced = looseRocksConfigured.placed(
-                    CountPlacement.of(1),
+                    CountPlacement.of(ConfigHandler.rockGenFrequency()),
                     InSquarePlacement.spread(),
                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE
                 );
