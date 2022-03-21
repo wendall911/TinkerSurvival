@@ -22,6 +22,8 @@ import net.minecraft.world.level.ItemLike;
 
 import net.minecraftforge.common.Tags;
 
+import slimeknights.tconstruct.tables.TinkerTables;
+
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
@@ -211,16 +213,6 @@ public class ModRecipesProvider extends RecipeProvider {
                 .group("sticks")
                 .unlockedBy("has_planks", has(ItemTags.PLANKS))
                 .save(consumer);
-
-        // TODO consider making this unlock when player gets a tool table
-        ShapelessRecipeBuilder.shapeless(Items.STICK, 4)
-                .requires(ItemTags.PLANKS)
-                .requires(TinkerSurvivalWorld.SAW.get())
-                .group("sticks")
-                .unlockedBy("has_planks", has(ItemTags.PLANKS))
-                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, sticksName));
-
-
     }
 
     private static void plankRecipeBuilder(Consumer<FinishedRecipe> consumer, ItemLike item, Tag<Item> itemTag, String label) {
@@ -233,12 +225,11 @@ public class ModRecipesProvider extends RecipeProvider {
 
         String name = Registry.ITEM.getKey(item.asItem()).getPath().toString();
 
-        // TODO consider making this unlock when player gets a tool table
         ShapelessRecipeBuilder.shapeless(item, 4)
                 .requires(itemTag)
                 .requires(TinkerSurvivalWorld.SAW.get())
                 .group("planks")
-                .unlockedBy(label, has(itemTag))
+                .unlockedBy(label, has(TinkerTables.tinkerStation))
                 .save(consumer, new ResourceLocation(TinkerSurvival.MODID, name));
     }
 

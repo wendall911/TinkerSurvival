@@ -56,7 +56,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         );
         builder(
             TagManager.Items.SAW_TOOLS,
-            TinkerSurvivalWorld.CRUDE_SAW.get()
+            TinkerSurvivalWorld.CRUDE_SAW.get(),
+            TinkerSurvivalWorld.SAW.get()
         );
         builder(TagManager.Items.SHOVEL_TOOLS);
         builder(TagManager.Items.HOE_TOOLS);

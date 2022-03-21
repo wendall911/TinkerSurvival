@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "tinkersurvival:crude_saw"
+    "tinkersurvival:crude_saw",
+    "tinkersurvival:saw"
   ]
 }

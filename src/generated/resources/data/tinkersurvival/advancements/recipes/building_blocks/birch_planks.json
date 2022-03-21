@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:birch_logs"
+            "items": [
+              "tconstruct:tinker_station"
+            ]
           }
         ]
       }
