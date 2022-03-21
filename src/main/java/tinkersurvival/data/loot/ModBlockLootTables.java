@@ -41,11 +41,14 @@ public class ModBlockLootTables extends BlockLoot {
     private static LootTable.Builder createLooseRockDrops(Block block) {
 		return LootTable.lootTable().withPool(
                 LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(TinkerSurvivalWorld.ROCK_STONE.get())))
+                    .add(LootItem.lootTableItem(TinkerSurvivalWorld.ROCK_STONE.get())));
+        /*
+         * Bonus Flint disabled
                 .withPool(LootPool.lootPool()
                     .add(LootItem.lootTableItem(Items.FLINT).when(
                         LootItemRandomChanceCondition.randomChance(ConfigHandler.Server.flintFromLooseRocksChance())
                     )));
+        */
     }
 
 }

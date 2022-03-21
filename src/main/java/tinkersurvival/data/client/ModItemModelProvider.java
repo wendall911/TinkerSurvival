@@ -54,17 +54,23 @@ public class ModItemModelProvider extends ItemModelProvider {
 	protected void blockItem(Supplier<? extends Block> block) {
 		String type = block.get().getRegistryName().getPath().toString().replace("_loose_rock", "");
 
-        try {
-            ItemModelBuilder builder = Optional.ofNullable(block.get())
-                .map(Block::asItem)
-                .map(Item::getRegistryName)
-                .map(ResourceLocation::getPath)
-                .map(path -> withExistingParent(path, modLoc("block/" + path)))
-                .orElseThrow(() -> new IllegalStateException("Failed to create model for Block Item"));
+        ItemModelBuilder builder = Optional.ofNullable(block.get())
+            .map(Block::asItem)
+            .map(Item::getRegistryName)
+            .map(ResourceLocation::getPath)
+            .map(path -> {
+                if (path.contains("rock_stone")) {
+                    path = "stone_loose_rock";
+                }
+                return withExistingParent(path, modLoc("block/" + path));
+            })
+            .orElseThrow(() -> new IllegalStateException("Failed to create model for Block Item"));
 
-            builder.texture("all", mcLoc("block/" + type));
+        if (type.contains("rock_stone")) {
+            type = "stone";
         }
-        catch (Exception e) {}
+
+        builder.texture("all", mcLoc("block/" + type));
     }
 
 }
