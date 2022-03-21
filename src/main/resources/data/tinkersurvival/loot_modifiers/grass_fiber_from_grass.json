@@ -1,0 +1,22 @@
+{
+  "type": "tinkersurvival:grass_fiber_drops",
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.1
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:match_tool",
+        "predicate": {
+          "tag": "forge:shears"
+        }
+      }
+    },
+    {
+      "condition": "block_state_property",
+      "block": "minecraft:grass"
+    }
+  ]
+}
