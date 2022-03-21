@@ -58,13 +58,14 @@ public class RockGenerator extends Feature<NoneFeatureConfiguration> {
                 final BlockState stoneState = level.getBlockState(stonePos);
                 if (looseRockSupplier.get().containsKey(stoneState.getBlock())) {
                     final Block looseRockBlock = looseRockSupplier.get().get(stoneState.getBlock()).get();
+
                     level.setBlock(pos, looseRockBlock.defaultBlockState(), 3);
-                    return true;
+                    break;
                 }
             }
         }
 
-        return false;
+        return true;
     }
 
 }

@@ -37,8 +37,8 @@ public class TinkerSurvivalWorld {
     public static DeferredRegister<Item> itemRegistry;
     public static DeferredRegister<Feature<?>> featureRegistry;
 
-    public static Lazy<ConfiguredFeature<?, ?>> looseRocksConfigured;
-    public static Lazy<PlacedFeature> looseRocksPlaced;
+    public static ConfiguredFeature<?, ?> looseRocksConfigured;
+    public static PlacedFeature looseRocksPlaced;
 
     public static CreativeTabBase tabGroup;
 
@@ -52,16 +52,14 @@ public class TinkerSurvivalWorld {
     public static RegistryObject<LooseRockBlock> sandstoneLooseRock;
     public static RegistryObject<LooseRockBlock> redSandstoneLooseRock;
 
-    public static RegistryObject<RockGenerator> looseRocks;
+    public static Feature<NoneFeatureConfiguration> looseRocksFeature;
 
     public static void init(IEventBus bus) {
         blockRegistry = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
         itemRegistry = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
-        featureRegistry = DeferredRegister.create(ForgeRegistries.FEATURES, TinkerSurvival.MODID);
 
         blockRegistry.register(bus);
         itemRegistry.register(bus);
-        featureRegistry.register(bus);
 
         tabGroup = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(flintShard.get()));
 
@@ -77,23 +75,26 @@ public class TinkerSurvivalWorld {
         flintShard = registerItem("flint_shard");
         rockStone = registerItem("rock_stone");
 
-        // Worldgen Features
-        looseRocks = featureRegistry.register("loose_rocks", RockGenerator::new);
-
-        // Worldgen Feature Configuration
-        looseRocksConfigured = registerFeature(BuiltinRegistries.CONFIGURED_FEATURE, "loose_rocks",
-            () -> looseRocks.get().configured(NoneFeatureConfiguration.INSTANCE));
-
-        looseRocksPlaced = registerFeature(BuiltinRegistries.PLACED_FEATURE, "loose_rocks", () -> looseRocksConfigured.get().placed(
-                    CountPlacement.of(5),
-                    InSquarePlacement.spread(),
-                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE
-                ));
     }
 
-    public static void setup() {
-        looseRocksConfigured.get();
-        looseRocksPlaced.get();
+    public static void setup(IEventBus bus) {
+        featureRegistry = DeferredRegister.create(ForgeRegistries.FEATURES, TinkerSurvival.MODID);
+        featureRegistry.register(bus);
+
+        // Worldgen Features
+        looseRocksFeature = new RockGenerator();
+
+        // Worldgen Feature Configuration
+        looseRocksConfigured = looseRocksFeature
+            .configured(NoneFeatureConfiguration.INSTANCE);
+
+        looseRocksPlaced = looseRocksConfigured.placed(
+                    CountPlacement.of(1),
+                    InSquarePlacement.spread(),
+                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE
+                );
+
+        featureRegistry.register("loose_rocks", () -> looseRocksFeature);
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory) {
@@ -114,12 +115,6 @@ public class TinkerSurvivalWorld {
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
         return itemRegistry.register(name, item);
-    }
-
-    private static <T> Lazy<T> registerFeature(Registry<? super T> registry, String name, Supplier<T> factory) {
-        ResourceLocation featureLocation = new ResourceLocation(TinkerSurvival.MODID, name);
-
-        return Lazy.of(() -> Registry.register(registry, featureLocation, factory.get()));
     }
 
     /*

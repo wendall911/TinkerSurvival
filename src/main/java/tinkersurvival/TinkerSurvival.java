@@ -2,7 +2,11 @@ package tinkersurvival;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -20,25 +24,28 @@ import tinkersurvival.world.TinkerSurvivalWorld;
 public class TinkerSurvival {
 
     public static final String MODID = "tinkersurvival";
-    /*
-    @SidedProxy(clientSide = "tinkersurvival.proxy.ClientProxy", serverSide = "tinkersurvival.proxy.ServerProxy")
-    public static CommonProxy proxy;
-    */
 
     public static Logger logger = LogManager.getFormatterLogger(TinkerSurvival.MODID);
 
     public TinkerSurvival() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CONFIG_SPEC);
+
+        MinecraftForge.EVENT_BUS.register(this);
 
         TinkerSurvivalWorld.init(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class SetupEvents {
-        @SubscribeEvent
-        public static void onCommonSetup(FMLCommonSetupEvent event) {
-            TinkerSurvivalWorld.setup();
-        }
+    public void setup(final FMLCommonSetupEvent event) {
+        TinkerSurvivalWorld.setup(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    @SubscribeEvent
+    public void onBiomesLoaded(BiomeLoadingEvent evt) {
+        BiomeGenerationSettingsBuilder gen = evt.getGeneration();
+
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TinkerSurvivalWorld.looseRocksPlaced);
     }
 
 }
