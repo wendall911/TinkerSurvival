@@ -1,6 +1,5 @@
 {
     "itemGroup.tinkersurvival.items": "Tinker Survival",
-    "item.tinkersurvival.rock_stone": "Kivi",
     "item.tinkersurvival.grass_fiber": "Kasvikuidut",
     "item.tinkersurvival.grass_string": "Kasvi lanka",
     "item.tinkersurvival.flint_shard": "Piikiven sirpale",
@@ -26,6 +25,7 @@
     "item.tinkersurvival.ointment": "Voide",
     "item.tinkersurvival.plant_paste": "Kasvien liima",
     "item.tinkersurvival.wooden_cup": "Salaperäinen puukuppi",
+    "block.tinkersurvival.rock_stone_block": "Kivi",
     "block.tinkersurvival.stone_loose_rock": "Loose Rock (Kivi)",
     "block.tinkersurvival.andesite_loose_rock": "Loose Rock (Andesiitti)",
     "block.tinkersurvival.diorite_loose_rock": "Loose Rock (Dioriitti)",

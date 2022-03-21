@@ -1,6 +1,5 @@
 {
     "itemGroup.tinkersurvival.items": "Tinker Survival",
-    "item.tinkersurvival.rock_stone": "Rock",
     "item.tinkersurvival.grass_fiber": "Plant Fibers",
     "item.tinkersurvival.grass_string": "Plant String",
     "item.tinkersurvival.flint_shard": "Flint Shard",
@@ -26,6 +25,7 @@
     "item.tinkersurvival.ointment": "Ointment",
     "item.tinkersurvival.plant_paste": "Plant Paste",
     "item.tinkersurvival.wooden_cup": "Mysterious Wooden Cup",
+    "block.tinkersurvival.rock_stone_block": "Rock",
     "block.tinkersurvival.stone_loose_rock": "Loose Rock (Stone)",
     "block.tinkersurvival.andesite_loose_rock": "Loose Rock (Andesite)",
     "block.tinkersurvival.diorite_loose_rock": "Loose Rock (Diorite)",

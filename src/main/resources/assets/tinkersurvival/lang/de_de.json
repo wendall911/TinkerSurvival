@@ -1,6 +1,5 @@
 {
     "itemGroup.tinkersurvival.items.items": "Tinker Survival",
-    "item.tinkersurvival.rock_stone": "Steinbrocken",
     "item.tinkersurvival.grass_fiber": "Pflanzenfasern",
     "item.tinkersurvival.grass_string": "Pflanzenschnur",
     "item.tinkersurvival.flint_shard": "Feuersteinsplitter",
@@ -26,6 +25,7 @@
     "item.tinkersurvival.ointment": "Salbe",
     "item.tinkersurvival.plant_paste": "Pflanzenpaste",
     "item.tinkersurvival.wooden_cup": "Geheimnisvoller Holzbecher",
+    "block.tinkersurvival.rock_stone_block": "Steinbrocken",
     "block.tinkersurvival.stone_loose_rock": "Lockeres Gestein (Stein)",
     "block.tinkersurvival.andesite_loose_rock": "Lockeres Gestein (Andesit)",
     "block.tinkersurvival.diorite_loose_rock": "Lockeres Gestein (Diorit)",
