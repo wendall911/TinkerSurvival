@@ -1,5 +1,6 @@
 package tinkersurvival.util;
 
+/*
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagCompound;
@@ -70,3 +71,4 @@ public class TinkerSurvivalToolLeveling extends ProjectileModifierTrait {
     }
 
 }
+*/

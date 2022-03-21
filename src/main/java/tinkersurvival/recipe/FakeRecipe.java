@@ -1,5 +1,6 @@
 package tinkersurvival.recipe;
 
+/*
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -43,3 +44,4 @@ public class FakeRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRe
         return false;
     }
 }
+*/

@@ -2,6 +2,7 @@ package tinkersurvival.proxy;
 
 import java.util.Random;
 
+/*
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
@@ -14,15 +15,19 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import slimeknights.tconstruct.library.client.ToolBuildGuiInfo;
 import slimeknights.tconstruct.library.TinkerRegistryClient;
+*/
 
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
+/*
 import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.world.TinkerSurvivalWorld;
+*/
 
-@Mod.EventBusSubscriber(Side.CLIENT)
+//@Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
+    /*
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
         TinkerSurvivalTools.registerItemModels();
@@ -75,5 +80,6 @@ public class ClientProxy extends CommonProxy {
         }
 
     }
+    */
 
 }

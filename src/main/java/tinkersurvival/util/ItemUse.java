@@ -9,11 +9,13 @@ import java.util.regex.Pattern;
 import java.util.Set;
 import java.util.Arrays;
 
+/*
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.fml.common.Loader;
+*/
 
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
@@ -42,6 +44,7 @@ public class ItemUse {
     };
     private static Set<String> toolTypes = Sets.newHashSet(TOOL_TYPES);
 
+    /*
     public static void init() {
         for (String modid : ConfigHandler.tools.MOD_TOOL_WHITELIST) {
             if (Loader.isModLoaded(modid)) {
@@ -146,5 +149,6 @@ public class ItemUse {
         String modid = getModId(itemName);
         return armorModids.contains(modid) || armorWhitelist.contains(itemName);
     }
+    */
 
 }

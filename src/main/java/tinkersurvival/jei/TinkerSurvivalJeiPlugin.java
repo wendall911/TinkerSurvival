@@ -1,5 +1,6 @@
 package tinkersurvival.jei;
 
+/*
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
@@ -26,3 +27,4 @@ public class TinkerSurvivalJeiPlugin implements IModPlugin {
     }
 
 }
+*/

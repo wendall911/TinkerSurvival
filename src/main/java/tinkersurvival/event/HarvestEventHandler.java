@@ -3,6 +3,7 @@ package tinkersurvival.event;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -35,8 +36,10 @@ import tinkersurvival.util.Chat;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
+*/
 
 public class HarvestEventHandler {
+    /*
     public static final Map<EntityPlayer, BlockPos> harvestAttempts = new HashMap<>();
 
     // Controls the slow mining speed of blocks that aren't the right tool
@@ -312,4 +315,5 @@ public class HarvestEventHandler {
             event.setCanHarvest(true);
         }
     }
+    */
 }

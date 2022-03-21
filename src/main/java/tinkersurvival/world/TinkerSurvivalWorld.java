@@ -1,33 +1,128 @@
 package tinkersurvival.world;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-import net.minecraft.block.Block;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemMultiTexture;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
+import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.registries.IForgeRegistry;
 
+import net.minecraftforge.common.util.Lazy;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+import tinkersurvival.client.CreativeTabBase;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.block.BlockRock;
-import tinkersurvival.world.item.ItemBase;
-import tinkersurvival.world.item.ItemBandage;
-import tinkersurvival.world.item.ItemWoodenCup;
-import tinkersurvival.world.item.TinkerSurvivalArmor;
-import tinkersurvival.world.potion.StopBleeding;
-import tinkersurvival.world.potion.ZombieEssence;
+import tinkersurvival.world.block.LooseRockBlock;
+import tinkersurvival.world.worldgen.RockGenerator;
 
 public class TinkerSurvivalWorld {
 
+    public static DeferredRegister<Block> blockRegistry;
+    public static DeferredRegister<Item> itemRegistry;
+    public static DeferredRegister<Feature<?>> featureRegistry;
+
+    public static Lazy<ConfiguredFeature<?, ?>> looseRocksConfigured;
+    public static Lazy<PlacedFeature> looseRocksPlaced;
+
+    public static CreativeTabBase tabGroup;
+
+    public static RegistryObject<Item> flintShard;
+    public static RegistryObject<Item> rockStone;
+
+    public static RegistryObject<LooseRockBlock> andesiteLooseRock;
+    public static RegistryObject<LooseRockBlock> dioriteLooseRock;
+    public static RegistryObject<LooseRockBlock> graniteLooseRock;
+    public static RegistryObject<LooseRockBlock> stoneLooseRock;
+    public static RegistryObject<LooseRockBlock> sandstoneLooseRock;
+    public static RegistryObject<LooseRockBlock> redSandstoneLooseRock;
+
+    public static RegistryObject<RockGenerator> looseRocks;
+
+    public static void init(IEventBus bus) {
+        blockRegistry = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
+        itemRegistry = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
+        featureRegistry = DeferredRegister.create(ForgeRegistries.FEATURES, TinkerSurvival.MODID);
+
+        blockRegistry.register(bus);
+        itemRegistry.register(bus);
+        featureRegistry.register(bus);
+
+        tabGroup = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(flintShard.get()));
+
+        // Blocks
+        andesiteLooseRock = registerBlock("andesite_loose_rock", LooseRockBlock::new);
+        dioriteLooseRock = registerBlock("diorite_loose_rock", LooseRockBlock::new);
+        graniteLooseRock = registerBlock("granite_loose_rock", LooseRockBlock::new);
+        stoneLooseRock = registerBlock("stone_loose_rock", LooseRockBlock::new);
+        sandstoneLooseRock = registerBlock("sandstone_loose_rock", LooseRockBlock::new);
+        redSandstoneLooseRock = registerBlock("red_sandstone_loose_rock", LooseRockBlock::new);
+
+        // Items
+        flintShard = registerItem("flint_shard");
+        rockStone = registerItem("rock_stone");
+
+        // Worldgen Features
+        looseRocks = featureRegistry.register("loose_rocks", RockGenerator::new);
+
+        // Worldgen Feature Configuration
+        looseRocksConfigured = registerFeature(BuiltinRegistries.CONFIGURED_FEATURE, "loose_rocks",
+            () -> looseRocks.get().configured(NoneFeatureConfiguration.INSTANCE));
+
+        looseRocksPlaced = registerFeature(BuiltinRegistries.PLACED_FEATURE, "loose_rocks", () -> looseRocksConfigured.get().placed(
+                    CountPlacement.of(5),
+                    InSquarePlacement.spread(),
+                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE
+                ));
+    }
+
+    public static void setup() {
+        looseRocksConfigured.get();
+        looseRocksPlaced.get();
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory) {
+        return registerBlock(name, blockFactory, block -> new BlockItem(block, new Item.Properties().tab(tabGroup)));
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory, Function<T, BlockItem> blockItemFactory) {
+        RegistryObject<T> block = blockRegistry.register(name, blockFactory);
+
+        registerItem(name, () -> blockItemFactory.apply(block.get()));
+
+        return block;
+    }
+
+    private static RegistryObject<Item> registerItem(String name) {
+        return registerItem(name, () -> new Item(new Item.Properties().tab(tabGroup)));
+    }
+
+    private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
+        return itemRegistry.register(name, item);
+    }
+
+    private static <T> Lazy<T> registerFeature(Registry<? super T> registry, String name, Supplier<T> factory) {
+        ResourceLocation featureLocation = new ResourceLocation(TinkerSurvival.MODID, name);
+
+        return Lazy.of(() -> Registry.register(registry, featureLocation, factory.get()));
+    }
+
+    /*
     private static final List<Item> all = new ArrayList<>();
 
     public static ArmorMaterial reinforced_wool_armor_material;
@@ -204,4 +299,5 @@ public class TinkerSurvivalWorld {
         protection[feetIndex] = Math.round(0.15f * total); // feet
         return protection;
     }
+    */
 }

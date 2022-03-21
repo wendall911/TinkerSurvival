@@ -12,9 +12,6 @@
       "textures": {
         "all": "tinkersurvival:blocks/marble_cobblestone"
       }
-    },
-    "inventory": {
-      "transform": "forge:default-block"
     }
   }
 }

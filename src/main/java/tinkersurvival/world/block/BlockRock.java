@@ -1,5 +1,9 @@
 package tinkersurvival.world.block;
 
+import javax.annotation.Nullable;
+import java.util.Random;
+
+/*
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -23,12 +27,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+*/
+
 import tinkersurvival.world.TinkerSurvivalWorld;
 
-import javax.annotation.Nullable;
-import java.util.Random;
-
-@SuppressWarnings("deprecation")
+/*
 public class BlockRock extends BlockBase {
 
     public static final IProperty<EnumMineralType> TYPE = PropertyEnum.create("type",EnumMineralType.class);
@@ -183,4 +186,6 @@ public class BlockRock extends BlockBase {
             }
         }
     }
+
 }
+*/

@@ -1,5 +1,6 @@
 package tinkersurvival.event;
 
+/*
 import net.minecraft.entity.player.EntityPlayer;
 
 import net.minecraftforge.common.util.FakePlayer;
@@ -8,9 +9,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.util.ItemUse;
+*/
 
 public class AttackEventHandler {
 
+/*
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event) {
 
@@ -30,5 +33,6 @@ public class AttackEventHandler {
             event.setCanceled(true);
         }
     }
+*/
 
 }

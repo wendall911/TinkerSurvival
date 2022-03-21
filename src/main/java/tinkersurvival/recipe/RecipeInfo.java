@@ -1,12 +1,15 @@
 package tinkersurvival.recipe;
 
+/*
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+*/
 
 import java.util.Map;
 
 class RecipeInfo {
+    /*
     private int MetaData;
     private String Name;
     private String RegName;
@@ -52,4 +55,5 @@ class RecipeInfo {
     String getItemType(){
         return this.ItemType;
     }
+    */
 }

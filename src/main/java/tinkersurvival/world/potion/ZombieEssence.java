@@ -1,5 +1,6 @@
 package tinkersurvival.world.potion;
 
+/*
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -54,3 +55,4 @@ public class ZombieEssence extends PotionBase {
     }
 
 }
+*/

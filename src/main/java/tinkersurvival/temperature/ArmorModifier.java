@@ -1,5 +1,6 @@
 package tinkersurvival.temperature;
 
+/*
 import java.util.HashMap;
 import java.util.Map;
 
@@ -114,3 +115,4 @@ public class ArmorModifier extends TemperatureModifier {
     }
 
 }
+*/

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import tinkersurvival.TinkerSurvival;
 
+/*
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockTallGrass;
@@ -15,7 +16,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+*/
 
+/*
 public class CrudeKnife extends ItemTool {
 
     private static final Set<Block> EFFECTIVE_ON =
@@ -46,3 +49,4 @@ public class CrudeKnife extends ItemTool {
     }
 
 }
+*/

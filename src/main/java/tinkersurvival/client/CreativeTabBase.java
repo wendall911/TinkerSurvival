@@ -1,23 +1,24 @@
 package tinkersurvival.client;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import java.util.function.Supplier;
 
-public class CreativeTabBase extends CreativeTabs {
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
-    protected Item tabItem;
+import net.minecraftforge.common.util.Lazy;
 
-    public CreativeTabBase(String label) {
+public class CreativeTabBase extends CreativeModeTab {
+    
+    private final Lazy<ItemStack> iconStack;
+
+    public CreativeTabBase(String label, Supplier<ItemStack> iconStack) {
         super(label);
+        this.iconStack = Lazy.of(iconStack);
     }
 
     @Override
-    public ItemStack createIcon(){
-        return new ItemStack(tabItem);
+    public ItemStack makeIcon() {
+        return iconStack.get();
     }
 
-    public void setTabItem(Item item){
-        tabItem = item;
-    }
 }

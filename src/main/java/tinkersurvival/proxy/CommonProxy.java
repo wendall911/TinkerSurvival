@@ -5,6 +5,7 @@ import com.google.common.collect.Sets;
 import java.util.HashSet;
 import java.util.Set;
 
+/*
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -23,8 +24,10 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Loader;
+*/
 
 import tinkersurvival.config.ConfigHandler;
+/*
 import tinkersurvival.event.AttackEventHandler;
 import tinkersurvival.event.BowEventHandler;
 import tinkersurvival.event.ConfigEventHandler;
@@ -43,15 +46,19 @@ import tinkersurvival.integrations.ArmorMaterials;
 import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.recipe.TinkerSurvivalRecipes;
 import tinkersurvival.temperature.ArmorModifier;
+*/
 import tinkersurvival.TinkerSurvival;
+/*
 import tinkersurvival.tools.TinkerSurvivalTools;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.TinkerSurvivalWorld;
 import tinkersurvival.world.worldgen.RockGenerator;
+*/
 
-@Mod.EventBusSubscriber
+//@Mod.EventBusSubscriber
 public class CommonProxy {
 
+    /*
     public void preInit(FMLPreInitializationEvent event) {
         TinkerSurvivalLootTables.init();
 
@@ -179,5 +186,6 @@ public class CommonProxy {
 
     public void initGuis() {
     }
+    */
 
 }

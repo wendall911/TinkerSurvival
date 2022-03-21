@@ -1,99 +1,71 @@
 package tinkersurvival.config;
 
-import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
+import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
+import net.minecraftforge.common.ForgeConfigSpec.IntValue;
+import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import tinkersurvival.TinkerSurvival;
 
-@Config(modid=TinkerSurvival.MODID)
 public class ConfigHandler {
 
-    public static Tools tools;
-    public static class Tools {
-        @Config.Comment({"List of mods that tools will always work for. All other mod tools will become wet noodles."})
-        public static String[] MOD_TOOL_WHITELIST = new String[] {
-            "opencomputers",
-            "tconstruct",
-            "tinkersurvival"
-        };
+    public static final ForgeConfigSpec CONFIG_SPEC;
+    private static final ConfigHandler CONFIG;
 
-        @Config.Comment({"List of individual tools that will always work. Format tooltype-modid:item"})
-        public static String[] TOOLS_WHITELIST = new String[] {
-            "shears-minecraft:shears",
-            "hammer-immersiveengineering:tool",
-            "wirecutter-immersiveengineering:tool",
-            "sword-immersiveengineering:revolver",
-            "sword-immersiveengineering:railgun",
-            "pickaxe-immersiveengineering:drill",
-            "wrench-ic2:wrench",
-            "wrench-ic2:electric_wrench"
-        };
+    public static BooleanValue enableRockGen;
+    public static DoubleValue rockGenChance;
+    public static BooleanValue enableRockFromDirt;
+    public static DoubleValue rockFromDirtChance;
+    public static DoubleValue flintChance;
+    public static DoubleValue grassFiberChance;
+    public static DoubleValue healRate;
+    public static DoubleValue slowDownMultiplier;
+    public static DoubleValue stickDropChanceHand;
+    public static DoubleValue stickDropChanceKnife;
+
+    static {
+        Pair<ConfigHandler,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ConfigHandler::new);
+
+        CONFIG_SPEC = specPair.getRight();
+        CONFIG = specPair.getLeft();
     }
 
-    public static Armor armor;
-    public static class Armor {
-        @Config.Comment({"List of mods that armor will always work and be craftable for. All other mod armor will not be equipable or craftable."})
-        public static String[] MOD_ARMOR_WHITELIST = new String[] {
-            "immersiveengineering",
-            "conarm"
-        };
-
-        @Config.Comment({"List of individual armor items that will always work. Format modid:item"})
-        public static String[] ARMOR_WHITELIST = new String[] {
-            "tconstruct:piggybackpack"
-        };
-
-        @Config.Comment({"List of all armor with temperature modifiers. Format modid:item=modifier"})
-        public static String[] ARMOR_TEMP_MODIFIERS = new String[] {
-            "tinkersurvival:reinforced_wool_helmet=1",
-            "tinkersurvival:reinforced_wool_chestplate=1",
-            "tinkersurvival:reinforced_wool_leggings=1",
-            "tinkersurvival:reinforced_wool_boots=1",
-            "tinkersurvival:reinforced_jelled_slime_helmet=-1",
-            "tinkersurvival:reinforced_jelled_slime_chestplate=-1",
-            "tinkersurvival:reinforced_jelled_slime_leggings=-1",
-            "tinkersurvival:reinforced_jelled_slime_boots=-1"
-        };
-
-        @Config.Comment({"Construct's Armory wool insulation modifier amount."})
-        public static int INSULATED_MODIFIER = 1;
-
-        @Config.Comment({"Construct's Armory jelled slime cooling modifier amount."})
-        public static int CHILLING_MODIFIER = -1;
+    ConfigHandler(ForgeConfigSpec.Builder builder) {
+        enableRockGen = builder
+            .comment("Enables the generation of rock piles on the surface.")
+            .define("enableRockGen", true);
+        rockGenChance = builder
+            .comment("Chance for a rocks to generate on surface. (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("rockGenChance", 1.0, 0.1, 1.0);
+        enableRockFromDirt = builder
+            .comment("Enables rock drop from harvesting dirt.")
+            .define("enableRockFromDirt", false);
+        rockFromDirtChance = builder
+            .comment("Chance for a rocks to drop from harvesting dirt with bare hands. (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("rockFromDirtChance ", 0.4, 0.1, 1.0);
+        flintChance = builder
+            .comment("Chance for a successful flint knapping. (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("flintChance", 0.6, 0.1, 1.0);
+        grassFiberChance = builder
+            .comment("Chance for tall grass to drop plant fibers. Knives are 40% more effective.  (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("grassFiberChance", 0.5, 0.1, 1.0);
+        healRate = builder
+            .comment("Heal rate for bandages. Crude bandages are 50% less effective. (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("healRate", 0.14, 0.1, 1.0);
+        slowDownMultiplier = builder
+            .comment("Option to adjust slow down on wrong tool usage. (1.0 = 100%, 2.0 = 200%, etc.)")
+            .defineInRange("slowDownMultiplier", 1.0, 1.0, 5.0);
+        stickDropChanceHand = builder
+            .comment("Chance for stick drip from breaking leaves by hand. (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("stickDropChanceHand", 0.2, 0.1, 1.0);
+        stickDropChanceKnife = builder
+            .comment("Chance for stick drip from breaking leaves with a knife (1.0 = 100%, 0.4 = 40%, etc.)")
+            .defineInRange("stickDropChanceKnife", 0.5, 0.1, 1.0);
     }
-
-    public static Balance balance;
-    public static class Balance {
-        @Config.Comment({"Enables the generation of rock piles on the surface. Default true"})
-        public static boolean ENABLE_ROCKGEN = true;
-
-        @Config.Comment({"Chance for a rocks to generate on surface. Default 1.0D (= 100%)"})
-        public static double ROCKGEN_CHANCE = 1.0D;
-
-        @Config.Comment({"Enables rock drop from harvesting dirt. (default: false)"})
-        public static boolean ENABLE_ROCK_FROM_DIRT = false;
-
-        @Config.Comment({"Chance for a rocks to drop from harvesting dirt with bare hands. Default 0.4 (= 40%)"})
-        public static double ROCK_FROM_DIRT_CHANCE = 0.4D;
-
-        @Config.Comment({"Chance for a successful flint knapping. Default 60% - 0.6D"})
-        public static double FLINT_CHANCE = 0.6D;
-
-        @Config.Comment({"Chance for tall grass to drop plant fibers. Default 60% - 0.6D. Knives are 40% more effective."})
-        public static double GRASS_FIBER_CHANCE = 0.5D;
-
-        @Config.Comment({"Heal rate for bandages. Crude bandages are 50% less effective."})
-        public static double HEAL_RATE = 0.14D;
-
-        @Config.Comment({"Option to adjust slow down on wrong tool usage. Default 1.0)"})
-        public static float SLOW_DOWN_MULTIPLIER = 1.0F;
-
-        @Config.Comment({"Chance for stick drip from breaking leaves by hand. Default 20% - 0.2F)"})
-        public static float STICK_DROP_CHANCE_HAND = 0.2F;
-
-        @Config.Comment({"Chance for stick drip from breaking leaves with a knife Default 50% - 0.5F)"})
-        public static float STICK_DROP_CHANCE_KNIFE = 0.5F;
-    }
-
+    /*
     public static Features features;
     public static class Features {
 
@@ -126,6 +98,47 @@ public class ConfigHandler {
     public static class Client {
         @Config.Comment({"Enables the fail sound if using the wrong tool."})
         public static boolean ENABLE_FAIL_SOUND = true;
+    }
+    */
+
+    public static boolean enableRockGen() {
+        return CONFIG.enableRockGen.get();
+    }
+    
+    public static double rockGenChance() {
+        return CONFIG.rockGenChance.get();
+    }
+    
+    public static boolean enableRockFromDirt() {
+        return CONFIG.enableRockFromDirt.get();
+    }
+    
+    public static double rockFromDirtChance() {
+        return CONFIG.rockFromDirtChance .get();
+    }
+    
+    public static double flintChance() {
+        return CONFIG.flintChance.get();
+    }
+    
+    public static double grassFiberChance() {
+        return CONFIG.grassFiberChance.get();
+    }
+    
+    public static double healRate() {
+        return CONFIG.healRate.get();
+    }
+    
+    public static double slowDownMultiplier() {
+        return CONFIG.slowDownMultiplier.get();
+    }
+    
+    public static double stickDropChanceHand() {
+        return CONFIG.stickDropChanceHand.get();
+    }
+    
+    public static double stickDropChanceKnife() {
+        return CONFIG.stickDropChanceKnife.get();
     }
 
 }

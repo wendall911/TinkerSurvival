@@ -4,12 +4,15 @@ import com.google.gson.JsonObject;
 
 import java.util.function.BooleanSupplier;
 
+/*
 import net.minecraft.util.JsonUtils;
 
 import net.minecraftforge.common.crafting.IConditionFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.oredict.OreDictionary;
+*/
 
+/*
 public class OreExists implements IConditionFactory {
 
     @Override
@@ -29,3 +32,4 @@ public class OreExists implements IConditionFactory {
     }
 
 }
+*/

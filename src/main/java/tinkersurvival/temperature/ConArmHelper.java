@@ -1,5 +1,6 @@
 package tinkersurvival.temperature;
 
+/*
 import c4.conarm.common.armor.utils.ArmorHelper;
 
 import net.minecraft.item.ItemStack;
@@ -33,3 +34,4 @@ public class ConArmHelper {
     }
 
 }
+*/

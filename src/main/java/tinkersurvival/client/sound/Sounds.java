@@ -1,5 +1,6 @@
 package tinkersurvival.client.sound;
 
+/*
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
@@ -10,11 +11,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.config.ConfigHandler;
+*/
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sounds {
+    /*
     private static final List<SoundEvent> sounds = new ArrayList<>();
 
     public static final SoundEvent ARMOR_FAIL = registerSound("armor_fail");
@@ -49,4 +52,5 @@ public class Sounds {
             }
         }
     }
+    */
 }

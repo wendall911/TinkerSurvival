@@ -1,5 +1,6 @@
 package tinkersurvival.recipe.condition;
 
+/*
 import com.google.gson.JsonObject;
 
 import java.util.function.BooleanSupplier;
@@ -24,3 +25,4 @@ public class ItemExists implements IConditionFactory {
     }
 
 }
+*/

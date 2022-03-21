@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -12,21 +13,27 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
+*/
 
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
+/*
 import tinkersurvival.tools.tool.CrudeHatchet;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.Knife;
 import tinkersurvival.tools.tool.Saw;
 import tinkersurvival.world.item.ItemBase;
+*/
 
+/*
 import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.TinkerRegistry;
+*/
 
 public class TinkerSurvivalTools {
 
+    /*
     private static final List<Item> all = new ArrayList<>();
     private static final Map<String, ItemStack> oredictItems = new HashMap<>();
 
@@ -122,5 +129,6 @@ public class TinkerSurvivalTools {
             }
         });
     }
+    */
 
 }

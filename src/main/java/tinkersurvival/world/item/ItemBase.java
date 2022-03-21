@@ -1,5 +1,6 @@
 package tinkersurvival.world.item;
 
+/*
 import net.minecraft.item.Item;
 
 import tinkersurvival.TinkerSurvival;
@@ -22,3 +23,4 @@ public class ItemBase extends Item {
     }
 
 }
+*/

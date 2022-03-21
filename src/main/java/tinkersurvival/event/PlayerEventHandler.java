@@ -1,5 +1,6 @@
 package tinkersurvival.event;
 
+/*
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -10,12 +11,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+*/
+
+/*
 import tinkersurvival.client.sound.Sounds;
+*/
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class PlayerEventHandler {
 
+    /*
     @SubscribeEvent
     public void playerInteractEvent(PlayerInteractEvent event) {
         // Control for flint shard creation
@@ -46,4 +52,5 @@ public class PlayerEventHandler {
             Sounds.play(event.getEntityPlayer(), Sounds.FLINT_KNAPPING, 0.8F, 1.0F);
         }
     }
+    */
 }

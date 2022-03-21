@@ -12,9 +12,6 @@
       "textures": {
         "all": "tinkersurvival:blocks/slate_cobblestone"
       }
-    },
-    "inventory": {
-      "transform": "forge:default-block"
     }
   }
 }

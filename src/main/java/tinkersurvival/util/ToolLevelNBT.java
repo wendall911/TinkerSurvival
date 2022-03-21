@@ -1,5 +1,6 @@
 package tinkersurvival.util;
 
+/*
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -34,3 +35,4 @@ public class ToolLevelNBT extends ModifierNBT {
     }
 
 }
+*/

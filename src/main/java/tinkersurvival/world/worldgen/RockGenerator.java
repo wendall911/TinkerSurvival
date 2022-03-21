@@ -1,106 +1,70 @@
 package tinkersurvival.world.worldgen;
 
+import com.google.common.collect.ImmutableMap;
+
+import java.util.Map;
 import java.util.Random;
+import java.util.function.Supplier;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Biomes;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.IChunkGenerator;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.fml.common.IWorldGenerator;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.WorldGenLevel;
 
-import tinkersurvival.config.ConfigHandler;
-import tinkersurvival.world.block.BlockRock;
+import net.minecraftforge.common.util.Lazy;
+
+import tinkersurvival.TinkerSurvival;
+import tinkersurvival.util.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
-import static tinkersurvival.world.block.BlockRock.EnumMineralType;
-import static tinkersurvival.world.block.BlockRock.EnumMineralType.*;
-import static tinkersurvival.world.block.BlockRock.TYPE;
+public class RockGenerator extends Feature<NoneFeatureConfiguration> {
 
-public class RockGenerator {
+    private static final Lazy<Map<Block, Supplier<? extends Block>>> looseRockSupplier = Lazy.of(() -> new ImmutableMap.Builder<Block, Supplier<? extends Block>>()
+        .put(Blocks.STONE, TinkerSurvivalWorld.stoneLooseRock)
+        .put(Blocks.ANDESITE, TinkerSurvivalWorld.andesiteLooseRock)
+        .put(Blocks.DIORITE, TinkerSurvivalWorld.dioriteLooseRock)
+        .put(Blocks.GRANITE, TinkerSurvivalWorld.graniteLooseRock)
+        .put(Blocks.SANDSTONE, TinkerSurvivalWorld.sandstoneLooseRock)
+        .put(Blocks.RED_SANDSTONE, TinkerSurvivalWorld.redSandstoneLooseRock)
+        .put(Blocks.TERRACOTTA, TinkerSurvivalWorld.redSandstoneLooseRock)
+        .put(Blocks.SAND, TinkerSurvivalWorld.sandstoneLooseRock)
+        .put(Blocks.RED_SAND, TinkerSurvivalWorld.redSandstoneLooseRock)
+        .build()
+    );
 
-    @SubscribeEvent
-    public void decorateBiome(DecorateBiomeEvent.Post event) {
-        if(!ConfigHandler.balance.ENABLE_ROCKGEN){
-            return;
-        }
-
-        World world = event.getWorld();
-        Random random = event.getRand();
-        int chunkX = event.getChunkPos().x;
-        int chunkZ = event.getChunkPos().z;
-        // Generate Surface Loose Rocks
-        if (world.provider.getDimension() == 0) {
-            for (int i = 0; i < 3; i++) {
-                int xCoord = chunkX * 16 + random.nextInt(16) + 8;
-                int zCoord = chunkZ * 16 + random.nextInt(16) + 8;
-                if (world.getBiome(new BlockPos(xCoord, 1, zCoord)) != Biomes.OCEAN
-                        && world.getBiome(new BlockPos(xCoord, 1, zCoord)) != Biomes.DEEP_OCEAN
-                        && world.getBiome(new BlockPos(xCoord, 1, zCoord)) != Biomes.FROZEN_OCEAN) {
-                    generateRocks(
-                        world,
-                        random,
-                        xCoord,
-                        world.getTopSolidOrLiquidBlock(new BlockPos(xCoord, 1, zCoord)).getY() - 1,
-                        zCoord
-                    );
-                }
-            }
-        }
+    public RockGenerator() {
+        super(NoneFeatureConfiguration.CODEC);
     }
 
-    private boolean generateRocks(World world, Random random, int i, int j, int k) {
-        Block upBl = world.getBlockState(new BlockPos(i, j + 1, k)).getBlock();
-        Block atBl = world.getBlockState(new BlockPos(i, j, k)).getBlock();
-        Block downBl = world.getBlockState(new BlockPos(i, j - 5, k)).getBlock();
+    @Override
+    @ParametersAreNonnullByDefault
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        final WorldGenLevel level = context.level();
+        final BlockPos pos = context.origin();
 
-        Material atMat = atBl.getBlockState().getBaseState().getMaterial();
+        final BlockState stateAt = level.getBlockState(pos);
+        final BlockState stateDown = level.getBlockState(pos.below());
 
-        if (random.nextDouble() < ConfigHandler.balance.ROCKGEN_CHANCE
-                && (world.isAirBlock(new BlockPos(i, j + 1, k))
-                    || upBl == Blocks.SNOW_LAYER
-                    || upBl == Blocks.TALLGRASS
-                    || upBl == Blocks.SNOW)
-                && (atMat == Material.GRASS
-                    || atMat == Material.ROCK
-                    || atMat == Material.SAND
-                    || atMat == Material.GROUND)
-                && atBl.getDefaultState().isOpaqueCube()) {
-
-            BlockRock.EnumMineralType type;
-            if (downBl == Blocks.STONE) {
-                switch (downBl.getMetaFromState(world.getBlockState(new BlockPos(i, j - 5, k)))) {
-                    case 1:
-                        type = GRANITE;
-                        break;
-                    case 3:
-                        type = DIORITE;
-                        break;
-                    case 5:
-                        type = ANDESITE;
-                        break;
-                    default:
-                        type = STONE;
-                }
-            } else {
-                switch (downBl.getTranslationKey()) {
-                    default:
-                        type = STONE;
+        if (stateAt.isAir() && TagManager.Blocks.looseRockPlaceableOn.contains(stateDown.getBlock())) {
+            for (int y = 1; y <= 8; y++) {
+                final BlockPos stonePos = pos.below(y);
+                final BlockState stoneState = level.getBlockState(stonePos);
+                if (looseRockSupplier.get().containsKey(stoneState.getBlock())) {
+                    final Block looseRockBlock = looseRockSupplier.get().get(stoneState.getBlock()).get();
+                    level.setBlock(pos, looseRockBlock.defaultBlockState(), 3);
+                    return true;
                 }
             }
-            world.setBlockState(
-                new BlockPos(i, j + 1, k),
-                TinkerSurvivalWorld.looseRock.getDefaultState().withProperty(TYPE, type)
-            );
         }
-        return true;
+
+        return false;
     }
 
 }

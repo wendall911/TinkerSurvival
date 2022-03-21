@@ -3,6 +3,7 @@ package tinkersurvival.recipe;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -11,12 +12,16 @@ import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+*/
 import tinkersurvival.TinkerSurvival;
+/*
 import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.tools.tool.Knife;
 import tinkersurvival.tools.tool.Saw;
+*/
 
+/*
 public class ShapedOreRecipeHelper extends ShapedOreRecipe {
 
     public ShapedOreRecipeHelper(ResourceLocation group, ItemStack result, Object... recipe) {
@@ -91,3 +96,4 @@ public class ShapedOreRecipeHelper extends ShapedOreRecipe {
     }
 
 }
+*/

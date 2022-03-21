@@ -1,5 +1,6 @@
 package tinkersurvival.event;
 
+/*
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -9,9 +10,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.util.ItemUse;
+*/
 
 public class LivingEquipmentChangeEventHandler {
 
+    /*
     @SubscribeEvent
     public void onChange(LivingEquipmentChangeEvent event) {
         if (event.getEntityLiving() instanceof EntityPlayer) {
@@ -32,4 +35,5 @@ public class LivingEquipmentChangeEventHandler {
             }
         }
     }
+    */
 }

@@ -1,73 +1,44 @@
 package tinkersurvival;
 
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.ModLoadingContext;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import tinkersurvival.client.CreativeTabBase;
-import tinkersurvival.proxy.CommonProxy;
-import tinkersurvival.recipe.TinkerSurvivalRecipes;
-import tinkersurvival.util.TinkerSurvivalToolLeveling;
+import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.world.TinkerSurvivalWorld;
 
-@Mod(modid = TinkerSurvival.MODID,
-     version = TinkerSurvival.MOD_VERSION,
-     name = TinkerSurvival.MOD_NAME,
-     certificateFingerprint = "@FINGERPRINT@",
-     dependencies = "required-after:forge@[@FORGE_VERSION@,);"
-         + "after:tinkertoollevling@[@TTL_VERSION@,);"
-         + "after:*",
-     acceptedMinecraftVersions = "[@MC_VERSION@,)"
-)
-
+@Mod(TinkerSurvival.MODID)
 public class TinkerSurvival {
 
-    public static final String MODID = "@MODID@";
-    public static final String MOD_VERSION = "@MOD_VERSION@";
-    public static final String MOD_NAME = "@MOD_NAME@";
-
-    public static TinkerSurvivalToolLeveling modToolLeveling = new TinkerSurvivalToolLeveling();
-    public static final CreativeTabBase TS_Tab = new CreativeTabBase(MODID);
-
+    public static final String MODID = "tinkersurvival";
+    /*
     @SidedProxy(clientSide = "tinkersurvival.proxy.ClientProxy", serverSide = "tinkersurvival.proxy.ServerProxy")
     public static CommonProxy proxy;
-
-    @Mod.Instance
-    public static TinkerSurvival instance;
+    */
 
     public static Logger logger = LogManager.getFormatterLogger(TinkerSurvival.MODID);
 
-    @Mod.EventHandler
-    public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        logger.warn("Invalid fingerprint detected!");
+    public TinkerSurvival() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CONFIG_SPEC);
+
+        TinkerSurvivalWorld.init(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        logger.info("Pre-init started");
-        proxy.preInit(event);
-    }
-
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-        logger.info("Init started");
-        proxy.init(event);
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        logger.info("Post-init started");
-        proxy.postInit(event);
-        logger.info("Finished Loading");
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class SetupEvents {
+        @SubscribeEvent
+        public static void onCommonSetup(FMLCommonSetupEvent event) {
+            TinkerSurvivalWorld.setup();
+        }
     }
 
 }
-

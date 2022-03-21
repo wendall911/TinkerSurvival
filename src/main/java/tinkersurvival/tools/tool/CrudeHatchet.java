@@ -2,11 +2,14 @@ package tinkersurvival.tools.tool;
 
 import java.util.Set;
 
+/*
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+*/
 
 import tinkersurvival.TinkerSurvival;
 
+/*
 public class CrudeHatchet extends ItemAxe {
 
     public String name;
@@ -25,3 +28,4 @@ public class CrudeHatchet extends ItemAxe {
     }
 
 }
+*/

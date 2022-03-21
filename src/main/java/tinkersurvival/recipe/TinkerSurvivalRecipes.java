@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+/*
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -16,15 +17,19 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 
 import net.minecraftforge.oredict.OreDictionary;
+*/
 
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.config.ConfigHandler;
+/*
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.TinkerSurvivalWorld;
+*/
 import tinkersurvival.util.functionalInterfaces.*;
 
 public class TinkerSurvivalRecipes {
 
+    /*
     private static void initSmeltingRecipes() {
         RecipeHelper.addSmelting(new ItemStack(TinkerSurvivalWorld.grassString), new ItemStack(Items.STRING));
     }
@@ -184,6 +189,7 @@ public class TinkerSurvivalRecipes {
         Map<String, String> woodOreMap = new HashMap<>();
         Map<String, Boolean> hasStickWood = new HashMap<>();
         List<String> plankOreRecipes = new ArrayList<>();
+        */
 
         /*
          * This probably has some mods it could conceivably not work for.
@@ -191,6 +197,8 @@ public class TinkerSurvivalRecipes {
          * that doesn't require planks as the base. So we hope that
          * whatever mod decided to have "stick" in the name of their sticks.
          */
+        
+            /*
         processRecipes("stickWood", (n, m) -> {
             if (n.contains("stick")) {
                 hasStickWood.put(n.split(":")[0], true);
@@ -211,6 +219,7 @@ public class TinkerSurvivalRecipes {
          * If a mod provides stick recipes, then we won't deal with it in the
          * wildcard recipe replacement.
          */
+        /*
         processRecipes("plankWood", (n, m) -> {
             String mod = n.split(":")[0];
             if (mod.equals("minecraft") || hasStickWood.get(mod) == null) {
@@ -271,4 +280,5 @@ public class TinkerSurvivalRecipes {
         initSmeltingRecipes();
         initBowlRecipes();
     }
+    */
 }

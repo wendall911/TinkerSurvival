@@ -1,5 +1,6 @@
 package tinkersurvival.integrations;
 
+/*
 import c4.conarm.lib.traits.AbstractArmorTrait;
 
 public class ArmorTraitInsulated extends AbstractArmorTrait {
@@ -9,3 +10,4 @@ public class ArmorTraitInsulated extends AbstractArmorTrait {
     }
 
 }
+*/

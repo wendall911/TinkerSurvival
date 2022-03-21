@@ -1,5 +1,6 @@
 package tinkersurvival.world.item;
 
+/*
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -69,3 +70,4 @@ public class ItemWoodenCup extends ItemBase {
     }
 
 }
+*/

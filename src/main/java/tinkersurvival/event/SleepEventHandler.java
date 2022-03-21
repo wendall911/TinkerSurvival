@@ -1,17 +1,20 @@
 package tinkersurvival.event;
 
+/*
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.World;
 
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+*/
 
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.util.Chat;
 
 public class SleepEventHandler {
 
+    /*
     @SubscribeEvent
     public void onPlayerSleep(PlayerSleepInBedEvent event) {
         if (ConfigHandler.features.NO_SLEEPING) {
@@ -27,5 +30,6 @@ public class SleepEventHandler {
             }
         }
     }
+    */
 
 }

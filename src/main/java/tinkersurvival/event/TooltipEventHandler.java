@@ -1,5 +1,6 @@
 package tinkersurvival.event;
 
+/*
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -13,15 +14,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import slimeknights.tconstruct.library.utils.TinkerUtil;
+*/
 
 import tinkersurvival.TinkerSurvival;
+/*
 import tinkersurvival.tools.tool.Knife;
 import tinkersurvival.tools.tool.Saw;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.util.ToolLevelNBT;
+*/
 
 public class TooltipEventHandler {
 
+    /*
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void onItemToolTip(ItemTooltipEvent event) {
@@ -76,5 +81,6 @@ public class TooltipEventHandler {
             }
         }
     }
+    */
 
 }

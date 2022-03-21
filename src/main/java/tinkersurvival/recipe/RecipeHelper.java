@@ -1,5 +1,6 @@
 package tinkersurvival.recipe;
 
+/*
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -12,9 +13,11 @@ import net.minecraftforge.registries.GameData;
 
 import tinkersurvival.recipe.FakeRecipe;
 import tinkersurvival.recipe.ShapedOreRecipeHelper;
+*/
 
 public class RecipeHelper {
 
+    /*
     public static void addShapedOreRecipe(ItemStack output, Object... params) {
         ResourceLocation location = getSafeNameForRecipe(output);
         IRecipe recipe = new ShapedOreRecipeHelper(location, output, params).setRegistryName(location);
@@ -41,5 +44,6 @@ public class RecipeHelper {
         }
         return recipeLoc;
     }
+    */
 
 }

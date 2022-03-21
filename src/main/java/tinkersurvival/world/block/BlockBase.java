@@ -1,10 +1,14 @@
 package tinkersurvival.world.block;
 
+/*
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+*/
+
 import tinkersurvival.TinkerSurvival;
 
+/*
 public class BlockBase extends Block {
 
     public String name;
@@ -32,4 +36,6 @@ public class BlockBase extends Block {
         super.setSoundType(soundType);
         return this;
     }
+
 }
+*/

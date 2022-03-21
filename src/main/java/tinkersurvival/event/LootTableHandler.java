@@ -1,16 +1,19 @@
 package tinkersurvival.event;
 
+/*
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.LootTable;
 
 import net.minecraftforge.event.LootTableLoadEvent; 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+*/
 
 import tinkersurvival.TinkerSurvival;
 
 public class LootTableHandler {
     
+    /*
     @SubscribeEvent
     public void lootLoad(LootTableLoadEvent event) {
         if (event.getName().toString().equals("minecraft:gameplay/fishing/treasure")) {
@@ -19,5 +22,6 @@ public class LootTableHandler {
             event.getTable().addPool(customPool);
         }
     }
+    */
 
 }

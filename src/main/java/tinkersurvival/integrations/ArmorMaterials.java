@@ -1,5 +1,6 @@
 package tinkersurvival.integrations;
 
+/*
 import c4.conarm.lib.materials.ArmorMaterialType;
 import c4.conarm.lib.materials.CoreMaterialStats;;
 import c4.conarm.lib.materials.PlatesMaterialStats;;
@@ -19,9 +20,11 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 
 import tinkersurvival.integrations.ArmorTraitInsulated;
 import tinkersurvival.integrations.ArmorTraitChilling;
+*/
 
 public class ArmorMaterials {
 
+    /*
     public static Material wool;
     public static Material jelledSlime;
     public static ITrait insulated = new ArmorTraitInsulated();
@@ -65,5 +68,6 @@ public class ArmorMaterials {
         material.addTrait(trait, ArmorMaterialType.PLATES);
         material.addTrait(trait, ArmorMaterialType.TRIM);
     }
+    */
 
 }

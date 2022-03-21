@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "tinkersurvival:granite_loose_rock",
+    "tinkersurvival:andesite_loose_rock",
+    "tinkersurvival:diorite_loose_rock",
+    "tinkersurvival:stone_loose_rock",
+    "tinkersurvival:sandstone_loose_rock",
+    "tinkersurvival:red_sandstone_loose_rock"
+  ]
+}
