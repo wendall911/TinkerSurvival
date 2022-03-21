@@ -8,12 +8,19 @@ buildscript {
             name = 'forge'
             url = 'https://files.minecraftforge.net/maven'
         }
+        maven {
+            url "https://repo.spongepowered.org/repository/maven-public/"
+            content {
+                includeGroup "org.spongepowered"
+            }
+        }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.4.0'
         classpath 'se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.71.8'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
@@ -21,6 +28,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'maven-publish'
 apply plugin: 'se.bjurr.gitchangelog.git-changelog-gradle-plugin'
 apply plugin: 'com.matthewprenger.cursegradle'
+apply plugin: 'org.spongepowered.mixin'
 
 repositories {
     maven {
@@ -52,7 +60,10 @@ minecraft {
     runs {
         client {
             workingDirectory project.file("run").canonicalPath
+            arg "-mixin.config=${modid}.mixins.json"
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 tinkersurvival {
@@ -63,6 +74,10 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
+            arg "-mixin.config=${modid}.mixins.json"
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 tinkersurvival {
@@ -73,6 +88,10 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
+            arg "-mixin.config=${modid}.mixins.json"
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             args '--mod', 'tinkersurvival',
                     '--all',
@@ -96,6 +115,8 @@ sourceSets.main.resources {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+
     implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tic_version}")
 
@@ -118,9 +139,14 @@ jar {
             "Implementation-Title": "${mod_name}",
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"${mod_author}",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "${modid}.mixins.json"
         ])
     }
+}
+
+mixin {
+    add sourceSets.main, "${modid}.refmap.json"
 }
 
 jar.finalizedBy('reobfJar', 'signJar')

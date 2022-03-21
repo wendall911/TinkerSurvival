@@ -19,6 +19,7 @@ public final class TagManager {
         public static final Tag.Named<Item> SHOVEL_TOOLS = create("shovel_tools");
         public static final Tag.Named<Item> HOE_TOOLS = create("hoe_tools");
         public static final Tag.Named<Item> KNIFE_TOOLS = create("knife_tools");
+        public static final Tag.Named<Item> SHARP_TOOLS = create("sharp_tools");
         public static final Tag.Named<Item> ROCK = create("rock");
         public static final Tag.Named<Item> SAW_PARTS = create("saw_parts");
         public static final Tag.Named<Item> BANDAGES = create("bandages");

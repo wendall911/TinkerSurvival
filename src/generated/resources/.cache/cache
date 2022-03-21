@@ -177,6 +177,7 @@ fcc578763803169f839402a996857e75bcb9bd3d data/tinkersurvival/tags/items/casts/si
 ded896a93c81d63545d01f21a1759904948736c8 data/tinkersurvival/tags/items/rock.json
 95524f897afc4f6f5d14ee6eba387e3704ed8725 data/tinkersurvival/tags/items/saw_parts.json
 804959d973f4e6ca282db0fd35f583b9cdeaf3e9 data/tinkersurvival/tags/items/saw_tools.json
+74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/tinkersurvival/tags/items/sharp_tools.json
 74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/tinkersurvival/tags/items/shovel_tools.json
 fc0414e25bf3b38557abafac91ee5403464758a8 data/tinkersurvival/tinkering/station_layouts/saw.json
 1194d9f0b4826df0534d73e4141aef1eba39c8c4 data/tinkersurvival/tinkering/tool_definitions/saw.json

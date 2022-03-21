@@ -66,6 +66,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TagManager.Items.KNIFE_TOOLS,
             TinkerSurvivalItems.CRUDE_KNIFE.get()
         );
+        builder(TagManager.Items.SHARP_TOOLS);
         builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE.get());
         builder(
             TagManager.Items.SAW_PARTS,

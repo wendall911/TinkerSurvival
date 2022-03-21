@@ -17,6 +17,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import tinkersurvival.common.HarvestBlock;
 import tinkersurvival.common.TinkerSurvivalModule;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.proxy.ClientProxy;
@@ -49,6 +50,7 @@ public class TinkerSurvival {
         if (ConfigHandler.Server.enableRockGen()) {
             TinkerSurvivalWorld.setup(BUS);
         }
+        HarvestBlock.setup();
     }
 
     @SubscribeEvent

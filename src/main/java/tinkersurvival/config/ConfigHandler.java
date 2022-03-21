@@ -1,5 +1,10 @@
 package tinkersurvival.config;
 
+import java.util.Arrays;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.List;
+
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
@@ -29,7 +34,7 @@ public final class ConfigHandler {
         public static final ForgeConfigSpec CONFIG_SPEC;
         private static final Client CONFIG;
 
-        public static BooleanValue ENABLE_FAIL_SOUND;
+        private static BooleanValue ENABLE_FAIL_SOUND;
 
         static {
             Pair<Client,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
@@ -53,7 +58,17 @@ public final class ConfigHandler {
     public static final class Common {
 
         public static final ForgeConfigSpec CONFIG_SPEC;
+
         private static final Common CONFIG;
+
+        private static final List<String> MODS_LIST = Arrays.asList("mods");
+        private static String[] modsStrings = new String[] {
+            "tconstruct",
+            "tinkersurvival"
+        };
+        private static Predicate<Object> modidValidator = s -> s instanceof String
+                && ((String) s).matches("[a-z]+");
+        private final ConfigValue<List<? extends String>> MODS;
 
         static {
             Pair<Common,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
@@ -63,6 +78,20 @@ public final class ConfigHandler {
         }
 
         Common(ForgeConfigSpec.Builder builder) {
+            MODS = builder
+                .comment("List of mods that tools will always work for. All other mod tools will become wet noodles. Default: "
+                        + "[\"" + String.join("\", \"", modsStrings) + "\"]")
+                .defineListAllowEmpty(MODS_LIST, getFields(modsStrings), modidValidator);
+        }
+
+        private static Supplier<List<? extends String>> getFields(String[] strings) {
+            return () -> Arrays.asList(strings);
+        }
+
+        public static List<String> whitelistMods() {
+            List<String> mods = (List<String>) CONFIG.MODS.get();
+
+            return mods;
         }
 
     }
@@ -124,6 +153,7 @@ public final class ConfigHandler {
         }
         
     }
+
     /*
     public static Features features;
     public static class Features {
