@@ -3,6 +3,10 @@
   "values": [
     "tinkersurvival:crude_hatchet",
     "tconstruct:hand_axe",
-    "tconstruct:broad_axe"
+    "tconstruct:broad_axe",
+    {
+      "id": "immersiveengineering:buzzsaw",
+      "required": false
+    }
   ]
 }

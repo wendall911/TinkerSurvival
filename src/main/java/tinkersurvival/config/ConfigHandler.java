@@ -70,6 +70,16 @@ public final class ConfigHandler {
                 && ((String) s).matches("[a-z]+");
         private final ConfigValue<List<? extends String>> MODS;
 
+        private static final List<String> ITEMS_LIST = Arrays.asList("items");
+        private static String[] itemsStrings = new String[] {
+            "immersiveengineering:drill",
+            "immersiveengineering:buzzsaw",
+            "immersiveengineering:revolver",
+        };
+        private static Predicate<Object> itemidValidator = s -> s instanceof String
+                && ((String) s).matches("[a-z]+[:]{1}[a-z]+");
+        private final ConfigValue<List<? extends String>> ITEMS;
+
         static {
             Pair<Common,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
 
@@ -82,6 +92,10 @@ public final class ConfigHandler {
                 .comment("List of mods that tools will always work for. All other mod tools will become wet noodles. Default: "
                         + "[\"" + String.join("\", \"", modsStrings) + "\"]")
                 .defineListAllowEmpty(MODS_LIST, getFields(modsStrings), modidValidator);
+            ITEMS = builder
+                .comment("List of individual tools that will always work. Format modid:item Default: "
+                        + "[\"" + String.join("\", \"", itemsStrings) + "\"]")
+                .defineListAllowEmpty(ITEMS_LIST, getFields(itemsStrings), itemidValidator);
         }
 
         private static Supplier<List<? extends String>> getFields(String[] strings) {
@@ -92,6 +106,12 @@ public final class ConfigHandler {
             List<String> mods = (List<String>) CONFIG.MODS.get();
 
             return mods;
+        }
+
+        public static List<String> whitelistItems() {
+            List<String> items = (List<String>) CONFIG.ITEMS.get();
+
+            return items;
         }
 
     }

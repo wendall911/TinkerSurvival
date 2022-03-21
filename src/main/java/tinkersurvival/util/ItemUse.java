@@ -21,8 +21,6 @@ import tinkersurvival.util.ToolType;
 
 public class ItemUse {
 
-    private static Map<String, String> whitelistToolsMap = new HashMap<>();
-
 	private static List<String> TOOL_TYPES = new ArrayList<String>(
         Arrays.asList(
             "pickaxe",
@@ -51,7 +49,7 @@ public class ItemUse {
         String modid = getModId(itemName);
 
         return ConfigHandler.Common.whitelistMods().contains(modid)
-            || whitelistToolsMap.get(itemName) != null;
+            || ConfigHandler.Common.whitelistItems().contains(itemName);
     }
 
     private static String getModId(String name) {
@@ -66,16 +64,13 @@ public class ItemUse {
 
     public static String getToolClass(ItemStack stack) {
         String itemName = stack.getItem().getRegistryName().toString();
-        String type = whitelistToolsMap.get(itemName);
+        String type = null;
 
-        if (type == null) {
-            String[] nameParts = itemName.split("[^a-z]+");
-            for (String toolType : TOOL_TYPES) {
-                if (itemName.contains(toolType)
-                        && type == null
-                        && Arrays.asList(nameParts).contains(toolType)) {
-                    type = toolType;
-                }
+        String[] nameParts = itemName.split("[^a-z]+");
+        for (String toolType : TOOL_TYPES) {
+            if (itemName.contains(toolType)
+                    && Arrays.asList(nameParts).contains(toolType)) {
+                type = toolType;
             }
         }
 

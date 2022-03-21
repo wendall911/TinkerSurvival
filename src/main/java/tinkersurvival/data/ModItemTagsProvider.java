@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -54,30 +55,28 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             Items.FLINT,
             TinkerSurvivalWorld.ROCK_STONE.get()
         );
-        builder(
-            TagManager.Items.PICKAXE_TOOLS,
-            TinkerTools.pickaxe,
-            TinkerTools.pickadze,
-            TinkerTools.sledgeHammer,
-            TinkerTools.veinHammer
-        );
-        builder(
-            TagManager.Items.AXE_TOOLS,
-            TinkerSurvivalItems.CRUDE_HATCHET.get(),
-            TinkerTools.handAxe,
-            TinkerTools.broadAxe
-        );
+        getBuilder(TagManager.Items.PICKAXE_TOOLS)
+            .add(TinkerTools.pickaxe.asItem())
+            .add(TinkerTools.pickadze.asItem())
+            .add(TinkerTools.sledgeHammer.asItem())
+            .add(TinkerTools.veinHammer.asItem())
+            .addOptional(ieLoc("buzzsaw"))
+            .addOptional(ieLoc("drill"));
+        getBuilder(TagManager.Items.AXE_TOOLS)
+            .add(TinkerSurvivalItems.CRUDE_HATCHET.get().asItem())
+            .add(TinkerTools.handAxe.asItem())
+            .add(TinkerTools.broadAxe.asItem())
+            .addOptional(ieLoc("buzzsaw"));
         builder(
             TagManager.Items.SAW_TOOLS,
             TinkerSurvivalItems.CRUDE_SAW.get(),
             TinkerSurvivalItems.SAW.get()
         );
-        builder(
-            TagManager.Items.SHOVEL_TOOLS,
-            TinkerTools.mattock,
-            TinkerTools.pickadze,
-            TinkerTools.excavator
-        );
+        getBuilder(TagManager.Items.SHOVEL_TOOLS)
+            .add(TinkerTools.mattock.asItem())
+            .add(TinkerTools.pickadze.asItem())
+            .add(TinkerTools.excavator.asItem())
+            .addOptional(ieLoc("drill"));
         builder(
             TagManager.Items.HOE_TOOLS,
             TinkerTools.kama,
@@ -141,6 +140,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     private void builder(Tag.Named<Item> tag, ItemLike... items) {
         getBuilder(tag).add(Arrays.stream(items).map(ItemLike::asItem).toArray(Item[]::new));
+    }
+
+    private ResourceLocation ieLoc(String name) {
+        return new ResourceLocation("immersiveengineering", name);
     }
 
     protected TagsProvider.TagAppender<Item> getBuilder(Tag.Named<Item> tag) {

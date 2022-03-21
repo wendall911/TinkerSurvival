@@ -34,6 +34,11 @@ public class TicToolBase extends ModifiableItem {
         ToolStack tool = ToolStack.from(container);
         Player player = ForgeHooks.getCraftingPlayer();
 
+        // Don't allow autocrafters, as we have no way to invalidate recipe for broken tool
+        if (player == null) {
+            return ItemStack.EMPTY;
+        }
+
         if (tool.isBroken()) {
             // Don't do that!
             player.hurt(DamageSource.GENERIC, 0.5f);

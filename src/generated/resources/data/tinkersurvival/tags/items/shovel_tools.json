@@ -3,6 +3,10 @@
   "values": [
     "tconstruct:mattock",
     "tconstruct:pickadze",
-    "tconstruct:excavator"
+    "tconstruct:excavator",
+    {
+      "id": "immersiveengineering:drill",
+      "required": false
+    }
   ]
 }
