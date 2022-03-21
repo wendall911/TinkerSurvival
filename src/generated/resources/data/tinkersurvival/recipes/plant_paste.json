@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "F",
+    "U"
+  ],
+  "key": {
+    "F": {
+      "item": "tinkersurvival:plant_fiber"
+    },
+    "U": {
+      "item": "tinkersurvival:mortar_and_pestle"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:plant_paste"
+  }
+}

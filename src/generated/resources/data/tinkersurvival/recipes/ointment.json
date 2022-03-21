@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "tinkersurvival:plant_paste"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:ointment"
+  }
+}

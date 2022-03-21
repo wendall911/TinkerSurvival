@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:flint"
+      "tinkersurvival:plant_paste"
     ]
   },
   "criteria": {
-    "has_flint_shard": {
+    "has_plant_fiber": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "tinkersurvival:flint_shard"
+              "tinkersurvival:plant_fiber"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:flint"
+        "recipe": "tinkersurvival:plant_paste"
       }
     }
   },
   "requirements": [
     [
-      "has_flint_shard",
+      "has_plant_fiber",
       "has_the_recipe"
     ]
   ]

@@ -3,13 +3,14 @@
   "group": "sticks",
   "ingredients": [
     {
-      "tag": "minecraft:saplings"
+      "tag": "minecraft:planks"
     },
     {
-      "item": "tinkersurvival:crude_knife"
+      "tag": "tinkersurvival:saw_tools"
     }
   ],
   "result": {
-    "item": "minecraft:stick"
+    "item": "minecraft:stick",
+    "count": 2
   }
 }

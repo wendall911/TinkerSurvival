@@ -1,23 +1,20 @@
-package tinkersurvival.world.potion;
+package tinkersurvival.world.effect;
 
-/*
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
 
-import tinkersurvival.world.potion.PotionBase;
-
-public class ZombieEssence extends PotionBase {
+public class ZombieEssence extends MobEffect {
 
     private int since = 0;
 
     public ZombieEssence() {
-        super("zombieessence", false, 0x8db7c4);
+        super(MobEffectCategory.NEUTRAL, 0x8db7c4);
     }
 
     @Override
-    public void performEffect(EntityLivingBase entity, int amplifier) {
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        /*
         World world = entity.getEntityWorld();
         boolean noGravity = false;
         boolean noClip = false;
@@ -47,12 +44,12 @@ public class ZombieEssence extends PotionBase {
 
         entity.setNoGravity(noGravity);
         entity.noClip = noClip;
+        */
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier) {
+    public boolean isDurationEffectTick(int duration, int amplifier) {
         return true;
     }
 
 }
-*/

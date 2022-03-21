@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "tinkersurvival:crude_saw_handle"
+      "tinkersurvival:crude_bandage"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "tinkersurvival:crude_saw_handle"
+        "recipe": "tinkersurvival:crude_bandage"
       }
     }
   },

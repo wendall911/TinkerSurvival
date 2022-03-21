@@ -38,11 +38,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, TinkerSurvivalWorld.FLINT_SHARD.get());
         builder(itemGenerated, TinkerSurvivalWorld.PLANT_FIBER.get());
         builder(itemGenerated, TinkerSurvivalWorld.PLANT_STRING.get());
+        builder(itemGenerated, TinkerSurvivalWorld.OINTMENT.get());
+        builder(itemGenerated, TinkerSurvivalWorld.PLANT_PASTE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CLOTH.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_BLADE.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_KNIFE.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_HATCHET.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW.get());
+        builder(itemGenerated, TinkerSurvivalWorld.MORTAR_AND_PESTLE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_BANDAGE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.BANDAGE.get());
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, Item item) {

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "tinkersurvival:plant_string"
+  },
+  "result": "minecraft:string",
+  "experience": 0.1,
+  "cookingtime": 50
+}

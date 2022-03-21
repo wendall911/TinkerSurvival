@@ -2,18 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "tinkersurvival:crude_saw_handle"
+      "tinkersurvival:stick_from_sapling"
     ]
   },
   "criteria": {
-    "has_plant_string": {
+    "has_sapling": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "tinkersurvival:plant_string"
-            ]
+            "tag": "minecraft:saplings"
           }
         ]
       }
@@ -21,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "tinkersurvival:crude_saw_handle"
+        "recipe": "tinkersurvival:stick_from_sapling"
       }
     }
   },
   "requirements": [
     [
-      "has_plant_string",
+      "has_sapling",
       "has_the_recipe"
     ]
   ]

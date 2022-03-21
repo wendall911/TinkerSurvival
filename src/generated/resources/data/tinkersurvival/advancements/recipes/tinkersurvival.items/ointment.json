@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "tinkersurvival:crude_saw_handle"
+      "tinkersurvival:ointment"
     ]
   },
   "criteria": {
-    "has_plant_string": {
+    "has_plant_paste": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "tinkersurvival:plant_string"
+              "tinkersurvival:plant_paste"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "tinkersurvival:crude_saw_handle"
+        "recipe": "tinkersurvival:ointment"
       }
     }
   },
   "requirements": [
     [
-      "has_plant_string",
+      "has_plant_paste",
       "has_the_recipe"
     ]
   ]

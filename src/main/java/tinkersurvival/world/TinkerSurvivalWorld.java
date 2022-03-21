@@ -4,6 +4,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -30,14 +31,20 @@ import tinkersurvival.tools.tool.CrudeKnife;
 import tinkersurvival.tools.tool.CrudeSaw;
 import tinkersurvival.util.DynamicItemTier;
 import tinkersurvival.world.block.LooseRockBlock;
+import tinkersurvival.world.item.Bandage;
+import tinkersurvival.world.item.CrudeBandage;
+import tinkersurvival.world.item.Mortar;
 import tinkersurvival.world.item.RockStone;
 import tinkersurvival.world.feature.LooseRocks;
+import tinkersurvival.world.effect.StopBleeding;
+import tinkersurvival.world.effect.ZombieEssence;
 
 public class TinkerSurvivalWorld {
 
     public static DeferredRegister<Block> BLOCK_REGISTRY;
     public static DeferredRegister<Item> ITEM_REGISTRY;
     public static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
+    public static DeferredRegister<MobEffect> MOBEFFECT_REGISTRY;
 
     public static ConfiguredFeature<?, ?> LOOSE_ROCKS_CONFIGURED;
     public static PlacedFeature LOOSE_ROCKS_PLACED;
@@ -48,6 +55,9 @@ public class TinkerSurvivalWorld {
     public static RegistryObject<Item> ROCK_STONE;
     public static RegistryObject<Item> PLANT_FIBER;
     public static RegistryObject<Item> PLANT_STRING;
+    public static RegistryObject<Item> OINTMENT;
+    public static RegistryObject<Item> PLANT_PASTE;
+    public static RegistryObject<Item> CLOTH;
 
     public static RegistryObject<Item> CRUDE_SAW_BLADE;
 
@@ -55,6 +65,10 @@ public class TinkerSurvivalWorld {
     public static RegistryObject<Item> CRUDE_HATCHET;
     public static RegistryObject<Item> CRUDE_SAW_HANDLE;
     public static RegistryObject<Item> CRUDE_SAW;
+    public static RegistryObject<Item> MORTAR_AND_PESTLE;
+
+    public static RegistryObject<Item> CRUDE_BANDAGE;
+    public static RegistryObject<Item> BANDAGE;
 
     public static RegistryObject<Block> ANDESITE_LOOSE_ROCK;
     public static RegistryObject<Block> DIORITE_LOOSE_ROCK;
@@ -70,10 +84,15 @@ public class TinkerSurvivalWorld {
     public static Tier STONE_TIER;
     public static Tier WOOD_TIER;
 
+    public static RegistryObject<MobEffect> STOP_BLEEDING;
+    public static RegistryObject<MobEffect> ZOMBIE_ESSENCE;
+
     public static void init(IEventBus bus) {
+        MOBEFFECT_REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, TinkerSurvival.MODID);
         BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
         ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
 
+        MOBEFFECT_REGISTRY.register(bus);
         BLOCK_REGISTRY.register(bus);
         ITEM_REGISTRY.register(bus);
 
@@ -93,6 +112,9 @@ public class TinkerSurvivalWorld {
         ROCK_STONE = registerRockStone("rock_stone");
         PLANT_FIBER = registerItem("plant_fiber");
         PLANT_STRING = registerItem("plant_string");
+        OINTMENT = registerItem("ointment");
+        PLANT_PASTE = registerItem("plant_paste");
+        CLOTH = registerItem("cloth");
 
         // Tools
         FLINT_TIER = new DynamicItemTier().setMaxUses(20).setEfficiency(1.5F)
@@ -107,6 +129,23 @@ public class TinkerSurvivalWorld {
         CRUDE_HATCHET = registerHatchetTool("crude_hatchet", STONE_TIER);
         CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", WOOD_TIER, 0, -8.0F);
         CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
+        MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
+
+        // Effects
+        STOP_BLEEDING = MOBEFFECT_REGISTRY.register(
+            "stop_bleeding", () -> new StopBleeding()
+        );
+        ZOMBIE_ESSENCE = MOBEFFECT_REGISTRY.register(
+            "zombie_essence", () -> new ZombieEssence()
+        );
+
+        // Bandages
+        CRUDE_BANDAGE = registerItem("crude_bandage", () -> new CrudeBandage(
+            (new Item.Properties()).stacksTo(8).tab(TAB_GROUP)
+        ));
+        BANDAGE = registerItem("bandage", () -> new Bandage(
+            (new Item.Properties()).stacksTo(16).tab(TAB_GROUP)
+        ));
     }
 
     public static void setup(IEventBus bus) {
@@ -161,6 +200,10 @@ public class TinkerSurvivalWorld {
 
     private static RegistryObject<Item> registerRockStone(String name) {
         return registerItem(name, () -> new RockStone(ROCK_STONE_BLOCK.get(), new Item.Properties().tab(TAB_GROUP)));
+    }
+
+    private static RegistryObject<Item> registerMortar(String name) {
+        return registerItem(name, () -> new Mortar(new Item.Properties().tab(TAB_GROUP)));
     }
 
     private static RegistryObject<Item> registerItem(String name) {

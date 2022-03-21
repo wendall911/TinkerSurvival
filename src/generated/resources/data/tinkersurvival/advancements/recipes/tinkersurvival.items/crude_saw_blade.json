@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_grass_string": {
+    "has_plant_string": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_grass_string",
+      "has_plant_string",
       "has_the_recipe"
     ]
   ]

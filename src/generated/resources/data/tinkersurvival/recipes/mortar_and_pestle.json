@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  I",
+    "PRP",
+    " P "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "R": {
+      "item": "tinkersurvival:rock_stone"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:mortar_and_pestle"
+  }
+}

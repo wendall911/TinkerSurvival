@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SF",
+    "PF"
+  ],
+  "key": {
+    "P": {
+      "item": "tinkersurvival:plant_string"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "F": {
+      "item": "tinkersurvival:plant_fiber"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:crude_bandage"
+  }
+}

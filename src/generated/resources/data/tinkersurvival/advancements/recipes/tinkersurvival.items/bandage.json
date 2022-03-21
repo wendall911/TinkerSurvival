@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:cobblestone"
+      "tinkersurvival:bandage"
     ]
   },
   "criteria": {
-    "has_loose_rock": {
+    "has_ointment": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "tinkersurvival:rock_stone"
+              "tinkersurvival:ointment"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:cobblestone"
+        "recipe": "tinkersurvival:bandage"
       }
     }
   },
   "requirements": [
     [
-      "has_loose_rock",
+      "has_ointment",
       "has_the_recipe"
     ]
   ]

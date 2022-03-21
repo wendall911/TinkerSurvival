@@ -2,18 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "tinkersurvival:crude_saw_handle"
+      "tinkersurvival:string_from_wool"
     ]
   },
   "criteria": {
-    "has_plant_string": {
+    "has_wool": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "tinkersurvival:plant_string"
-            ]
+            "tag": "minecraft:wool"
           }
         ]
       }
@@ -21,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "tinkersurvival:crude_saw_handle"
+        "recipe": "tinkersurvival:string_from_wool"
       }
     }
   },
   "requirements": [
     [
-      "has_plant_string",
+      "has_wool",
       "has_the_recipe"
     ]
   ]

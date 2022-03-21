@@ -8,6 +8,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -37,93 +38,159 @@ public class ModRecipesProvider extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+        ItemLike rockStone = TinkerSurvivalWorld.ROCK_STONE.get();
+        ItemLike flintShard = TinkerSurvivalWorld.FLINT_SHARD.get();
+        ItemLike plantFiber = TinkerSurvivalWorld.PLANT_FIBER.get();
+        ItemLike plantString = TinkerSurvivalWorld.PLANT_STRING.get();
+        ItemLike mortar = TinkerSurvivalWorld.MORTAR_AND_PESTLE.get();
+        ItemLike plantPaste = TinkerSurvivalWorld.PLANT_PASTE.get();
+        ItemLike ointment = TinkerSurvivalWorld.OINTMENT.get();
+        ItemLike cloth = TinkerSurvivalWorld.CLOTH.get();
+        ItemLike crudeKnife = TinkerSurvivalWorld.CRUDE_KNIFE.get();
+
         // Material Recipes
         ShapedRecipeBuilder.shaped(Blocks.COBBLESTONE)
-                .define('R', TinkerSurvivalWorld.ROCK_STONE.get())
+                .define('R', rockStone)
                 .pattern("RR")
                 .pattern("RR")
-                .unlockedBy("has_loose_rock", has(TinkerSurvivalWorld.ROCK_STONE.get()))
-                .save(consumer);
+                .unlockedBy("has_loose_rock", has(rockStone))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "cobblestone_from_rocks"));
 
         ShapedRecipeBuilder.shaped(Items.FLINT)
-                .define('S', TinkerSurvivalWorld.FLINT_SHARD.get())
+                .define('S', flintShard)
                 .pattern("SS")
                 .pattern("SS")
-                .unlockedBy("has_flint_shard", has(TinkerSurvivalWorld.FLINT_SHARD.get()))
-                .save(consumer);
+                .unlockedBy("has_flint_shard", has(flintShard))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "flint_from_shards"));
 
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.PLANT_STRING.get())
-                .define('F', TinkerSurvivalWorld.PLANT_FIBER.get())
+        ShapedRecipeBuilder.shaped(plantString)
+                .define('F', plantFiber)
                 .pattern("FF")
                 .pattern("F ")
-                .unlockedBy("has_grass_fiber", has(TinkerSurvivalWorld.PLANT_FIBER.get()))
+                .unlockedBy("has_plant_fiber", has(plantFiber))
                 .save(consumer);
+
+        ShapedRecipeBuilder.shaped(plantPaste)
+                .define('F', plantFiber)
+                .define('U', mortar)
+                .pattern("F")
+                .pattern("U")
+                .unlockedBy("has_plant_fiber", has(plantFiber))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(ointment)
+                .define('P', plantPaste)
+                .pattern("PP")
+                .pattern("PP")
+                .unlockedBy("has_plant_paste", has(plantPaste))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(cloth)
+                .define('S', Items.STRING)
+                .pattern("SSS")
+                .unlockedBy("has_string", has(Items.STRING))
+                .save(consumer);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(plantString), Items.STRING, 0.1F, 50)
+                .unlockedBy("has_plant_string", has(plantString))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "string_from_plant_string"));
+
 
         // Saw Blades
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW_BLADE.get())
-                .define('D', TinkerSurvivalWorld.FLINT_SHARD.get())
-                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
+                .define('D', flintShard)
+                .define('S', plantString)
                 .define('I', Items.STICK)
                 .pattern("ID")
                 .pattern("SD")
-                .unlockedBy("has_grass_string", has(TinkerSurvivalWorld.PLANT_STRING.get()))
+                .unlockedBy("has_plant_string", has(plantString))
                 .save(consumer);
         
         // Tool Recipes
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_KNIFE.get())
-                .define('S', TinkerSurvivalWorld.FLINT_SHARD.get())
+        ShapedRecipeBuilder.shaped(crudeKnife)
+                .define('S', flintShard)
                 .define('T', Items.STICK)
                 .pattern("S")
                 .pattern("T")
-                .unlockedBy("has_flint_shard", has(TinkerSurvivalWorld.FLINT_SHARD.get()))
+                .unlockedBy("has_flint_shard", has(flintShard))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_HATCHET.get())
-                .define('R', TinkerSurvivalWorld.ROCK_STONE.get())
-                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
+                .define('R', rockStone)
+                .define('S', plantString)
                 .define('I', Items.STICK)
                 .pattern("SR")
                 .pattern("I ")
-                .unlockedBy("has_loose_rock", has(TinkerSurvivalWorld.ROCK_STONE.get()))
+                .unlockedBy("has_loose_rock", has(rockStone))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get())
-                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
+                .define('S', plantString)
                 .define('I', Items.STICK)
                 .pattern("IS")
                 .pattern(" I")
-                .unlockedBy("has_grass_string", has(TinkerSurvivalWorld.PLANT_STRING.get()))
+                .unlockedBy("has_plant_string", has(plantString))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW.get())
                 .define('H', TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get())
                 .define('B', TinkerSurvivalWorld.CRUDE_SAW_BLADE.get())
-                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
+                .define('S', plantString)
                 .pattern("BS")
                 .pattern(" H")
                 .unlockedBy("has_crude_saw_handle", has(TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get()))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(mortar)
+                .define('I', Items.STICK)
+                .define('P', ItemTags.PLANKS)
+                .define('R', rockStone)
+                .pattern("  I")
+                .pattern("PRP")
+                .pattern(" P ")
+                .unlockedBy("has_plant_fiber", has(plantFiber))
+                .save(consumer);
+
         // Knife Recipes
         ShapelessRecipeBuilder.shapeless(Items.STICK)
                 .requires(ItemTags.SAPLINGS)
-                .requires(TinkerSurvivalWorld.CRUDE_KNIFE.get())
+                .requires(crudeKnife)
                 .group("sticks")
                 .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
-                .save(consumer);
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "stick_from_sapling"));
 
         ShapelessRecipeBuilder.shapeless(Items.STRING, 2)
                 .requires(ItemTags.WOOL)
-                .requires(TinkerSurvivalWorld.CRUDE_KNIFE.get())
+                .requires(crudeKnife)
                 .group("string")
                 .unlockedBy("has_wool", has(ItemTags.WOOL))
-                .save(consumer);
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "string_from_wool"));
 
-        ShapelessRecipeBuilder.shapeless(TinkerSurvivalWorld.FLINT_SHARD.get(), 2)
+        ShapelessRecipeBuilder.shapeless(flintShard, 2)
                 .requires(TagManager.Items.FLINT_KNAPPABLE)
                 .requires(TagManager.Items.KNIFE_TOOLS)
                 .group("flint_shards")
-                .unlockedBy("has_crude_knife", has(TinkerSurvivalWorld.CRUDE_KNIFE.get()))
+                .unlockedBy("has_crude_knife", has(crudeKnife))
+                .save(consumer);
+
+        //Bandages
+        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_BANDAGE.get())
+                .define('P', plantString)
+                .define('S', Items.STICK)
+                .define('F', plantFiber)
+                .pattern("SF")
+                .pattern("PF")
+                .unlockedBy("has_plant_string", has(plantString))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.BANDAGE.get())
+                .define('P', plantString)
+                .define('S', Items.STICK)
+                .define('C', cloth)
+                .define('O', ointment)
+                .pattern("SC")
+                .pattern("PO")
+                .unlockedBy("has_ointment", has(ointment))
                 .save(consumer);
 
         // Saw Recipes
@@ -141,7 +208,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .requires(TagManager.Items.SAW_TOOLS)
                 .group("sticks")
                 .unlockedBy("has_planks", has(ItemTags.PLANKS))
-                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "crude_saw_sticks"));
+                .save(consumer);
 
     }
 

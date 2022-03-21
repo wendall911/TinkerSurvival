@@ -56,6 +56,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get(),
             TinkerSurvivalWorld.CRUDE_SAW_BLADE.get()
         );
+        builder(
+            TagManager.Items.BANDAGES,
+            TinkerSurvivalWorld.CRUDE_BANDAGE.get(),
+            TinkerSurvivalWorld.BANDAGE.get()
+        );
     }
 
     private void builder(Tag.Named<Item> tag) {

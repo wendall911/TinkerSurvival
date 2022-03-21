@@ -2,16 +2,18 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:string"
+      "tinkersurvival:flint_from_shards"
     ]
   },
   "criteria": {
-    "has_wool": {
+    "has_flint_shard": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:wool"
+            "items": [
+              "tinkersurvival:flint_shard"
+            ]
           }
         ]
       }
@@ -19,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:string"
+        "recipe": "tinkersurvival:flint_from_shards"
       }
     }
   },
   "requirements": [
     [
-      "has_wool",
+      "has_flint_shard",
       "has_the_recipe"
     ]
   ]

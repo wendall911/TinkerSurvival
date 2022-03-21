@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_grass_fiber": {
+    "has_plant_fiber": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_grass_fiber",
+      "has_plant_fiber",
       "has_the_recipe"
     ]
   ]

@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_sapling": {
+    "has_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:saplings"
+            "tag": "minecraft:planks"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_sapling",
+      "has_planks",
       "has_the_recipe"
     ]
   ]

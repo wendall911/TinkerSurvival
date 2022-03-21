@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SC",
+    "PO"
+  ],
+  "key": {
+    "P": {
+      "item": "tinkersurvival:plant_string"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "C": {
+      "item": "tinkersurvival:cloth"
+    },
+    "O": {
+      "item": "tinkersurvival:ointment"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:bandage"
+  }
+}
