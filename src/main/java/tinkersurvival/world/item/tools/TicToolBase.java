@@ -1,9 +1,13 @@
-package tinkersurvival.tools.tool;
+package tinkersurvival.world.item.tools;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.Containers;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,9 +19,11 @@ import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class Saw extends ModifiableItem {
+import tinkersurvival.TinkerSurvival;
 
-    public Saw(Properties properties, ToolDefinition toolDefinition) {
+public class TicToolBase extends ModifiableItem {
+
+    public TicToolBase(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
     }
 
@@ -32,13 +38,9 @@ public class Saw extends ModifiableItem {
             // Don't do that!
             player.hurt(DamageSource.GENERIC, 0.5f);
         }
-        else if (!ToolDamageUtil.damage(tool, 1, null, container)) {
-            return container;
-        }
 
-        player.addItem(container);
+        return returnOrDropTool(tool, container, player);
 
-        return ItemStack.EMPTY;
     }
 
     @Override
@@ -46,5 +48,22 @@ public class Saw extends ModifiableItem {
         return true;
     }
 
+    public ItemStack returnOrDropTool(ToolStack tool, ItemStack container, Player player) {
+        Inventory inventory = player.getInventory();
+
+        ToolDamageUtil.directDamage(tool, 1, null, container);
+
+        if (!tool.isBroken()) {
+            return container;
+        }
+        else if (!player.addItem(container)) {
+            // Drop broken tool if no space
+            NonNullList<ItemStack> dropStack = NonNullList.withSize(1, container);
+
+            Containers.dropContents(player.getLevel(), new BlockPos(player.getEyePosition()), dropStack);
+        }
+
+        return ItemStack.EMPTY;
+    }
 
 }
