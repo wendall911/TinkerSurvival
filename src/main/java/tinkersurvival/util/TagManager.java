@@ -15,10 +15,12 @@ public final class TagManager {
         public static final Tag.Named<Item> FLINT_KNAPPABLE = create("flint_knappable");
         public static final Tag.Named<Item> PICKAXE_TOOLS = create("pickaxe_tools");
         public static final Tag.Named<Item> AXE_TOOLS = create("axe_tools");
+        public static final Tag.Named<Item> SAW_TOOLS = create("saw_tools");
         public static final Tag.Named<Item> SHOVEL_TOOLS = create("shovel_tools");
         public static final Tag.Named<Item> HOE_TOOLS = create("hoe_tools");
-        public static final Tag.Named<Item> SHARP_TOOLS = create("sharp_tools");
-        public static final Tag.Named<Item> LOOSE_ROCKS = create("loose_rocks");
+        public static final Tag.Named<Item> KNIFE_TOOLS = create("knife_tools");
+        public static final Tag.Named<Item> ROCK = create("rock");
+        public static final Tag.Named<Item> SAW_PARTS = create("saw_parts");
 
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));
@@ -29,6 +31,8 @@ public final class TagManager {
         public static final Tag.Named<Block> ALWAYS_BREAKABLE = create("always_breakable");
         public static final Tag.Named<Block> ALWAYS_DROPS = create("always_drops");
         public static final Tag.Named<Block> LOOSE_ROCK_PLACEABLE_ON = create("loose_rock_placeable_on");
+        public static final Tag.Named<Block> LOOSE_ROCKS = create("loose_rocks");
+        public static final Tag.Named<Block> GRASS = create("grass");
 
         private static Tag.Named<Block> create(String id) {
             return BlockTags.createOptional(identifier(id));

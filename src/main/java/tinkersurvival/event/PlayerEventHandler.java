@@ -1,56 +1,60 @@
 package tinkersurvival.event;
 
-/*
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-*/
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Material;
 
-/*
-import tinkersurvival.client.sound.Sounds;
-*/
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
 import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.TinkerSurvival;
+import tinkersurvival.util.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
+@Mod.EventBusSubscriber(modid = TinkerSurvival.MODID)
 public class PlayerEventHandler {
 
-    /*
-    @SubscribeEvent
-    public void playerInteractEvent(PlayerInteractEvent event) {
-        // Control for flint shard creation
-        World world = event.getWorld();
-        BlockPos pos = event.getPos();
-        IBlockState state = world.getBlockState(pos);
-        if (event.getItemStack().getItem() == Items.FLINT
-                && world.getBlockState(pos).getMaterial() == Material.ROCK
-                && state.isFullCube()) {
-            if (!world.isRemote){
-                if (Math.random() < 0.7) {
-                    if (Math.random() < ConfigHandler.balance.FLINT_CHANCE) {
-                        // Create flint shard
-                        ItemStack stack = new ItemStack(TinkerSurvivalWorld.flintShard, 2);
-                        EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack);
-                        world.spawnEntity(item);
-                    }
+	@SubscribeEvent
+    public static void playerInteractEvent(PlayerInteractEvent event) {
+        final ItemStack stack = event.getItemStack();
+        final Level level = event.getWorld();
+        final BlockPos pos = event.getPos();
+        final BlockState state = level.getBlockState(pos);
+        final InteractionHand hand = event.getHand();
+        final Player player = event.getPlayer();
 
-                    // Remove one flint
-                    ItemStack stack2 = event.getItemStack();
-                    stack2.shrink(1);
-                    if (stack2.getCount() == 0) {
-                        stack2 = ItemStack.EMPTY;
+        if (player instanceof ServerPlayer &&
+                hand.equals(InteractionHand.MAIN_HAND)) {
+
+            if (TagManager.Items.KNIFE_TOOLS.contains(stack.getItem())
+                    && TagManager.Blocks.GRASS.contains(state.getBlock())) {
+                if (!level.isClientSide) {
+                    if (level.random.nextFloat() < 0.3) {
+                        if (level.random.nextFloat() < ConfigHandler.Server.grassFiberChance()) {
+                            NonNullList<ItemStack> dropStack =
+                                NonNullList.withSize(1, new ItemStack(TinkerSurvivalWorld.GRASS_FIBER.get(), 1));
+
+                            Containers.dropContents(level, pos, dropStack);
+
+                            stack.hurtAndBreak(1, player, (item) -> {
+                                item.broadcastBreakEvent(event.getHand());
+                            });
+                        }
                     }
-                    event.getEntityPlayer().setHeldItem(event.getHand(), stack2);
                 }
             }
-            Sounds.play(event.getEntityPlayer(), Sounds.FLINT_KNAPPING, 0.8F, 1.0F);
         }
+
     }
-    */
+
 }

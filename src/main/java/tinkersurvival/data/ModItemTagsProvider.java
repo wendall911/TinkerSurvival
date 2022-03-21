@@ -26,18 +26,33 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     public String getName() {
-        return "Tinker Survival - Item Tags";
+        return "TinkerSurvival - Item Tags";
     }
 
     @Override
     protected void addTags() {
         builder(TagManager.Items.FLINT_KNAPPABLE, Items.FLINT);
         builder(TagManager.Items.PICKAXE_TOOLS);
-        builder(TagManager.Items.AXE_TOOLS);
+        builder(
+            TagManager.Items.AXE_TOOLS,
+            TinkerSurvivalWorld.CRUDE_HATCHET.get()
+        );
+        builder(
+            TagManager.Items.SAW_TOOLS,
+            TinkerSurvivalWorld.CRUDE_SAW.get()
+        );
         builder(TagManager.Items.SHOVEL_TOOLS);
         builder(TagManager.Items.HOE_TOOLS);
-        builder(TagManager.Items.SHARP_TOOLS);
-        builder(TagManager.Items.LOOSE_ROCKS, TinkerSurvivalWorld.rockStone.get());
+        builder(
+            TagManager.Items.KNIFE_TOOLS,
+            TinkerSurvivalWorld.CRUDE_KNIFE.get()
+        );
+        builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE.get());
+        builder(
+            TagManager.Items.SAW_PARTS,
+            TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get(),
+            TinkerSurvivalWorld.CRUDE_SAW_BLADE.get()
+        );
     }
 
     private void builder(Tag.Named<Item> tag) {

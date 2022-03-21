@@ -22,10 +22,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     @Override
+    public String getName() {
+        return "TinkerSurvival - Block State and Models";
+    }
+
+    @Override
     protected void registerStatesAndModels() {
 		generateLooseRockBaseModel();
 
-        TinkerSurvivalWorld.blockRegistry.getEntries().stream()
+        TinkerSurvivalWorld.BLOCK_REGISTRY.getEntries().stream()
                 .map(RegistryObject::get)
                 .forEach(this::generateLooseRockVariants);
     }
@@ -60,6 +65,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void generateLooseRockVariants(Block block) {
         ResourceLocation name = block.getRegistryName();
         String type = name.getPath().toString().replace("_loose_rock", "");
+
+        if (type.contains("rock_stone")) {
+            type = "stone";
+        }
 
         ModelFile modelFile = models()
             .withExistingParent(name.toString(), modLoc("block/loose_rock"))

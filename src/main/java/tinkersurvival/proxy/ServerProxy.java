@@ -1,10 +1,17 @@
 package tinkersurvival.proxy;
 
-/*
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.relauncher.Side;
-*/
+import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
 
-//@Mod.EventBusSubscriber(Side.SERVER)
-public class ServerProxy extends CommonProxy {
+import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.TinkerSurvival;
+
+public final class ServerProxy extends CommonProxy {
+
+    public ServerProxy() {
+		TinkerSurvival.BUS.addListener(this::serverSetup);
+    }
+
+	private void serverSetup(FMLDedicatedServerSetupEvent event) {
+    }
+
 }

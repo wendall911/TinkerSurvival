@@ -24,16 +24,16 @@ import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class LooseRocks extends Feature<NoneFeatureConfiguration> {
 
-    private static final Lazy<Map<Block, Supplier<? extends Block>>> looseRockSupplier = Lazy.of(() -> new ImmutableMap.Builder<Block, Supplier<? extends Block>>()
-        .put(Blocks.STONE, TinkerSurvivalWorld.stoneLooseRock)
-        .put(Blocks.ANDESITE, TinkerSurvivalWorld.andesiteLooseRock)
-        .put(Blocks.DIORITE, TinkerSurvivalWorld.dioriteLooseRock)
-        .put(Blocks.GRANITE, TinkerSurvivalWorld.graniteLooseRock)
-        .put(Blocks.SANDSTONE, TinkerSurvivalWorld.sandstoneLooseRock)
-        .put(Blocks.RED_SANDSTONE, TinkerSurvivalWorld.redSandstoneLooseRock)
-        .put(Blocks.TERRACOTTA, TinkerSurvivalWorld.redSandstoneLooseRock)
-        .put(Blocks.SAND, TinkerSurvivalWorld.sandstoneLooseRock)
-        .put(Blocks.RED_SAND, TinkerSurvivalWorld.redSandstoneLooseRock)
+    private static final Lazy<Map<Block, Supplier<? extends Block>>> LOOSE_ROCK_SUPPLIER = Lazy.of(() -> new ImmutableMap.Builder<Block, Supplier<? extends Block>>()
+        .put(Blocks.STONE, TinkerSurvivalWorld.STONE_LOOSE_ROCK)
+        .put(Blocks.ANDESITE, TinkerSurvivalWorld.ANDESITE_LOOSE_ROCK)
+        .put(Blocks.DIORITE, TinkerSurvivalWorld.DIORITE_LOOSE_ROCK)
+        .put(Blocks.GRANITE, TinkerSurvivalWorld.GRANITE_LOOSE_ROCK)
+        .put(Blocks.SANDSTONE, TinkerSurvivalWorld.SANDSTONE_LOOSE_ROCK)
+        .put(Blocks.RED_SANDSTONE, TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK)
+        .put(Blocks.TERRACOTTA, TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK)
+        .put(Blocks.SAND, TinkerSurvivalWorld.SANDSTONE_LOOSE_ROCK)
+        .put(Blocks.RED_SAND, TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK)
         .build()
     );
 
@@ -54,8 +54,8 @@ public class LooseRocks extends Feature<NoneFeatureConfiguration> {
             for (int y = 1; y <= 8; y++) {
                 final BlockPos stonePos = pos.below(y);
                 final BlockState stoneState = level.getBlockState(stonePos);
-                if (looseRockSupplier.get().containsKey(stoneState.getBlock())) {
-                    final Block looseRockBlock = looseRockSupplier.get().get(stoneState.getBlock()).get();
+                if (LOOSE_ROCK_SUPPLIER.get().containsKey(stoneState.getBlock())) {
+                    final Block looseRockBlock = LOOSE_ROCK_SUPPLIER.get().get(stoneState.getBlock()).get();
 
                     level.setBlock(pos, looseRockBlock.defaultBlockState(), 3);
                     break;

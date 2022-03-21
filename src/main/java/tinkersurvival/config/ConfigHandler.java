@@ -5,65 +5,142 @@ import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
 
 import org.apache.commons.lang3.tuple.Pair;
 
 import tinkersurvival.TinkerSurvival;
 
-public class ConfigHandler {
+@Mod.EventBusSubscriber(modid = TinkerSurvival.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public final class ConfigHandler {
 
-    public static final ForgeConfigSpec CONFIG_SPEC;
-    private static final ConfigHandler CONFIG;
+    private ConfigHandler() {}
 
-    public static BooleanValue enableRockGen;
-    public static IntValue rockGenFrequency;
-    public static BooleanValue enableRockFromDirt;
-    public static DoubleValue rockFromDirtChance;
-    public static DoubleValue flintChance;
-    public static DoubleValue grassFiberChance;
-    public static DoubleValue healRate;
-    public static DoubleValue slowDownMultiplier;
-    public static DoubleValue stickDropChanceHand;
-    public static DoubleValue stickDropChanceKnife;
-
-    static {
-        Pair<ConfigHandler,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ConfigHandler::new);
-
-        CONFIG_SPEC = specPair.getRight();
-        CONFIG = specPair.getLeft();
+    public static void init() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Client.CONFIG_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Common.CONFIG_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Server.CONFIG_SPEC);
     }
 
-    ConfigHandler(ForgeConfigSpec.Builder builder) {
-        enableRockGen = builder
-            .comment("Enables the generation of rock piles on the surface.")
-            .define("enableRockGen", true);
-        rockGenFrequency = builder
-            .comment("RockGeneration frequency. (1 = low, 5 = all over)")
-            .defineInRange("rockGenFrequency", 2, 1, 5);
-        enableRockFromDirt = builder
-            .comment("Enables rock drop from harvesting dirt.")
-            .define("enableRockFromDirt", false);
-        rockFromDirtChance = builder
-            .comment("Chance for a rocks to drop from harvesting dirt with bare hands. (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("rockFromDirtChance ", 0.4, 0.1, 1.0);
-        flintChance = builder
-            .comment("Chance for a successful flint knapping. (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("flintChance", 0.6, 0.1, 1.0);
-        grassFiberChance = builder
-            .comment("Chance for tall grass to drop plant fibers. Knives are 40% more effective.  (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("grassFiberChance", 0.5, 0.1, 1.0);
-        healRate = builder
-            .comment("Heal rate for bandages. Crude bandages are 50% less effective. (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("healRate", 0.14, 0.1, 1.0);
-        slowDownMultiplier = builder
-            .comment("Option to adjust slow down on wrong tool usage. (1.0 = 100%, 2.0 = 200%, etc.)")
-            .defineInRange("slowDownMultiplier", 1.0, 1.0, 5.0);
-        stickDropChanceHand = builder
-            .comment("Chance for stick drip from breaking leaves by hand. (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("stickDropChanceHand", 0.2, 0.1, 1.0);
-        stickDropChanceKnife = builder
-            .comment("Chance for stick drip from breaking leaves with a knife (1.0 = 100%, 0.4 = 40%, etc.)")
-            .defineInRange("stickDropChanceKnife", 0.5, 0.1, 1.0);
+    public static final class Client {
+
+        public static final ForgeConfigSpec CONFIG_SPEC;
+        private static final Client CONFIG;
+
+        public static BooleanValue ENABLE_FAIL_SOUND;
+
+        static {
+            Pair<Client,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+
+            CONFIG_SPEC = specPair.getRight();
+            CONFIG = specPair.getLeft();
+        }
+
+        Client(ForgeConfigSpec.Builder builder) {
+            ENABLE_FAIL_SOUND = builder
+                .comment("Enables the fail sound if using the wrong tool.")
+                .define("ENABLE_FAIL_SOUND", true);
+        }
+
+        public static boolean enableFailSound() {
+            return CONFIG.ENABLE_FAIL_SOUND.get();
+        }
+
+    }
+
+    public static final class Common {
+
+        public static final ForgeConfigSpec CONFIG_SPEC;
+        private static final Common CONFIG;
+
+        static {
+            Pair<Common,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+
+            CONFIG_SPEC = specPair.getRight();
+            CONFIG = specPair.getLeft();
+        }
+
+        Common(ForgeConfigSpec.Builder builder) {
+        }
+
+    }
+
+    public static final class Server {
+
+        public static final ForgeConfigSpec CONFIG_SPEC;
+        private static final Server CONFIG;
+
+        public static BooleanValue ENABLE_ROCK_GEN;
+        public static IntValue ROCK_GEN_FREQUENCY;
+        public static DoubleValue FLINT_FROM_LOOSE_ROCKS_CHANCE;
+        public static DoubleValue FLINT_CHANCE;
+        public static DoubleValue GRASS_FIBER_CHANCE;
+        public static DoubleValue HEAL_RATE;
+        public static DoubleValue SLOW_DOWN_MULTIPLIER;
+
+        static {
+            Pair<Server,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
+
+            CONFIG_SPEC = specPair.getRight();
+            CONFIG = specPair.getLeft();
+        }
+
+        Server(ForgeConfigSpec.Builder builder) {
+            ENABLE_ROCK_GEN = builder
+                .comment("Enables the generation of rock piles on the surface.")
+                .define("ENABLE_ROCK_GEN", true);
+            ROCK_GEN_FREQUENCY = builder
+                .comment("RockGeneration frequency. (1 = low, 5 = all over)")
+                .defineInRange("ROCK_GEN_FREQUENCY", 2, 1, 5);
+            FLINT_FROM_LOOSE_ROCKS_CHANCE = builder
+                .comment("Chance for a rocks to drop from harvesting dirt with bare hands. (1.0 = 100%, 0.25 = 25%, etc.)")
+                .defineInRange("FLINT_FROM_LOOSE_ROCKS_CHANCE", 0.25, 0.1, 1.0);
+            FLINT_CHANCE = builder
+                .comment("Chance for a successful flint knapping. (1.0 = 100%, 0.4 = 40%, etc.)")
+                .defineInRange("FLINT_CHANCE", 0.6, 0.1, 1.0);
+            GRASS_FIBER_CHANCE = builder
+                .comment("Chance for grass to drop plant fibers with a knife. (1.0 = 100%, 0.4 = 40%, etc.)")
+                .defineInRange("GRASS_FIBER_CHANCE", 0.5, 0.1, 1.0);
+            HEAL_RATE = builder
+                .comment("Heal rate for bandages. Crude bandages are 50% less effective. (1.0 = 100%, 0.4 = 40%, etc.)")
+                .defineInRange("HEAL_RATE", 0.14, 0.1, 1.0);
+            SLOW_DOWN_MULTIPLIER = builder
+                .comment("Option to adjust slow down on wrong tool usage. (1.0 = 100%, 2.0 = 200%, etc.)")
+                .defineInRange("SLOW_DOWN_MULTIPLIER", 1.0, 1.0, 5.0);
+        }
+
+        public static boolean enableRockGen() {
+            return CONFIG.ENABLE_ROCK_GEN.get();
+        }
+        
+        public static int rockGenFrequency() {
+            return CONFIG.ROCK_GEN_FREQUENCY.get();
+        }
+        
+        public static float flintFromLooseRocksChance() {
+            double chance = CONFIG.FLINT_FROM_LOOSE_ROCKS_CHANCE.get();
+
+            return (float)chance;
+        }
+        
+        public static double flintChance() {
+            return CONFIG.FLINT_CHANCE.get();
+        }
+        
+        public static double grassFiberChance() {
+            return CONFIG.GRASS_FIBER_CHANCE.get();
+        }
+        
+        public static double healRate() {
+            return CONFIG.HEAL_RATE.get();
+        }
+        
+        public static double slowDownMultiplier() {
+            return CONFIG.SLOW_DOWN_MULTIPLIER.get();
+        }
+        
     }
     /*
     public static Features features;
@@ -94,51 +171,6 @@ public class ConfigHandler {
         public static boolean FORCE_SAW_FOR_PLANKS = true;
     }
 
-    public static Client client;
-    public static class Client {
-        @Config.Comment({"Enables the fail sound if using the wrong tool."})
-        public static boolean ENABLE_FAIL_SOUND = true;
-    }
     */
-
-    public static boolean enableRockGen() {
-        return CONFIG.enableRockGen.get();
-    }
-    
-    public static int rockGenFrequency() {
-        return CONFIG.rockGenFrequency.get();
-    }
-    
-    public static boolean enableRockFromDirt() {
-        return CONFIG.enableRockFromDirt.get();
-    }
-    
-    public static double rockFromDirtChance() {
-        return CONFIG.rockFromDirtChance .get();
-    }
-    
-    public static double flintChance() {
-        return CONFIG.flintChance.get();
-    }
-    
-    public static double grassFiberChance() {
-        return CONFIG.grassFiberChance.get();
-    }
-    
-    public static double healRate() {
-        return CONFIG.healRate.get();
-    }
-    
-    public static double slowDownMultiplier() {
-        return CONFIG.slowDownMultiplier.get();
-    }
-    
-    public static double stickDropChanceHand() {
-        return CONFIG.stickDropChanceHand.get();
-    }
-    
-    public static double stickDropChanceKnife() {
-        return CONFIG.stickDropChanceKnife.get();
-    }
 
 }

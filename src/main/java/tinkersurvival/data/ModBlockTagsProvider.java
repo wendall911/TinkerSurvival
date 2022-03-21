@@ -23,6 +23,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         super(generatorIn, TinkerSurvival.MODID, existingFileHelper);
     }
 
+    @Override
+    public String getName() {
+        return "TinkerSurvival - Block Tags";
+    }
+
     @Override 
     protected void addTags() {
         getBuilder(TagManager.Blocks.ALWAYS_BREAKABLE)
@@ -62,6 +67,18 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .addTag(BlockTags.SAND)
 			.addTag(Tags.Blocks.SAND)
 			.addTag(BlockTags.TERRACOTTA);
+
+        getBuilder(TagManager.Blocks.LOOSE_ROCKS)
+            .add(TinkerSurvivalWorld.ANDESITE_LOOSE_ROCK.get())
+            .add(TinkerSurvivalWorld.DIORITE_LOOSE_ROCK.get())
+            .add(TinkerSurvivalWorld.GRANITE_LOOSE_ROCK.get())
+            .add(TinkerSurvivalWorld.STONE_LOOSE_ROCK.get())
+            .add(TinkerSurvivalWorld.SANDSTONE_LOOSE_ROCK.get())
+            .add(TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK.get());
+
+        getBuilder(TagManager.Blocks.GRASS)
+            .add(Blocks.GRASS)
+            .add(Blocks.TALL_GRASS);
     }
 
     private void builder(Tag.Named<Block> tag, IBlockProvider... items) {

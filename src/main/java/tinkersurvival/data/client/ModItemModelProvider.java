@@ -23,14 +23,26 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     @Override
+    public String getName() {
+        return "TinkerSurvival - Item Models";
+    }
+
+    @Override
     protected void registerModels() {
-        TinkerSurvivalWorld.blockRegistry.getEntries().stream()
+        TinkerSurvivalWorld.BLOCK_REGISTRY.getEntries().stream()
                 .forEach(this::blockItem);
 
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 
-        builder(itemGenerated, TinkerSurvivalWorld.rockStone.get());
-        builder(itemGenerated, TinkerSurvivalWorld.flintShard.get());
+        builder(itemGenerated, TinkerSurvivalWorld.ROCK_STONE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.FLINT_SHARD.get());
+        builder(itemGenerated, TinkerSurvivalWorld.GRASS_FIBER.get());
+        builder(itemGenerated, TinkerSurvivalWorld.GRASS_STRING.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_BLADE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_KNIFE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_HATCHET.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW.get());
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, Item item) {
@@ -42,14 +54,17 @@ public class ModItemModelProvider extends ItemModelProvider {
 	protected void blockItem(Supplier<? extends Block> block) {
 		String type = block.get().getRegistryName().getPath().toString().replace("_loose_rock", "");
 
-        ItemModelBuilder builder = Optional.ofNullable(block.get())
+        try {
+            ItemModelBuilder builder = Optional.ofNullable(block.get())
                 .map(Block::asItem)
                 .map(Item::getRegistryName)
                 .map(ResourceLocation::getPath)
                 .map(path -> withExistingParent(path, modLoc("block/" + path)))
                 .orElseThrow(() -> new IllegalStateException("Failed to create model for Block Item"));
 
-        builder.texture("all", mcLoc("block/" + type));
+            builder.texture("all", mcLoc("block/" + type));
+        }
+        catch (Exception e) {}
     }
 
 }

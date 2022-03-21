@@ -6,7 +6,9 @@ import java.util.function.Supplier;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -23,92 +25,150 @@ import net.minecraftforge.registries.RegistryObject;
 import tinkersurvival.client.CreativeTabBase;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
+import tinkersurvival.tools.tool.CrudeHatchet;
+import tinkersurvival.tools.tool.CrudeKnife;
+import tinkersurvival.tools.tool.CrudeSaw;
+import tinkersurvival.util.DynamicItemTier;
 import tinkersurvival.world.block.LooseRockBlock;
+import tinkersurvival.world.item.RockStone;
 import tinkersurvival.world.feature.LooseRocks;
 
 public class TinkerSurvivalWorld {
 
-    public static DeferredRegister<Block> blockRegistry;
-    public static DeferredRegister<Item> itemRegistry;
-    public static DeferredRegister<Feature<?>> featureRegistry;
+    public static DeferredRegister<Block> BLOCK_REGISTRY;
+    public static DeferredRegister<Item> ITEM_REGISTRY;
+    public static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
 
-    public static ConfiguredFeature<?, ?> looseRocksConfigured;
-    public static PlacedFeature looseRocksPlaced;
+    public static ConfiguredFeature<?, ?> LOOSE_ROCKS_CONFIGURED;
+    public static PlacedFeature LOOSE_ROCKS_PLACED;
 
-    public static CreativeTabBase tabGroup;
+    public static CreativeTabBase TAB_GROUP;
 
-    public static RegistryObject<Item> flintShard;
-    public static RegistryObject<Item> rockStone;
+    public static RegistryObject<Item> FLINT_SHARD;
+    public static RegistryObject<Item> ROCK_STONE;
+    public static RegistryObject<Item> GRASS_FIBER;
+    public static RegistryObject<Item> GRASS_STRING;
 
-    public static RegistryObject<Block> andesiteLooseRock;
-    public static RegistryObject<Block> dioriteLooseRock;
-    public static RegistryObject<Block> graniteLooseRock;
-    public static RegistryObject<Block> stoneLooseRock;
-    public static RegistryObject<Block> sandstoneLooseRock;
-    public static RegistryObject<Block> redSandstoneLooseRock;
+    public static RegistryObject<Item> CRUDE_SAW_BLADE;
 
-    public static Feature<NoneFeatureConfiguration> looseRocksFeature;
+    public static RegistryObject<Item> CRUDE_KNIFE;
+    public static RegistryObject<Item> CRUDE_HATCHET;
+    public static RegistryObject<Item> CRUDE_SAW_HANDLE;
+    public static RegistryObject<Item> CRUDE_SAW;
+
+    public static RegistryObject<Block> ANDESITE_LOOSE_ROCK;
+    public static RegistryObject<Block> DIORITE_LOOSE_ROCK;
+    public static RegistryObject<Block> GRANITE_LOOSE_ROCK;
+    public static RegistryObject<Block> STONE_LOOSE_ROCK;
+    public static RegistryObject<Block> SANDSTONE_LOOSE_ROCK;
+    public static RegistryObject<Block> RED_SANDSTONE_LOOSE_ROCK;
+    public static RegistryObject<Block> ROCK_STONE_BLOCK;
+
+    public static Feature<NoneFeatureConfiguration> LOOSE_ROCKS_FEATURE;
+
+    public static Tier FLINT_TIER;
+    public static Tier STONE_TIER;
+    public static Tier WOOD_TIER;
 
     public static void init(IEventBus bus) {
-        blockRegistry = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
-        itemRegistry = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
+        BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
+        ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
 
-        blockRegistry.register(bus);
-        itemRegistry.register(bus);
+        BLOCK_REGISTRY.register(bus);
+        ITEM_REGISTRY.register(bus);
 
-        tabGroup = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(flintShard.get()));
+        TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(FLINT_SHARD.get()));
 
         // Blocks
-        andesiteLooseRock = registerBlock("andesite_loose_rock", LooseRockBlock::new);
-        dioriteLooseRock = registerBlock("diorite_loose_rock", LooseRockBlock::new);
-        graniteLooseRock = registerBlock("granite_loose_rock", LooseRockBlock::new);
-        stoneLooseRock = registerBlock("stone_loose_rock", LooseRockBlock::new);
-        sandstoneLooseRock = registerBlock("sandstone_loose_rock", LooseRockBlock::new);
-        redSandstoneLooseRock = registerBlock("red_sandstone_loose_rock", LooseRockBlock::new);
+        ANDESITE_LOOSE_ROCK = registerBlock("andesite_loose_rock", LooseRockBlock::new);
+        DIORITE_LOOSE_ROCK = registerBlock("diorite_loose_rock", LooseRockBlock::new);
+        GRANITE_LOOSE_ROCK = registerBlock("granite_loose_rock", LooseRockBlock::new);
+        STONE_LOOSE_ROCK = registerBlock("stone_loose_rock", LooseRockBlock::new);
+        SANDSTONE_LOOSE_ROCK = registerBlock("sandstone_loose_rock", LooseRockBlock::new);
+        RED_SANDSTONE_LOOSE_ROCK = registerBlock("red_sandstone_loose_rock", LooseRockBlock::new);
+        ROCK_STONE_BLOCK = registerBlock("rock_stone_block", LooseRockBlock::new);
 
         // Items
-        flintShard = registerItem("flint_shard");
-        rockStone = registerItem("rock_stone");
+        FLINT_SHARD = registerItem("flint_shard");
+        ROCK_STONE = registerRockStone("rock_stone");
+        GRASS_FIBER = registerItem("grass_fiber");
+        GRASS_STRING = registerItem("grass_string");
+
+        // Tools
+        FLINT_TIER = new DynamicItemTier().setMaxUses(20).setEfficiency(1.5F)
+            .setAttackDamage(0.5F).setHarvestLvl(0).setEnchantability(0).setRepairMats(Items.FLINT);
+        STONE_TIER = new DynamicItemTier().setMaxUses(5).setEfficiency(1.5F)
+            .setAttackDamage(0.5F).setHarvestLvl(0).setEnchantability(0).setRepairMats(Items.FLINT);
+        WOOD_TIER = new DynamicItemTier().setMaxUses(20).setEfficiency(0.0F)
+            .setAttackDamage(0.0F).setHarvestLvl(0).setEnchantability(0).setRepairMats(Items.FLINT);
+
+        CRUDE_SAW_BLADE = registerItem("crude_saw_blade");
+        CRUDE_KNIFE = registerKnifeTool("crude_knife", FLINT_TIER);
+        CRUDE_HATCHET = registerHatchetTool("crude_hatchet", STONE_TIER);
+        CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", WOOD_TIER, 0, -8.0F);
+        CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
     }
 
     public static void setup(IEventBus bus) {
-        featureRegistry = DeferredRegister.create(ForgeRegistries.FEATURES, TinkerSurvival.MODID);
-        featureRegistry.register(bus);
+        FEATURE_REGISTRY = DeferredRegister.create(ForgeRegistries.FEATURES, TinkerSurvival.MODID);
+        FEATURE_REGISTRY.register(bus);
 
         // Worldgen Features
-        looseRocksFeature = new LooseRocks();
+        LOOSE_ROCKS_FEATURE = new LooseRocks();
 
         // Worldgen Feature Configuration
-        looseRocksConfigured = looseRocksFeature
+        LOOSE_ROCKS_CONFIGURED = LOOSE_ROCKS_FEATURE
             .configured(NoneFeatureConfiguration.INSTANCE);
 
-        looseRocksPlaced = looseRocksConfigured.placed(
-                    CountPlacement.of(ConfigHandler.rockGenFrequency()),
+        LOOSE_ROCKS_PLACED = LOOSE_ROCKS_CONFIGURED.placed(
+                    CountPlacement.of(ConfigHandler.Server.rockGenFrequency()),
                     InSquarePlacement.spread(),
                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE
                 );
 
-        featureRegistry.register("loose_rocks", () -> looseRocksFeature);
+        FEATURE_REGISTRY.register("loose_rocks", () -> LOOSE_ROCKS_FEATURE);
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory) {
-        return registerBlock(name, blockFactory, block -> new BlockItem(block, new Item.Properties().tab(tabGroup)));
+        return registerBlock(name, blockFactory, block -> new BlockItem(block, new Item.Properties().tab(TAB_GROUP)));
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory, Function<T, BlockItem> blockItemFactory) {
-        RegistryObject<T> block = blockRegistry.register(name, blockFactory);
+        RegistryObject<T> block = BLOCK_REGISTRY.register(name, blockFactory);
 
         registerItem(name, () -> blockItemFactory.apply(block.get()));
 
         return block;
     }
 
+    private static RegistryObject<Item> registerKnifeTool(String name, Tier tier) {
+        Item knifeTool = new CrudeKnife(tier, 1, -1.4F, new Item.Properties().tab(TAB_GROUP));
+
+        return registerItem(name, () -> knifeTool);
+    }
+
+    private static RegistryObject<Item> registerHatchetTool(String name, Tier tier) {
+        Item hatchetTool = new CrudeHatchet(tier, 4, -3.0F, new Item.Properties().tab(TAB_GROUP));
+
+        return registerItem(name, () -> hatchetTool);
+    }
+
+    private static RegistryObject<Item> registerSawTool(String name, Tier tier, int damage, float speed) {
+        Item sawTool = new CrudeSaw(name, tier, damage, speed, new Item.Properties().tab(TAB_GROUP));
+
+        return registerItem(name, () -> sawTool);
+    }
+
+    private static RegistryObject<Item> registerRockStone(String name) {
+        return registerItem(name, () -> new RockStone(ROCK_STONE_BLOCK.get(), new Item.Properties().tab(TAB_GROUP)));
+    }
+
     private static RegistryObject<Item> registerItem(String name) {
-        return registerItem(name, () -> new Item(new Item.Properties().tab(tabGroup)));
+        return registerItem(name, () -> new Item(new Item.Properties().tab(TAB_GROUP)));
     }
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
-        return itemRegistry.register(name, item);
+        return ITEM_REGISTRY.register(name, item);
     }
 
     /*
@@ -127,9 +187,9 @@ public class TinkerSurvivalWorld {
     public static TinkerSurvivalArmor reinforced_jelled_slime_boots;
 
     public static BlockRock looseRock;
-    public static ItemBase rockStone;
+    public static ItemBase ROCK_STONE;
     public static ItemBase cloth;
-    public static ItemBase flintShard;
+    public static ItemBase FLINT_SHARD;
     public static ItemBase plantPaste;
     public static ItemBase grassFiber;
     public static ItemBase grassString;
@@ -186,13 +246,13 @@ public class TinkerSurvivalWorld {
         reinforced_jelled_slime_boots = getArmor(reinforced_jelled_slime_boots, reinforced_jelled_slime_armor_material, EntityEquipmentSlot.FEET, "reinforced_jelled_slime_boots");
 
         looseRock = getLooseRock(looseRock, "loose_rock");
-        rockStone = getItem(rockStone, "rock_stone");
+        ROCK_STONE = getItem(ROCK_STONE, "rock_stone");
         cloth = getItem(cloth, "cloth");
         grassFiber = getItem(grassFiber, "grass_fiber");
         grassString = getItem(grassString, "grass_string");
         ointment = getItem(ointment, "ointment");
         plantPaste = getItem(plantPaste, "plant_paste");
-        flintShard = getItem(flintShard, "flint_shard");
+        FLINT_SHARD = getItem(FLINT_SHARD, "flint_shard");
         bandageItem = getBandage(bandageItem, "bandage");
         woodenCup = getCup(woodenCup, "wooden_cup");
 
