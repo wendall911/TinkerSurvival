@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:flint"
+    "minecraft:flint",
+    "tinkersurvival:rock_stone"
   ]
 }
