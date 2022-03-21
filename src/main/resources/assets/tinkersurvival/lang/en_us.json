@@ -43,7 +43,7 @@
     "jei.tinkersurvival.description.rock": "Rocks are found lying on the ground. These can be used with the knife in a crafting table to get flint shards.",
     "jei.tinkersurvival.description.plant_fiber": "Plant fibers are dropped when breaking grass with a knife. They are used to make plant string for tools and plant paste for bandage ointment.",
     "jei.tinkersurvival.description.stick": "Sticks are dropped from leaves. Using any knife doubles the chance of getting a stick.",
-    "jei.tinkersurvival.description.flint_shard": "Flint shards can be obtained from striking flint on any rocky surface. Attack any stone like block with flint, and it might split into two flint shards.",
+    "jei.tinkersurvival.description.flint_shard": "Flint shards can be obtained from striking flint on any rocky surface. Interact with any stone-like block with flint, and it might split into two flint shards.",
     "tooltip.uselessTool1": "This tool cannot mine anything!",
     "tooltip.uselessTool2": "Can only be used for crafting.",
     "tooltip.uselessHoe1": "This hoe cannot hoe anything!",

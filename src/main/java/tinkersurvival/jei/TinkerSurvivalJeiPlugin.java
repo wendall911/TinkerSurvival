@@ -1,30 +1,46 @@
 package tinkersurvival.jei;
 
-/*
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
+
 import mezz.jei.api.IModPlugin;
-import mezz.jei.api.IModRegistry;
-import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.recipe.IIngredientType;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.registration.IRecipeRegistration;
+
+import tinkersurvival.items.TinkerSurvivalItems;
+import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@JEIPlugin
+@SuppressWarnings("unused")
+@JeiPlugin
 public class TinkerSurvivalJeiPlugin implements IModPlugin {
 
     @Override
-    public void register(IModRegistry registry) {
-        // Material Info:
-        final IIngredientType<ItemStack> ITEM = () -> ItemStack.class;
+    public ResourceLocation getPluginUid() {
+        return new ResourceLocation(TinkerSurvival.MODID, "jei_plugin");
+    }
 
-        registry.addIngredientInfo(new ItemStack(TinkerSurvivalWorld.rockStone), ITEM, "jei.description.rock");
-        registry.addIngredientInfo(new ItemStack(TinkerSurvivalWorld.grassFiber), ITEM, "jei.description.grass_fiber");
-        registry.addIngredientInfo(new ItemStack(TinkerSurvivalWorld.flintShard), ITEM, "jei.description.flint_shard");
-        registry.addIngredientInfo(new ItemStack(Items.STICK), ITEM, "jei.description.stick");
+    @Override
+    public void registerRecipes(IRecipeRegistration registry) {
+        addIngredientInfo(registry, TinkerSurvivalWorld.ROCK_STONE.get());
+        addIngredientInfo(registry, TinkerSurvivalItems.PLANT_FIBER.get());
+        addIngredientInfo(registry, TinkerSurvivalItems.FLINT_SHARD.get());
+        addIngredientInfo(registry, Items.STICK);
+
+    }
+
+    private void addIngredientInfo(IRecipeRegistration registry, Item item) {
+        String name = item.getRegistryName().getPath().toString();
+
+        registry.addIngredientInfo(
+            new ItemStack(item),
+            VanillaTypes.ITEM,
+            new TranslatableComponent("jei." + TinkerSurvival.MODID + ".description." + name)
+        );
     }
 
 }
-*/
