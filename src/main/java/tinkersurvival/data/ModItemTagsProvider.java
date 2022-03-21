@@ -58,7 +58,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.pickaxe.asItem())
             .add(TinkerTools.pickadze.asItem())
             .add(TinkerTools.sledgeHammer.asItem())
-            //.addOptional(ModIntegration.ieLoc("buzzsaw"));
             .add(TinkerTools.veinHammer.asItem());
         getBuilder(TagManager.Items.AXE_TOOLS)
             .add(TinkerSurvivalItems.CRUDE_HATCHET.get().asItem())

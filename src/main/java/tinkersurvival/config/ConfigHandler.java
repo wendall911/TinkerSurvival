@@ -107,6 +107,8 @@ public final class ConfigHandler {
                 && ((String) s).matches("[a-z]+[-]{1}[a-z]+[:]{1}[a-z_]+");
         private final ConfigValue<List<? extends String>> ITEMS;
 
+        private static BooleanValue LOG_MODPACK_DATA;
+
         static {
             Pair<Server,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
 
@@ -138,6 +140,9 @@ public final class ConfigHandler {
                 .comment("List of individual tools that will always work. Format tooltype-modid:item Default: "
                         + "[\"" + String.join("\", \"", itemsStrings) + "\"]")
                 .defineListAllowEmpty(ITEMS_LIST, getFields(itemsStrings), itemidValidator);
+            LOG_MODPACK_DATA = builder
+                .comment("Used to dump log info for Tinkers's Survival Modpack. Ignore.")
+                .define("LOG_MODPACK_DATA", false);
         }
 
         public static boolean enableRockGen() {
@@ -176,6 +181,9 @@ public final class ConfigHandler {
             return items;
         }
 
+        public static boolean logModpackData() {
+            return CONFIG.LOG_MODPACK_DATA.get();
+        }
     }
 
 }

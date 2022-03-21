@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.ModList;
 
 import tinkersurvival.common.HarvestBlock;
-import tinkersurvival.common.TagManager;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.mixin.AbstractBlockStateAccessor;
 import tinkersurvival.TinkerSurvival;
@@ -97,18 +96,16 @@ public class ItemUse {
     }
 
     public static boolean isCorrectTool(BlockState state, Player player, ItemStack handStack) {
+        // Always allow destroySpeed == 0
         if (((AbstractBlockStateAccessor) state).getDestroySpeed() == 0) {
             return true;
         }
 
-        if (handStack.isCorrectToolForDrops(state)) {
-            return true; // Tool has already reported itself as the correct tool
-        }
-
         final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
 
+        // No expected tool type, so we have to return true because we don't know otherwise
         if (expectedToolType == ToolType.NONE) {
-            return true; // No expected tool type, so we have to return true because we don't know otherwise
+            return true;
         }
 
         // Now, we need to infer if the current item is of a given tool type. Try two things:

@@ -41,6 +41,10 @@ repositories {
         name = 'BlameJared Maven'
         url = 'https://maven.blamejared.com'
     }
+    maven { // TOP
+        name 'McJty maven'
+        url "https://maven.k-4u.nl"
+    }
     flatDir {
         dirs 'libs'
     }
@@ -124,6 +128,9 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
     runtimeOnly fg.deobf("blusunrize.immersiveengineering:ImmersiveEngineering:${minecraft_version}-${ie_version}")
+    runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${minecraft_short_version}-${probe_version}") {
+        transitive = false
+    }
 
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
 }

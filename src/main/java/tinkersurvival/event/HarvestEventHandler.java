@@ -100,7 +100,7 @@ public class HarvestEventHandler {
             ItemStack handStack = player.getMainHandItem();
             boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
             boolean canHarvest = event.canHarvest() ||
-                    correctTool ||
+                    (correctTool && handStack.isCorrectToolForDrops(state)) ||
                     TagManager.Blocks.ALWAYS_DROPS.contains(block);
 
             event.setCanHarvest(canHarvest);

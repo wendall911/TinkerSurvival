@@ -13,6 +13,8 @@ import tinkersurvival.data.client.ModBlockStateProvider;
 import tinkersurvival.data.client.ModItemModelProvider;
 import tinkersurvival.data.loot.ModLootTables;
 import tinkersurvival.data.loot.GlobalLootModifier;
+import tinkersurvival.data.overrides.BlockTagsOverrideProvider;
+import tinkersurvival.data.overrides.MaterialOverrideProvider;
 import tinkersurvival.data.recipes.ModRecipesProvider;
 import tinkersurvival.data.tcon.sprite.TinkerPartSpriteProvider;
 import tinkersurvival.data.tcon.StationSlotLayoutProvider;
@@ -31,6 +33,7 @@ public final class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(gen, existingFileHelper);
         TinkerPartSpriteProvider partSprites = new TinkerPartSpriteProvider();
+        String modpackOverrides = System.getenv("MOD_OVERRIDES");
 
         gen.addProvider(new ModItemModelProvider(gen, existingFileHelper));
         gen.addProvider(new ModBlockStateProvider(gen, existingFileHelper));
@@ -43,6 +46,11 @@ public final class DataGenerators {
         gen.addProvider(new StationSlotLayoutProvider(gen));
         gen.addProvider(new GeneratorPartTextureJsonGenerator(gen, TinkerSurvival.MODID, partSprites));
         gen.addProvider(new ToolDefinitionDataProvider(gen));
+
+        if (modpackOverrides != null && modpackOverrides.contains("all")) {
+            gen.addProvider(new MaterialOverrideProvider(gen));
+            gen.addProvider(new BlockTagsOverrideProvider(gen, event.getExistingFileHelper()));
+        }
     }
 
 }
