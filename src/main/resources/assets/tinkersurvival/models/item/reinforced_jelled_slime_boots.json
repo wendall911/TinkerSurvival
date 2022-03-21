@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tinkersurvival:items/reinforced_jelled_slime_boots"
+        "layer0": "tinkersurvival:item/reinforced_jelled_slime_boots"
     }
 }

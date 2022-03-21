@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "tinkersurvival:items/wooden_cup"
+        "layer0": "tinkersurvival:item/wooden_cup"
     }
 }

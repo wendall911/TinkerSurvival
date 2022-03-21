@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "tinkersurvival:items/crude_hatchet"
+        "layer0": "tinkersurvival:item/crude_hatchet"
     }
 }

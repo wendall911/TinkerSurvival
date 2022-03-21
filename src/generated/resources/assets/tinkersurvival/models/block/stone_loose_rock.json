@@ -1,0 +1,6 @@
+{
+  "parent": "tinkersurvival:block/loose_rock",
+  "textures": {
+    "all": "minecraft:block/stone"
+  }
+}

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tinkersurvival:items/crude_saw_blade"
+        "layer0": "tinkersurvival:item/crude_saw_blade"
     }
 }

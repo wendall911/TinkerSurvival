@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tinkersurvival:items/ointment"
+        "layer0": "tinkersurvival:item/ointment"
     }
 }

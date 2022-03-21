@@ -18,6 +18,7 @@ public final class TagManager {
         public static final Tag.Named<Item> SHOVEL_TOOLS = create("shovel_tools");
         public static final Tag.Named<Item> HOE_TOOLS = create("hoe_tools");
         public static final Tag.Named<Item> SHARP_TOOLS = create("sharp_tools");
+        public static final Tag.Named<Item> LOOSE_ROCKS = create("loose_rocks");
 
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));

@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "tinkersurvival:items/crude_bandages"
+        "layer0": "tinkersurvival:item/crude_bandages"
     }
 }

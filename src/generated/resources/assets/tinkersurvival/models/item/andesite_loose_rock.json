@@ -1,0 +1,6 @@
+{
+  "parent": "tinkersurvival:block/andesite_loose_rock",
+  "textures": {
+    "all": "minecraft:block/andesite"
+  }
+}
