@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "tinkersurvival:crude_saw_blade"
+    ]
+  },
+  "criteria": {
+    "has_grass_string": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tinkersurvival:grass_string"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "tinkersurvival:crude_saw_blade"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_grass_string",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BS",
+    " H"
+  ],
+  "key": {
+    "H": {
+      "item": "tinkersurvival:crude_saw_handle"
+    },
+    "B": {
+      "item": "tinkersurvival:crude_saw_blade"
+    },
+    "S": {
+      "item": "tinkersurvival:grass_string"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:crude_saw"
+  }
+}

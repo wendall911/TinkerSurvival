@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "tinkersurvival:crude_saw"
+    ]
+  },
+  "criteria": {
+    "has_crude_saw_handle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tinkersurvival:crude_saw_handle"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "tinkersurvival:crude_saw"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_crude_saw_handle",
+      "has_the_recipe"
+    ]
+  ]
+}

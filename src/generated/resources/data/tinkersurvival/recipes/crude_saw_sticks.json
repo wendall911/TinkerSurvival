@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sticks",
+  "ingredients": [
+    {
+      "tag": "minecraft:planks"
+    },
+    {
+      "tag": "tinkersurvival:saw_tools"
+    }
+  ],
+  "result": {
+    "item": "minecraft:stick",
+    "count": 2
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "tinkersurvival:crude_knife"
+    ]
+  },
+  "criteria": {
+    "has_flint_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tinkersurvival:flint_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "tinkersurvival:crude_knife"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flint_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

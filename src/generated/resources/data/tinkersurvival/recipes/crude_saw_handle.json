@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IS",
+    " I"
+  ],
+  "key": {
+    "S": {
+      "item": "tinkersurvival:grass_string"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:crude_saw_handle"
+  }
+}

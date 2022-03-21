@@ -9,10 +9,21 @@
           "type": "minecraft:item",
           "name": "tinkersurvival:rock_stone"
         }
-      ],
-      "conditions": [
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
         {
-          "condition": "minecraft:survives_explosion"
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.25
+            }
+          ],
+          "name": "minecraft:flint"
         }
       ]
     }

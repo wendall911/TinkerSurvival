@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SR",
+    "I "
+  ],
+  "key": {
+    "R": {
+      "item": "tinkersurvival:rock_stone"
+    },
+    "S": {
+      "item": "tinkersurvival:grass_string"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tinkersurvival:crude_hatchet"
+  }
+}
