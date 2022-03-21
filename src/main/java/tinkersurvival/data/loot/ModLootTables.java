@@ -20,6 +20,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 public class ModLootTables extends LootTableProvider {
+
     public ModLootTables(DataGenerator dataGeneratorIn) {
         super(dataGeneratorIn);
     }
@@ -32,10 +33,7 @@ public class ModLootTables extends LootTableProvider {
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
         return ImmutableList.of(
-                //Pair.of(ModChestLootTables::new, LootContextParamSets.CHEST),
-                //Pair.of(ModEntityLootTables::new, LootContextParamSets.ENTITY),
-                //Pair.of(ModGiftLootTables::new, LootContextParamSets.GIFT),
-                Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
+			Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
         );
     }
 
@@ -43,4 +41,5 @@ public class ModLootTables extends LootTableProvider {
     protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
         map.forEach((id, table) -> LootTables.validate(validationtracker, id, table));
     }
+
 }

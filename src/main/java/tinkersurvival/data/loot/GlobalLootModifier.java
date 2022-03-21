@@ -3,16 +3,19 @@ package tinkersurvival.data.loot;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.minecraftforge.common.loot.LootTableIdCondition;
 
 import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.TinkerSurvival;
@@ -54,16 +57,53 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
         addStickDrops(Blocks.BIRCH_LEAVES);
         addStickDrops(Blocks.AZALEA_LEAVES);
         addStickDrops(Blocks.FLOWERING_AZALEA_LEAVES);
+
+        addToolLoot(
+            BuiltInLootTables.VILLAGE_TOOLSMITH,
+            "village_toolsmith_crude_knife",
+            TinkerSurvivalWorld.CRUDE_KNIFE.get()
+        );
+        addToolLoot(
+            BuiltInLootTables.VILLAGE_TOOLSMITH,
+            "village_toolsmith_crude_hatchet",
+            TinkerSurvivalWorld.CRUDE_HATCHET.get()
+        );
+        addToolLoot(
+            BuiltInLootTables.VILLAGE_TOOLSMITH,
+            "village_toolsmith_crude_saw",
+            TinkerSurvivalWorld.CRUDE_SAW.get()
+        );
+        addRareLoot(
+            BuiltInLootTables.VILLAGE_TOOLSMITH,
+            "village_fisher_wooden_cup",
+            TinkerSurvivalWorld.WOODEN_CUP.get()
+        );
+        addRareLoot(
+            BuiltInLootTables.BURIED_TREASURE,
+            "buried_treasure_wooden_cup",
+            TinkerSurvivalWorld.WOODEN_CUP.get()
+        );
+        addRareLoot(
+            BuiltInLootTables.SHIPWRECK_TREASURE,
+            "shipwreck_treasure_wooden_cup",
+            TinkerSurvivalWorld.WOODEN_CUP.get()
+        );
+        addRareLoot(
+            BuiltInLootTables.FISHING_TREASURE,
+            "fishing_treasure_wooden_cup",
+            TinkerSurvivalWorld.WOODEN_CUP.get()
+        );
+
     }
 
     public void addPlantFiberDrops(Block block) {
 		String name = block.getRegistryName().getPath().toString();
 
         this.add(
-            "plant_fiber_from_" + name, 
+            "plant_fiber_from_" + name,
             TinkerSurvivalLootTables.PLANT_FIBER_DROPS.get(),
             new TinkerSurvivalLootTables.LootTableModifier(
-                createChanceCondition(0.16F, block),
+                createKnifeChanceCondition(0.16F, block),
                 new ItemStack(TinkerSurvivalWorld.PLANT_FIBER.get())
             )
         );
@@ -73,20 +113,49 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
 		String name = block.getRegistryName().getPath().toString();
 
         this.add(
-            "stick_drops_from_" + name, 
+            "stick_drops_from_" + name,
             TinkerSurvivalLootTables.STICK_DROPS.get(),
             new TinkerSurvivalLootTables.LootTableModifier(
-                createChanceCondition(0.16F, block),
+                createKnifeChanceCondition(0.16F, block),
                 new ItemStack(Items.STICK)
             )
         );
     }
 
-    public static LootItemCondition[] createChanceCondition(float chance, Block block) {
+    public void addToolLoot(ResourceLocation loc, String name, Item item) {
+        this.add(
+            "tool_loot_" + name,
+            TinkerSurvivalLootTables.TOOL_LOOT.get(),
+            new TinkerSurvivalLootTables.LootTableModifier(
+                createResourceChanceCondition(0.05F, loc),
+                new ItemStack(item)
+            )
+        );
+    }
+
+    public void addRareLoot(ResourceLocation loc, String name, Item item) {
+        this.add(
+            "rare_loot_" + name,
+            TinkerSurvivalLootTables.RARE_LOOT.get(),
+            new TinkerSurvivalLootTables.LootTableModifier(
+                createResourceChanceCondition(0.01F, loc),
+                new ItemStack(item)
+            )
+        );
+    }
+
+    public static LootItemCondition[] createKnifeChanceCondition(float chance, Block block) {
         return new LootItemCondition[] {
             LootItemRandomChanceCondition.randomChance(chance).build(),
 			MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
             LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
+        };
+    }
+
+	public static LootItemCondition[] createResourceChanceCondition(float chance, ResourceLocation loc) {
+        return new LootItemCondition[] {
+            LootItemRandomChanceCondition.randomChance(chance).build(),
+            LootTableIdCondition.builder(loc).build()
         };
     }
 

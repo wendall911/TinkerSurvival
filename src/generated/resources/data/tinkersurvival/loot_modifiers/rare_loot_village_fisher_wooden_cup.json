@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.01
+    },
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/village/village_toolsmith"
+    }
+  ],
+  "item": "tinkersurvival:wooden_cup",
+  "type": "tinkersurvival:rare_loot"
+}

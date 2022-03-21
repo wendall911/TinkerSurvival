@@ -49,6 +49,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, TinkerSurvivalWorld.MORTAR_AND_PESTLE.get());
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_BANDAGE.get());
         builder(itemGenerated, TinkerSurvivalWorld.BANDAGE.get());
+        builder(itemGenerated, TinkerSurvivalWorld.WOODEN_CUP.get());
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, Item item) {

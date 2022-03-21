@@ -35,6 +35,7 @@ import tinkersurvival.world.item.Bandage;
 import tinkersurvival.world.item.CrudeBandage;
 import tinkersurvival.world.item.Mortar;
 import tinkersurvival.world.item.RockStone;
+import tinkersurvival.world.item.WoodenCup;
 import tinkersurvival.world.feature.LooseRocks;
 import tinkersurvival.world.effect.StopBleeding;
 import tinkersurvival.world.effect.ZombieEssence;
@@ -69,6 +70,8 @@ public class TinkerSurvivalWorld {
 
     public static RegistryObject<Item> CRUDE_BANDAGE;
     public static RegistryObject<Item> BANDAGE;
+
+    public static RegistryObject<Item> WOODEN_CUP;
 
     public static RegistryObject<Block> ANDESITE_LOOSE_ROCK;
     public static RegistryObject<Block> DIORITE_LOOSE_ROCK;
@@ -145,6 +148,11 @@ public class TinkerSurvivalWorld {
         ));
         BANDAGE = registerItem("bandage", () -> new Bandage(
             (new Item.Properties()).stacksTo(16).tab(TAB_GROUP)
+        ));
+
+        // Zombie Jesus
+        WOODEN_CUP = registerItem("wooden_cup", () -> new WoodenCup(
+            (new Item.Properties()).stacksTo(1).tab(TAB_GROUP)
         ));
     }
 

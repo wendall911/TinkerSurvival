@@ -39,15 +39,20 @@ public class ItemBase extends Item {
 
 		if (!level.isClientSide) {
             String name = stack.getItem().getRegistryName().getPath().toString();
-            int duration = 600;
-            int amplifier = 0;
 
             if (name.contains("bandage")) {
+                int amplifier = 0;
+
                 if (!name.contains("crude")) {
                     amplifier = 1;
                 }
+
                 MobEffect effect = TinkerSurvivalWorld.STOP_BLEEDING.get();
-                entity.addEffect(new MobEffectInstance(effect, duration, amplifier));
+                entity.addEffect(new MobEffectInstance(effect, 600, amplifier));
+            }
+            else if (name.contains("cup")) {
+                MobEffect effect = TinkerSurvivalWorld.ZOMBIE_ESSENCE.get();
+                entity.addEffect(new MobEffectInstance(effect, 3600, 1));
             }
 
 		}
