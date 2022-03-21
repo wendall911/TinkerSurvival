@@ -58,20 +58,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void generateLooseRockVariants(Block block) {
-        String name = block.getRegistryName().toString();
-        String type = name.split(":")[1].split("_")[0];
-        ResourceLocation loc;
-
-        if (type.contains("red")) {
-            loc = mcLoc("block/red_sandstone");
-        }
-        else {
-            loc = mcLoc("block/" + type);
-        }
+        ResourceLocation name = block.getRegistryName();
+        String type = name.getPath().toString().replace("_loose_rock", "");
 
         ModelFile modelFile = models()
-            .withExistingParent(name, modLoc("block/loose_rock"))
-            .texture("all", loc);
+            .withExistingParent(name.toString(), modLoc("block/loose_rock"))
+            .texture("all", mcLoc("block/" + type));
 
         getVariantBuilder(block)
             .forAllStates(state -> ConfiguredModel.builder().modelFile(modelFile).build());
