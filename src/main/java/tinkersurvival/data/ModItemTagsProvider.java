@@ -31,7 +31,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
-        builder(TagManager.Items.FLINT_KNAPPABLE, Items.FLINT);
+        builder(TagManager.Items.FLINT_KNAPPABLE,
+            Items.FLINT,
+            TinkerSurvivalWorld.ROCK_STONE.get()
+        );
         builder(TagManager.Items.PICKAXE_TOOLS);
         builder(
             TagManager.Items.AXE_TOOLS,
