@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:gravel",
+    "#forge:gravel",
+    "minecraft:stone",
+    "minecraft:calcite",
+    "minecraft:granite",
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:coal_ore",
+    "#forge:ores/coal",
+    "minecraft:sandstone",
+    "minecraft:iron_block",
+    "#forge:ores/iron",
+    "minecraft:copper_ore",
+    "#forge:ores/copper",
+    "minecraft:mossy_cobblestone",
+    "minecraft:red_sandstone",
+    "#minecraft:dirt",
+    "#minecraft:sand",
+    "#forge:sand",
+    "#minecraft:terracotta"
+  ]
+}

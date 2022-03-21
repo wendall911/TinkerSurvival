@@ -2,11 +2,10 @@
   "replace": false,
   "values": [
     "minecraft:gravel",
+    "#forge:gravel",
     "#minecraft:leaves",
-    "minecraft:dirt",
-    "minecraft:grass",
-    "minecraft:podzol",
-    "minecraft:coarse_dirt",
+    "#minecraft:dirt",
+    "#forge:sand",
     "#minecraft:sand"
   ]
 }
