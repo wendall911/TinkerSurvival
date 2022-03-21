@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "string",
+  "ingredients": [
+    {
+      "tag": "minecraft:wool"
+    },
+    {
+      "item": "tinkersurvival:knife"
+    }
+  ],
+  "result": {
+    "item": "minecraft:string",
+    "count": 4
+  }
+}

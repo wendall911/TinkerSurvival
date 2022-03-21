@@ -25,6 +25,13 @@ public class StationSlotLayoutProvider extends AbstractStationSlotLayoutProvider
      */
     @Override
     protected void addLayouts() {
+        defineModifiable(TinkerSurvivalItems.KNIFE)
+            .sortIndex(6)
+            .addInputItem(TinkerToolParts.smallBlade, 48, 27)
+            .addInputItem(TinkerToolParts.toughHandle,   12, 62)
+            .addInputItem(TinkerToolParts.toolBinding,  30, 44)
+            .build();
+
         defineModifiable(TinkerSurvivalItems.SAW)
             .sortIndex(6)
             .addInputItem(TinkerSurvivalItems.SAW_BLADE, 52, 22)

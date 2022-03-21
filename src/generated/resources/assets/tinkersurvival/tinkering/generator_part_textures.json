@@ -16,6 +16,22 @@
     {
       "path": "tinkersurvival:item/tool/saw/handle",
       "statType": "tconstruct:handle"
+    },
+    {
+      "path": "tinkersurvival:item/tool/knife/head",
+      "statType": "tconstruct:head"
+    },
+    {
+      "path": "tinkersurvival:item/tool/knife/binding",
+      "statType": "tconstruct:extra"
+    },
+    {
+      "path": "tinkersurvival:item/tool/knife/broken_head",
+      "statType": "tconstruct:head"
+    },
+    {
+      "path": "tinkersurvival:item/tool/knife/handle",
+      "statType": "tconstruct:handle"
     }
   ]
 }

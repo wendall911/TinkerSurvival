@@ -1,0 +1,17 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "handle": "tinkersurvival:item/knife/handle",
+    "head": "tinkersurvival:item/knife/head",
+    "binding": "tinkersurvival:item/knife/binding",
+    "broken_head": "tinkersurvival:item/knife/broken_head"
+  },
+  "large": false,
+  "modifier_roots": [ "tinkersurvival:item/knife/modifiers/" ],
+  "parts": [
+    { "name": "handle",  "index": 1 },
+    { "name": "head",    "index": 0, "broken": "broken_head" },
+    { "name": "binding", "index": 2 }
+  ]
+}

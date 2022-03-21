@@ -64,7 +64,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         builder(TagManager.Items.HOE_TOOLS);
         builder(
             TagManager.Items.KNIFE_TOOLS,
-            TinkerSurvivalItems.CRUDE_KNIFE.get()
+            TinkerSurvivalItems.CRUDE_KNIFE.get(),
+            TinkerSurvivalItems.KNIFE.get()
         );
         builder(TagManager.Items.SHARP_TOOLS);
         builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE.get());
@@ -88,10 +89,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             this.tag(TagManager.Items.SAW_BLADE_CAST_SINGLE).add(cast.getRedSand());
         };
 
-        this.tag(MULTIPART_TOOL).add(TinkerSurvivalItems.SAW.get());
-        this.tag(DURABILITY).add(TinkerSurvivalItems.SAW.get());
-        this.tag(ONE_HANDED).add(TinkerSurvivalItems.SAW.get());
-        this.tag(HARVEST_PRIMARY).add(TinkerSurvivalItems.SAW.get());
+        this.tag(MULTIPART_TOOL).add(
+            TinkerSurvivalItems.SAW.get(),
+            TinkerSurvivalItems.KNIFE.get()
+        );
+        this.tag(DURABILITY).add(
+            TinkerSurvivalItems.SAW.get(),
+            TinkerSurvivalItems.KNIFE.get()
+        );
+        this.tag(ONE_HANDED).add(
+            TinkerSurvivalItems.SAW.get(),
+            TinkerSurvivalItems.KNIFE.get()
+        );
+        this.tag(HARVEST_PRIMARY).add(
+            TinkerSurvivalItems.SAW.get(),
+            TinkerSurvivalItems.KNIFE.get()
+        );
         this.tag(TOOL_PARTS).add(TinkerSurvivalItems.SAW_BLADE.get());
 
         addCast.accept(TinkerSurvivalItems.SAW_BLADE_CAST);

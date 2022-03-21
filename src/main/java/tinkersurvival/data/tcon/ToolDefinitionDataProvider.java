@@ -28,6 +28,15 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
      */
     @Override
     protected void addToolDefinitions() {
+        define(TinkerSurvivalItems.KNIFE_DEFINITION)
+            .part(TinkerToolParts.smallBlade)
+            .part(TinkerToolParts.toughHandle)
+            .part(TinkerToolParts.toolBinding)
+            .stat(ToolStats.ATTACK_DAMAGE, 1.5f)
+            .stat(ToolStats.ATTACK_SPEED, 1.0f)
+            .multiplier(ToolStats.ATTACK_DAMAGE, 0.35f)
+            .smallToolStartingSlots();
+
         define(TinkerSurvivalItems.SAW_DEFINITION)
             .part(TinkerSurvivalItems.SAW_BLADE)
             .part(TinkerToolParts.toolHandle)

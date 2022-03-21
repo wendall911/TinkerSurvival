@@ -31,6 +31,7 @@ import tinkersurvival.items.item.WoodenCup;
 import tinkersurvival.items.tool.CrudeHatchet;
 import tinkersurvival.items.tool.CrudeKnife;
 import tinkersurvival.items.tool.CrudeSaw;
+import tinkersurvival.items.tool.Knife;
 import tinkersurvival.items.tool.Saw;
 import tinkersurvival.TinkerSurvival;
 
@@ -59,6 +60,8 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
     public static RegistryObject<Item> CRUDE_SAW_HANDLE;
     public static RegistryObject<Item> CRUDE_SAW;
     public static RegistryObject<Item> MORTAR_AND_PESTLE;
+    public static ItemObject<ModifiableItem> KNIFE;
+    public static ToolDefinition KNIFE_DEFINITION;
     public static ItemObject<ModifiableItem> SAW;
     public static ToolDefinition SAW_DEFINITION;
 
@@ -95,21 +98,23 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
         CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", WOOD_TIER, 0, -8.0F);
         CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
         MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
+        KNIFE = TOOL_REGISTRY.register("knife", () -> new Knife(
+            (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS),
+            KNIFE_DEFINITION
+        ));
+        KNIFE_DEFINITION = ToolDefinition.builder(KNIFE).meleeHarvest().build();
         SAW = TOOL_REGISTRY.register("saw", () -> new Saw(
             (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS),
             SAW_DEFINITION
         ));
-
         SAW_BLADE = TOOL_REGISTRY.register("saw_blade", () -> new ToolPartItem(
             new Item.Properties().tab(TinkerToolParts.TAB_TOOL_PARTS),
             HeadMaterialStats.ID
         ));
-
         SAW_BLADE_CAST = TOOL_REGISTRY.registerCast(
             "saw_blade",
             new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)
         );
-
         SAW_DEFINITION = ToolDefinition.builder(SAW).meleeHarvest().build();
 
         // Bandages

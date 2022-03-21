@@ -35,6 +35,7 @@ public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterial
     }
 
     private void addToolBuildingRecipes(Consumer<FinishedRecipe> consumer) {
+        toolBuilding(consumer, TinkerSurvivalItems.KNIFE, "tools/building/");
         toolBuilding(consumer, TinkerSurvivalItems.SAW, "tools/building/");
     }
 

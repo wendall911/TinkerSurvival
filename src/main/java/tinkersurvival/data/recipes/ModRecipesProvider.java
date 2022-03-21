@@ -159,7 +159,7 @@ public class ModRecipesProvider extends RecipeProvider {
         // Knife Recipes
         ShapelessRecipeBuilder.shapeless(Items.STICK)
                 .requires(ItemTags.SAPLINGS)
-                .requires(crudeKnife)
+                .requires(TagManager.Items.KNIFE_TOOLS)
                 .group("sticks")
                 .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
                 .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "stick_from_sapling"));
@@ -170,6 +170,13 @@ public class ModRecipesProvider extends RecipeProvider {
                 .group("string")
                 .unlockedBy("has_wool", has(ItemTags.WOOL))
                 .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "string_from_wool"));
+
+        ShapelessRecipeBuilder.shapeless(Items.STRING, 4)
+                .requires(ItemTags.WOOL)
+                .requires(TinkerSurvivalItems.KNIFE.get())
+                .group("string")
+                .unlockedBy("has_wool", has(ItemTags.WOOL))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "string_from_wool_advanced"));
 
         ShapelessRecipeBuilder.shapeless(flintShard, 2)
                 .requires(TagManager.Items.FLINT_KNAPPABLE)

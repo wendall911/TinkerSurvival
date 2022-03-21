@@ -1,8 +1,0 @@
-{
-    "textures": {
-        "layer0": "tinkersurvival:item/saw/handle",
-        "layer1": "tinkersurvival:item/saw/head",
-        "layer2": "tinkersurvival:item/saw/binding",
-        "broken1": "tinkersurvival:item/saw/broken_head"
-    }
-}
