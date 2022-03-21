@@ -21,7 +21,6 @@ import tinkersurvival.common.TinkerSurvivalModule;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.proxy.ClientProxy;
 import tinkersurvival.proxy.ServerProxy;
-import tinkersurvival.recipe.RecipeHelper;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 @Mod(TinkerSurvival.MODID)
