@@ -26,6 +26,7 @@ public class TinkerSurvivalLootTables {
 
     public static DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIER_REGISTRY;
     public static RegistryObject<LootTableSerializer> PLANT_FIBER_DROPS;
+    public static RegistryObject<LootTableSerializer> STICK_DROPS;
 
     public static void init(IEventBus bus) {
         LOOT_MODIFIER_REGISTRY = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, TinkerSurvival.MODID);
@@ -33,6 +34,7 @@ public class TinkerSurvivalLootTables {
         LOOT_MODIFIER_REGISTRY.register(bus);
 
         PLANT_FIBER_DROPS = LOOT_MODIFIER_REGISTRY.register("plant_fiber_drops", LootTableSerializer::new);
+        STICK_DROPS = LOOT_MODIFIER_REGISTRY.register("stick_drops", LootTableSerializer::new);
 	}
 
 	public static class LootTableSerializer extends GlobalLootModifierSerializer<LootTableModifier> {
