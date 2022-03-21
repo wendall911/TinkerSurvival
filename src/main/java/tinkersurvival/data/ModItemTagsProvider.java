@@ -17,14 +17,17 @@ import net.minecraftforge.common.Tags;
 
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 import static slimeknights.tconstruct.common.TinkerTags.Items.DURABILITY;
-import static slimeknights.tconstruct.common.TinkerTags.Items.HARVEST_PRIMARY;
 import static slimeknights.tconstruct.common.TinkerTags.Items.GOLD_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.HARVEST_PRIMARY;
 import static slimeknights.tconstruct.common.TinkerTags.Items.MULTIPART_TOOL;
 import static slimeknights.tconstruct.common.TinkerTags.Items.ONE_HANDED;
 import static slimeknights.tconstruct.common.TinkerTags.Items.RED_SAND_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SAND_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.STONE_HARVEST;
+import static slimeknights.tconstruct.common.TinkerTags.Items.SWORD;
 import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
 
 
@@ -46,28 +49,50 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
-        builder(TagManager.Items.FLINT_KNAPPABLE,
+        builder(
+            TagManager.Items.FLINT_KNAPPABLE,
             Items.FLINT,
             TinkerSurvivalWorld.ROCK_STONE.get()
         );
-        builder(TagManager.Items.PICKAXE_TOOLS);
+        builder(
+            TagManager.Items.PICKAXE_TOOLS,
+            TinkerTools.pickaxe,
+            TinkerTools.pickadze,
+            TinkerTools.sledgeHammer,
+            TinkerTools.veinHammer
+        );
         builder(
             TagManager.Items.AXE_TOOLS,
-            TinkerSurvivalItems.CRUDE_HATCHET.get()
+            TinkerSurvivalItems.CRUDE_HATCHET.get(),
+            TinkerTools.handAxe,
+            TinkerTools.broadAxe
         );
         builder(
             TagManager.Items.SAW_TOOLS,
             TinkerSurvivalItems.CRUDE_SAW.get(),
             TinkerSurvivalItems.SAW.get()
         );
-        builder(TagManager.Items.SHOVEL_TOOLS);
-        builder(TagManager.Items.HOE_TOOLS);
+        builder(
+            TagManager.Items.SHOVEL_TOOLS,
+            TinkerTools.mattock,
+            TinkerTools.pickadze,
+            TinkerTools.excavator
+        );
+        builder(
+            TagManager.Items.HOE_TOOLS,
+            TinkerTools.kama,
+            TinkerTools.scythe
+        );
         builder(
             TagManager.Items.KNIFE_TOOLS,
             TinkerSurvivalItems.CRUDE_KNIFE.get(),
             TinkerSurvivalItems.KNIFE.get()
         );
-        builder(TagManager.Items.SHARP_TOOLS);
+        getBuilder(TagManager.Items.SHARP_TOOLS)
+            .addTag(TagManager.Items.KNIFE_TOOLS)
+            .add(TinkerTools.dagger.asItem())
+            .add(TinkerTools.cleaver.asItem())
+            .add(TinkerTools.sword.asItem());
         builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE.get());
         builder(
             TagManager.Items.SAW_PARTS,

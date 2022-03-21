@@ -31,6 +31,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     @Override 
     protected void addTags() {
         getBuilder(TagManager.Blocks.ALWAYS_BREAKABLE)
+            .addTag(BlockTags.BEDS)
             .add(Blocks.GRAVEL)
             .addTag(Tags.Blocks.GRAVEL)
 			.addTag(BlockTags.LEAVES)
@@ -39,6 +40,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .addTag(BlockTags.SAND);
 
         getBuilder(TagManager.Blocks.ALWAYS_DROPS)
+            .addTag(BlockTags.BEDS)
             .add(Blocks.GRAVEL)
             .addTag(Tags.Blocks.GRAVEL)
 			.addTag(BlockTags.LEAVES)

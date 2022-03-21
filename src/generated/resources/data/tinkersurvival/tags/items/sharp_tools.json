@@ -1,4 +1,9 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "#tinkersurvival:knife_tools",
+    "tconstruct:dagger",
+    "tconstruct:cleaver",
+    "tconstruct:sword"
+  ]
 }

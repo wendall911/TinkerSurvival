@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#minecraft:beds",
     "minecraft:gravel",
     "#forge:gravel",
     "#minecraft:leaves",

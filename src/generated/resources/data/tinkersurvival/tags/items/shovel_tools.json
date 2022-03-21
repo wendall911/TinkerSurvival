@@ -1,4 +1,8 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "tconstruct:mattock",
+    "tconstruct:pickadze",
+    "tconstruct:excavator"
+  ]
 }

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "tinkersurvival:crude_hatchet"
+    "tinkersurvival:crude_hatchet",
+    "tconstruct:hand_axe",
+    "tconstruct:broad_axe"
   ]
 }

@@ -1,4 +1,9 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "tconstruct:pickaxe",
+    "tconstruct:pickadze",
+    "tconstruct:sledge_hammer",
+    "tconstruct:vein_hammer"
+  ]
 }
