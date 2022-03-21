@@ -10,6 +10,7 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import tinkersurvival.data.client.ModBlockStateProvider;
 import tinkersurvival.data.client.ModItemModelProvider;
 import tinkersurvival.data.loot.ModLootTables;
+import tinkersurvival.data.loot.GlobalLootModifier;
 import tinkersurvival.data.recipes.ModRecipesProvider;
 import tinkersurvival.TinkerSurvival;
 
@@ -30,6 +31,7 @@ public final class DataGenerators {
         gen.addProvider(new ModItemTagsProvider(gen, blockTags, existingFileHelper));
         gen.addProvider(new ModRecipesProvider(gen));
         gen.addProvider(new ModLootTables(gen));
+        gen.addProvider(new GlobalLootModifier(gen));
     }
 
 }

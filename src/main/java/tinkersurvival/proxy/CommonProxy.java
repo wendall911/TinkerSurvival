@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -17,6 +18,7 @@ public class CommonProxy implements IProxy {
     CommonProxy() {
         ConfigHandler.init();
         TinkerSurvivalWorld.init(TinkerSurvival.BUS);
+        TinkerSurvivalLootTables.init(TinkerSurvival.BUS);
     }
 
     @Nullable

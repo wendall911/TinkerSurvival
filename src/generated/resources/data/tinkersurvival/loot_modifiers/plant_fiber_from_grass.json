@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.16
+    },
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "tag": "tinkersurvival:knife_tools"
+      }
+    },
+    {
+      "condition": "minecraft:block_state_property",
+      "block": "minecraft:grass"
+    }
+  ],
+  "item": "tinkersurvival:plant_fiber",
+  "type": "tinkersurvival:plant_fiber_drops"
+}

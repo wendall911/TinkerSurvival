@@ -1,44 +1,79 @@
 package tinkersurvival.event;
 
-import java.util.HashMap;
-import java.util.Map;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.material.Material;
 
-/*
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockGrass;
-import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockDoublePlant;
-import net.minecraft.block.BlockTallGrass;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.SoundCategory;
-
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-import slimeknights.tconstruct.library.utils.ToolHelper;
-
-import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.ConfigHandler;
-import tinkersurvival.tools.tool.CrudeHatchet;
-import tinkersurvival.tools.tool.CrudeKnife;
-import tinkersurvival.tools.tool.CrudeSaw;
-import tinkersurvival.tools.tool.Knife;
-import tinkersurvival.util.Chat;
-import tinkersurvival.util.ItemUse;
-import tinkersurvival.world.block.BlockRock;
+import tinkersurvival.TinkerSurvival;
+import tinkersurvival.util.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
-*/
 
+@Mod.EventBusSubscriber(modid = TinkerSurvival.MODID)
 public class HarvestEventHandler {
+
+    @SubscribeEvent
+    public static void breakBlock(BlockEvent.BreakEvent event) {
+        final LevelAccessor level = event.getWorld();
+        final BlockPos pos = event.getPos();
+        final BlockState state = level.getBlockState(pos);
+        final Player player = event.getPlayer();
+        final ItemStack tool = player.getMainHandItem();
+
+        /*
+        if (player instanceof ServerPlayer) {
+            if (TagManager.Items.KNIFE_TOOLS.contains(tool.getItem())) {
+                if (TagManager.Blocks.FIBER_PLANTS.contains(state.getBlock())) {
+                    if (level.getRandom().nextFloat() < 0.3) {
+                        if (level.getRandom().nextFloat() < ConfigHandler.Server.grassFiberBonusChance()) {
+                            NonNullList<ItemStack> dropStack =
+                                NonNullList.withSize(1, new ItemStack(TinkerSurvivalWorld.PLANT_FIBER.get(), 1));
+
+                            Containers.dropContents(player.getLevel(), pos, dropStack);
+
+                            tool.hurtAndBreak(1, player, (item) -> {
+                                item.broadcastBreakEvent(InteractionHand.MAIN_HAND);
+                            });
+                        }
+                    }
+                }
+
+                if (state.getMaterial() == Material.LEAVES) {
+                    TinkerSurvival.LOGGER.warn("BreakEvent: Leaves!!!!");
+                }
+            }
+        }
+        */
+    }
+
+	@SubscribeEvent
+    public static void harvestCheckEvent(PlayerEvent.HarvestCheck event) {
+        /*
+        BlockState state = event.getTargetBlock();
+
+        TinkerSurvival.LOGGER.warn(state.getBlock());
+
+        if (state.getMaterial() == Material.LEAVES) {
+            TinkerSurvival.LOGGER.warn("Leaves!!!!");
+        }
+        */
+    }
+
     /*
     public static final Map<EntityPlayer, BlockPos> harvestAttempts = new HashMap<>();
 

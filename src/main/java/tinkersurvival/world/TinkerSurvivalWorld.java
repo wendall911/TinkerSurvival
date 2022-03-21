@@ -46,8 +46,8 @@ public class TinkerSurvivalWorld {
 
     public static RegistryObject<Item> FLINT_SHARD;
     public static RegistryObject<Item> ROCK_STONE;
-    public static RegistryObject<Item> GRASS_FIBER;
-    public static RegistryObject<Item> GRASS_STRING;
+    public static RegistryObject<Item> PLANT_FIBER;
+    public static RegistryObject<Item> PLANT_STRING;
 
     public static RegistryObject<Item> CRUDE_SAW_BLADE;
 
@@ -91,8 +91,8 @@ public class TinkerSurvivalWorld {
         // Items
         FLINT_SHARD = registerItem("flint_shard");
         ROCK_STONE = registerRockStone("rock_stone");
-        GRASS_FIBER = registerItem("grass_fiber");
-        GRASS_STRING = registerItem("grass_string");
+        PLANT_FIBER = registerItem("plant_fiber");
+        PLANT_STRING = registerItem("plant_string");
 
         // Tools
         FLINT_TIER = new DynamicItemTier().setMaxUses(20).setEfficiency(1.5F)
@@ -191,8 +191,8 @@ public class TinkerSurvivalWorld {
     public static ItemBase cloth;
     public static ItemBase FLINT_SHARD;
     public static ItemBase plantPaste;
-    public static ItemBase grassFiber;
-    public static ItemBase grassString;
+    public static ItemBase plantFiber;
+    public static ItemBase plantString;
     public static ItemBase ointment;
     
     public static ItemBandage bandageItem;
@@ -248,8 +248,8 @@ public class TinkerSurvivalWorld {
         looseRock = getLooseRock(looseRock, "loose_rock");
         ROCK_STONE = getItem(ROCK_STONE, "rock_stone");
         cloth = getItem(cloth, "cloth");
-        grassFiber = getItem(grassFiber, "grass_fiber");
-        grassString = getItem(grassString, "grass_string");
+        plantFiber = getItem(plantFiber, "plant_fiber");
+        plantString = getItem(plantString, "plant_string");
         ointment = getItem(ointment, "ointment");
         plantPaste = getItem(plantPaste, "plant_paste");
         FLINT_SHARD = getItem(FLINT_SHARD, "flint_shard");

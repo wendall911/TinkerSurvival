@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "entries": [
+    "tinkersurvival:plant_fiber_from_flowering_azalea_leaves",
+    "tinkersurvival:plant_fiber_from_grass",
+    "tinkersurvival:plant_fiber_from_birch_leaves",
+    "tinkersurvival:plant_fiber_from_oak_leaves",
+    "tinkersurvival:plant_fiber_from_fern",
+    "tinkersurvival:plant_fiber_from_acacia_leaves",
+    "tinkersurvival:plant_fiber_from_vine",
+    "tinkersurvival:plant_fiber_from_spruce_leaves",
+    "tinkersurvival:plant_fiber_from_azalea_leaves",
+    "tinkersurvival:plant_fiber_from_jungle_leaves",
+    "tinkersurvival:plant_fiber_from_large_fern",
+    "tinkersurvival:plant_fiber_from_dark_oak_leaves",
+    "tinkersurvival:plant_fiber_from_tall_grass"
+  ]
+}

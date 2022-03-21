@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "tinkersurvival:item/grass_string"
+    "layer0": "tinkersurvival:item/plant_string"
   }
 }

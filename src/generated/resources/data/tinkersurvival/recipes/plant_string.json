@@ -6,10 +6,10 @@
   ],
   "key": {
     "F": {
-      "item": "tinkersurvival:grass_fiber"
+      "item": "tinkersurvival:plant_fiber"
     }
   },
   "result": {
-    "item": "tinkersurvival:grass_string"
+    "item": "tinkersurvival:plant_string"
   }
 }

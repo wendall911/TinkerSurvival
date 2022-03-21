@@ -76,7 +76,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(TinkerSurvivalWorld.SANDSTONE_LOOSE_ROCK.get())
             .add(TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK.get());
 
-        getBuilder(TagManager.Blocks.GRASS)
+        getBuilder(TagManager.Blocks.FIBER_PLANTS)
+			.addTag(BlockTags.LEAVES)
+            .add(Blocks.VINE)
+            .add(Blocks.FERN)
+            .add(Blocks.LARGE_FERN)
             .add(Blocks.GRASS)
             .add(Blocks.TALL_GRASS);
     }

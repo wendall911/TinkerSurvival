@@ -52,21 +52,21 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_flint_shard", has(TinkerSurvivalWorld.FLINT_SHARD.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.GRASS_STRING.get())
-                .define('F', TinkerSurvivalWorld.GRASS_FIBER.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.PLANT_STRING.get())
+                .define('F', TinkerSurvivalWorld.PLANT_FIBER.get())
                 .pattern("FF")
                 .pattern("F ")
-                .unlockedBy("has_grass_fiber", has(TinkerSurvivalWorld.GRASS_FIBER.get()))
+                .unlockedBy("has_grass_fiber", has(TinkerSurvivalWorld.PLANT_FIBER.get()))
                 .save(consumer);
 
         // Saw Blades
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW_BLADE.get())
                 .define('D', TinkerSurvivalWorld.FLINT_SHARD.get())
-                .define('S', TinkerSurvivalWorld.GRASS_STRING.get())
+                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
                 .define('I', Items.STICK)
                 .pattern("ID")
                 .pattern("SD")
-                .unlockedBy("has_grass_string", has(TinkerSurvivalWorld.GRASS_STRING.get()))
+                .unlockedBy("has_grass_string", has(TinkerSurvivalWorld.PLANT_STRING.get()))
                 .save(consumer);
         
         // Tool Recipes
@@ -80,7 +80,7 @@ public class ModRecipesProvider extends RecipeProvider {
 
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_HATCHET.get())
                 .define('R', TinkerSurvivalWorld.ROCK_STONE.get())
-                .define('S', TinkerSurvivalWorld.GRASS_STRING.get())
+                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
                 .define('I', Items.STICK)
                 .pattern("SR")
                 .pattern("I ")
@@ -88,17 +88,17 @@ public class ModRecipesProvider extends RecipeProvider {
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get())
-                .define('S', TinkerSurvivalWorld.GRASS_STRING.get())
+                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
                 .define('I', Items.STICK)
                 .pattern("IS")
                 .pattern(" I")
-                .unlockedBy("has_grass_string", has(TinkerSurvivalWorld.GRASS_STRING.get()))
+                .unlockedBy("has_grass_string", has(TinkerSurvivalWorld.PLANT_STRING.get()))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW.get())
                 .define('H', TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get())
                 .define('B', TinkerSurvivalWorld.CRUDE_SAW_BLADE.get())
-                .define('S', TinkerSurvivalWorld.GRASS_STRING.get())
+                .define('S', TinkerSurvivalWorld.PLANT_STRING.get())
                 .pattern("BS")
                 .pattern(" H")
                 .unlockedBy("has_crude_saw_handle", has(TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get()))

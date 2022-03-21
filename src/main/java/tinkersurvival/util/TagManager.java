@@ -32,7 +32,7 @@ public final class TagManager {
         public static final Tag.Named<Block> ALWAYS_DROPS = create("always_drops");
         public static final Tag.Named<Block> LOOSE_ROCK_PLACEABLE_ON = create("loose_rock_placeable_on");
         public static final Tag.Named<Block> LOOSE_ROCKS = create("loose_rocks");
-        public static final Tag.Named<Block> GRASS = create("grass");
+        public static final Tag.Named<Block> FIBER_PLANTS = create("fiber_plants");
 
         private static Tag.Named<Block> create(String id) {
             return BlockTags.createOptional(identifier(id));

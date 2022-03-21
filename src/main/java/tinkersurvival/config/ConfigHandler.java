@@ -75,7 +75,6 @@ public final class ConfigHandler {
         public static BooleanValue ENABLE_ROCK_GEN;
         public static IntValue ROCK_GEN_FREQUENCY;
         public static DoubleValue FLINT_CHANCE;
-        public static DoubleValue GRASS_FIBER_BONUS_CHANCE;
         public static DoubleValue HEAL_RATE;
         public static DoubleValue SLOW_DOWN_MULTIPLIER;
 
@@ -96,9 +95,6 @@ public final class ConfigHandler {
             FLINT_CHANCE = builder
                 .comment("Chance for a successful flint knapping. (1.0 = 100%, 0.4 = 40%, etc.)")
                 .defineInRange("FLINT_CHANCE", 0.6, 0.1, 1.0);
-            GRASS_FIBER_BONUS_CHANCE = builder
-                .comment("Chance for grass to drop bonus plant fibers with a knife. (1.0 = 100%, 0.4 = 40%, etc.)")
-                .defineInRange("GRASS_FIBER_BONUS_CHANCE", 0.5, 0.1, 1.0);
             HEAL_RATE = builder
                 .comment("Heal rate for bandages. Crude bandages are 50% less effective. (1.0 = 100%, 0.4 = 40%, etc.)")
                 .defineInRange("HEAL_RATE", 0.14, 0.1, 1.0);
@@ -117,10 +113,6 @@ public final class ConfigHandler {
         
         public static double flintChance() {
             return CONFIG.FLINT_CHANCE.get();
-        }
-        
-        public static double grassFiberBonusChance() {
-            return CONFIG.GRASS_FIBER_BONUS_CHANCE.get();
         }
         
         public static double healRate() {
