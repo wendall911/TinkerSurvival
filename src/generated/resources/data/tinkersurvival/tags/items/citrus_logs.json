@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "fruittrees:citrus_log",
+      "required": false
+    },
+    {
+      "id": "fruittrees:stripped_citrus_log",
+      "required": false
+    },
+    {
+      "id": "fruittrees:citrus_wood",
+      "required": false
+    },
+    {
+      "id": "fruittrees:stripped_citrus_wood",
+      "required": false
+    }
+  ]
+}
