@@ -26,7 +26,7 @@ public class LooseRockBlock extends Block {
     public static final VoxelShape rockHitbox = box(4, 0, 3, 12, 2, 11);
 
     public LooseRockBlock() {
-        super(Properties.of(Material.CLAY).sound(SoundType.STONE).strength(0.15F).noCollission().noOcclusion());
+        super(Properties.of(Material.CLAY).sound(SoundType.STONE).strength(0.0F).noCollission().noOcclusion());
     }
 
     @Override
