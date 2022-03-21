@@ -14,6 +14,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
+import slimeknights.tconstruct.common.registration.CastItemObject;
+
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -51,6 +53,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, TinkerSurvivalWorld.CRUDE_BANDAGE.get());
         builder(itemGenerated, TinkerSurvivalWorld.BANDAGE.get());
         builder(itemGenerated, TinkerSurvivalWorld.WOODEN_CUP.get());
+
+		addCastModels(TinkerSurvivalWorld.SAW_BLADE_CAST);
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, Item item) {
@@ -79,6 +83,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         }
 
         builder.texture("all", mcLoc("block/" + type));
+    }
+
+    private void addCastModels(CastItemObject cast) {
+        ResourceLocation idGold = cast.get().getRegistryName();
+        String path = idGold.getPath().replace("_cast", "");
+        ResourceLocation textureLocationGold = new ResourceLocation(idGold.getNamespace(), "item/cast/" + path);
+        ResourceLocation idSand = cast.getSand().getRegistryName();
+        ResourceLocation textureLocationSand = new ResourceLocation(idSand.getNamespace(), "item/sand_cast/" + path);
+        ResourceLocation idSandRed = cast.getRedSand().getRegistryName();
+        ResourceLocation textureLocationSandRed = new ResourceLocation(idSandRed.getNamespace(), "item/red_sand_cast/" + path);
+        ResourceLocation loc = mcLoc("item/generated");
+
+        singleTexture(idGold.getPath(), loc, "layer0", textureLocationGold);
+        singleTexture(idSand.getPath(), loc, "layer0", textureLocationSand);
+        singleTexture(idSandRed.getPath(), loc, "layer0", textureLocationSandRed);        
     }
 
 }

@@ -40,9 +40,9 @@ public final class DataGenerators {
         gen.addProvider(new ModLootTables(gen));
         gen.addProvider(new GlobalLootModifier(gen));
         gen.addProvider(new ToolsRecipeProvider(gen));
-        gen.addProvider(new ToolDefinitionDataProvider(gen));
         gen.addProvider(new StationSlotLayoutProvider(gen));
         gen.addProvider(new GeneratorPartTextureJsonGenerator(gen, TinkerSurvival.MODID, partSprites));
+        gen.addProvider(new ToolDefinitionDataProvider(gen));
     }
 
 }

@@ -27,9 +27,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 import slimeknights.mantle.registration.object.ItemObject;
 
+import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.part.ToolPartItem;
+import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 import tinkersurvival.client.CreativeTabBase;
@@ -72,6 +75,8 @@ public class TinkerSurvivalWorld {
     public static RegistryObject<Item> CLOTH;
 
     public static RegistryObject<Item> CRUDE_SAW_BLADE;
+    public static ItemObject<ToolPartItem> SAW_BLADE;
+    public static CastItemObject SAW_BLADE_CAST;
 
     public static RegistryObject<Item> CRUDE_KNIFE;
     public static RegistryObject<Item> CRUDE_HATCHET;
@@ -152,6 +157,16 @@ public class TinkerSurvivalWorld {
             (new Item.Properties()).stacksTo(1).tab(TAB_GROUP),
             SAW_DEFINITION
         ));
+
+        SAW_BLADE = TOOL_REGISTRY.register("saw_blade", () -> new ToolPartItem(
+            new Item.Properties().tab(TAB_GROUP),
+            HeadMaterialStats.ID
+        ));
+
+        SAW_BLADE_CAST = TOOL_REGISTRY.registerCast(
+            "saw_blade",
+            new Item.Properties().tab(TAB_GROUP)
+        );
 
         SAW_DEFINITION = ToolDefinition.builder(SAW).meleeHarvest().build();
 

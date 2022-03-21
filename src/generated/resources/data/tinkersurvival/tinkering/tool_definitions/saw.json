@@ -1,10 +1,7 @@
 {
   "parts": [
     {
-      "item": "tconstruct:small_axe_head"
-    },
-    {
-      "item": "tconstruct:small_axe_head"
+      "item": "tinkersurvival:saw_blade"
     },
     {
       "item": "tconstruct:tool_handle"

@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:part_builder",
+  "pattern": "tinkersurvival:saw_blade",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "tinkersurvival:saw_blade_cast"
+    }
+  ],
+  "cost": 4,
+  "result": {
+    "item": "tinkersurvival:saw_blade"
+  }
+}

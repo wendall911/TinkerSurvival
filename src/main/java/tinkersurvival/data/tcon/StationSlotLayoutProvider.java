@@ -18,14 +18,18 @@ public class StationSlotLayoutProvider extends AbstractStationSlotLayoutProvider
         return "TinkerSurvival Tinker Station Slot Layouts";
     }
 
+    /*
+     * Order matters here!!!
+     * Must match order of ToolDefinitionDataProvider or recipe will be invalid.
+     * Handle and tool order is to match TCon tools, as they have this order.
+     */
     @Override
     protected void addLayouts() {
         defineModifiable(TinkerSurvivalWorld.SAW)
             .sortIndex(6)
-            .addInputItem(TinkerToolParts.smallAxeHead, 22, 20)
-            .addInputItem(TinkerToolParts.smallAxeHead, 11, 39)
-            .addInputItem(TinkerToolParts.toolHandle,   49, 61)
-            .addInputItem(TinkerToolParts.toolBinding,  31, 44)
+            .addInputItem(TinkerSurvivalWorld.SAW_BLADE, 52, 22)
+            .addInputItem(TinkerToolParts.toolHandle,   13, 59)
+            .addInputItem(TinkerToolParts.toolBinding,  31, 42)
             .build();
     }
 

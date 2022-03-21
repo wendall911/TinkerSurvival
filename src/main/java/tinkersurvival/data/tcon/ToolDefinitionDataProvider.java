@@ -21,11 +21,15 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
         return "TinkerSurvival Tool Definition Data Generator";
     }
 
+    /*
+     * Order matters here!!!
+     * Must match order of StationSlotLayoutProvider or recipe will be invalid.
+     * Handle and tool order is to match TCon tools, as they have this order.
+     */
     @Override
     protected void addToolDefinitions() {
         define(TinkerSurvivalWorld.SAW_DEFINITION)
-            .part(TinkerToolParts.smallAxeHead)
-            .part(TinkerToolParts.smallAxeHead)
+            .part(TinkerSurvivalWorld.SAW_BLADE)
             .part(TinkerToolParts.toolHandle)
             .part(TinkerToolParts.toolBinding)
             .stat(ToolStats.ATTACK_DAMAGE, 0.0f)

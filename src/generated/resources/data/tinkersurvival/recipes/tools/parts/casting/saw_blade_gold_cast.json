@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:table_casting_material",
+  "cast": {
+    "tag": "tinkersurvival:casts/multi_use/saw_blade"
+  },
+  "item_cost": 4,
+  "result": "tinkersurvival:saw_blade"
+}

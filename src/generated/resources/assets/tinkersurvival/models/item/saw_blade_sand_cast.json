@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tinkersurvival:item/sand_cast/saw_blade"
+  }
+}

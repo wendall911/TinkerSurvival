@@ -7,28 +7,19 @@
   "sortIndex": 6,
   "input_slots": [
     {
-      "icon": "tconstruct:small_axe_head",
-      "translation_key": "item.tconstruct.small_axe_head",
-      "x": 22,
-      "y": 20,
+      "icon": "tinkersurvival:saw_blade",
+      "translation_key": "item.tinkersurvival.saw_blade",
+      "x": 52,
+      "y": 22,
       "filter": {
-        "item": "tconstruct:small_axe_head"
-      }
-    },
-    {
-      "icon": "tconstruct:small_axe_head",
-      "translation_key": "item.tconstruct.small_axe_head",
-      "x": 11,
-      "y": 39,
-      "filter": {
-        "item": "tconstruct:small_axe_head"
+        "item": "tinkersurvival:saw_blade"
       }
     },
     {
       "icon": "tconstruct:tool_handle",
       "translation_key": "item.tconstruct.tool_handle",
-      "x": 49,
-      "y": 61,
+      "x": 13,
+      "y": 59,
       "filter": {
         "item": "tconstruct:tool_handle"
       }
@@ -37,7 +28,7 @@
       "icon": "tconstruct:tool_binding",
       "translation_key": "item.tconstruct.tool_binding",
       "x": 31,
-      "y": 44,
+      "y": 42,
       "filter": {
         "item": "tconstruct:tool_binding"
       }
