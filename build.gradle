@@ -56,20 +56,41 @@ minecraft {
                 }
             }
         }
+
+        server {
+            workingDirectory project.file('run')
+
+            mods {
+                tinkersurvival {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+
+            args '--mod', 'tinkersurvival',
+                    '--all',
+                    '--output', file('src/generated/resources/'),
+                    '--existing', file('src/main/resources/'),
+                    '--existing', file('src/generated/resources')
+
+            mods {
+                tinkersurvival {
+                    source sourceSets.main
+                }
+            }
+        }
     }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-/*
-    deobfCompile "slimeknights.mantle:Mantle:${minecraft_short_version}-${mantle_version}"
-    deobfCompile "slimeknights:TConstruct:${minecraft_version}-${tic_version}"
-
-    deobfProvided "mezz.jei:jei_${minecraft_version}:${jei_version}:api"
-    runtime "mezz.jei:jei_${minecraft_version}:${jei_version}"
-
-    deobfProvided "com.github.glitchfiend.biomesoplenty:ToughAsNails:${minecraft_version}-${tan_version}:api"
-*/
 }
 
 def commonManifest = {
@@ -123,9 +144,6 @@ curseforge {
             relations {
                 requiredLibrary 'mantle'
                 requiredLibrary 'tinkers-construct'
-                optionalLibrary 'constructs-armory'
-                optionalLibrary 'tinkers-tool-leveling'
-                optionalLibrary 'tough-as-nails'
             }
         }
     }
