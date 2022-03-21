@@ -119,6 +119,13 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_wool", has(ItemTags.WOOL))
                 .save(consumer);
 
+        ShapelessRecipeBuilder.shapeless(TinkerSurvivalWorld.FLINT_SHARD.get(), 2)
+                .requires(TagManager.Items.FLINT_KNAPPABLE)
+                .requires(TagManager.Items.KNIFE_TOOLS)
+                .group("flint_shards")
+                .unlockedBy("has_crude_knife", has(TinkerSurvivalWorld.CRUDE_KNIFE.get()))
+                .save(consumer);
+
         // Saw Recipes
         plankRecipeBuilder(consumer, Blocks.OAK_PLANKS, ItemTags.OAK_LOGS, "has_logs");
         plankRecipeBuilder(consumer, Blocks.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, "has_log");
