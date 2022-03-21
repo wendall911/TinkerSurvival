@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:magic_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_magic_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:magic_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_magic_wood",
+      "required": false
+    }
+  ]
+}

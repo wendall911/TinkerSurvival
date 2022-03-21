@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:skyroot_logs"
+    },
+    {
+      "item": "tinkersurvival:crude_saw"
+    }
+  ],
+  "result": {
+    "item": "tconstruct:skyroot_planks",
+    "count": 2
+  }
+}

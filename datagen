@@ -1,0 +1,3 @@
+#!/bin/sh
+
+DATA_GEN=all ./gradlew runData

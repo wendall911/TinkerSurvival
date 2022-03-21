@@ -182,6 +182,10 @@ curseforge {
             relations {
                 requiredLibrary 'mantle'
                 requiredLibrary 'tinkers-construct'
+                optionalLibrary 'fruit-trees'
+                optionalLibrary 'quark'
+                optionalLibrary 'biomes-o-plenty'
+                optionalLibrary 'all-you-can-eat'
             }
         }
     }

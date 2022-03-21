@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:umbran_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_umbran_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:umbran_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_umbran_wood",
+      "required": false
+    }
+  ]
+}

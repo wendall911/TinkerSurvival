@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tconstruct:greenheart_log",
+      "required": false
+    },
+    {
+      "id": "tconstruct:stripped_greenheart_log",
+      "required": false
+    },
+    {
+      "id": "tconstruct:greenheart_wood",
+      "required": false
+    },
+    {
+      "id": "tconstruct:stripped_greenheart_wood",
+      "required": false
+    }
+  ]
+}

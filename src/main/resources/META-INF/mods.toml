@@ -22,6 +22,36 @@ license="MIT"
 [[dependencies.tinkersurvival]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1]"
+    versionRange="[1.18,]"
     ordering="NONE"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="tconstruct"
+    mandatory=true
+    versionRange="[0,]"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="fruittrees"
+    mandatory=false
+    versionRange="[0,]"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="quark"
+    mandatory=false
+    versionRange="[0,]"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="biomesoplenty"
+    mandatory=false
+    versionRange="[0,]"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="allyoucaneat"
+    mandatory=false
+    versionRange="[0,]"
+    ordering="AFTER"
     side="BOTH"

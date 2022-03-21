@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:willow_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_willow_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:willow_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_willow_wood",
+      "required": false
+    }
+  ]
+}

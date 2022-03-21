@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:azalea_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_azalea_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:azalea_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_azalea_wood",
+      "required": false
+    }
+  ]
+}

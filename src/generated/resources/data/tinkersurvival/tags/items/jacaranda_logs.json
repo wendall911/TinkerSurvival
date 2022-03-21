@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:jacaranda_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_jacaranda_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:jacaranda_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_jacaranda_wood",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:greenheart_logs"
+    },
+    {
+      "item": "tinkersurvival:crude_saw"
+    }
+  ],
+  "result": {
+    "item": "tconstruct:greenheart_planks",
+    "count": 2
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tconstruct:skyroot_log",
+      "required": false
+    },
+    {
+      "id": "tconstruct:stripped_skyroot_log",
+      "required": false
+    },
+    {
+      "id": "tconstruct:skyroot_wood",
+      "required": false
+    },
+    {
+      "id": "tconstruct:stripped_skyroot_wood",
+      "required": false
+    }
+  ]
+}

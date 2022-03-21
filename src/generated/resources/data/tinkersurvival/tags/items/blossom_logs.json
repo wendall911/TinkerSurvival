@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:blossom_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_blossom_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:blossom_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_blossom_wood",
+      "required": false
+    }
+  ]
+}

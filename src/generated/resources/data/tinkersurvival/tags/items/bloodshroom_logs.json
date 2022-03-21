@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tconstruct:bloodshroom_log",
+      "required": false
+    },
+    {
+      "id": "tconstruct:stripped_bloodshroom_log",
+      "required": false
+    },
+    {
+      "id": "tconstruct:bloodshroom_wood",
+      "required": false
+    },
+    {
+      "id": "tconstruct:stripped_bloodshroom_wood",
+      "required": false
+    }
+  ]
+}

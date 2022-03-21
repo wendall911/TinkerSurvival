@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:cherry_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_cherry_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:cherry_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_cherry_wood",
+      "required": false
+    }
+  ]
+}

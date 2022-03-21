@@ -24,9 +24,11 @@ import net.minecraftforge.common.Tags;
 
 import slimeknights.tconstruct.tables.TinkerTables;
 
+import tinkersurvival.common.TagManager;
+import tinkersurvival.data.integration.ModIntegration;
 import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.common.TagManager;
+import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ModRecipesProvider extends RecipeProvider {
@@ -52,6 +54,8 @@ public class ModRecipesProvider extends RecipeProvider {
         ItemLike cloth = TinkerSurvivalItems.CLOTH.get();
         ItemLike crudeKnife = TinkerSurvivalItems.CRUDE_KNIFE.get();
         String sticksName = Registry.ITEM.getKey(Items.STICK.asItem()).getPath().toString();
+
+        // Fruit Trees Blocks
 
         // Material Recipes
         ShapedRecipeBuilder.shaped(Blocks.COBBLESTONE)
@@ -206,6 +210,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .save(consumer);
 
         // Saw Recipes
+        // Minecraft
         plankRecipeBuilder(consumer, Blocks.OAK_PLANKS, ItemTags.OAK_LOGS, "has_logs");
         plankRecipeBuilder(consumer, Blocks.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, "has_log");
         plankRecipeBuilder(consumer, Blocks.BIRCH_PLANKS, ItemTags.BIRCH_LOGS, "has_logs");
@@ -214,6 +219,35 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(consumer, Blocks.SPRUCE_PLANKS, ItemTags.SPRUCE_LOGS, "has_logs");
         plankRecipeBuilder(consumer, Blocks.WARPED_PLANKS, ItemTags.WARPED_STEMS, "has_logs");
         plankRecipeBuilder(consumer, Blocks.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, "has_logs");
+
+        // Fruit Trees
+        plankRecipeBuilder(consumer, ModIntegration.CHERRY_PLANKS.get(), TagManager.Items.CHERRY_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.CITRUS_PLANKS.get(), TagManager.Items.CITRUS_LOGS, "has_logs");
+
+        //Biomes O' Plenty
+        plankRecipeBuilder(consumer, ModIntegration.BOP_CHERRY_PLANKS.get(), TagManager.Items.BOP_CHERRY_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_DEAD_PLANKS.get(), TagManager.Items.BOP_DEAD_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_FIR_PLANKS.get(), TagManager.Items.BOP_FIR_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_HELLBARK_PLANKS.get(), TagManager.Items.BOP_HELLBARK_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_JACARANDA_PLANKS.get(), TagManager.Items.BOP_JACARANDA_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_MAGIC_PLANKS.get(), TagManager.Items.BOP_MAGIC_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_MAHOGANY_PLANKS.get(), TagManager.Items.BOP_MAHOGANY_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_PALM_PLANKS.get(), TagManager.Items.BOP_PALM_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_REDWOOD_PLANKS.get(), TagManager.Items.BOP_REDWOOD_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_UMBRAN_PLANKS.get(), TagManager.Items.BOP_UMBRAN_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BOP_WILLOW_PLANKS.get(), TagManager.Items.BOP_WILLOW_LOGS, "has_logs");
+
+        //Quark
+        plankRecipeBuilder(consumer, ModIntegration.QUARK_AZALEA_PLANKS.get(), TagManager.Items.QUARK_AZALEA_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.QUARK_BLOSSOM_PLANKS.get(), TagManager.Items.QUARK_BLOSSOM_LOGS, "has_logs");
+
+        //All You Can Eat
+        plankRecipeBuilder(consumer, ModIntegration.AYCE_HAZEL_PLANKS.get(), TagManager.Items.AYCE_HAZEL_LOGS, "has_logs");
+
+        // Tinkers' Construct
+        plankRecipeBuilder(consumer, ModIntegration.TCON_BLOODSHROOM_PLANKS.get(), TagManager.Items.TCON_BLOODSHROOM_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.TCON_GREENHEART_PLANKS.get(), TagManager.Items.TCON_GREENHEART_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.TCON_SKYROOT_PLANKS.get(), TagManager.Items.TCON_SKYROOT_LOGS, "has_logs");
 
         ShapelessRecipeBuilder.shapeless(Items.STICK, 2)
                 .requires(ItemTags.PLANKS)
@@ -224,21 +258,28 @@ public class ModRecipesProvider extends RecipeProvider {
     }
 
     private static void plankRecipeBuilder(Consumer<FinishedRecipe> consumer, ItemLike item, Tag<Item> itemTag, String label) {
-        ShapelessRecipeBuilder.shapeless(item, 2)
+        ShapelessRecipeBuilder plankOverrideRecipe = ShapelessRecipeBuilder.shapeless(item, 2)
                 .requires(itemTag)
                 .requires(TinkerSurvivalItems.CRUDE_SAW.get())
                 .group("planks")
-                .unlockedBy(label, has(itemTag))
-                .save(consumer);
+                .unlockedBy(label, has(itemTag));
 
         String name = Registry.ITEM.getKey(item.asItem()).getPath().toString();
+        String modid = ItemUse.getModId(item.asItem().getRegistryName().toString());
+
+        if (modid.contains(ModIntegration.TCON_MODID)) {
+            plankOverrideRecipe.save(consumer, new ResourceLocation(ModIntegration.TCON_MODID, "world/wood/" + name.split("_")[0] + "/planks"));
+        }
+        else {
+            plankOverrideRecipe.save(consumer);
+        }
 
         ShapelessRecipeBuilder.shapeless(item, 4)
                 .requires(itemTag)
                 .requires(TinkerSurvivalItems.SAW.get())
                 .group("planks")
                 .unlockedBy(label, has(TinkerTables.tinkerStation))
-                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, name));
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, modid + "_" + name));
     }
 
 }

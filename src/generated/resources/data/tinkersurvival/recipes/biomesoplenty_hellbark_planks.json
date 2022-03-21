@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:hellbark_logs"
+    },
+    {
+      "item": "tinkersurvival:saw"
+    }
+  ],
+  "result": {
+    "item": "biomesoplenty:hellbark_planks",
+    "count": 4
+  }
+}

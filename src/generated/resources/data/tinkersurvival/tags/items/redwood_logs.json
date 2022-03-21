@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:redwood_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_redwood_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:redwood_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_redwood_wood",
+      "required": false
+    }
+  ]
+}

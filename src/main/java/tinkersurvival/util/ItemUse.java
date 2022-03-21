@@ -52,7 +52,7 @@ public class ItemUse {
             || ConfigHandler.Common.whitelistItems().contains(itemName);
     }
 
-    private static String getModId(String name) {
+    public static String getModId(String name) {
         String[] nameParts = name.split(":");
 
         return nameParts.length == 2 ? nameParts[0] : name;

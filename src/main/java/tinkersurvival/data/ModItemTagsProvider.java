@@ -7,7 +7,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -31,10 +30,10 @@ import static slimeknights.tconstruct.common.TinkerTags.Items.STONE_HARVEST;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SWORD;
 import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
 
-
-import tinkersurvival.TinkerSurvival;
 import tinkersurvival.common.TagManager;
+import tinkersurvival.data.integration.ModIntegration;
 import tinkersurvival.items.TinkerSurvivalItems;
+import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
@@ -60,13 +59,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.pickadze.asItem())
             .add(TinkerTools.sledgeHammer.asItem())
             .add(TinkerTools.veinHammer.asItem())
-            .addOptional(ieLoc("buzzsaw"))
-            .addOptional(ieLoc("drill"));
+            .addOptional(ModIntegration.ieLoc("buzzsaw"))
+            .addOptional(ModIntegration.ieLoc("drill"));
         getBuilder(TagManager.Items.AXE_TOOLS)
             .add(TinkerSurvivalItems.CRUDE_HATCHET.get().asItem())
             .add(TinkerTools.handAxe.asItem())
             .add(TinkerTools.broadAxe.asItem())
-            .addOptional(ieLoc("buzzsaw"));
+            .addOptional(ModIntegration.ieLoc("buzzsaw"));
         builder(
             TagManager.Items.SAW_TOOLS,
             TinkerSurvivalItems.CRUDE_SAW.get(),
@@ -76,7 +75,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.mattock.asItem())
             .add(TinkerTools.pickadze.asItem())
             .add(TinkerTools.excavator.asItem())
-            .addOptional(ieLoc("drill"));
+            .addOptional(ModIntegration.ieLoc("drill"));
         builder(
             TagManager.Items.HOE_TOOLS,
             TinkerTools.kama,
@@ -103,6 +102,35 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TinkerSurvivalItems.CRUDE_BANDAGE.get(),
             TinkerSurvivalItems.BANDAGE.get()
         );
+
+        // Fruit Trees
+        addFTLogVariants(TagManager.Items.CHERRY_LOGS, "cherry");
+        addFTLogVariants(TagManager.Items.CITRUS_LOGS, "citrus");
+
+        // Biomes O' Plenty
+        addBOPLogVariants(TagManager.Items.BOP_CHERRY_LOGS, "cherry");
+        addBOPLogVariants(TagManager.Items.BOP_DEAD_LOGS, "dead");
+        addBOPLogVariants(TagManager.Items.BOP_FIR_LOGS, "fir");
+        addBOPLogVariants(TagManager.Items.BOP_HELLBARK_LOGS, "hellbark");
+        addBOPLogVariants(TagManager.Items.BOP_JACARANDA_LOGS, "jacaranda");
+        addBOPLogVariants(TagManager.Items.BOP_MAGIC_LOGS, "magic");
+        addBOPLogVariants(TagManager.Items.BOP_MAHOGANY_LOGS, "mahogany");
+        addBOPLogVariants(TagManager.Items.BOP_PALM_LOGS, "palm");
+        addBOPLogVariants(TagManager.Items.BOP_REDWOOD_LOGS, "redwood");
+        addBOPLogVariants(TagManager.Items.BOP_UMBRAN_LOGS, "umbran");
+        addBOPLogVariants(TagManager.Items.BOP_WILLOW_LOGS, "willow");
+
+        // Quark
+        addQuarkLogVariants(TagManager.Items.QUARK_AZALEA_LOGS, "azalea");
+        addQuarkLogVariants(TagManager.Items.QUARK_BLOSSOM_LOGS, "blossom");
+
+        // All You Can Eat
+        addAyceLogVariants(TagManager.Items.AYCE_HAZEL_LOGS, "hazel");
+
+        // Tinkers' Construct
+        addTconLogVariants(TagManager.Items.TCON_BLOODSHROOM_LOGS, "bloodshroom");
+        addTconLogVariants(TagManager.Items.TCON_GREENHEART_LOGS, "greenheart");
+        addTconLogVariants(TagManager.Items.TCON_SKYROOT_LOGS, "skyroot");
 
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
@@ -134,16 +162,52 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addCast.accept(TinkerSurvivalItems.SAW_BLADE_CAST);
     }
 
+    private void addTconLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.tconLoc(type + "_log"))
+            .addOptional(ModIntegration.tconLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.tconLoc(type + "_wood"))
+            .addOptional(ModIntegration.tconLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addAyceLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.ayceLoc(type + "_log"))
+            .addOptional(ModIntegration.ayceLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.ayceLoc(type + "_wood"))
+            .addOptional(ModIntegration.ayceLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addQuarkLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.qLoc(type + "_log"))
+            .addOptional(ModIntegration.qLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.qLoc(type + "_wood"))
+            .addOptional(ModIntegration.qLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addBOPLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bopLoc(type + "_log"))
+            .addOptional(ModIntegration.bopLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.bopLoc(type + "_wood"))
+            .addOptional(ModIntegration.bopLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addFTLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.ftLoc(type + "_log"))
+            .addOptional(ModIntegration.ftLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.ftLoc(type + "_wood"))
+            .addOptional(ModIntegration.ftLoc("stripped_" + type + "_wood"));
+    }
+
     private void builder(Tag.Named<Item> tag) {
         getBuilder(tag);
     }
 
     private void builder(Tag.Named<Item> tag, ItemLike... items) {
         getBuilder(tag).add(Arrays.stream(items).map(ItemLike::asItem).toArray(Item[]::new));
-    }
-
-    private ResourceLocation ieLoc(String name) {
-        return new ResourceLocation("immersiveengineering", name);
     }
 
     protected TagsProvider.TagAppender<Item> getBuilder(Tag.Named<Item> tag) {

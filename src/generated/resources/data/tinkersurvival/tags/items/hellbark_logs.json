@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:hellbark_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_hellbark_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:hellbark_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_hellbark_wood",
+      "required": false
+    }
+  ]
+}

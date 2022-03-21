@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:fir_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_fir_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:fir_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_fir_wood",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:mahogany_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_mahogany_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:mahogany_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_mahogany_wood",
+      "required": false
+    }
+  ]
+}

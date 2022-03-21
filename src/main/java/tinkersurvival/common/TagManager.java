@@ -26,6 +26,36 @@ public final class TagManager {
         public static final Tag.Named<Item> SAW_BLADE_CAST = ItemTags.bind(TinkerSurvival.MODID +  ":casts/multi_use/saw_blade");
         public static final Tag.Named<Item> SAW_BLADE_CAST_SINGLE = ItemTags.bind(TinkerSurvival.MODID +  ":casts/single_use/saw_blade");
 
+        // Mod Integration
+        // Fruit Trees
+        public static final Tag.Named<Item> CHERRY_LOGS = create("cherry_logs");
+        public static final Tag.Named<Item> CITRUS_LOGS = create("citrus_logs");
+
+        // Biomes O' Plenty
+        public static final Tag.Named<Item> BOP_CHERRY_LOGS = create("bop_cherry_logs");
+        public static final Tag.Named<Item> BOP_DEAD_LOGS = create("dead_logs");
+        public static final Tag.Named<Item> BOP_FIR_LOGS = create("fir_logs");
+        public static final Tag.Named<Item> BOP_HELLBARK_LOGS = create("hellbark_logs");
+        public static final Tag.Named<Item> BOP_JACARANDA_LOGS = create("jacaranda_logs");
+        public static final Tag.Named<Item> BOP_MAGIC_LOGS = create("magic_logs");
+        public static final Tag.Named<Item> BOP_MAHOGANY_LOGS = create("mahogany_logs");
+        public static final Tag.Named<Item> BOP_PALM_LOGS = create("palm_logs");
+        public static final Tag.Named<Item> BOP_REDWOOD_LOGS = create("redwood_logs");
+        public static final Tag.Named<Item> BOP_UMBRAN_LOGS = create("umbran_logs");
+        public static final Tag.Named<Item> BOP_WILLOW_LOGS = create("willow_logs");
+
+        // Quark
+        public static final Tag.Named<Item> QUARK_AZALEA_LOGS = create("azalea_logs");
+        public static final Tag.Named<Item> QUARK_BLOSSOM_LOGS = create("blossom_logs");
+
+        // All You Can Eat
+        public static final Tag.Named<Item> AYCE_HAZEL_LOGS = create("hazel_logs");
+
+        // Tinkers' Construct
+        public static final Tag.Named<Item> TCON_BLOODSHROOM_LOGS = create("bloodshroom_logs");
+        public static final Tag.Named<Item> TCON_GREENHEART_LOGS = create("greenheart_logs");
+        public static final Tag.Named<Item> TCON_SKYROOT_LOGS = create("skyroot_logs");
+
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));
         }

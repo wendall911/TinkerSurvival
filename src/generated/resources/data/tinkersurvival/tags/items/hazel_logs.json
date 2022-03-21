@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "allyoucaneat:hazel_log",
+      "required": false
+    },
+    {
+      "id": "allyoucaneat:stripped_hazel_log",
+      "required": false
+    },
+    {
+      "id": "allyoucaneat:hazel_wood",
+      "required": false
+    },
+    {
+      "id": "allyoucaneat:stripped_hazel_wood",
+      "required": false
+    }
+  ]
+}

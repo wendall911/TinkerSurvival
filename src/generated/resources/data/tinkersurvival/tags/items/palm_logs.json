@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomesoplenty:palm_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_palm_log",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:palm_wood",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stripped_palm_wood",
+      "required": false
+    }
+  ]
+}
