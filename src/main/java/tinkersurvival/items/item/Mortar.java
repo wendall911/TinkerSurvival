@@ -1,4 +1,4 @@
-package tinkersurvival.world.item;
+package tinkersurvival.items.item;
 
 import javax.annotation.Nonnull;
 

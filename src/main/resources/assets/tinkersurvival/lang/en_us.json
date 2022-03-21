@@ -1,5 +1,7 @@
 {
-    "itemGroup.tinkersurvival.items": "Tinker Survival",
+    "itemGroup.tinkersurvival.items": "Tinker Survival Items",
+    "itemGroup.tinkersurvival.tools": "Tinker Survival Tools",
+    "itemGroup.tinkersurvival.world": "Tinker Survival World",
     "item.tinkersurvival.plant_fiber": "Plant Fibers",
     "item.tinkersurvival.plant_string": "Plant String",
     "item.tinkersurvival.flint_shard": "Flint Shard",

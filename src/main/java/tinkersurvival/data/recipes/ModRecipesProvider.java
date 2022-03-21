@@ -24,8 +24,9 @@ import net.minecraftforge.common.Tags;
 
 import slimeknights.tconstruct.tables.TinkerTables;
 
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.util.TagManager;
+import tinkersurvival.common.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ModRecipesProvider extends RecipeProvider {
@@ -42,14 +43,14 @@ public class ModRecipesProvider extends RecipeProvider {
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
         ItemLike rockStone = TinkerSurvivalWorld.ROCK_STONE.get();
-        ItemLike flintShard = TinkerSurvivalWorld.FLINT_SHARD.get();
-        ItemLike plantFiber = TinkerSurvivalWorld.PLANT_FIBER.get();
-        ItemLike plantString = TinkerSurvivalWorld.PLANT_STRING.get();
-        ItemLike mortar = TinkerSurvivalWorld.MORTAR_AND_PESTLE.get();
-        ItemLike plantPaste = TinkerSurvivalWorld.PLANT_PASTE.get();
-        ItemLike ointment = TinkerSurvivalWorld.OINTMENT.get();
-        ItemLike cloth = TinkerSurvivalWorld.CLOTH.get();
-        ItemLike crudeKnife = TinkerSurvivalWorld.CRUDE_KNIFE.get();
+        ItemLike flintShard = TinkerSurvivalItems.FLINT_SHARD.get();
+        ItemLike plantFiber = TinkerSurvivalItems.PLANT_FIBER.get();
+        ItemLike plantString = TinkerSurvivalItems.PLANT_STRING.get();
+        ItemLike mortar = TinkerSurvivalItems.MORTAR_AND_PESTLE.get();
+        ItemLike plantPaste = TinkerSurvivalItems.PLANT_PASTE.get();
+        ItemLike ointment = TinkerSurvivalItems.OINTMENT.get();
+        ItemLike cloth = TinkerSurvivalItems.CLOTH.get();
+        ItemLike crudeKnife = TinkerSurvivalItems.CRUDE_KNIFE.get();
         String sticksName = Registry.ITEM.getKey(Items.STICK.asItem()).getPath().toString();
 
         // Material Recipes
@@ -101,7 +102,7 @@ public class ModRecipesProvider extends RecipeProvider {
 
 
         // Saw Blades
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW_BLADE.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalItems.CRUDE_SAW_BLADE.get())
                 .define('D', flintShard)
                 .define('S', plantString)
                 .define('I', Items.STICK)
@@ -119,7 +120,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_flint_shard", has(flintShard))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_HATCHET.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalItems.CRUDE_HATCHET.get())
                 .define('R', rockStone)
                 .define('S', plantString)
                 .define('I', Items.STICK)
@@ -128,7 +129,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_loose_rock", has(rockStone))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalItems.CRUDE_SAW_HANDLE.get())
                 .define('S', plantString)
                 .define('I', Items.STICK)
                 .pattern("IS")
@@ -136,13 +137,13 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_plant_string", has(plantString))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_SAW.get())
-                .define('H', TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get())
-                .define('B', TinkerSurvivalWorld.CRUDE_SAW_BLADE.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalItems.CRUDE_SAW.get())
+                .define('H', TinkerSurvivalItems.CRUDE_SAW_HANDLE.get())
+                .define('B', TinkerSurvivalItems.CRUDE_SAW_BLADE.get())
                 .define('S', plantString)
                 .pattern("BS")
                 .pattern(" H")
-                .unlockedBy("has_crude_saw_handle", has(TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get()))
+                .unlockedBy("has_crude_saw_handle", has(TinkerSurvivalItems.CRUDE_SAW_HANDLE.get()))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(mortar)
@@ -178,7 +179,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .save(consumer);
 
         //Bandages
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.CRUDE_BANDAGE.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalItems.CRUDE_BANDAGE.get())
                 .define('P', plantString)
                 .define('S', Items.STICK)
                 .define('F', plantFiber)
@@ -187,7 +188,7 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_plant_string", has(plantString))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(TinkerSurvivalWorld.BANDAGE.get())
+        ShapedRecipeBuilder.shaped(TinkerSurvivalItems.BANDAGE.get())
                 .define('P', plantString)
                 .define('S', Items.STICK)
                 .define('C', cloth)
@@ -218,7 +219,7 @@ public class ModRecipesProvider extends RecipeProvider {
     private static void plankRecipeBuilder(Consumer<FinishedRecipe> consumer, ItemLike item, Tag<Item> itemTag, String label) {
         ShapelessRecipeBuilder.shapeless(item, 2)
                 .requires(itemTag)
-                .requires(TinkerSurvivalWorld.CRUDE_SAW.get())
+                .requires(TinkerSurvivalItems.CRUDE_SAW.get())
                 .group("planks")
                 .unlockedBy(label, has(itemTag))
                 .save(consumer);
@@ -227,7 +228,7 @@ public class ModRecipesProvider extends RecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(item, 4)
                 .requires(itemTag)
-                .requires(TinkerSurvivalWorld.SAW.get())
+                .requires(TinkerSurvivalItems.SAW.get())
                 .group("planks")
                 .unlockedBy(label, has(TinkerTables.tinkerStation))
                 .save(consumer, new ResourceLocation(TinkerSurvival.MODID, name));

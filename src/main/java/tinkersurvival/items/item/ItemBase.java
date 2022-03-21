@@ -1,4 +1,4 @@
-package tinkersurvival.world.item;
+package tinkersurvival.items.item;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;

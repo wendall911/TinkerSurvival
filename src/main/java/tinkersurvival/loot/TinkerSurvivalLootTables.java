@@ -15,26 +15,21 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import tinkersurvival.common.TinkerSurvivalModule;
 import tinkersurvival.TinkerSurvival;
 
-public class TinkerSurvivalLootTables {
+public class TinkerSurvivalLootTables extends TinkerSurvivalModule {
 
-    public static DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIER_REGISTRY;
     public static RegistryObject<LootTableSerializer> PLANT_FIBER_DROPS;
     public static RegistryObject<LootTableSerializer> STICK_DROPS;
     public static RegistryObject<LootTableSerializer> TOOL_LOOT;
     public static RegistryObject<LootTableSerializer> RARE_LOOT;
 
-    public static void init(IEventBus bus) {
-        LOOT_MODIFIER_REGISTRY = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, TinkerSurvival.MODID);
-
-        LOOT_MODIFIER_REGISTRY.register(bus);
-
+    public static void init() {
         PLANT_FIBER_DROPS = LOOT_MODIFIER_REGISTRY.register("plant_fiber_drops", LootTableSerializer::new);
         STICK_DROPS = LOOT_MODIFIER_REGISTRY.register("stick_drops", LootTableSerializer::new);
         TOOL_LOOT = LOOT_MODIFIER_REGISTRY.register("tool_loot", LootTableSerializer::new);
@@ -89,17 +84,5 @@ public class TinkerSurvivalLootTables {
         }
 
 	}
-
-    /*
-    public static ResourceLocation TREASURE;
-
-    public static void init() {
-        TREASURE = register("gameplay/fishing/treasure");
-    }
-
-    private static ResourceLocation register(String path) {
-        return LootTableList.register(new ResourceLocation(TinkerSurvival.MODID + ":" + path));
-    }
-    */
 
 }

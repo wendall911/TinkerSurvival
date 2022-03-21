@@ -16,6 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import slimeknights.tconstruct.common.registration.CastItemObject;
 
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -38,23 +39,23 @@ public class ModItemModelProvider extends ItemModelProvider {
         ModelFile itemHandheld = getExistingFile(mcLoc("item/handheld"));
 
         builder(itemGenerated, TinkerSurvivalWorld.ROCK_STONE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.FLINT_SHARD.get());
-        builder(itemGenerated, TinkerSurvivalWorld.PLANT_FIBER.get());
-        builder(itemGenerated, TinkerSurvivalWorld.PLANT_STRING.get());
-        builder(itemGenerated, TinkerSurvivalWorld.OINTMENT.get());
-        builder(itemGenerated, TinkerSurvivalWorld.PLANT_PASTE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CLOTH.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_SAW_BLADE.get());
-        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_KNIFE.get());
-        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_HATCHET.get());
-        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get());
-        builder(itemHandheld, TinkerSurvivalWorld.CRUDE_SAW.get());
-        builder(itemGenerated, TinkerSurvivalWorld.MORTAR_AND_PESTLE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.CRUDE_BANDAGE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.BANDAGE.get());
-        builder(itemGenerated, TinkerSurvivalWorld.WOODEN_CUP.get());
+        builder(itemGenerated, TinkerSurvivalItems.FLINT_SHARD.get());
+        builder(itemGenerated, TinkerSurvivalItems.PLANT_FIBER.get());
+        builder(itemGenerated, TinkerSurvivalItems.PLANT_STRING.get());
+        builder(itemGenerated, TinkerSurvivalItems.OINTMENT.get());
+        builder(itemGenerated, TinkerSurvivalItems.PLANT_PASTE.get());
+        builder(itemGenerated, TinkerSurvivalItems.CLOTH.get());
+        builder(itemGenerated, TinkerSurvivalItems.CRUDE_SAW_BLADE.get());
+        builder(itemHandheld, TinkerSurvivalItems.CRUDE_KNIFE.get());
+        builder(itemHandheld, TinkerSurvivalItems.CRUDE_HATCHET.get());
+        builder(itemHandheld, TinkerSurvivalItems.CRUDE_SAW_HANDLE.get());
+        builder(itemHandheld, TinkerSurvivalItems.CRUDE_SAW.get());
+        builder(itemGenerated, TinkerSurvivalItems.MORTAR_AND_PESTLE.get());
+        builder(itemGenerated, TinkerSurvivalItems.CRUDE_BANDAGE.get());
+        builder(itemGenerated, TinkerSurvivalItems.BANDAGE.get());
+        builder(itemGenerated, TinkerSurvivalItems.WOODEN_CUP.get());
 
-		addCastModels(TinkerSurvivalWorld.SAW_BLADE_CAST);
+		addCastModels(TinkerSurvivalItems.SAW_BLADE_CAST);
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, Item item) {

@@ -1,4 +1,4 @@
-package tinkersurvival.world.item.tools;
+package tinkersurvival.items.tool;
 
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 

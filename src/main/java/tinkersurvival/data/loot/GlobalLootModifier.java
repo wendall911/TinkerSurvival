@@ -17,10 +17,10 @@ import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.util.TagManager;
-import tinkersurvival.world.TinkerSurvivalWorld;
+import tinkersurvival.common.TagManager;
 
 public class GlobalLootModifier extends GlobalLootModifierProvider {
 
@@ -61,37 +61,37 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
         addToolLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_toolsmith_crude_knife",
-            TinkerSurvivalWorld.CRUDE_KNIFE.get()
+            TinkerSurvivalItems.CRUDE_KNIFE.get()
         );
         addToolLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_toolsmith_crude_hatchet",
-            TinkerSurvivalWorld.CRUDE_HATCHET.get()
+            TinkerSurvivalItems.CRUDE_HATCHET.get()
         );
         addToolLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_toolsmith_crude_saw",
-            TinkerSurvivalWorld.CRUDE_SAW.get()
+            TinkerSurvivalItems.CRUDE_SAW.get()
         );
         addRareLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_fisher_wooden_cup",
-            TinkerSurvivalWorld.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP.get()
         );
         addRareLoot(
             BuiltInLootTables.BURIED_TREASURE,
             "buried_treasure_wooden_cup",
-            TinkerSurvivalWorld.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP.get()
         );
         addRareLoot(
             BuiltInLootTables.SHIPWRECK_TREASURE,
             "shipwreck_treasure_wooden_cup",
-            TinkerSurvivalWorld.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP.get()
         );
         addRareLoot(
             BuiltInLootTables.FISHING_TREASURE,
             "fishing_treasure_wooden_cup",
-            TinkerSurvivalWorld.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP.get()
         );
 
     }
@@ -104,7 +104,7 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
             TinkerSurvivalLootTables.PLANT_FIBER_DROPS.get(),
             new TinkerSurvivalLootTables.LootTableModifier(
                 createKnifeChanceCondition(0.16F, block),
-                new ItemStack(TinkerSurvivalWorld.PLANT_FIBER.get())
+                new ItemStack(TinkerSurvivalItems.PLANT_FIBER.get())
             )
         );
     }

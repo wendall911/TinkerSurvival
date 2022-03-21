@@ -1,4 +1,4 @@
-package tinkersurvival.util;
+package tinkersurvival.common;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -22,6 +22,8 @@ public final class TagManager {
         public static final Tag.Named<Item> ROCK = create("rock");
         public static final Tag.Named<Item> SAW_PARTS = create("saw_parts");
         public static final Tag.Named<Item> BANDAGES = create("bandages");
+        public static final Tag.Named<Item> SAW_BLADE_CAST = ItemTags.bind(TinkerSurvival.MODID +  ":casts/multi_use/saw_blade");
+        public static final Tag.Named<Item> SAW_BLADE_CAST_SINGLE = ItemTags.bind(TinkerSurvival.MODID +  ":casts/single_use/saw_blade");
 
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));

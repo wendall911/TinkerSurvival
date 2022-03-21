@@ -1,4 +1,4 @@
-package tinkersurvival.world.item;
+package tinkersurvival.items.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;

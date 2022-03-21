@@ -19,7 +19,7 @@ import net.minecraft.world.level.WorldGenLevel;
 
 import net.minecraftforge.common.util.Lazy;
 
-import tinkersurvival.util.TagManager;
+import tinkersurvival.common.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class LooseRocks extends Feature<NoneFeatureConfiguration> {

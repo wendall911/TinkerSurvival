@@ -21,8 +21,8 @@ import net.minecraft.world.level.material.Material;
 
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class RockStone extends BlockItem {
 
@@ -46,7 +46,7 @@ public class RockStone extends BlockItem {
                 if (level.random.nextFloat() < 0.5) {
                     if (level.random.nextFloat() < ConfigHandler.Server.flintChance()) {
                         NonNullList<ItemStack> dropStack =
-                            NonNullList.withSize(1, new ItemStack(TinkerSurvivalWorld.FLINT_SHARD.get(), 2));
+                            NonNullList.withSize(1, new ItemStack(TinkerSurvivalItems.FLINT_SHARD.get(), 2));
 
                         Containers.dropContents(level, player.getOnPos(), dropStack);
                     }

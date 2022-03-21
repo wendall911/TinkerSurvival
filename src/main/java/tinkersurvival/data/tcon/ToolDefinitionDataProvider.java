@@ -7,8 +7,8 @@ import slimeknights.tconstruct.library.tools.definition.weapon.SweepWeaponAttack
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvider {
 
@@ -28,8 +28,8 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
      */
     @Override
     protected void addToolDefinitions() {
-        define(TinkerSurvivalWorld.SAW_DEFINITION)
-            .part(TinkerSurvivalWorld.SAW_BLADE)
+        define(TinkerSurvivalItems.SAW_DEFINITION)
+            .part(TinkerSurvivalItems.SAW_BLADE)
             .part(TinkerToolParts.toolHandle)
             .part(TinkerToolParts.toolBinding)
             .stat(ToolStats.ATTACK_DAMAGE, 0.0f)

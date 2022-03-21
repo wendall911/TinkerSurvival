@@ -15,7 +15,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.IBlockProvider;
-import tinkersurvival.util.TagManager;
+import tinkersurvival.common.TagManager;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {

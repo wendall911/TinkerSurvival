@@ -5,7 +5,7 @@ import net.minecraft.data.DataGenerator;
 import slimeknights.tconstruct.library.data.tinkering.AbstractStationSlotLayoutProvider;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 
-import tinkersurvival.world.TinkerSurvivalWorld;
+import tinkersurvival.items.TinkerSurvivalItems;
 
 public class StationSlotLayoutProvider extends AbstractStationSlotLayoutProvider {
 
@@ -25,9 +25,9 @@ public class StationSlotLayoutProvider extends AbstractStationSlotLayoutProvider
      */
     @Override
     protected void addLayouts() {
-        defineModifiable(TinkerSurvivalWorld.SAW)
+        defineModifiable(TinkerSurvivalItems.SAW)
             .sortIndex(6)
-            .addInputItem(TinkerSurvivalWorld.SAW_BLADE, 52, 22)
+            .addInputItem(TinkerSurvivalItems.SAW_BLADE, 52, 22)
             .addInputItem(TinkerToolParts.toolHandle,   13, 59)
             .addInputItem(TinkerToolParts.toolBinding,  31, 42)
             .build();

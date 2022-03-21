@@ -29,7 +29,8 @@ import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
 
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.util.TagManager;
+import tinkersurvival.common.TagManager;
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
@@ -52,44 +53,47 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         builder(TagManager.Items.PICKAXE_TOOLS);
         builder(
             TagManager.Items.AXE_TOOLS,
-            TinkerSurvivalWorld.CRUDE_HATCHET.get()
+            TinkerSurvivalItems.CRUDE_HATCHET.get()
         );
         builder(
             TagManager.Items.SAW_TOOLS,
-            TinkerSurvivalWorld.CRUDE_SAW.get(),
-            TinkerSurvivalWorld.SAW.get()
+            TinkerSurvivalItems.CRUDE_SAW.get(),
+            TinkerSurvivalItems.SAW.get()
         );
         builder(TagManager.Items.SHOVEL_TOOLS);
         builder(TagManager.Items.HOE_TOOLS);
         builder(
             TagManager.Items.KNIFE_TOOLS,
-            TinkerSurvivalWorld.CRUDE_KNIFE.get()
+            TinkerSurvivalItems.CRUDE_KNIFE.get()
         );
         builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE.get());
         builder(
             TagManager.Items.SAW_PARTS,
-            TinkerSurvivalWorld.CRUDE_SAW_HANDLE.get(),
-            TinkerSurvivalWorld.CRUDE_SAW_BLADE.get()
+            TinkerSurvivalItems.CRUDE_SAW_HANDLE.get(),
+            TinkerSurvivalItems.CRUDE_SAW_BLADE.get()
         );
         builder(
             TagManager.Items.BANDAGES,
-            TinkerSurvivalWorld.CRUDE_BANDAGE.get(),
-            TinkerSurvivalWorld.BANDAGE.get()
+            TinkerSurvivalItems.CRUDE_BANDAGE.get(),
+            TinkerSurvivalItems.BANDAGE.get()
         );
 
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
+            this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());
             this.tag(SAND_CASTS).add(cast.getSand());
+            this.tag(TagManager.Items.SAW_BLADE_CAST_SINGLE).add(cast.getSand());
             this.tag(RED_SAND_CASTS).add(cast.getRedSand());
+            this.tag(TagManager.Items.SAW_BLADE_CAST_SINGLE).add(cast.getRedSand());
         };
 
-        this.tag(MULTIPART_TOOL).add(TinkerSurvivalWorld.SAW.get());
-        this.tag(DURABILITY).add(TinkerSurvivalWorld.SAW.get());
-        this.tag(ONE_HANDED).add(TinkerSurvivalWorld.SAW.get());
-        this.tag(HARVEST_PRIMARY).add(TinkerSurvivalWorld.SAW.get());
-        this.tag(TOOL_PARTS).add(TinkerSurvivalWorld.SAW_BLADE.get());
+        this.tag(MULTIPART_TOOL).add(TinkerSurvivalItems.SAW.get());
+        this.tag(DURABILITY).add(TinkerSurvivalItems.SAW.get());
+        this.tag(ONE_HANDED).add(TinkerSurvivalItems.SAW.get());
+        this.tag(HARVEST_PRIMARY).add(TinkerSurvivalItems.SAW.get());
+        this.tag(TOOL_PARTS).add(TinkerSurvivalItems.SAW_BLADE.get());
 
-        addCast.accept(TinkerSurvivalWorld.SAW_BLADE_CAST);
+        addCast.accept(TinkerSurvivalItems.SAW_BLADE_CAST);
     }
 
     private void builder(Tag.Named<Item> tag) {

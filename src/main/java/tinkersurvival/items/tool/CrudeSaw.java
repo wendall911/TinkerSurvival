@@ -1,4 +1,4 @@
-package tinkersurvival.world.item.tools;
+package tinkersurvival.items.tool;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -8,12 +8,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
 
-public class CrudeHatchet extends AxeItem {
+public class CrudeSaw extends AxeItem {
 
-    public CrudeHatchet(Tier tier, int damage, float speed, Item.Properties tabGroup) {
+    public String name;
+
+    public CrudeSaw(String name, Tier tier, int damage, float speed, Item.Properties tabGroup) {
         super(tier, damage, speed, tabGroup);
+
+        this.name = name;
     }
 
     @Nonnull
@@ -21,11 +26,14 @@ public class CrudeHatchet extends AxeItem {
     public ItemStack getContainerItem(@Nonnull ItemStack stack) {
         ItemStack container = stack.copy();
         
-        if (!container.hurt(1, new Random(), null)) {
+        if (this.name == "crude_saw_handle") {
+            return ItemStack.EMPTY;
+        }
+        else if (!container.hurt(1, new Random(), null)) {
             return container;
         }
         else {
-            return ItemStack.EMPTY;
+            return new ItemStack(TinkerSurvivalItems.CRUDE_SAW_HANDLE.get());
         }
     }
 

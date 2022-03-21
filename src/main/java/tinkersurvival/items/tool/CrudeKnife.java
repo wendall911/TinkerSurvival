@@ -1,4 +1,4 @@
-package tinkersurvival.world.item.tools;
+package tinkersurvival.items.tool;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.util.TagManager;
+import tinkersurvival.common.TagManager;
 
 public class CrudeKnife extends SwordItem {
 

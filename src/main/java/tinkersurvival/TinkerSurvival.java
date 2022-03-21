@@ -17,9 +17,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import tinkersurvival.common.TinkerSurvivalModule;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.proxy.ClientProxy;
-import tinkersurvival.proxy.IProxy;
 import tinkersurvival.proxy.ServerProxy;
 import tinkersurvival.recipe.RecipeHelper;
 import tinkersurvival.world.TinkerSurvivalWorld;
@@ -30,18 +30,20 @@ public class TinkerSurvival {
     public static final String MODID = "tinkersurvival";
     public static final Logger LOGGER = LogManager.getFormatterLogger(TinkerSurvival.MODID);
 
-    public static IProxy PROXY;
     public static TinkerSurvival INSTANCE;
     public static IEventBus BUS;
 
     public TinkerSurvival() {
         BUS = FMLJavaModLoadingContext.get().getModEventBus();
         INSTANCE = this;
-        PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 
         MinecraftForge.EVENT_BUS.register(INSTANCE);
 
         BUS.addListener(INSTANCE::setup);
+
+        TinkerSurvivalModule.initRegistries(TinkerSurvival.BUS);
+
+        DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
     }
 
     public void setup(final FMLCommonSetupEvent event) {

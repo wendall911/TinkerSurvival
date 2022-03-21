@@ -1,5 +1,7 @@
 {
-    "itemGroup.tinkersurvival.items": "Tinker Survival",
+    "itemGroup.tinkersurvival.items": "Tinker Survival Items",
+    "itemGroup.tinkersurvival.tools": "Tinker Survival Tools",
+    "itemGroup.tinkersurvival.world": "Tinker Survival World",
     "item.tinkersurvival.plant_fiber": "Kasvikuidut",
     "item.tinkersurvival.plant_string": "Kasvi lanka",
     "item.tinkersurvival.flint_shard": "Piikiven sirpale",

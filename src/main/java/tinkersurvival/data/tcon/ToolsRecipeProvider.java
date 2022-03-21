@@ -9,8 +9,8 @@ import slimeknights.tconstruct.common.data.BaseRecipeProvider;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterialRecipeHelper, IToolRecipeHelper {
 
@@ -35,7 +35,7 @@ public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterial
     }
 
     private void addToolBuildingRecipes(Consumer<FinishedRecipe> consumer) {
-        toolBuilding(consumer, TinkerSurvivalWorld.SAW, "tools/building/");
+        toolBuilding(consumer, TinkerSurvivalItems.SAW, "tools/building/");
     }
 
 	private void addPartRecipes(Consumer<FinishedRecipe> consumer) {
@@ -44,8 +44,8 @@ public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterial
 
         partRecipes(
             consumer,
-            TinkerSurvivalWorld.SAW_BLADE,
-            TinkerSurvivalWorld.SAW_BLADE_CAST,
+            TinkerSurvivalItems.SAW_BLADE,
+            TinkerSurvivalItems.SAW_BLADE_CAST,
             4,
             partFolder,
             castFolder

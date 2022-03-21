@@ -1,4 +1,4 @@
-package tinkersurvival.world.item.tools;
+package tinkersurvival.items.tool;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
