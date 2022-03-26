@@ -15,6 +15,10 @@ public final class ModIntegration extends TinkerSurvivalModule {
 
     public static RegistryObject<Item> CHERRY_PLANKS;
     public static RegistryObject<Item> CITRUS_PLANKS;
+    public static RegistryObject<Item> BMO_ANCIENT_OAK_PLANKS;
+    public static RegistryObject<Item> BMO_BLIGHTED_BALSA_PLANKS;
+    public static RegistryObject<Item> BMO_SWAMP_CYPRESS_PLANKS;
+    public static RegistryObject<Item> BMO_WILLOW_PLANKS;
     public static RegistryObject<Item> BOP_CHERRY_PLANKS;
     public static RegistryObject<Item> BOP_DEAD_PLANKS;
     public static RegistryObject<Item> BOP_FIR_PLANKS;
@@ -34,6 +38,7 @@ public final class ModIntegration extends TinkerSurvivalModule {
     public static RegistryObject<Item> TCON_SKYROOT_PLANKS;
 
     public static final String AYCE_MODID = "allyoucaneat";
+    public static final String BMO_MODID = "biomemakeover";
     public static final String BOP_MODID = "biomesoplenty";
     public static final String FT_MODID = "fruittrees";
     public static final String IE_MODID = "immersiveengineering";
@@ -45,6 +50,10 @@ public final class ModIntegration extends TinkerSurvivalModule {
         if (dataGen != null && dataGen.contains("all")) {
             CHERRY_PLANKS = registerFruitTreesItem("cherry_planks");
             CITRUS_PLANKS = registerFruitTreesItem("citrus_planks");
+            BMO_ANCIENT_OAK_PLANKS = registerBMOItem("ancient_oak_planks");
+            BMO_BLIGHTED_BALSA_PLANKS = registerBMOItem("blighted_balsa_planks");
+            BMO_SWAMP_CYPRESS_PLANKS = registerBMOItem("swamp_cypress_planks");
+            BMO_WILLOW_PLANKS = registerBMOItem("willow_planks");
             BOP_CHERRY_PLANKS = registerBOPItem("cherry_planks");
             BOP_DEAD_PLANKS = registerBOPItem("dead_planks");
             BOP_FIR_PLANKS = registerBOPItem("fir_planks");
@@ -77,6 +86,10 @@ public final class ModIntegration extends TinkerSurvivalModule {
         return registerItem(name, QUARK_ITEM_REGISTRY);
     }
 
+    private static RegistryObject<Item> registerBMOItem(String name) {
+        return registerItem(name, BMO_ITEM_REGISTRY);
+    }
+
     private static RegistryObject<Item> registerBOPItem(String name) {
         return registerItem(name, BOP_ITEM_REGISTRY);
     }
@@ -91,6 +104,10 @@ public final class ModIntegration extends TinkerSurvivalModule {
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item, DeferredRegister<Item> registry) {
         return registry.register(name, item);
+    }
+
+    public static ResourceLocation bmoLoc(String name) {
+        return getLoc(BMO_MODID, name);
     }
 
     public static ResourceLocation tconLoc(String name) {

@@ -31,6 +31,12 @@ public final class TagManager {
         public static final Tag.Named<Item> CHERRY_LOGS = create("cherry_logs");
         public static final Tag.Named<Item> CITRUS_LOGS = create("citrus_logs");
 
+        // Biome Makeover
+        public static final Tag.Named<Item> BMO_ANCIENT_OAK_LOGS = create("ancient_oak_logs");
+        public static final Tag.Named<Item> BMO_BLIGHTED_BALSA_LOGS = create("blighted_balsa_logs");
+        public static final Tag.Named<Item> BMO_SWAMP_CYPRESS_LOGS = create("swamp_cypress_logs");
+        public static final Tag.Named<Item> BMO_WILLOW_LOGS = create("bmo_willow_logs");
+
         // Biomes O' Plenty
         public static final Tag.Named<Item> BOP_CHERRY_LOGS = create("bop_cherry_logs");
         public static final Tag.Named<Item> BOP_DEAD_LOGS = create("dead_logs");

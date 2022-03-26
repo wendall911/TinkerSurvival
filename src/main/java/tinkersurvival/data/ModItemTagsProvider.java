@@ -103,6 +103,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addFTLogVariants(TagManager.Items.CHERRY_LOGS, "cherry");
         addFTLogVariants(TagManager.Items.CITRUS_LOGS, "citrus");
 
+        // Biome Makeover
+        addBMOLogVariants(TagManager.Items.BMO_ANCIENT_OAK_LOGS, "ancient_oak");
+        addBMOLogVariants(TagManager.Items.BMO_BLIGHTED_BALSA_LOGS, "blighted_balsa");
+        addBMOLogVariants(TagManager.Items.BMO_SWAMP_CYPRESS_LOGS, "swamp_cypress");
+        addBMOLogVariants(TagManager.Items.BMO_WILLOW_LOGS, "willow");
+
         // Biomes O' Plenty
         addBOPLogVariants(TagManager.Items.BOP_CHERRY_LOGS, "cherry");
         addBOPLogVariants(TagManager.Items.BOP_DEAD_LOGS, "dead");
@@ -180,6 +186,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.qLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.qLoc(type + "_wood"))
             .addOptional(ModIntegration.qLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addBMOLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bmoLoc(type + "_log"))
+            .addOptional(ModIntegration.bmoLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.bmoLoc(type + "_wood"))
+            .addOptional(ModIntegration.bmoLoc("stripped_" + type + "_wood"));
     }
 
     private void addBOPLogVariants(Tag.Named<Item> tag, String type) {

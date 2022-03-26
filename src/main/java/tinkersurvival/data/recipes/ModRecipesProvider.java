@@ -224,6 +224,12 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(consumer, ModIntegration.CHERRY_PLANKS.get(), TagManager.Items.CHERRY_LOGS, "has_logs");
         plankRecipeBuilder(consumer, ModIntegration.CITRUS_PLANKS.get(), TagManager.Items.CITRUS_LOGS, "has_logs");
 
+        // Biome Makeover
+        plankRecipeBuilder(consumer, ModIntegration.BMO_ANCIENT_OAK_PLANKS.get(), TagManager.Items.BMO_ANCIENT_OAK_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BMO_BLIGHTED_BALSA_PLANKS.get(), TagManager.Items.BMO_BLIGHTED_BALSA_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BMO_SWAMP_CYPRESS_PLANKS.get(), TagManager.Items.BMO_SWAMP_CYPRESS_LOGS, "has_logs");
+        plankRecipeBuilder(consumer, ModIntegration.BMO_WILLOW_PLANKS.get(), TagManager.Items.BMO_WILLOW_LOGS, "has_logs");
+
         //Biomes O' Plenty
         plankRecipeBuilder(consumer, ModIntegration.BOP_CHERRY_PLANKS.get(), TagManager.Items.BOP_CHERRY_LOGS, "has_logs");
         plankRecipeBuilder(consumer, ModIntegration.BOP_DEAD_PLANKS.get(), TagManager.Items.BOP_DEAD_LOGS, "has_logs");
