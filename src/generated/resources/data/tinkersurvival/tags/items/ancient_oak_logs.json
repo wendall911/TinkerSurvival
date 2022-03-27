@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomemakeover:ancient_oak_log",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:stripped_ancient_oak_log",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:ancient_oak_wood",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:stripped_ancient_oak_wood",
+      "required": false
+    }
+  ]
+}

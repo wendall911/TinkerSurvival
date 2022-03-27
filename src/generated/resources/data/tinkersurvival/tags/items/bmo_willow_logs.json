@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomemakeover:willow_log",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:stripped_willow_log",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:willow_wood",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:stripped_willow_wood",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomemakeover:blighted_balsa_log",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:stripped_blighted_balsa_log",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:blighted_balsa_wood",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:stripped_blighted_balsa_wood",
+      "required": false
+    }
+  ]
+}
