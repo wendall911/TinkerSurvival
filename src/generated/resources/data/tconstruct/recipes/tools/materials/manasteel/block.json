@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/manasteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/manasteel"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "tinkersurvival:manasteel",
+  "leftover": {
+    "tag": "forge:ingots/manasteel"
+  }
+}

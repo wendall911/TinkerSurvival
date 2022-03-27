@@ -10,6 +10,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
+
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 
 import tinkersurvival.data.integration.ModIntegration;
@@ -22,6 +24,7 @@ public abstract class TinkerSurvivalModule {
     protected static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
     protected static DeferredRegister<MobEffect> MOBEFFECT_REGISTRY;
     protected static ItemDeferredRegisterExtension TOOL_REGISTRY;
+    protected static FluidDeferredRegister FLUID_REGISTRY;
     protected static DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIER_REGISTRY;
     protected static DeferredRegister<Item> FRUITTREES_ITEM_REGISTRY;
     protected static DeferredRegister<Item> BMO_ITEM_REGISTRY;
@@ -35,6 +38,7 @@ public abstract class TinkerSurvivalModule {
         BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
         ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
         TOOL_REGISTRY = new ItemDeferredRegisterExtension(TinkerSurvival.MODID);
+        FLUID_REGISTRY = new FluidDeferredRegister(TinkerSurvival.MODID);
         LOOT_MODIFIER_REGISTRY = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, TinkerSurvival.MODID);
         FRUITTREES_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.FT_MODID);
         BMO_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.BMO_MODID);
@@ -47,6 +51,7 @@ public abstract class TinkerSurvivalModule {
         BLOCK_REGISTRY.register(bus);
         ITEM_REGISTRY.register(bus);
         TOOL_REGISTRY.register(bus);
+        FLUID_REGISTRY.register(bus);
         LOOT_MODIFIER_REGISTRY.register(bus);
         FRUITTREES_ITEM_REGISTRY.register(bus);
         BMO_ITEM_REGISTRY.register(bus);

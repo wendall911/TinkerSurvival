@@ -4,9 +4,9 @@ import slimeknights.tconstruct.library.client.data.material.AbstractPartSpritePr
 
 import tinkersurvival.TinkerSurvival;
 
-public class TinkerPartSpriteProvider extends AbstractPartSpriteProvider {
+public class SawPartSpriteProvider extends AbstractPartSpriteProvider {
 
-    public TinkerPartSpriteProvider() {
+    public SawPartSpriteProvider() {
         super(TinkerSurvival.MODID);
     }
 

@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_medium_buds/manasteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_medium_buds/manasteel"
+  },
+  "result": {
+    "fluid": "tinkersurvival:manasteel",
+    "amount": 180
+  },
+  "temperature": 950,
+  "time": 97
+}

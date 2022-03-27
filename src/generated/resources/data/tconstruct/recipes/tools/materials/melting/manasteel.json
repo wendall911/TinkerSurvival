@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:material_melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/manasteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "input": "tinkersurvival:manasteel",
+  "temperature": 950,
+  "result": {
+    "fluid": "tinkersurvival:manasteel",
+    "amount": 90
+  }
+}
