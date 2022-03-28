@@ -16,7 +16,6 @@ import tinkersurvival.data.client.ModItemModelProvider;
 import tinkersurvival.data.loot.ModLootTables;
 import tinkersurvival.data.loot.GlobalLootModifier;
 import tinkersurvival.data.overrides.BlockTagsOverrideProvider;
-import tinkersurvival.data.overrides.MaterialOverrideProvider;
 import tinkersurvival.data.recipes.ModRecipesProvider;
 import tinkersurvival.data.tcon.FluidTagProvider;
 import tinkersurvival.data.tcon.material.MaterialDataProvider;
@@ -63,12 +62,11 @@ public final class DataGenerators {
         gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, sawPartSprites, materialSprites));
         gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, partSprites, materialSprites));
         gen.addProvider(new ToolDefinitionDataProvider(gen));
-        gen.addProvider(materials);
         gen.addProvider(new MaterialStatsDataProvider(gen, materials));
         gen.addProvider(new MaterialTraitsDataProvider(gen, materials));
         gen.addProvider(new MaterialRecipeProvider(gen));
         gen.addProvider(new SmelteryRecipeProvider(gen));
-        gen.addProvider(new MaterialOverrideProvider(gen));
+        gen.addProvider(materials);
 
         if (modpackOverrides != null && modpackOverrides.contains("all")) {
             gen.addProvider(new BlockTagsOverrideProvider(gen, event.getExistingFileHelper()));
