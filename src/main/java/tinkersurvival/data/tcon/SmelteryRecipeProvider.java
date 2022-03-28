@@ -52,7 +52,7 @@ public class SmelteryRecipeProvider extends BaseRecipeProvider implements ISmelt
 
         // ores
         String metalFolder = folder + "metal/";
-        metalMelting(consumer, TinkerSurvivalItems.MANASTEEL.get(), "manasteel", true, metalFolder, false, Byproduct.IRON);
+        metalMelting(consumer, TinkerSurvivalItems.MANASTEEL.get(), "manasteel", false, metalFolder, false, Byproduct.IRON);
     }
 
     private void addAlloyRecipes(Consumer<FinishedRecipe> consumer) {
