@@ -14,9 +14,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import slimeknights.mantle.registration.object.MetalItemObject;
+
 import slimeknights.tconstruct.common.TinkerTags;
 
 import tinkersurvival.data.tcon.SmelteryCompat;
+import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.IBlockProvider;
 import tinkersurvival.common.TagManager;
@@ -90,11 +93,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(Blocks.GRASS)
             .add(Blocks.TALL_GRASS);
 
+        this.tag(TagManager.Blocks.BRONZE).add(TinkerSurvivalItems.BRONZE.get());
+        this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(TagManager.Blocks.BRONZE);
+
         TagsProvider.TagAppender<Block> builder = this.tag(TinkerTags.Blocks.ANVIL_METAL);
 
         for (SmelteryCompat compat : SmelteryCompat.values()) {
             builder.addOptionalTag(new ResourceLocation("forge", "storage_blocks/" + compat.getName()));
         }
+
+        addMetalTags(TinkerSurvivalItems.BRONZE);
     }
 
     private void builder(Tag.Named<Block> tag, IBlockProvider... items) {
@@ -103,6 +111,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     protected TagsProvider.TagAppender<Block> getBuilder(Tag.Named<Block> tag) {
         return tag(tag);
+    }
+
+    private void addMetalTags(MetalItemObject metal) {
+        this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(metal.getBlockTag());
     }
 
 }

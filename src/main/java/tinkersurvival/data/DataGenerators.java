@@ -68,9 +68,9 @@ public final class DataGenerators {
         gen.addProvider(new MaterialTraitsDataProvider(gen, materials));
         gen.addProvider(new MaterialRecipeProvider(gen));
         gen.addProvider(new SmelteryRecipeProvider(gen));
+        gen.addProvider(new MaterialOverrideProvider(gen));
 
         if (modpackOverrides != null && modpackOverrides.contains("all")) {
-            gen.addProvider(new MaterialOverrideProvider(gen));
             gen.addProvider(new BlockTagsOverrideProvider(gen, event.getExistingFileHelper()));
         }
     }

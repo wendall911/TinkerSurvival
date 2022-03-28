@@ -7,8 +7,11 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.level.block.Block;
 
 import slimeknights.tconstruct.common.data.BaseRecipeProvider;
+import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.ICommonRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
+import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.smeltery.data.Byproduct;
 
 import tinkersurvival.data.tcon.SmelteryCompat;
@@ -29,6 +32,7 @@ public class SmelteryRecipeProvider extends BaseRecipeProvider implements ISmelt
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
         this.addMeltingRecipes(consumer);
         this.addCastingRecipes(consumer);
+        this.addAlloyRecipes(consumer);
     }
 
     private void addCastingRecipes(Consumer<FinishedRecipe> consumer) {
@@ -49,6 +53,15 @@ public class SmelteryRecipeProvider extends BaseRecipeProvider implements ISmelt
         // ores
         String metalFolder = folder + "metal/";
         metalMelting(consumer, TinkerSurvivalItems.MANASTEEL.get(), "manasteel", true, metalFolder, false, Byproduct.IRON);
+    }
+
+    private void addAlloyRecipes(Consumer<FinishedRecipe> consumer) {
+        String folder = "smeltery/alloys/";
+
+        AlloyRecipeBuilder.alloy(TinkerFluids.moltenBronze.get(), FluidValues.INGOT * 4)
+            .addInput(TinkerFluids.moltenCopper.getForgeTag(), FluidValues.INGOT * 3)
+            .addInput(TinkerFluids.moltenQuartz.getLocalTag(), FluidValues.GEM)
+            .save(consumer, prefix(TinkerFluids.moltenBronze, folder));
     }
 
 }

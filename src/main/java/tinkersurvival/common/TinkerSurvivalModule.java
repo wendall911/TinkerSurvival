@@ -12,6 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 
+import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 
 import tinkersurvival.data.integration.ModIntegration;
@@ -23,6 +24,7 @@ public abstract class TinkerSurvivalModule {
     protected static DeferredRegister<Item> ITEM_REGISTRY;
     protected static DeferredRegister<Feature<?>> FEATURE_REGISTRY;
     protected static DeferredRegister<MobEffect> MOBEFFECT_REGISTRY;
+    protected static BlockDeferredRegisterExtension METAL_BLOCK_REGISTRY;
     protected static ItemDeferredRegisterExtension TOOL_REGISTRY;
     protected static FluidDeferredRegister FLUID_REGISTRY;
     protected static DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIER_REGISTRY;
@@ -37,6 +39,7 @@ public abstract class TinkerSurvivalModule {
         MOBEFFECT_REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, TinkerSurvival.MODID);
         BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, TinkerSurvival.MODID);
         ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, TinkerSurvival.MODID);
+        METAL_BLOCK_REGISTRY = new BlockDeferredRegisterExtension(TinkerSurvival.MODID);
         TOOL_REGISTRY = new ItemDeferredRegisterExtension(TinkerSurvival.MODID);
         FLUID_REGISTRY = new FluidDeferredRegister(TinkerSurvival.MODID);
         LOOT_MODIFIER_REGISTRY = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, TinkerSurvival.MODID);
@@ -50,6 +53,7 @@ public abstract class TinkerSurvivalModule {
         MOBEFFECT_REGISTRY.register(bus);
         BLOCK_REGISTRY.register(bus);
         ITEM_REGISTRY.register(bus);
+        METAL_BLOCK_REGISTRY.register(bus);
         TOOL_REGISTRY.register(bus);
         FLUID_REGISTRY.register(bus);
         LOOT_MODIFIER_REGISTRY.register(bus);

@@ -7,6 +7,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import net.minecraftforge.common.Tags.IOptionalNamedTag;
+
 import tinkersurvival.TinkerSurvival;
 
 public final class TagManager {
@@ -25,6 +27,9 @@ public final class TagManager {
         public static final Tag.Named<Item> BANDAGES = create("bandages");
         public static final Tag.Named<Item> SAW_BLADE_CAST = ItemTags.bind(TinkerSurvival.MODID +  ":casts/multi_use/saw_blade");
         public static final Tag.Named<Item> SAW_BLADE_CAST_SINGLE = ItemTags.bind(TinkerSurvival.MODID +  ":casts/single_use/saw_blade");
+        public static final IOptionalNamedTag<Item> BRONZE = forgeTag("storage_blocks/bronze");
+        public static final IOptionalNamedTag<Item> BRONZE_INGOTS = forgeTag("ingots/bronze");
+        public static final IOptionalNamedTag<Item> BRONZE_NUGGETS = forgeTag("nuggets/bronze");
 
         // Mod Integration
         // Fruit Trees
@@ -65,6 +70,10 @@ public final class TagManager {
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));
         }
+
+        private static IOptionalNamedTag<Item> forgeTag(String name) {
+            return ItemTags.createOptional(forgeLoc(name));
+        }
     }
 
     public static final class Blocks {
@@ -73,14 +82,23 @@ public final class TagManager {
         public static final Tag.Named<Block> LOOSE_ROCK_PLACEABLE_ON = create("loose_rock_placeable_on");
         public static final Tag.Named<Block> LOOSE_ROCKS = create("loose_rocks");
         public static final Tag.Named<Block> FIBER_PLANTS = create("fiber_plants");
+        public static final IOptionalNamedTag<Block> BRONZE = forgeTag("storage_blocks/bronze");
 
         private static Tag.Named<Block> create(String id) {
             return BlockTags.createOptional(identifier(id));
+        }
+
+        private static IOptionalNamedTag<Block> forgeTag(String name) {
+            return BlockTags.createOptional(forgeLoc(name));
         }
     }
 
     public static ResourceLocation identifier(String path) {
         return new ResourceLocation(TinkerSurvival.MODID, path);
+    }
+
+    public static ResourceLocation forgeLoc(String path) {
+        return new ResourceLocation("forge", path);
     }
 
 }

@@ -162,6 +162,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         this.tag(TOOL_PARTS).add(TinkerSurvivalItems.SAW_BLADE.get());
 
         addCast.accept(TinkerSurvivalItems.SAW_BLADE_CAST);
+
+        this.copy(TagManager.Blocks.BRONZE, TagManager.Items.BRONZE);
+
+        this.tag(Tags.Items.INGOTS).add(TinkerSurvivalItems.BRONZE.getIngot());
+        this.tag(Tags.Items.NUGGETS).add(TinkerSurvivalItems.BRONZE.getNugget());
+
+        getBuilder(TagManager.Items.BRONZE_INGOTS).add(TinkerSurvivalItems.BRONZE.getIngot());
+        getBuilder(TagManager.Items.BRONZE_NUGGETS).add(TinkerSurvivalItems.BRONZE.getNugget());
     }
 
     private void addTconLogVariants(Tag.Named<Item> tag, String type) {

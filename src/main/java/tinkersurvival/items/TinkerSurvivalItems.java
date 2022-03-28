@@ -1,22 +1,30 @@
 package tinkersurvival.items;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.RegistryObject;
 
+import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.registration.ModelFluidAttributes;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.mantle.registration.object.FluidObject;
+import slimeknights.mantle.registration.object.MetalItemObject;
 
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
@@ -45,6 +53,7 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
 
     public static CreativeTabBase ITEM_TAB_GROUP;
     public static CreativeTabBase TOOL_TAB_GROUP;
+    public static Function<Block,? extends BlockItem> GENERAL_TOOLTIP_BLOCK_ITEM;
 
     public static RegistryObject<Item> FLINT_SHARD;
     public static RegistryObject<Item> PLANT_FIBER;
@@ -78,9 +87,12 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
 
     public static FluidObject<ForgeFlowingFluid> MANASTEEL;
 
+    public static MetalItemObject BRONZE;
+
     public static void init() {
         TOOL_TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".tools", () -> new ItemStack(CRUDE_HATCHET.get()));
         ITEM_TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(FLINT_SHARD.get()));
+        GENERAL_TOOLTIP_BLOCK_ITEM = (b) -> new BlockTooltipItem(b, new Item.Properties().tab(ITEM_TAB_GROUP));
 
         // Items
         FLINT_SHARD = registerItem("flint_shard");
@@ -141,6 +153,14 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
         // Fluids
         MANASTEEL = FLUID_REGISTRY.register(
                 "manasteel", hotBuilder().temperature(1250), Material.LAVA, 13);
+
+        // Metals
+        BRONZE = METAL_BLOCK_REGISTRY.registerMetal(
+            "bronze",
+            metalBuilder(MaterialColor.WOOD),
+            GENERAL_TOOLTIP_BLOCK_ITEM,
+            new Item.Properties().tab(ITEM_TAB_GROUP)
+        );
     }
 
     private static FluidAttributes.Builder hotBuilder() {
@@ -148,6 +168,14 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
             SoundEvents.BUCKET_FILL_LAVA,
             SoundEvents.BUCKET_EMPTY_LAVA
         );
+    }
+
+    private static BlockBehaviour.Properties builder(Material material, MaterialColor color, SoundType soundType) {
+        return Block.Properties.of(material, color).sound(soundType);
+    }
+
+    private static BlockBehaviour.Properties metalBuilder(MaterialColor color) {
+        return builder(Material.METAL, color, SoundType.METAL).requiresCorrectToolForDrops().strength(5.0f);
     }
 
     private static RegistryObject<Item> registerItem(String name) {
