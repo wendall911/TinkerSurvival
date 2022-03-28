@@ -20,7 +20,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.ItemLike;
 
+import net.minecraftforge.common.crafting.conditions.ICondition;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.Tags;
+
+import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 
 import slimeknights.tconstruct.tables.TinkerTables;
 
@@ -54,8 +58,7 @@ public class ModRecipesProvider extends RecipeProvider {
         ItemLike cloth = TinkerSurvivalItems.CLOTH.get();
         ItemLike crudeKnife = TinkerSurvivalItems.CRUDE_KNIFE.get();
         String sticksName = Registry.ITEM.getKey(Items.STICK.asItem()).getPath().toString();
-
-        // Fruit Trees Blocks
+        Consumer<FinishedRecipe> wrapped;
 
         // Material Recipes
         ShapedRecipeBuilder.shaped(Blocks.COBBLESTONE)
@@ -221,34 +224,39 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(consumer, Blocks.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, "has_logs");
 
         // Fruit Trees
-        plankRecipeBuilder(consumer, ModIntegration.CHERRY_PLANKS.get(), TagManager.Items.CHERRY_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.CITRUS_PLANKS.get(), TagManager.Items.CITRUS_LOGS, "has_logs");
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.FT_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.CHERRY_PLANKS.get(), TagManager.Items.CHERRY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.CITRUS_PLANKS.get(), TagManager.Items.CITRUS_LOGS, "has_logs");
 
         // Biome Makeover
-        plankRecipeBuilder(consumer, ModIntegration.BMO_ANCIENT_OAK_PLANKS.get(), TagManager.Items.BMO_ANCIENT_OAK_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BMO_BLIGHTED_BALSA_PLANKS.get(), TagManager.Items.BMO_BLIGHTED_BALSA_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BMO_SWAMP_CYPRESS_PLANKS.get(), TagManager.Items.BMO_SWAMP_CYPRESS_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BMO_WILLOW_PLANKS.get(), TagManager.Items.BMO_WILLOW_LOGS, "has_logs");
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.BMO_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.BMO_ANCIENT_OAK_PLANKS.get(), TagManager.Items.BMO_ANCIENT_OAK_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BMO_BLIGHTED_BALSA_PLANKS.get(), TagManager.Items.BMO_BLIGHTED_BALSA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BMO_SWAMP_CYPRESS_PLANKS.get(), TagManager.Items.BMO_SWAMP_CYPRESS_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BMO_WILLOW_PLANKS.get(), TagManager.Items.BMO_WILLOW_LOGS, "has_logs");
 
         //Biomes O' Plenty
-        plankRecipeBuilder(consumer, ModIntegration.BOP_CHERRY_PLANKS.get(), TagManager.Items.BOP_CHERRY_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_DEAD_PLANKS.get(), TagManager.Items.BOP_DEAD_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_FIR_PLANKS.get(), TagManager.Items.BOP_FIR_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_HELLBARK_PLANKS.get(), TagManager.Items.BOP_HELLBARK_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_JACARANDA_PLANKS.get(), TagManager.Items.BOP_JACARANDA_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_MAGIC_PLANKS.get(), TagManager.Items.BOP_MAGIC_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_MAHOGANY_PLANKS.get(), TagManager.Items.BOP_MAHOGANY_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_PALM_PLANKS.get(), TagManager.Items.BOP_PALM_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_REDWOOD_PLANKS.get(), TagManager.Items.BOP_REDWOOD_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_UMBRAN_PLANKS.get(), TagManager.Items.BOP_UMBRAN_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.BOP_WILLOW_PLANKS.get(), TagManager.Items.BOP_WILLOW_LOGS, "has_logs");
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.BOP_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_CHERRY_PLANKS.get(), TagManager.Items.BOP_CHERRY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_DEAD_PLANKS.get(), TagManager.Items.BOP_DEAD_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_FIR_PLANKS.get(), TagManager.Items.BOP_FIR_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_HELLBARK_PLANKS.get(), TagManager.Items.BOP_HELLBARK_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_JACARANDA_PLANKS.get(), TagManager.Items.BOP_JACARANDA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_MAGIC_PLANKS.get(), TagManager.Items.BOP_MAGIC_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_MAHOGANY_PLANKS.get(), TagManager.Items.BOP_MAHOGANY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_PALM_PLANKS.get(), TagManager.Items.BOP_PALM_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_REDWOOD_PLANKS.get(), TagManager.Items.BOP_REDWOOD_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_UMBRAN_PLANKS.get(), TagManager.Items.BOP_UMBRAN_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOP_WILLOW_PLANKS.get(), TagManager.Items.BOP_WILLOW_LOGS, "has_logs");
 
         //Quark
-        plankRecipeBuilder(consumer, ModIntegration.QUARK_AZALEA_PLANKS.get(), TagManager.Items.QUARK_AZALEA_LOGS, "has_logs");
-        plankRecipeBuilder(consumer, ModIntegration.QUARK_BLOSSOM_PLANKS.get(), TagManager.Items.QUARK_BLOSSOM_LOGS, "has_logs");
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.QUARK_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.QUARK_AZALEA_PLANKS.get(), TagManager.Items.QUARK_AZALEA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.QUARK_BLOSSOM_PLANKS.get(), TagManager.Items.QUARK_BLOSSOM_LOGS, "has_logs");
 
         //All You Can Eat
-        plankRecipeBuilder(consumer, ModIntegration.AYCE_HAZEL_PLANKS.get(), TagManager.Items.AYCE_HAZEL_LOGS, "has_logs");
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.AYCE_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.AYCE_HAZEL_PLANKS.get(), TagManager.Items.AYCE_HAZEL_LOGS, "has_logs");
 
         // Tinkers' Construct
         plankRecipeBuilder(consumer, ModIntegration.TCON_BLOODSHROOM_PLANKS.get(), TagManager.Items.TCON_BLOODSHROOM_LOGS, "has_logs");
@@ -286,6 +294,16 @@ public class ModRecipesProvider extends RecipeProvider {
                 .group("planks")
                 .unlockedBy(label, has(TinkerTables.tinkerStation))
                 .save(consumer, new ResourceLocation(TinkerSurvival.MODID, modid + "_" + name));
+    }
+
+    private static Consumer<FinishedRecipe> withCondition(Consumer<FinishedRecipe> consumer, ICondition... conditions) {
+        ConsumerWrapperBuilder builder = ConsumerWrapperBuilder.wrap();
+
+        for (ICondition condition : conditions) {
+            builder.addCondition(condition);
+        }
+
+        return builder.build(consumer);
     }
 
 }
