@@ -74,6 +74,8 @@
     "modifier.insulated_armor.description": "Lisää +1-lämmitysmodifiilin panssarikappaleeseen. Ei stakaa.",
     "modifier.chilling_armor": "Hyytävä",
     "modifier.chilling_armor.description": "Lisää -1 jäähdytysmodifioijan panssarikappaleeseen. Ei stakaa.",
+    "modifier.tinkersurvival.mana": "Mana",
+    "modifier.tinkersurvival.mana.description": "Repairs item in inventory if mana providing item exists.",
     "advancements.tinkersurvival.crude_knife.description": "Ensimmäinen veitsi. Se ei näytä kovin terävältä, mutta ehkä voit käyttää sitä leikkaamaan ruohoa.",
     "advancements.tinkersurvival.crude_hatchet.description": "Raaka hatchetilla voit hakata puuta ja muita perusmateriaaleja.",
     "advancements.tinkersurvival.crude_saw.description": "Puu palaa lokeihin ja lankkeihin tikkuihin, jos se on käytössä TinkerSurvival-määrityksessä. Muuten ei tee mitään.",

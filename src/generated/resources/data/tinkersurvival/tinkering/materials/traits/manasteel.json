@@ -3,6 +3,10 @@
     {
       "name": "tconstruct:ductile",
       "level": 1
+    },
+    {
+      "name": "tinkersurvival:mana",
+      "level": 1
     }
   ]
 }

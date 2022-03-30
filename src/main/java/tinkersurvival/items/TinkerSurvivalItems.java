@@ -46,6 +46,7 @@ import tinkersurvival.items.tool.CrudeHatchet;
 import tinkersurvival.items.tool.CrudeKnife;
 import tinkersurvival.items.tool.CrudeSaw;
 import tinkersurvival.items.tool.Knife;
+import tinkersurvival.items.tool.modifiers.ManaItemModifier;
 import tinkersurvival.items.tool.Saw;
 import tinkersurvival.TinkerSurvival;
 
@@ -88,6 +89,8 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
     public static FluidObject<ForgeFlowingFluid> MANASTEEL;
 
     public static MetalItemObject BRONZE;
+
+    public static RegistryObject<ManaItemModifier> MANA_MODIFIER;
 
     public static void init() {
         TOOL_TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".tools", () -> new ItemStack(CRUDE_HATCHET.get()));
@@ -161,6 +164,9 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
             GENERAL_TOOLTIP_BLOCK_ITEM,
             new Item.Properties().tab(ITEM_TAB_GROUP)
         );
+
+        // Modifiers
+        MANA_MODIFIER = MODIFIERS_REGISTRY.register("mana", ManaItemModifier::new);
     }
 
     private static FluidAttributes.Builder hotBuilder() {

@@ -74,6 +74,8 @@
     "modifier.insulated_armor.description": "Fügt einem Rüstungsteil einen +1 Heizmodifikator hinzu. Nicht stapelbar.",
     "modifier.chilling_armor": "Abkühlend",
     "modifier.chilling_armor.description": "Fügt einem Rüstungsteil einen -1 Kühlmodifikator hinzu. Nicht stapelbar.",
+    "modifier.tinkersurvival.mana": "Mana",
+    "modifier.tinkersurvival.mana.description": "Repairs item in inventory if mana providing item exists.",
     "advancements.tinkersurvival.crude_knife.description": "Dein erstes Messer. Es sieht nicht sehr scharf aus, aber vielleicht kannst du damit etwas Gras schneiden.",
     "advancements.tinkersurvival.crude_hatchet.description": "Mit der Primitiven Axt kannst du Holz und andere Rohstoffe erhalten.",
     "advancements.tinkersurvival.crude_saw.description": "Teilt Stämme in Bretter und Bretter in Stöcke, falls in der TinkerSurvival-Konfiguration aktiviert. Sonst macht es nichts.",

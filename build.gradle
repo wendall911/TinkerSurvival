@@ -138,7 +138,7 @@ dependencies {
         transitive = false
     }
 
-    runtimeOnly fg.deobf("vazkii.botania:Botania:${minecraft_version}-${botania_version}")
+    implementation fg.deobf("vazkii.botania:Botania:${minecraft_version}-${botania_version}")
 
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${minecraft_version}-${curios_version}")
 
@@ -207,6 +207,8 @@ curseforge {
                 optionalLibrary 'quark'
                 optionalLibrary 'biomes-o-plenty'
                 optionalLibrary 'all-you-can-eat'
+                optionalLibrary 'immersive-engineering'
+                optionalLibrary 'botania'
             }
         }
     }

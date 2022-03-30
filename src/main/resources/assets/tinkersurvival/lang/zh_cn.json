@@ -74,6 +74,8 @@
     "modifier.insulated_armor.description": "Adds a +1 heating modifier to an armor piece. Not stackable.",
     "modifier.chilling_armor": "降温",
     "modifier.chilling_armor.description": "Adds a -1 cooling modifier to an armor piece. Not stackable.",
+    "modifier.tinkersurvival.mana": "Mana",
+    "modifier.tinkersurvival.mana.description": "Repairs item in inventory if mana providing item exists.",
     "advancements.tinkersurvival.crude_knife.description": "Your first knife. It does not look very sharp, but maybe you can use it to cut some grass.",
     "advancements.tinkersurvival.crude_hatchet.description": "The crude hatchet allows you to harvest wood and other basic materials.",
     "advancements.tinkersurvival.crude_saw.description": "Splits wood logs into planks and planks into sticks if enabled in the TinkerSurvival config. Otherwise does nothing.",

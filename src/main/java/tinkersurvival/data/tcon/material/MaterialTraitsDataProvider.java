@@ -7,6 +7,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataPr
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
 import tinkersurvival.data.tcon.material.MaterialIds;
+import tinkersurvival.items.TinkerSurvivalItems;
 
 public class MaterialTraitsDataProvider extends AbstractMaterialTraitDataProvider {
 
@@ -21,7 +22,7 @@ public class MaterialTraitsDataProvider extends AbstractMaterialTraitDataProvide
 
     @Override
     protected void addMaterialTraits() {
-        addDefaultTraits(MaterialIds.manaSteel, TinkerModifiers.ductile.get());
+        addDefaultTraits(MaterialIds.manaSteel, TinkerModifiers.ductile.get(), TinkerSurvivalItems.MANA_MODIFIER.get());
     }
 
 }
