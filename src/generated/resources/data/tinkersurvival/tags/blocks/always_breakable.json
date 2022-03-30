@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#tinkersurvival:loose_rocks",
     "#minecraft:beds",
     "minecraft:gravel",
     "#forge:gravel",

@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.ModList;
 
 import tinkersurvival.common.HarvestBlock;
+import tinkersurvival.common.TagManager;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.mixin.AbstractBlockStateAccessor;
 import tinkersurvival.TinkerSurvival;
@@ -76,6 +77,15 @@ public class ItemUse {
 
     public static boolean hasTinkerBow() {
         return ItemUse.TOOL_TYPES.contains("bow");
+    }
+
+    public static boolean alwaysDrops(BlockState state) {
+        if (((AbstractBlockStateAccessor) state).getDestroySpeed() == 0) {
+            return true;
+        }
+        else {
+            return TagManager.Blocks.ALWAYS_DROPS.contains(state.getBlock());
+        }
     }
 
     public static String getToolClass(ItemStack stack) {

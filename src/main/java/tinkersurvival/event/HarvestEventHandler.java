@@ -94,14 +94,13 @@ public class HarvestEventHandler {
     public static void harvestCheckEvent(PlayerEvent.HarvestCheck event) {
         final Player player = event.getPlayer();
         final BlockState state = event.getTargetBlock();
-        final Block block = state.getBlock();
 
         if (!player.isCreative()) {
             ItemStack handStack = player.getMainHandItem();
             boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
             boolean canHarvest = event.canHarvest() ||
                     (correctTool && handStack.isCorrectToolForDrops(state)) ||
-                    TagManager.Blocks.ALWAYS_DROPS.contains(block);
+                    ItemUse.alwaysDrops(state);
 
             event.setCanHarvest(canHarvest);
         }
