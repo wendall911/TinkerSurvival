@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
-import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
 import tinkersurvival.data.client.ModBlockStateProvider;
@@ -59,8 +58,6 @@ public final class DataGenerators {
         gen.addProvider(new StationSlotLayoutProvider(gen));
         gen.addProvider(new MaterialRenderInfoProvider(gen, materialSprites));
         gen.addProvider(new GeneratorPartTextureJsonGenerator(gen, TinkerSurvival.MODID, sawPartSprites));
-        gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, sawPartSprites, materialSprites));
-        gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, partSprites, materialSprites));
         gen.addProvider(new ToolDefinitionDataProvider(gen));
         gen.addProvider(new MaterialStatsDataProvider(gen, materials));
         gen.addProvider(new MaterialTraitsDataProvider(gen, materials));
