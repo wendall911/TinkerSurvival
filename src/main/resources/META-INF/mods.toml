@@ -55,15 +55,3 @@ license="MIT"
     versionRange="[0,]"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.tinkersurvival]]
-    modId="immersiveengineering"
-    mandatory=false
-    versionRange="[0,]"
-    ordering="AFTER"
-    side="BOTH"
-[[dependencies.tinkersurvival]]
-    modId="botania"
-    mandatory=false
-    versionRange="[0,]"
-    ordering="AFTER"
-    side="BOTH"

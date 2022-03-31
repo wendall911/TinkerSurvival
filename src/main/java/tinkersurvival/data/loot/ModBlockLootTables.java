@@ -16,7 +16,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import tinkersurvival.common.TagManager;
 import tinkersurvival.config.ConfigHandler;
-import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
@@ -31,7 +30,6 @@ public class ModBlockLootTables extends BlockLoot {
         this.add(TinkerSurvivalWorld.GRANITE_LOOSE_ROCK.get(), ModBlockLootTables::createLooseRockDrops);
         this.add(TinkerSurvivalWorld.SANDSTONE_LOOSE_ROCK.get(), ModBlockLootTables::createLooseRockDrops);
         this.add(TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK.get(), ModBlockLootTables::createLooseRockDrops);
-        this.dropSelf(TinkerSurvivalItems.BRONZE.get());
     }
 
     @Override

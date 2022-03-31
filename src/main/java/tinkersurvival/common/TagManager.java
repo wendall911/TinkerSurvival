@@ -27,9 +27,6 @@ public final class TagManager {
         public static final Tag.Named<Item> BANDAGES = create("bandages");
         public static final Tag.Named<Item> SAW_BLADE_CAST = ItemTags.bind(TinkerSurvival.MODID +  ":casts/multi_use/saw_blade");
         public static final Tag.Named<Item> SAW_BLADE_CAST_SINGLE = ItemTags.bind(TinkerSurvival.MODID +  ":casts/single_use/saw_blade");
-        public static final IOptionalNamedTag<Item> BRONZE = forgeTag("storage_blocks/bronze");
-        public static final IOptionalNamedTag<Item> BRONZE_INGOTS = forgeTag("ingots/bronze");
-        public static final IOptionalNamedTag<Item> BRONZE_NUGGETS = forgeTag("nuggets/bronze");
 
         // Mod Integration
         // Fruit Trees
@@ -82,7 +79,6 @@ public final class TagManager {
         public static final Tag.Named<Block> LOOSE_ROCK_PLACEABLE_ON = create("loose_rock_placeable_on");
         public static final Tag.Named<Block> LOOSE_ROCKS = create("loose_rocks");
         public static final Tag.Named<Block> FIBER_PLANTS = create("fiber_plants");
-        public static final IOptionalNamedTag<Block> BRONZE = forgeTag("storage_blocks/bronze");
 
         private static Tag.Named<Block> create(String id) {
             return BlockTags.createOptional(identifier(id));
