@@ -9,8 +9,8 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.ItemUse;
 
@@ -26,7 +26,7 @@ public class BowEventHandler {
                 final Level level = player.getLevel();
 
                 if (!ItemUse.isWhitelistItem(handStack)) {
-                    if (ConfigHandler.Client.enableFailSound()) {
+                    if (!level.isClientSide && ConfigHandler.Client.enableFailSound()) {
                         level.playSound(null, player.getOnPos(), Sounds.BOW_FAIL.get(), SoundSource.BLOCKS, 0.6F, 1.0F);
                     }
                     event.setCanceled(true);

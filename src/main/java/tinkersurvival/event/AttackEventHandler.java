@@ -9,8 +9,8 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.ItemUse;
 
@@ -27,7 +27,7 @@ public class AttackEventHandler {
                 final Level level = player.getLevel();
 
                 if (!ItemUse.isWhitelistItem(handStack)) {
-                    if (ConfigHandler.Client.enableFailSound()) {
+                    if (!level.isClientSide && ConfigHandler.Client.enableFailSound()) {
                         level.playSound(null, player.getOnPos(), Sounds.SWORD_FAIL.get(), SoundSource.BLOCKS, 0.4F, 1.0F);
                     }
                     event.setAmount(0.0f);

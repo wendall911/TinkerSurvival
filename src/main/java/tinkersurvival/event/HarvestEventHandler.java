@@ -25,11 +25,11 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.common.HarvestBlock;
 import tinkersurvival.common.TagManager;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.mixin.AbstractBlockStateAccessor;
+import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.Chat;
 import tinkersurvival.util.ItemUse;
@@ -61,7 +61,7 @@ public class HarvestEventHandler {
 
                 if (!isWhitelisted) {
                     cancel = true;
-                    if (ConfigHandler.Client.enableFailSound()) {
+                    if (!player.getLevel().isClientSide && ConfigHandler.Client.enableFailSound()) {
                         level.playSound(null, player.getOnPos(), Sounds.TOOL_FAIL.get(), SoundSource.BLOCKS, 0.6F, 1.0F);
                     }
                 }
