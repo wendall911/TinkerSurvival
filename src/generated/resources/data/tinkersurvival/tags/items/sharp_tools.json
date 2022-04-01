@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "immersiveengineering:revolver",
+      "required": false
+    },
+    "tconstruct:kama",
     "#tinkersurvival:knife_tools",
     "tconstruct:dagger",
     "tconstruct:cleaver",

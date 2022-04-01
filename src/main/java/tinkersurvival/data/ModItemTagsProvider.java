@@ -55,12 +55,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TinkerSurvivalWorld.ROCK_STONE.get()
         );
         getBuilder(TagManager.Items.PICKAXE_TOOLS)
+            .addOptional(ModIntegration.ieLoc("buzzsaw"))
+            .addOptional(ModIntegration.ieLoc("drill"))
+            .addOptional(ModIntegration.ieLoc("hammer"))
             .add(TinkerTools.pickaxe.asItem())
             .add(TinkerTools.pickadze.asItem())
             .add(TinkerTools.sledgeHammer.asItem())
             .add(TinkerTools.veinHammer.asItem());
         getBuilder(TagManager.Items.AXE_TOOLS)
+            .addOptional(ModIntegration.ieLoc("buzzsaw"))
             .add(TinkerSurvivalItems.CRUDE_HATCHET.get().asItem())
+            .add(TinkerSurvivalItems.SAW.get().asItem())
+            .add(TinkerTools.mattock.asItem())
             .add(TinkerTools.handAxe.asItem())
             .add(TinkerTools.broadAxe.asItem());
         builder(
@@ -69,13 +75,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TinkerSurvivalItems.SAW.get()
         );
         getBuilder(TagManager.Items.SHOVEL_TOOLS)
+            .addOptional(ModIntegration.ieLoc("drill"))
             .add(TinkerTools.mattock.asItem())
             .add(TinkerTools.pickadze.asItem())
             .add(TinkerTools.excavator.asItem());
         builder(
             TagManager.Items.HOE_TOOLS,
-            TinkerTools.kama,
-            TinkerTools.scythe
+            TinkerTools.mattock
         );
         builder(
             TagManager.Items.KNIFE_TOOLS,
@@ -83,6 +89,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TinkerSurvivalItems.KNIFE.get()
         );
         getBuilder(TagManager.Items.SHARP_TOOLS)
+            .addOptional(ModIntegration.ieLoc("revolver"))
+            .add(TinkerTools.kama.asItem())
             .addTag(TagManager.Items.KNIFE_TOOLS)
             .add(TinkerTools.dagger.asItem())
             .add(TinkerTools.cleaver.asItem())

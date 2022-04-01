@@ -1,7 +1,13 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "immersiveengineering:buzzsaw",
+      "required": false
+    },
     "tinkersurvival:crude_hatchet",
+    "tinkersurvival:saw",
+    "tconstruct:mattock",
     "tconstruct:hand_axe",
     "tconstruct:broad_axe"
   ]

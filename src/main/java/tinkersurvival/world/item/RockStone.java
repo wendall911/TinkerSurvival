@@ -19,9 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Material;
 
-import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.items.TinkerSurvivalItems;
+import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 
 public class RockStone extends BlockItem {
@@ -43,17 +43,19 @@ public class RockStone extends BlockItem {
                 player.swing(hand);
             }
             else {
-                if (level.random.nextFloat() < 0.5) {
-                    if (level.random.nextFloat() < ConfigHandler.Server.flintChance()) {
-                        NonNullList<ItemStack> dropStack =
-                            NonNullList.withSize(1, new ItemStack(TinkerSurvivalItems.FLINT_SHARD.get(), 2));
+                if (!level.isClientSide) {
+                    if (level.random.nextFloat() < 0.5) {
+                        if (level.random.nextFloat() < ConfigHandler.Server.flintChance()) {
+                            NonNullList<ItemStack> dropStack =
+                                NonNullList.withSize(1, new ItemStack(TinkerSurvivalItems.FLINT_SHARD.get(), 2));
 
-                        Containers.dropContents(level, player.getOnPos(), dropStack);
+                            Containers.dropContents(level, player.getOnPos(), dropStack);
+                        }
+
+                        player.getItemInHand(hand).shrink(1);
                     }
-
-                    player.getItemInHand(hand).shrink(1);
+                    level.playSound(null, player.getOnPos(), Sounds.FLINT_KNAPPING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
-                level.playSound(null, player.getOnPos(), Sounds.FLINT_KNAPPING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             }
 
             return InteractionResult.PASS;

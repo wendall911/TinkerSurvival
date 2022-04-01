@@ -94,12 +94,6 @@ public final class ConfigHandler {
 
         private static final List<String> ITEMS_LIST = Arrays.asList("items");
         private static String[] itemsStrings = new String[] {
-            "shovel-immersiveengineering:drill",
-            "pickaxe-immersiveengineering:drill",
-            "axe-immersiveengineering:buzzsaw",
-            "pickaxe-immersiveengineering:buzzsaw",
-            "weapon-immersiveengineering:revolver",
-            "weapon-immersiveengineering:revolver",
             "hammer-immersiveengineering:hammer",
             "wirecutter-immersiveengineering:wirecutter",
         };

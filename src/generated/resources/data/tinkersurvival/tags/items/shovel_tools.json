@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "immersiveengineering:drill",
+      "required": false
+    },
     "tconstruct:mattock",
     "tconstruct:pickadze",
     "tconstruct:excavator"

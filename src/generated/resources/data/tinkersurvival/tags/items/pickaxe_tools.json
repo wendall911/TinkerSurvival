@@ -1,6 +1,18 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "immersiveengineering:buzzsaw",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:drill",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:hammer",
+      "required": false
+    },
     "tconstruct:pickaxe",
     "tconstruct:pickadze",
     "tconstruct:sledge_hammer",

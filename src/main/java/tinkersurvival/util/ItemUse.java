@@ -35,7 +35,10 @@ public class ItemUse {
             "weapon",
             "hammer",
             "wirecutter",
-            "wrench"
+            "wrench",
+            "drill",
+            "revolver",
+            "saw"
         )
 	);
     
