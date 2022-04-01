@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import tinkersurvival.data.integration.ModIntegration;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.IBlockProvider;
 import tinkersurvival.common.TagManager;
@@ -37,6 +38,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(Blocks.GRAVEL)
             .addTag(Tags.Blocks.GRAVEL)
 			.addTag(BlockTags.LEAVES)
+            .addOptional(ModIntegration.sgcLoc("avocado_leaves"))
             .addTag(BlockTags.DIRT)
 			.addTag(Tags.Blocks.SAND)
             .addTag(BlockTags.SAND);

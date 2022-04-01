@@ -28,30 +28,48 @@ license="MIT"
 [[dependencies.tinkersurvival]]
     modId="tconstruct"
     mandatory=true
-    versionRange="[0,]"
+    versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tinkersurvival]]
     modId="fruittrees"
     mandatory=false
-    versionRange="[0,]"
+    versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tinkersurvival]]
     modId="quark"
     mandatory=false
-    versionRange="[0,]"
+    versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tinkersurvival]]
     modId="biomesoplenty"
     mandatory=false
-    versionRange="[0,]"
+    versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tinkersurvival]]
     modId="allyoucaneat"
     mandatory=false
     versionRange="[0,]"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="watersource"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="sushigocrafting"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="botania"
+    mandatory=false
+    versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"

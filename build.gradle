@@ -191,6 +191,9 @@ curseforge {
                     optionalLibrary 'quark'
                     optionalLibrary 'biomes-o-plenty'
                     optionalLibrary 'all-you-can-eat'
+                    optionalLibrary 'water-source'
+                    optionalLibrary 'sushigocrafting'
+                    optionalLibrary 'botania'
                 }
             }
         }

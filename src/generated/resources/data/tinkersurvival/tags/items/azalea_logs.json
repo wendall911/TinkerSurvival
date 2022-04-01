@@ -2,19 +2,19 @@
   "replace": false,
   "values": [
     {
-      "id": "biomesoplenty:azalea_log",
+      "id": "quark:azalea_log",
       "required": false
     },
     {
-      "id": "biomesoplenty:stripped_azalea_log",
+      "id": "quark:stripped_azalea_log",
       "required": false
     },
     {
-      "id": "biomesoplenty:azalea_wood",
+      "id": "quark:azalea_wood",
       "required": false
     },
     {
-      "id": "biomesoplenty:stripped_azalea_wood",
+      "id": "quark:stripped_azalea_wood",
       "required": false
     }
   ]

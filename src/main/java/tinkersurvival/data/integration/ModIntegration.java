@@ -30,20 +30,25 @@ public final class ModIntegration extends TinkerSurvivalModule {
     public static RegistryObject<Item> BOP_REDWOOD_PLANKS;
     public static RegistryObject<Item> BOP_UMBRAN_PLANKS;
     public static RegistryObject<Item> BOP_WILLOW_PLANKS;
+    public static RegistryObject<Item> BOTANIA_DREAMWOOD_PLANKS;
     public static RegistryObject<Item> QUARK_AZALEA_PLANKS;
     public static RegistryObject<Item> QUARK_BLOSSOM_PLANKS;
     public static RegistryObject<Item> AYCE_HAZEL_PLANKS;
     public static RegistryObject<Item> TCON_BLOODSHROOM_PLANKS;
     public static RegistryObject<Item> TCON_GREENHEART_PLANKS;
     public static RegistryObject<Item> TCON_SKYROOT_PLANKS;
+    public static RegistryObject<Item> WS_PALM_TREE_PLANKS;
 
     public static final String AYCE_MODID = "allyoucaneat";
     public static final String BMO_MODID = "biomemakeover";
     public static final String BOP_MODID = "biomesoplenty";
+    public static final String BOTANIA_MODID = "botania";
     public static final String FT_MODID = "fruittrees";
     public static final String IE_MODID = "immersiveengineering";
     public static final String QUARK_MODID = "quark";
+    public static final String SGC_MODID = "sushigocrafting";
     public static final String TCON_MODID = "tconstruct";
+    public static final String WS_MODID = "watersource";
 
     public static void init() {
         String dataGen = System.getenv("DATA_GEN");
@@ -65,12 +70,14 @@ public final class ModIntegration extends TinkerSurvivalModule {
             BOP_REDWOOD_PLANKS = registerBOPItem("redwood_planks");
             BOP_UMBRAN_PLANKS = registerBOPItem("umbran_planks");
             BOP_WILLOW_PLANKS = registerBOPItem("willow_planks");
+            BOTANIA_DREAMWOOD_PLANKS = registerBotaniaItem("dreamwood_planks");
             QUARK_AZALEA_PLANKS = registerQuarkItem("azalea_planks");
             QUARK_BLOSSOM_PLANKS = registerQuarkItem("blossom_planks");
             AYCE_HAZEL_PLANKS = registerAyceItem("hazel_planks");
             TCON_BLOODSHROOM_PLANKS = registerTconItem("bloodshroom_planks");
             TCON_GREENHEART_PLANKS = registerTconItem("greenheart_planks");
             TCON_SKYROOT_PLANKS = registerTconItem("skyroot_planks");
+            WS_PALM_TREE_PLANKS = registerWsItem("palm_tree_planks");
         }
     }
 
@@ -94,8 +101,16 @@ public final class ModIntegration extends TinkerSurvivalModule {
         return registerItem(name, BOP_ITEM_REGISTRY);
     }
 
+    private static RegistryObject<Item> registerBotaniaItem(String name) {
+        return registerItem(name, BOTANIA_ITEM_REGISTRY);
+    }
+
     private static RegistryObject<Item> registerFruitTreesItem(String name) {
         return registerItem(name, FRUITTREES_ITEM_REGISTRY);
+    }
+
+    private static RegistryObject<Item> registerWsItem(String name) {
+        return registerItem(name, WS_ITEM_REGISTRY);
     }
 
     private static RegistryObject<Item> registerItem(String name, DeferredRegister<Item> registry) {
@@ -119,11 +134,15 @@ public final class ModIntegration extends TinkerSurvivalModule {
     }
 
     public static ResourceLocation qLoc(String name) {
-        return getLoc(BOP_MODID, name);
+        return getLoc(QUARK_MODID, name);
     }
 
     public static ResourceLocation bopLoc(String name) {
         return getLoc(BOP_MODID, name);
+    }
+
+    public static ResourceLocation botaniaLoc(String name) {
+        return getLoc(BOTANIA_MODID, name);
     }
 
     public static ResourceLocation ftLoc(String name) {
@@ -132,6 +151,14 @@ public final class ModIntegration extends TinkerSurvivalModule {
 
     public static ResourceLocation ieLoc(String name) {
         return getLoc(IE_MODID, name);
+    }
+
+    public static ResourceLocation sgcLoc(String name) {
+        return getLoc(SGC_MODID, name);
+    }
+
+    public static ResourceLocation wsLoc(String name) {
+        return getLoc(WS_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

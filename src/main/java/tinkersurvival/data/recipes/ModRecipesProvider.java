@@ -263,6 +263,14 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(consumer, ModIntegration.TCON_GREENHEART_PLANKS.get(), TagManager.Items.TCON_GREENHEART_LOGS, "has_logs");
         plankRecipeBuilder(consumer, ModIntegration.TCON_SKYROOT_PLANKS.get(), TagManager.Items.TCON_SKYROOT_LOGS, "has_logs");
 
+        // Water Source
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.WS_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.WS_PALM_TREE_PLANKS.get(), TagManager.Items.WS_PALM_TREE_LOGS, "has_logs");
+
+        // Botania
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.BOTANIA_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.BOTANIA_DREAMWOOD_PLANKS.get(), TagManager.Items.BOTANIA_DREAMWOOD_LOGS, "has_logs");
+
         ShapelessRecipeBuilder.shapeless(Items.STICK, 2)
                 .requires(ItemTags.PLANKS)
                 .requires(TagManager.Items.SAW_TOOLS)

@@ -29,6 +29,8 @@ public abstract class TinkerSurvivalModule {
     protected static DeferredRegister<Item> QUARK_ITEM_REGISTRY;
     protected static DeferredRegister<Item> AYCE_ITEM_REGISTRY;
     protected static DeferredRegister<Item> TCON_ITEM_REGISTRY;
+    protected static DeferredRegister<Item> WS_ITEM_REGISTRY;
+    protected static DeferredRegister<Item> BOTANIA_ITEM_REGISTRY;
 
     public static void initRegistries(IEventBus bus) {
         MOBEFFECT_REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, TinkerSurvival.MODID);
@@ -42,6 +44,8 @@ public abstract class TinkerSurvivalModule {
         QUARK_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.QUARK_MODID);
         AYCE_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.AYCE_MODID);
         TCON_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.TCON_MODID);
+        WS_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.WS_MODID);
+        BOTANIA_ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModIntegration.BOTANIA_MODID);
 
         MOBEFFECT_REGISTRY.register(bus);
         BLOCK_REGISTRY.register(bus);
@@ -54,6 +58,8 @@ public abstract class TinkerSurvivalModule {
         QUARK_ITEM_REGISTRY.register(bus);
         AYCE_ITEM_REGISTRY.register(bus);
         TCON_ITEM_REGISTRY.register(bus);
+        WS_ITEM_REGISTRY.register(bus);
+        BOTANIA_ITEM_REGISTRY.register(bus);
     }
 
 }

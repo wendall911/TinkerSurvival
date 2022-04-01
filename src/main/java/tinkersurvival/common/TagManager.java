@@ -64,6 +64,12 @@ public final class TagManager {
         public static final Tag.Named<Item> TCON_GREENHEART_LOGS = create("greenheart_logs");
         public static final Tag.Named<Item> TCON_SKYROOT_LOGS = create("skyroot_logs");
 
+        // Water Source
+        public static final Tag.Named<Item> WS_PALM_TREE_LOGS = create("palm_tree_logs");
+
+        // Botania
+        public static final Tag.Named<Item> BOTANIA_DREAMWOOD_LOGS = create("dreamwood_logs");
+
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));
         }

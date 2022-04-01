@@ -6,6 +6,10 @@
     "minecraft:gravel",
     "#forge:gravel",
     "#minecraft:leaves",
+    {
+      "id": "sushigocrafting:avocado_leaves",
+      "required": false
+    },
     "#minecraft:dirt",
     "#forge:sand",
     "#minecraft:sand"

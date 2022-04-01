@@ -2,19 +2,19 @@
   "replace": false,
   "values": [
     {
-      "id": "quark:blossom_log",
+      "id": "botania:dreamwood_log",
       "required": false
     },
     {
-      "id": "quark:stripped_blossom_log",
+      "id": "botania:stripped_dreamwood_log",
       "required": false
     },
     {
-      "id": "quark:blossom_wood",
+      "id": "botania:dreamwood",
       "required": false
     },
     {
-      "id": "quark:stripped_blossom_wood",
+      "id": "botania:stripped_dreamwood",
       "required": false
     }
   ]

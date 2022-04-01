@@ -130,6 +130,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addBOPLogVariants(TagManager.Items.BOP_UMBRAN_LOGS, "umbran");
         addBOPLogVariants(TagManager.Items.BOP_WILLOW_LOGS, "willow");
 
+        // Biomes O' Plenty
+        addBotaniaLogVariants(TagManager.Items.BOTANIA_DREAMWOOD_LOGS, "dreamwood");
+
         // Quark
         addQuarkLogVariants(TagManager.Items.QUARK_AZALEA_LOGS, "azalea");
         addQuarkLogVariants(TagManager.Items.QUARK_BLOSSOM_LOGS, "blossom");
@@ -141,6 +144,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addTconLogVariants(TagManager.Items.TCON_BLOODSHROOM_LOGS, "bloodshroom");
         addTconLogVariants(TagManager.Items.TCON_GREENHEART_LOGS, "greenheart");
         addTconLogVariants(TagManager.Items.TCON_SKYROOT_LOGS, "skyroot");
+
+        // Water Source
+        addWsLogVariants(TagManager.Items.WS_PALM_TREE_LOGS, "palm_tree");
 
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
@@ -170,6 +176,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         this.tag(TOOL_PARTS).add(TinkerSurvivalItems.SAW_BLADE.get());
 
         addCast.accept(TinkerSurvivalItems.SAW_BLADE_CAST);
+    }
+
+    private void addWsLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.wsLoc(type + "_log"))
+            .addOptional(ModIntegration.wsLoc("stripped_" + type + "_log"));
     }
 
     private void addTconLogVariants(Tag.Named<Item> tag, String type) {
@@ -210,6 +222,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.bopLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.bopLoc(type + "_wood"))
             .addOptional(ModIntegration.bopLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addBotaniaLogVariants(Tag.Named<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.botaniaLoc(type + "_log"))
+            .addOptional(ModIntegration.botaniaLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.botaniaLoc(type))
+            .addOptional(ModIntegration.botaniaLoc("stripped_" + type));
     }
 
     private void addFTLogVariants(Tag.Named<Item> tag, String type) {

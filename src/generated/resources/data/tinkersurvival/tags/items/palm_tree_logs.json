@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "watersource:palm_tree_log",
+      "required": false
+    },
+    {
+      "id": "watersource:stripped_palm_tree_log",
+      "required": false
+    }
+  ]
+}
