@@ -92,6 +92,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.ieLoc("revolver"))
             .add(TinkerTools.kama.asItem())
             .addTag(TagManager.Items.KNIFE_TOOLS)
+            .addTag(TagManager.Items.AXE_TOOLS)
             .add(TinkerTools.dagger.asItem())
             .add(TinkerTools.cleaver.asItem())
             .add(TinkerTools.sword.asItem());

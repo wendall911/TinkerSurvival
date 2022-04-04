@@ -97,10 +97,18 @@ public class HarvestEventHandler {
 
         if (!player.isCreative()) {
             ItemStack handStack = player.getMainHandItem();
-            boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
-            boolean canHarvest = event.canHarvest() ||
-                    (correctTool && handStack.isCorrectToolForDrops(state)) ||
-                    ItemUse.alwaysDrops(state);
+            final boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
+            final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
+            boolean canHarvest = event.canHarvest() || ItemUse.alwaysDrops(state);
+
+            if (!canHarvest) {
+                if (expectedToolType == ToolType.PICKAXE) {
+                    canHarvest = (correctTool && handStack.isCorrectToolForDrops(state));
+                }
+                else {
+                    canHarvest = correctTool || handStack.isCorrectToolForDrops(state);
+                }
+            }
 
             event.setCanHarvest(canHarvest);
         }
