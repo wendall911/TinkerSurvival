@@ -2,6 +2,8 @@ package tinkersurvival.items.item;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -73,6 +75,20 @@ public class ItemBase extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        String name = stack.getItem().getRegistryName().getPath().toString();
+        boolean stopBleeding = player.hasEffect(TinkerSurvivalWorld.STOP_BLEEDING.get());
+        boolean zombieEssence = player.hasEffect(TinkerSurvivalWorld.ZOMBIE_ESSENCE.get());
+
+        if (name.contains("bandage")) {
+            if (stopBleeding || (!stopBleeding && player.getHealth() >= player.getMaxHealth())) {
+                return InteractionResultHolder.fail(stack);
+            }
+        }
+        else if (name.contains("cup") && zombieEssence) {
+            return InteractionResultHolder.fail(stack);
+        }
+
         return ItemUtils.startUsingInstantly(level, player, hand);
     }
 
@@ -83,7 +99,12 @@ public class ItemBase extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 20;
+        return 1;
+    }
+
+    @Override
+    public SoundEvent getDrinkingSound() {
+        return SoundEvents.PLAYER_ATTACK_WEAK;
     }
 
 }
