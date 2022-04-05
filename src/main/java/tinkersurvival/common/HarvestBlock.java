@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import tinkersurvival.common.TagManager;
 import tinkersurvival.mixin.AbstractBlockAccessor;
@@ -64,16 +65,22 @@ public final class HarvestBlock {
             final AbstractBlockAccessor blockAccess = (AbstractBlockAccessor) block;
             final BlockBehaviour.Properties settings = blockAccess.getProperties();
 
+            // Infer a primary tool type for the block.
+            ToolType primary = PRIMARY_TOOL_TYPES.get(blockAccess.getMaterial());
+
             // Forcefully set everything to require a tool
             // Need to do both the block settings and the block state since the value is copied there for every state
             settings.requiresCorrectToolForDrops();
 
             for (BlockState state : block.getStateDefinition().getPossibleStates()) {
-                ((AbstractBlockStateAccessor) state).setRequiresCorrectToolForDrops(true);
-            }
+                AbstractBlockStateAccessor abstractState = (AbstractBlockStateAccessor) state;
 
-            // Infer a primary tool type for the block.
-            final ToolType primary = PRIMARY_TOOL_TYPES.get(blockAccess.getMaterial());
+                abstractState.setRequiresCorrectToolForDrops(true);
+
+                if (abstractState.getDestroySpeed() == 0 && primary == null) {
+                    primary = ToolType.NONE;
+                }
+            }
 
             if (primary != null && primary != ToolType.NONE) {
                 BLOCK_TOOL_TYPES.put(block, primary);
@@ -99,7 +106,11 @@ public final class HarvestBlock {
         }
 
         if (!unknownMaterialBlocks.isEmpty()) {
-            TinkerSurvival.LOGGER.error("Unable to infer primary tools for {} blocks with unknown materials. These blocks will not be affected by NTP's modifications!", unknownMaterialBlocks.values().stream().mapToInt(Collection::size).sum());
+            TinkerSurvival.LOGGER.error("Unable to infer primary tools for %d blocks with unknown materials. These blocks will not be affected by NTP's modifications!", unknownMaterialBlocks.values().stream().mapToInt(Collection::size).sum());
+            unknownMaterialBlocks
+                .forEach((mat, blocks) -> {
+                    blocks.forEach(TinkerSurvival.LOGGER::warn);
+                });
         }
 
         for (Map.Entry<Material, List<Block>> entry : unknownMaterialBlocks.entrySet()) {
