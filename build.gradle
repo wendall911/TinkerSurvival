@@ -8,6 +8,9 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath 'gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.55'
+        classpath 'com.google.guava:guava:25.0-jre'
+        classpath 'com.google.code.gson:gson:2.2.1'
+        classpath 'org.apache.logging.log4j:log4j-core:2.13.3'
     }
 }
 
@@ -33,6 +36,10 @@ archivesBaseName = "${config.mod_name}"
 def mcversion = "${config.minecraft_version}"
 def modid = "${config.modid}"
 
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
 
 repositories {
     maven {
@@ -75,6 +82,10 @@ dependencies {
     runtime "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
 
     deobfProvided "com.github.glitchfiend.biomesoplenty:ToughAsNails:${config.minecraft_version}-${config.tan_version}:api"
+
+    deobfCompile 'com.google.guava:guava:25.0-jre'
+    deobfCompile 'com.google.code.gson:gson:2.2.1'
+    deobfCompile 'org.apache.logging.log4j:log4j-core:2.13.3'
 }
 
 def commonManifest = {
