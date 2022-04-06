@@ -36,6 +36,8 @@ import tinkersurvival.util.ItemUse;
 import tinkersurvival.world.block.BlockRock;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
+import tinkersurvival.TinkerSurvival;
+
 public class HarvestEventHandler {
     public static final Map<EntityPlayer, BlockPos> harvestAttempts = new HashMap<>();
 
@@ -112,6 +114,10 @@ public class HarvestEventHandler {
 
     private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass, String blockMod) {
         if (neededToolClass.equals(toolClass)) {
+            if (toolClass.equals("wrench")) {
+                return heldItemStack.getItem().getRegistryName().getNamespace().equals(blockMod);
+            }
+
             return heldItemStack.getItem().getHarvestLevel(
                     heldItemStack, toolClass, null, null) >= neededHarvestLevel;
         } else if (neededToolClass.equals("axe") && toolClass.equals("mattock")) {
