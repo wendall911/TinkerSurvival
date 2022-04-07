@@ -1,5 +1,7 @@
 package tinkersurvival;
 
+import java.util.Random;
+
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.Tags;
 
@@ -33,6 +35,7 @@ public class TinkerSurvival {
 
     public static final String MODID = "tinkersurvival";
     public static final Logger LOGGER = LogManager.getFormatterLogger(TinkerSurvival.MODID);
+    public static final Random RANDOM = new Random();
 
     public static TinkerSurvival INSTANCE;
     public static IEventBus BUS;

@@ -19,8 +19,8 @@ import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-import tinkersurvival.util.Chat;
 import tinkersurvival.TinkerSurvival;
+import tinkersurvival.util.Chat;
 
 public class TicToolBase extends ModifiableItem {
 
@@ -35,10 +35,13 @@ public class TicToolBase extends ModifiableItem {
         ToolStack tool = ToolStack.from(container);
         Player player = ForgeHooks.getCraftingPlayer();
         Inventory inventory = player.getInventory();
-        boolean hasItem = inventory.contains(container);
 
         // Don't allow autocrafters, as we have no way to invalidate recipe for broken tool
         if (player == null) {
+            return ItemStack.EMPTY;
+        }
+
+        if (container.getTag().getBoolean("remove")) {
             return ItemStack.EMPTY;
         }
 
@@ -66,8 +69,21 @@ public class TicToolBase extends ModifiableItem {
          * crafting inventory correctly.
          *
          */
-        if (container.getTag().getBoolean("remove") || hasItem) {
-            return ItemStack.EMPTY;
+
+        if (inventory.contains(container)) {
+            boolean removeItem = false;
+
+            for (int i = 0; i < inventory.getContainerSize(); ++i) {
+                if (inventory.getItem(i).sameItem(container)) {
+                    if (container.getOrCreateTag().getFloat("crafty") == inventory.getItem(i).getOrCreateTag().getFloat("crafty")) {
+                        removeItem = true;
+                    }
+                }
+            }
+
+            if (removeItem) {
+                return ItemStack.EMPTY;
+            }
         }
 
         if (tool.isBroken()) {
@@ -90,6 +106,13 @@ public class TicToolBase extends ModifiableItem {
         ItemStack stack = container.copy();
 
         ToolDamageUtil.directDamage(tool, 1, null, container);
+
+        /*
+         * Setting a random nbt property every time the tool is used to craft.
+         * This is a workaround for the broken behavior of the TCon crafting station.
+         * 
+         */
+        container.getOrCreateTag().putFloat("crafty", TinkerSurvival.RANDOM.nextFloat());
 
         if (!tool.isBroken()) {
             return container;
