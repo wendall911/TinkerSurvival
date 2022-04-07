@@ -76,7 +76,9 @@ public class TicToolBase extends ModifiableItem {
             for (int i = 0; i < inventory.getContainerSize(); ++i) {
                 if (inventory.getItem(i).sameItem(container)) {
                     if (container.getOrCreateTag().getFloat("crafty") == inventory.getItem(i).getOrCreateTag().getFloat("crafty")) {
-                        removeItem = true;
+                        if (inventory.getItem(i).getTag().getFloat("crafty") > 0) {
+                            removeItem = true;
+                        }
                     }
                 }
             }
