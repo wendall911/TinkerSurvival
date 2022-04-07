@@ -20,6 +20,7 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import tinkersurvival.util.Chat;
+import tinkersurvival.TinkerSurvival;
 
 public class TicToolBase extends ModifiableItem {
 
@@ -33,9 +34,39 @@ public class TicToolBase extends ModifiableItem {
         ItemStack container = stack.copy();
         ToolStack tool = ToolStack.from(container);
         Player player = ForgeHooks.getCraftingPlayer();
+        Inventory inventory = player.getInventory();
+        boolean hasItem = inventory.contains(container);
 
         // Don't allow autocrafters, as we have no way to invalidate recipe for broken tool
         if (player == null) {
+            return ItemStack.EMPTY;
+        }
+
+        /*
+         * This actually works correctly if not shift-clicking with repair kits.
+         * The TCon implementation of Container is badly broken, as they override setItem and
+         * do the wrong thing for removeItem. I'm not sure what the logic is of having these
+         * be radically different from vanilla, but it causes some serious issues.
+         *
+         * This creates a bug where if the player has another saw/knife, depending on the
+         * recipe, it will destroy the item in the crafting grid. Until TCon fixes their
+         * crafting station recipe, this is going to have to be the case :(
+         *
+         * I will try and report this, but I'm not hopeful, as the attitude is
+         * pretty dismissive in the issue tracker from other modders.
+         *
+         * I would just submit a PR, but then again, I'm not l337, so whatever ...
+         *
+         * I'm specifically talking about being dismissive when people report
+         * bugs about duping items with any mod that deals with inventory. This has been
+         * going on for years, and it is because specifically: getItem, setItem
+         * and removeItem are just flat broken or disabled. These should 100% work like
+         * vanilla, and the fact they don't is just perplexing, as it will
+         * always result in duplication bugs for mods that deal with vanilla
+         * crafting inventory correctly.
+         *
+         */
+        if (container.getTag().getBoolean("remove") || hasItem) {
             return ItemStack.EMPTY;
         }
 
@@ -56,7 +87,6 @@ public class TicToolBase extends ModifiableItem {
     }
 
     public ItemStack returnOrDropTool(ToolStack tool, ItemStack container, Player player) {
-        Inventory inventory = player.getInventory();
         ItemStack stack = container.copy();
 
         ToolDamageUtil.directDamage(tool, 1, null, container);
