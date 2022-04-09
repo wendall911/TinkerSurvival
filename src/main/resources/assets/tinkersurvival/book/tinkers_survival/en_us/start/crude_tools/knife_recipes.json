@@ -1,0 +1,20 @@
+{
+  "title": "Crude Knife Recipes",
+  "recipe": "tinkersurvival:flint_shard",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "In addition to more shards, you can also craft in any crafting grid:",
+      "paragraph": true
+    },
+    {
+      "text": " - String: knife and wool",
+      "paragraph": true
+    },
+    {
+      "text": " - Sticks: knife and saplings",
+      "paragraph": true
+    }
+  ]
+}
+

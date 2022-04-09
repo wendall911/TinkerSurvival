@@ -1,0 +1,10 @@
+{
+  "title": "Planks",
+  "recipe": "minecraft:oak_planks",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Here is an example recipe with the Crude Saw that will allow you to craft planks!"
+    }
+  ]
+}

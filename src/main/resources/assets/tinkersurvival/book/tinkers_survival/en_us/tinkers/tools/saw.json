@@ -1,0 +1,17 @@
+{
+  "tool": "tinkersurvival:saw",
+  "text": [
+      {
+        "text": "The Saw is an essential upgrade to the Crude Saw. It is repairable!"
+      },
+      {
+        "text": "Plank output is doubled to 4 when using the Saw.",
+        "paragraph": true
+      }
+  ],
+  "properties": [
+      "Used for crafting",
+      "Can harvest wood",
+      "Horrible as a weapon"
+  ]
+}

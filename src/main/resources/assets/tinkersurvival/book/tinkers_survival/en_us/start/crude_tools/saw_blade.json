@@ -1,0 +1,10 @@
+{
+  "title": "Crude Saw Blade",
+  "recipe": "tinkersurvival:crude_saw_blade",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Crude Saw Blade is the first part for the Crude Saw. Blades are replaceable on the Saw, so you'll probably need more than one of these to craft enough planks to get started with the improved Tinkers' Survival Saw."
+    }
+  ]
+}

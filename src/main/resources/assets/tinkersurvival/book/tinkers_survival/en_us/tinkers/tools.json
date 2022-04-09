@@ -1,0 +1,19 @@
+{
+  "title": "Tinkers' Tools",
+  "recipe": "tconstruct:common/materials_and_you",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Materials and You is essential to getting started."
+    },
+    {
+      "text": "Essential to craft: Part Builder and Tinker Station to get started.",
+      "paragraph": true
+    },
+    {
+      "text": "Nice to have: Crafting Station, since it connects to the other stations. Quite nice!",
+      "paragraph": true
+    }
+  ]
+}
+

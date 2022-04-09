@@ -1,0 +1,13 @@
+{
+  "title": "Crude Tools",
+  "item": "tinkersurvival:crude_saw",
+  "text": [
+    {
+      "text": "Crude Tools are essential to be able to gather enough materials to be able to craft your initial Tinkers' Construct setup."
+    },
+    {
+      "text": "Punching trees is no longer an option, so you'll need these most basic tools to be able to craft better tools.",
+      "paragraph": true
+    }
+  ]
+}

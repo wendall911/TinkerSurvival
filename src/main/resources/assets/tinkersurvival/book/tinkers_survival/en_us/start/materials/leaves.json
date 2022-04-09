@@ -1,0 +1,13 @@
+{
+  "title": "Get Sticks!!!",
+  "item": "minecraft:oak_leaves",
+  "text": [
+    {
+      "text": "Sticks are essenial for creating your first Crude Tools. These are the most basic handles."
+    },
+    {
+      "text": "Punching leaves and will drop sticks. The drop rate is not great but it will allow you to get sticks. Once you craft a knife, you can use it to increase the drop rate.",
+      "paragraph": true
+    }
+  ]
+}

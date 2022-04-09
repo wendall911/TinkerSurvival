@@ -28,6 +28,8 @@ import tinkersurvival.items.item.Bandage;
 import tinkersurvival.items.item.CrudeBandage;
 import tinkersurvival.items.CrudeItemTier;
 import tinkersurvival.items.item.Mortar;
+import tinkersurvival.items.item.TinkerSurvivalBookItem;
+import tinkersurvival.items.item.TinkerSurvivalBookItem.BookType;
 import tinkersurvival.items.item.WoodenCup;
 import tinkersurvival.items.tool.CrudeHatchet;
 import tinkersurvival.items.tool.CrudeKnife;
@@ -71,6 +73,9 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
 
     public static RegistryObject<Item> WOODEN_CUP;
 
+    public static ItemObject<TinkerSurvivalBookItem> INTRO_BOOK;
+    public static ItemObject<TinkerSurvivalBookItem> MP_BOOK;
+
     public static void init() {
         TOOL_TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".tools", () -> new ItemStack(CRUDE_HATCHET.get()));
         ITEM_TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".items", () -> new ItemStack(FLINT_SHARD.get()));
@@ -99,20 +104,20 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
         CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", WOOD_TIER, 0, -8.0F);
         CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
         MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
-        KNIFE = TOOL_REGISTRY.register("knife", () -> new Knife(
+        KNIFE = ITEM_TCON_REGISTRY.register("knife", () -> new Knife(
             (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS),
             KNIFE_DEFINITION
         ));
         KNIFE_DEFINITION = ToolDefinition.builder(KNIFE).meleeHarvest().build();
-        SAW = TOOL_REGISTRY.register("saw", () -> new Saw(
+        SAW = ITEM_TCON_REGISTRY.register("saw", () -> new Saw(
             (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS),
             SAW_DEFINITION
         ));
-        SAW_BLADE = TOOL_REGISTRY.register("saw_blade", () -> new ToolPartItem(
+        SAW_BLADE = ITEM_TCON_REGISTRY.register("saw_blade", () -> new ToolPartItem(
             new Item.Properties().tab(TinkerToolParts.TAB_TOOL_PARTS),
             HeadMaterialStats.ID
         ));
-        SAW_BLADE_CAST = TOOL_REGISTRY.registerCast(
+        SAW_BLADE_CAST = ITEM_TCON_REGISTRY.registerCast(
             "saw_blade",
             new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)
         );
@@ -130,6 +135,22 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
         WOODEN_CUP = registerItem("wooden_cup", () -> new WoodenCup(
             (new Item.Properties()).stacksTo(1).tab(ITEM_TAB_GROUP)
         ));
+
+        // Books
+        INTRO_BOOK = ITEM_TCON_REGISTRY.register(
+            "tinkers_survival",
+            () -> new TinkerSurvivalBookItem(
+                (new Item.Properties()).stacksTo(1).tab(ITEM_TAB_GROUP),
+                BookType.TINKERS_SURVIVAL
+            )
+        );
+        MP_BOOK = ITEM_TCON_REGISTRY.register(
+            "tinkers_survival_modpack",
+            () -> new TinkerSurvivalBookItem(
+                (new Item.Properties()).stacksTo(1).tab(ITEM_TAB_GROUP),
+                BookType.TINKERS_SURVIVAL_MODPACK
+            )
+        );
     }
 
     private static RegistryObject<Item> registerItem(String name) {

@@ -1,0 +1,14 @@
+{
+  "title": "Gathering Stones",
+  "item": "tinkersurvival:stone_loose_rock",
+  "text": [
+    {
+      "text": "You may notice right away some small piles of rocks lying randomly on the ground throughout the world."
+    },
+    {
+      "text": "Break and gather them quickly, they are a valuable AND necessary resource and needed for crafting tools.",
+      "paragraph": true
+    }
+  ]
+}
+

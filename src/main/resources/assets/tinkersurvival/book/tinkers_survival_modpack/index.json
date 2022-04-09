@@ -1,0 +1,9 @@
+[
+  {
+    "name": "intro",
+    "data": "sections/introduction.json",
+    "icon": {
+      "item": "tinkersurvival:crude_hatchet"
+    }
+  }
+]

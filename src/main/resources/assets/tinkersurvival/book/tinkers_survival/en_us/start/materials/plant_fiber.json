@@ -1,0 +1,18 @@
+{
+  "title": "Plant Fiber",
+  "item": "tinkersurvival:plant_fiber",
+  "text": [
+    {
+      "text": "Next you'll need to get some Plant Fiber."
+    },
+    {
+      "text": "Plant Fiber is a new drop when breaking grass or most plants with the Crude Knife. Grass is probably the easiest way to get Plant Fiber.",
+      "paragraph": true
+    },
+    {
+      "text": "You'll need Plant Fiber to craft Plant String used in crafting the Crude Hatchet, Crude Saw and Crude Bandages and Bandages.",
+      "paragraph": true
+    }
+
+  ]
+}

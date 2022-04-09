@@ -1,0 +1,15 @@
+[
+  {
+    "name": "group_tools",
+    "type": "mantle:crafting",
+    "data": "tinkers/tools.json"
+  },
+  {
+    "type": "tconstruct:tool",
+    "data": "tinkers/tools/knife.json"
+  },
+  {
+    "type": "tconstruct:tool",
+    "data": "tinkers/tools/saw.json"
+  }
+]

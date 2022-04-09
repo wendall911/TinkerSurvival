@@ -1,0 +1,64 @@
+[
+  {
+    "name": "group_materials",
+    "type": "mantle:showcase",
+    "data": "start/materials.json"
+  },
+  {
+    "type": "mantle:showcase",
+    "data": "start/materials/loose_rock.json"
+  },
+  {
+    "type": "mantle:showcase",
+    "data": "start/materials/leaves.json"
+  },
+  {
+    "type": "mantle:showcase",
+    "data": "start/materials/knapping.json"
+  },
+  {
+    "type": "mantle:showcase",
+    "data": "start/materials/plant_fiber.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/materials/plant_string.json"
+  },
+  {
+    "name": "group_crude_tools",
+    "type": "mantle:showcase",
+    "data": "start/crude_tools.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/knife.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/knife_recipes.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/hatchet.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/saw_blade.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/saw_handle.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/saw.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/planks.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "start/crude_tools/sticks.json"
+  }
+]

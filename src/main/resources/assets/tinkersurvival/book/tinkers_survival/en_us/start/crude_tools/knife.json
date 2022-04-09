@@ -1,0 +1,10 @@
+{
+  "title": "Crude Knife",
+  "recipe": "tinkersurvival:crude_knife",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Crude Knife is essential for gathering Plant Fiber. This MUST be the first tool crafted to progress."
+    }
+  ]
+}

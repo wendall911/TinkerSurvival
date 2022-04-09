@@ -1,0 +1,10 @@
+{
+  "title": "Plant String",
+  "recipe": "tinkersurvival:plant_string",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Plant String is essential for crafting the Crude Hatchet and Crude Saw. Gather enough Plant Fiber!"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "coverTexture": "tinkersurvival:book/images/covers/tinkers_survival_cover.png",
+  "coverColor": -1,
+  "bookTexture": "tinkersurvival:book/images/covers/tinkers_survival_pages.png",
+  "arrowColor": -1,
+  "slotColor": 0xE5C682,
+  "drawSectionListText": true,
+  "largePageTitles": false,
+  "centerPageTitles": true
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Crude Hatchet",
+  "recipe": "tinkersurvival:crude_hatchet",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Crude Hatchet is essential for gathering wood. You can now chop down trees!"
+    }
+  ]
+}

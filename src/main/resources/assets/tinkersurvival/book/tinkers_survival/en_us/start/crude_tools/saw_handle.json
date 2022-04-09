@@ -1,0 +1,10 @@
+{
+  "title": "Crude Saw Handle",
+  "recipe": "tinkersurvival:crude_saw_handle",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Crude Saw Handle is a reusable part for crafting the Crude Saw. Once the blade breaks, just reuse the left over handle to create a new Crude Saw."
+    }
+  ]
+}

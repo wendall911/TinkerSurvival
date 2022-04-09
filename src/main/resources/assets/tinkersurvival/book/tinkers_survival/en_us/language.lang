@@ -1,0 +1,10 @@
+intro=Introduction
+
+start=Getting Started
+start.subtext=Gathering basic materials and crafting crude tools is essential for getting started.
+start.group_materials=Materials
+start.group_crude_tools=Crude Tools
+
+tinkers=Tinkers' Tools
+tinkers.subtext=Getting started with the basics in Tinkers' Construct is essential to progress.
+tinkers.group_tools=Tinkers' Tools

@@ -1,0 +1,18 @@
+{
+  "title": "Flint Shards",
+  "item": "tinkersurvival:flint_shard",
+  "text": [
+    {
+      "text": "Crude tools need Flint Shards!"
+    },
+
+    {
+      "text": "Simply knapp (right-click) Rocks you've gathered on a hard surface (any regular Stone/Cobblestone/Granite/etc. hard blocks) and with a bit of luck, you can split them in half to obtain shards.",
+      "paragraph": true
+    },
+    {
+      "text": "Once you have the Crude Knife, you can make more shards in your crafting grid. Recipe is on the following pages.",
+      "paragraph": true
+    }
+  ]
+}
