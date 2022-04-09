@@ -57,6 +57,7 @@ public class ModRecipesProvider extends RecipeProvider {
         ItemLike ointment = TinkerSurvivalItems.OINTMENT.get();
         ItemLike cloth = TinkerSurvivalItems.CLOTH.get();
         ItemLike crudeKnife = TinkerSurvivalItems.CRUDE_KNIFE.get();
+        ItemLike introBook = TinkerSurvivalItems.INTRO_BOOK.get();
         String sticksName = Registry.ITEM.getKey(Items.STICK.asItem()).getPath().toString();
         Consumer<FinishedRecipe> wrapped;
 
@@ -211,6 +212,20 @@ public class ModRecipesProvider extends RecipeProvider {
                 .pattern("PO")
                 .unlockedBy("has_ointment", has(ointment))
                 .save(consumer);
+
+        // Book
+        ShapelessRecipeBuilder.shapeless(introBook)
+                .requires(Items.DIRT)
+                .requires(Items.DIRT)
+                .group("books")
+                .unlockedBy("has_loose_rock", has(rockStone))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "book_from_dirt"));
+
+        ShapelessRecipeBuilder.shapeless(Items.DIRT, 2)
+                .requires(introBook)
+                .group("books")
+                .unlockedBy("has_intro_book", has(introBook))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "dirt_from_book"));
 
         // Saw Recipes
         // Minecraft
