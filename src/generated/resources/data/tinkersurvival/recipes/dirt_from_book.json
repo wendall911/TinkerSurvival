@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "books",
+  "ingredients": [
+    {
+      "item": "tinkersurvival:tinkers_survival"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dirt",
+    "count": 2
+  }
+}

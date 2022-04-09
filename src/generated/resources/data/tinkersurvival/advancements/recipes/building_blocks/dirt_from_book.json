@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "tinkersurvival:dirt_from_book"
+    ]
+  },
+  "criteria": {
+    "has_intro_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tinkersurvival:tinkers_survival"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "tinkersurvival:dirt_from_book"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_intro_book",
+      "has_the_recipe"
+    ]
+  ]
+}
