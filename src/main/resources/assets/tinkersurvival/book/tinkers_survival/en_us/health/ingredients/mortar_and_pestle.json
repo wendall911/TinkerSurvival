@@ -1,0 +1,10 @@
+{
+  "title": "Mortar and Pestle",
+  "recipe": "tinkersurvival:mortar_and_pestle",
+  "grid_size": "large",
+  "description": [
+    {
+      "text": "Essential tool for crafting plant paste."
+    }
+  ]
+}

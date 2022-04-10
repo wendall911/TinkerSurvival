@@ -1,0 +1,9 @@
+{
+  "title": "Copper Tier",
+  "item": "minecraft:copper_ore",
+  "text": [
+    {
+      "text": "·\n· Iron / -60 -> 255\n· Lapis / -64 -> 67\n· Lead / -32 -> 80\n· Deepslate Nickel / -120 -> -8\n· Emerald / -16 -> 255\n· Bauxite / 32 -> 112\n· Deepslate Copper"
+    }
+  ]
+}

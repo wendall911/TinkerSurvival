@@ -1,0 +1,10 @@
+{
+  "title": "Cloth",
+  "recipe": "tinkersurvival:cloth",
+  "grid_size": "large",
+  "description": [
+    {
+      "text": "Cloth is an ingredient used for making Bandages."
+    }
+  ]
+}

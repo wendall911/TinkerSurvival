@@ -1,0 +1,10 @@
+{
+  "title": "Bandage",
+  "recipe": "tinkersurvival:bandage",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Better bandage, great for mid game."
+    }
+  ]
+}

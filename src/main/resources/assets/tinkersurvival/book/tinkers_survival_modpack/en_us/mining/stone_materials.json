@@ -1,0 +1,19 @@
+{
+  "title": "Stone Head Materials",
+  "item": {
+    "type": "forge:nbt",
+    "item": "tconstruct:pick_head",
+    "nbt": {
+      "Material": "tconstruct:rock"
+    }
+  },
+  "text": [
+    {
+      "text": "Stone Tier mining head materials. In JEI, hold Shift to reveal the Tier."
+    },
+    {
+      "text": "· Wood\n· Rock\n· Flint\n· Bone\n· Seared Stone\n· Necronium\n· Scorched Stone\n· Necrotic Bone\n· Whitestone\n· Blazing Bone",
+      "paragraph": true
+    }
+  ]
+}

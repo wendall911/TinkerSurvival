@@ -1,0 +1,19 @@
+{
+  "title": "Steel Materials",
+  "item": {
+    "type": "forge:nbt",
+    "item": "tconstruct:pick_head",
+    "nbt": {
+      "Material": "tconstruct:steel"
+    }
+  },
+  "text": [
+    {
+      "text": "Steel Tier mining head materials. In JEI, hold Shift to reveal the Tier."
+    },
+    {
+      "text": "· Steel (See IE Steel, next page.)\n· Cobalt\n· Manasteel (See Botania Manasteel, next page.)\n· Queens Slime (Cobalt + Gold + Magma Cream)",
+      "paragraph": true
+    }
+  ]
+}

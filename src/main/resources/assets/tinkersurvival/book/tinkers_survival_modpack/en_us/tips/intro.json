@@ -1,0 +1,13 @@
+{
+  "title": "Tinkers' Construct Mighty Smelting",
+  "image": {
+    "file": "tinkersurvival:book/images/mighty_smelting.png",
+    "width": 180,
+    "height": 90
+  },
+  "text": [
+    {
+      "text": "One of the most important steps is to build the Tinkers' Construct Smeltery. It is is multi-block structure that is described in the book Mighty Smelting. This book can be crafted by pouring Seared Stone over a book using your Melter (see Puny Smelting)."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Ointment",
+  "recipe": "tinkersurvival:ointment",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Ointment is an ingredient used for making Bandages."
+    }
+  ]
+}

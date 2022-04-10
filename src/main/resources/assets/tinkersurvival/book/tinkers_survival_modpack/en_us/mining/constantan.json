@@ -1,0 +1,10 @@
+{
+  "title": "Constantan Tier",
+  "item": "minecraft:deepslate_iron_ore",
+  "text": [
+    {
+      "text": "· Deepslate Lapis\n· Deeplslate Iron\n· Silver / -48 -> 32\n· Deepslate Emerald\n· Deepslate Lead\n· Nether Quartz / 3 -> 135",
+      "paragraph": true
+    }
+  ]
+}

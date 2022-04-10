@@ -1,0 +1,16 @@
+[
+  {
+    "name": "intro",
+    "type": "mantle:showcase",
+    "data": "food/intro.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "food/sushi.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "food/culinary.json"
+  }
+]
+

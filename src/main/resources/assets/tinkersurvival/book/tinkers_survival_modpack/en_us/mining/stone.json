@@ -1,0 +1,17 @@
+{
+  "title": "Stone Harvest Tier",
+  "item": "minecraft:stone",
+  "text": [
+    {
+      "text": "Stone materials only take the most basic tools to mine. You'll want to get a Stone Tier mining tool to gather these materials."
+    },
+    {
+      "text": "The following are the materials and levels that the materials can be found at.",
+      "paragraph": true
+    },
+    {
+      "text": "· Stone\n· Copper / -20 -> 114\n· Coal / 0 -> 255\n· Nickel / 40 -> 128\n· Deepslate Coal",
+      "paragraph": true
+    }
+  ]
+}

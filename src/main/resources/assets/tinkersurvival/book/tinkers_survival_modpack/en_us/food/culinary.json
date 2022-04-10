@@ -1,0 +1,14 @@
+{
+  "title": "Culinary Construct",
+  "recipe": "culinaryconstruct:culinary_station",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Culinary Construct is a mod that lets you make custom sandwiches or bowls/stews out of any food items you have lying around."
+    },
+    {
+      "text": "Although sandwiches do not count as unique foods, they are a cheap way to get good quality foods.",
+      "paragraph": true
+    }
+  ]
+}

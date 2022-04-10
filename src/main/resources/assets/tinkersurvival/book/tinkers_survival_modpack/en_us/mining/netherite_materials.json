@@ -1,0 +1,19 @@
+{
+  "title": "Netherite Materials",
+  "item": {
+    "type": "forge:nbt",
+    "item": "tconstruct:pick_head",
+    "nbt": {
+      "Material": "tconstruct:manyullyn"
+    }
+  },
+  "text": [
+    {
+      "text": "Netherite Tier mining head materials. In JEI, hold Shift to reveal the Tier."
+    },
+    {
+      "text": "· Manyullyn (3 Cobalt + Debris)\n· Heptazion (2 Copper + Cobalt + 1/4 Obsidian)\n· Netherite (4 Scraps + 4 Gold)",
+      "paragraph": true
+    }
+  ]
+}

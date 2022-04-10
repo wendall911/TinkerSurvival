@@ -1,0 +1,19 @@
+{
+  "title": "Constantan Materials",
+  "item": {
+    "type": "forge:nbt",
+    "item": "tconstruct:pick_head",
+    "nbt": {
+      "Material": "tconstruct:constantan"
+    }
+  },
+  "text": [
+    {
+      "text": "Constantan is the first Harvest Tier that you'll need to use alloys. You'll need the Smeltery described in the Mighty Smelting book."
+    },
+    {
+      "text": "· Plated Slimewood\n· Constantan (Copper + Nickel)\n· Rose Gold (3 Copper + Gold)\n· Pig Iron (Iron + Blood + Clay)\n· Nahuatl\n· Slimesteel (Iron + Skyslime + Seared Brick)\n· Uranium\n· Blood Bone\n· Emerald Upgrade",
+      "paragraph": true
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "name": "overview",
+    "type": "mantle:image_text",
+    "data": "mining/overview.json"
+  },
+  {
+    "name": "index",
+    "type": "mantle:index",
+    "data": "mining/index.json"
+  },
+  {
+    "name": "stone",
+    "type": "mantle:showcase",
+    "data": "mining/stone.json"
+  },
+  {
+    "name": "stone_materials",
+    "type": "mantle:showcase",
+    "data": "mining/stone_materials.json"
+  },
+  {
+    "name": "copper",
+    "type": "mantle:showcase",
+    "data": "mining/copper.json"
+  },
+  {
+    "name": "copper_materials",
+    "type": "mantle:showcase",
+    "data": "mining/copper_materials.json"
+  },
+  {
+    "name": "constantan",
+    "type": "mantle:showcase",
+    "data": "mining/constantan.json"
+  },
+  {
+    "name": "constantan_materials",
+    "type": "mantle:showcase",
+    "data": "mining/constantan_materials.json"
+  },
+  {
+    "name": "bronze",
+    "type": "mantle:showcase",
+    "data": "mining/bronze.json"
+  },
+  {
+    "name": "bronze_materials",
+    "type": "mantle:showcase",
+    "data": "mining/bronze_materials.json"
+  },
+  {
+    "name": "steel",
+    "type": "mantle:showcase",
+    "data": "mining/steel.json"
+  },
+  {
+    "name": "steel_materials",
+    "type": "mantle:showcase",
+    "data": "mining/steel_materials.json"
+  },
+  {
+    "name": "steel_ie",
+    "type": "mantle:crafting",
+    "data": "mining/steel_ie.json"
+  },
+  {
+    "name": "manasteel",
+    "type": "mantle:crafting",
+    "data": "mining/manasteel.json"
+  },
+  {
+    "name": "netherite_materials",
+    "type": "mantle:showcase",
+    "data": "mining/netherite_materials.json"
+  }
+]

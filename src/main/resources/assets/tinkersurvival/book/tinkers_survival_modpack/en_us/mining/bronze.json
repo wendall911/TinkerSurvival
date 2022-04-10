@@ -1,0 +1,9 @@
+{
+  "title": "Bronze Tier",
+  "item": "minecraft:diamond_ore",
+  "text": [
+    {
+      "text": "· Uranium / -64 -> -16\n· Gold / -64 -> 30\n· Diamond / -64 -> -2\n· Emerald / -16 -> 255\n· Redstone / -64 -> 18\n· Deepslate Silver\n· Living Rock\n· Deepslate Bauxite\n· Nether Gold / 8 -> 124\n· Obsidian"
+    }
+  ]
+}

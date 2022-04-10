@@ -1,0 +1,59 @@
+{
+  "title": "Repairing With Stone",
+  "grid_size": "small",
+  "grid": [
+    [
+      {
+        "type": "forge:nbt",
+        "item": "tconstruct:sledge_hammer",
+        "nbt": {
+          "tic_broken": false,
+          "tic_display": true,
+          "Damage": 70,
+          "tic_materials": [
+            "tconstruct:ui_render_head",
+            "tconstruct:ui_render_handle",
+            "tconstruct:ui_render_extra",
+            "tconstruct:ui_render_large",
+            "tconstruct:ui_render_extra_large"
+          ],
+          "tic_stats": {
+            "tconstruct:durability": 100
+          }
+        }
+      },
+      {
+        "type": "forge:nbt",
+        "item": "tconstruct:repair_kit",
+        "nbt": {
+          "Material": "tconstruct:stone"
+        }
+      }
+    ]
+  ],
+  "result": {
+    "type": "forge:nbt",
+    "item": "tconstruct:sledge_hammer",
+    "nbt": {
+      "tic_broken": false,
+      "tic_display": true,
+      "Damage": 10,
+      "tic_materials": [
+        "tconstruct:ui_render_head",
+        "tconstruct:ui_render_handle",
+        "tconstruct:ui_render_extra",
+        "tconstruct:ui_render_large",
+        "tconstruct:ui_render_extra_large"
+      ],
+      "tic_stats": {
+        "tconstruct:durability": 100
+      }
+    }
+  },
+  "description": [
+    {
+      "text": "When repairing tools, if any one of the heads (say on the Sledge Hammer) is made of Stone, the tool can then be repaired with Stone, but the tool will have the Harvest Tier of the highest material Tier. Can use any type of stone in a Tinkers' Station or Tinkers' Anvil.",
+      "paragraph": true
+    }
+  ]
+}

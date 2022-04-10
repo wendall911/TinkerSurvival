@@ -1,0 +1,13 @@
+{
+  "title": "Food",
+  "item": "solcarrot:food_book",
+  "text": [
+    {
+      "text": "The number of foods you eat is increased as you pass milestones based on the amounts of unique foods eaten. For each milestone, you'll increase by two hearts!"
+    },
+    {
+      "text": "Milestones: 5, 10, 17, 27, 38, 51, 66 and 83 foods.",
+      "paragraph": true
+    }
+  ]
+}

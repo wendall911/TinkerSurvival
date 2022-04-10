@@ -1,0 +1,13 @@
+{
+  "title": "Mining Progression",
+  "image": {
+    "file": "tinkersurvival:book/images/materials.png",
+    "width": 182,
+    "height": 114
+  },
+  "text": [
+    {
+      "text": "Mining progression path:\nStone -\u003e Copper -\u003e Constantan -\u003e Bronze -\u003e Steel -\u003e Netherite\n"
+    }
+  ]
+}

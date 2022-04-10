@@ -1,7 +1,18 @@
 [
   {
-    "name": "introduction",
-    "type": "mantle:text",
+    "type": "mantle:image_text",
     "data": "intro/welcome.json"
+  },
+  {
+    "type": "mantle:text",
+    "data": "intro/welcome_two.json"
+  },
+  {
+    "type": "mantle:text",
+    "data": "intro/overview.json"
+  },
+  {
+    "type": "mantle:image_text",
+    "data": "intro/overview_two.json"
   }
 ]

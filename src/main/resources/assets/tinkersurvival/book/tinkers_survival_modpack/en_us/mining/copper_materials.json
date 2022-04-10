@@ -1,0 +1,19 @@
+{
+  "title": "Copper Materials",
+  "item": {
+    "type": "forge:nbt",
+    "item": "tconstruct:pick_head",
+    "nbt": {
+      "Material": "tconstruct:copper"
+    }
+  },
+  "text": [
+    {
+      "text": "Copper is the first Harvest Tier that you'll need to use melted metals. To melt metals, you'll need to cast some parts using the Melter. Refer to Puny Smelting book."
+    },
+    {
+      "text": "· Copper\n· Iron\n· Silver\n· Lead\n· Slimewood",
+      "paragraph": true
+    }
+  ]
+}

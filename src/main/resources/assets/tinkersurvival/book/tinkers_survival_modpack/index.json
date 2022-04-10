@@ -5,5 +5,74 @@
     "icon": {
       "item": "tinkersurvival:crude_hatchet"
     }
+  },
+  {
+    "name": "start",
+    "data": "sections/getting_started.json",
+    "icon": {
+      "item": "tinkersurvival:rock_stone"
+    }
+  },
+  {
+    "name": "tinkers",
+    "data": "sections/tinkers.json",
+    "icon": {
+      "item": {
+        "type": "forge:nbt",
+        "item": "tinkersurvival:saw",
+        "nbt": {
+          "tic_broken": false,
+          "tic_display": true,
+          "Damage": 0,
+          "tic_materials": [
+            "tconstruct:ui_render_head",
+            "tconstruct:ui_render_handle",
+            "tconstrct:ui_render_extra"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "name": "health",
+    "data": "sections/health.json",
+    "icon": {
+      "item": "tinkersurvival:bandage"
+    }
+  },
+  {
+    "name": "mining",
+    "data": "sections/mining.json",
+    "icon": {
+      "item": "minecraft:raw_copper"
+    }
+  },
+  {
+    "name": "tips",
+    "data": "sections/tips.json",
+    "icon": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  {
+    "name": "temperature",
+    "data": "sections/temperature.json",
+    "icon": {
+      "item": "cold_sweat:thermometer"
+    }
+  },
+  {
+    "name": "storage",
+    "data": "sections/storage.json",
+    "icon": {
+      "item": "sophisticatedbackpacks:backpack"
+    }
+  },
+  {
+    "name": "food",
+    "data": "sections/food.json",
+    "icon": {
+      "item": "tconstruct:bacon"
+    }
   }
 ]

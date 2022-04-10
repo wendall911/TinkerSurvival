@@ -1,0 +1,10 @@
+{
+  "title": "Crude Bandage",
+  "recipe": "tinkersurvival:crude_bandage",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Cheap bandage, great for early game."
+    }
+  ]
+}

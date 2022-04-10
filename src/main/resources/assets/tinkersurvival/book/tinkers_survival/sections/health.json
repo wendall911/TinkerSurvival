@@ -1,0 +1,36 @@
+[
+  {
+    "name": "group_health",
+    "type": "mantle:showcase",
+    "data": "health/ingredients.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "health/ingredients/cloth.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "health/ingredients/mortar_and_pestle.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "health/ingredients/plant_paste.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "health/ingredients/ointment.json"
+  },
+  {
+    "name": "group_health",
+    "type": "mantle:showcase",
+    "data": "health/bandages.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "health/bandages/crude_bandage.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "health/bandages/bandage.json"
+  }
+]

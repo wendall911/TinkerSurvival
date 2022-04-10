@@ -1,0 +1,13 @@
+{
+  "title": "Storage",
+  "image": {
+    "file": "tinkersurvival:book/images/storage_drawers.png",
+    "width": 180,
+    "height": 102
+  },
+  "text": [
+    {
+      "text": "Storage Drawers is a very powerful multi-block solution for your storage needs. This is a very powerful and configurable way to introduce storage into your base. Be sure to check out drawer upgrades to increase drawer storage!"
+    }
+  ]
+}

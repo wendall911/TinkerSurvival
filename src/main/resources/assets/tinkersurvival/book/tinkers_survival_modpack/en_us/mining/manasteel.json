@@ -1,0 +1,14 @@
+{
+  "title": "Botania Manasteel",
+  "recipe": "botania:lexicon",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "It is essential if you follow this path to first craft the Lexica Botania."
+    },
+    {
+      "text": "Work through the Lexica Botania until you've unlocked the capability to create Manasteel. Manasteel can then be melted in the smeltery or melter and be used to create parts out of this Steel Tier material.",
+      "paragraph": true
+    }
+  ]
+}

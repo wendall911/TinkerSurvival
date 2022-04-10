@@ -1,0 +1,10 @@
+{
+  "title": "Backpack",
+  "recipe": "sophisticatedbackpacks:backpack",
+  "grid_size": "large",
+  "description": [
+    {
+      "text": "Backpacks are a great compliment to your player storage. They come in a variety of tiers. Hint: You can get string from Wool with the Knife or by Smelting Grass String!"
+    }
+  ]
+}

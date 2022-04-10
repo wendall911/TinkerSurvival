@@ -1,0 +1,10 @@
+{
+  "title": "Plant Paste",
+  "recipe": "tinkersurvival:plant_paste",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "Essential ingredient for Ointment."
+    }
+  ]
+}

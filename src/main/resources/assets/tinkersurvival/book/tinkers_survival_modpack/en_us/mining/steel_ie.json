@@ -1,0 +1,18 @@
+{
+  "title": "IE Steel",
+  "recipe": "immersiveengineering:crafting/manual",
+  "grid_size": "small",
+  "description": [
+    {
+      "text": "It is essential if you follow this path to first craft the Engineer's Manual."
+    },
+    {
+      "text": "Once you have the Engineer's Manual, you'll find the following essential for making Steel:",
+      "paragraph": true
+    },
+    {
+      "text": "· Coke Oven\n· Crude Blast Furnace",
+      "paragraph": true
+    }
+  ]
+}

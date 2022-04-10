@@ -1,0 +1,17 @@
+{
+  "title": "Overview",
+  "image": {
+    "file": "tinkersurvival:book/images/minecraft___first_night_by_sasoriryu_d68a3za.png",
+    "width": 70,
+    "height": 70
+  },
+  "text": [
+    {
+      "text": " - Healing is not controlled by food. If you have above 8 shanks, you'll heal very slowly, but otherwise, not at all. You'll want to craft bandages or use a Healing Campfire."
+    },
+    {
+      "text": " - Days are now twice as long! Nights pass at an accellerated rate depending on how many players are sleeping.",
+      "paragraph": true
+    }
+  ]
+}

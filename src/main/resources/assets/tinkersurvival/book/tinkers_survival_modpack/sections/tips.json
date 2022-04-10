@@ -1,0 +1,12 @@
+[
+  {
+    "name": "tips",
+    "type": "mantle:image_text",
+    "data": "tips/intro.json"
+  },
+  {
+    "name": "repairing",
+    "type": "mantle:crafting",
+    "data": "tips/repairing.json"
+  }
+]

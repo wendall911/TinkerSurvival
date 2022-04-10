@@ -1,0 +1,19 @@
+{
+  "title": "Bronze Materials",
+  "item": {
+    "type": "forge:nbt",
+    "item": "tconstruct:pick_head",
+    "nbt": {
+      "Material": "tconstruct:amethyst_bronze"
+    }
+  },
+  "text": [
+    {
+      "text": "Bronze Tier mining head materials. In JEI, hold Shift to reveal the Tier."
+    },
+    {
+      "text": "· Amethyst Bronze (Copper + Amethyst)\n· Bronze (Copper + Quartz)\n· Electrum (Gold + Silver)\n· Platinum\n· Diamond Modifier",
+      "paragraph": true
+    }
+  ]
+}

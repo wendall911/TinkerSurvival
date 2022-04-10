@@ -32,5 +32,12 @@
         }
       }
     }
+  },
+  {
+    "name": "health",
+    "data": "sections/health.json",
+    "icon": {
+      "item": "tinkersurvival:bandage"
+    }
   }
 ]

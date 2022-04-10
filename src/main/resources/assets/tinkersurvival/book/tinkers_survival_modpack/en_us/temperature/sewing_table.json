@@ -1,0 +1,10 @@
+{
+  "title": "Sewing Table",
+  "recipe": "cold_sweat:sewing_table",
+  "grid_size": "large",
+  "description": [
+    {
+      "text": "The Sewing Table is a crafting station that is used to combine any piece of armor with leather armor, giving it the \"Insulated\" tag. This works with Tinkers' Construct armor as well!"
+    }
+  ]
+}

@@ -1,16 +1,13 @@
 {
-  "title": "Tinkers' Survival Modpack",
+  "title": "Tinkers' Survival",
+  "image": {
+    "file": "tinkersurvival:book/images/logo.png",
+    "width": 114,
+    "height": 114
+  },
   "text": [
     {
-      "text": "Welcome blah ... blah  ... blah"
-    },
-    {
-      "text": "This book is currently incomplete, ...",
-      "paragraph": true
-    },
-    {
-      "text": "Hello world",
-      "paragraph": true
+      "text": "Welcome and thank you for downloading the Official Tinkers' Survival Modpack. If you didn't download this from CurseForge, please delete and download from there!"
     }
   ]
 }

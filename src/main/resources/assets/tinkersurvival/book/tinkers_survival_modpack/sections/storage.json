@@ -1,0 +1,15 @@
+[
+  {
+    "name": "intro",
+    "type": "mantle:image_text",
+    "data": "storage/intro.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "storage/backpack.json"
+  },
+  {
+    "type": "mantle:crafting",
+    "data": "storage/drawer.json"
+  }
+]
