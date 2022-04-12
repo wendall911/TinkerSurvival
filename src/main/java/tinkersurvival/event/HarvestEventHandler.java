@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.material.Material;
 
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -94,15 +95,18 @@ public class HarvestEventHandler {
     public static void harvestCheckEvent(PlayerEvent.HarvestCheck event) {
         final Player player = event.getPlayer();
         final BlockState state = event.getTargetBlock();
+        final Block block = state.getBlock();
 
         if (!player.isCreative()) {
-            ItemStack handStack = player.getMainHandItem();
+            final ItemStack handStack = player.getMainHandItem();
             final boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
-            final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
+            final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
             boolean canHarvest = event.canHarvest() || ItemUse.alwaysDrops(state);
 
             if (!canHarvest) {
-                if (expectedToolType == ToolType.PICKAXE) {
+                final boolean isOre = Tags.Blocks.ORES.contains(block);
+
+                if (isOre && expectedToolType == ToolType.PICKAXE) {
                     canHarvest = (correctTool && handStack.isCorrectToolForDrops(state));
                 }
                 else {
