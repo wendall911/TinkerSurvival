@@ -43,6 +43,13 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+    maven {
+        name = "Curse Maven"
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 group = 'com.github.wendall911.tinkersurvival'
@@ -127,6 +134,11 @@ dependencies {
     }
 
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
+
+    //Include some examples here for testing other mods
+	//implementation fg.deobf("curse.maven:sushigocrafting-452500:3618339")
+	//implementation fg.deobf("curse.maven:titanium-287342:3622220")
+	//implementation fg.deobf("curse.maven:patchouli-306770:3630725")
 }
 
 def commonManifest = {
