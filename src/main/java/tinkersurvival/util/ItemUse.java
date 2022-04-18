@@ -74,6 +74,14 @@ public class ItemUse {
                 || whitelistToolsMap.get(itemName) != null;
     }
 
+    public static String getModId(Block block) {
+        return getModId(block.getRegistryName().toString());
+    }
+
+    public static String getModId(ItemStack stack) {
+        return getModId(stack.getItem().getRegistryName().toString());
+    }
+
     public static String getModId(String name) {
         String[] nameParts = name.split(":");
 

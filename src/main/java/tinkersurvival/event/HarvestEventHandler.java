@@ -101,7 +101,9 @@ public class HarvestEventHandler {
             final ItemStack handStack = player.getMainHandItem();
             final boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
             final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
-            boolean canHarvest = event.canHarvest() || ItemUse.alwaysDrops(state);
+            boolean canHarvest = event.canHarvest()
+                    || ItemUse.alwaysDrops(state)
+                    || expectedToolType == ToolType.NONE;
 
             if (!canHarvest) {
                 final boolean isOre = Tags.Blocks.ORES.contains(block);
@@ -128,8 +130,9 @@ public class HarvestEventHandler {
         final Block block = state.getBlock();
         final float destroySpeed = ((AbstractBlockStateAccessor) state).getDestroySpeed();
         float slowdown = destroySpeed;
+        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
 
-        if (!player.isCreative()) {
+        if (!player.isCreative() && expectedToolType != ToolType.NONE) {
             ItemStack handStack = player.getMainHandItem();
             boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
             boolean alwaysBreakable = TagManager.Blocks.ALWAYS_BREAKABLE.contains(block);

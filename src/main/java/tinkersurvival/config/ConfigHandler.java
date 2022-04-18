@@ -103,6 +103,13 @@ public final class ConfigHandler {
 
         private static BooleanValue LOG_MODPACK_DATA;
 
+        private static final List<String> BLOCK_MODS_LIST = Arrays.asList("mods");
+        private static String[] blockModsStrings = new String[] {
+            "cfm",
+            "furnish"
+        };
+        private final ConfigValue<List<? extends String>> BLOCK_MODS;
+
         static {
             Pair<Server,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
 
@@ -137,6 +144,10 @@ public final class ConfigHandler {
             LOG_MODPACK_DATA = builder
                 .comment("Used to dump log info for Tinkers's Survival Modpack. Ignore.")
                 .define("LOG_MODPACK_DATA", false);
+            BLOCK_MODS = builder
+                .comment("List of mods that have blocks that are generally decorative in nature and require no tool for harvesting blocks. Default: "
+                        + "[\"" + String.join("\", \"", blockModsStrings) + "\"]")
+                .defineListAllowEmpty(MODS_LIST, getFields(blockModsStrings), modidValidator);
         }
 
         public static boolean enableRockGen() {
@@ -177,6 +188,12 @@ public final class ConfigHandler {
 
         public static boolean logModpackData() {
             return CONFIG.LOG_MODPACK_DATA.get();
+        }
+
+        public static List<String> blockWhitelistMods() {
+            List<String> mods = (List<String>) CONFIG.BLOCK_MODS.get();
+
+            return mods;
         }
     }
 

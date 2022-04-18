@@ -30,6 +30,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import tinkersurvival.common.TagManager;
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.mixin.AbstractBlockAccessor;
 import tinkersurvival.mixin.AbstractBlockStateAccessor;
 import tinkersurvival.mixin.DiggerItemAccessor;
@@ -62,6 +63,11 @@ public final class HarvestBlock {
         final Map<Material, List<Block>> unknownMaterialBlocks = new HashMap<>();
 
         for (Block block : ForgeRegistries.BLOCKS.getValues()) {
+            if (ConfigHandler.Server.blockWhitelistMods().contains(ItemUse.getModId(block))) {
+                BLOCK_TOOL_TYPES.put(block, ToolType.NONE);
+
+                continue;
+            }
             final AbstractBlockAccessor blockAccess = (AbstractBlockAccessor) block;
             final BlockBehaviour.Properties settings = blockAccess.getProperties();
 
