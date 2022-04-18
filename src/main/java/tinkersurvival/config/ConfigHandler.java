@@ -29,6 +29,13 @@ public class ConfigHandler {
         };
     }
 
+    public static Blocks blocks;
+    public static class Blocks {
+        @Config.Comment({"List of mods that blocks can always be harvested. All other mods enforce correct tool."})
+        public static String[] MOD_BLOCKS_WHITELIST = new String[] {
+        };
+    }
+
     public static Armor armor;
     public static class Armor {
         @Config.Comment({"List of mods that armor will always work and be craftable for. All other mod armor will not be equipable or craftable."})

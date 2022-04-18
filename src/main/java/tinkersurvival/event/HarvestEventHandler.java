@@ -1,5 +1,6 @@
 package tinkersurvival.event;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,7 +114,9 @@ public class HarvestEventHandler {
     }
 
     private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass, String blockMod) {
-        if (neededToolClass.equals(toolClass)) {
+        if (Arrays.asList(ConfigHandler.blocks.MOD_BLOCKS_WHITELIST).contains(blockMod)) {
+            return true;
+        } else if (neededToolClass.equals(toolClass)) {
             if (toolClass.equals("wrench")) {
                 return heldItemStack.getItem().getRegistryName().getNamespace().equals(blockMod);
             }
