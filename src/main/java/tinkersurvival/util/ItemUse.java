@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraftforge.fml.ModList;
@@ -114,7 +116,23 @@ public class ItemUse {
             return true;
         }
 
-        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
+        Block block = state.getBlock();
+
+        // Check tagged tool uses
+        if (BlockTags.MINEABLE_WITH_PICKAXE.contains(block) && ToolType.PICKAXE.is(handStack.getItem())) {
+            return true;
+        }
+        else if (BlockTags.MINEABLE_WITH_AXE.contains(block) && ToolType.AXE.is(handStack.getItem())) {
+            return true;
+        }
+        else if (BlockTags.MINEABLE_WITH_SHOVEL.contains(block) && ToolType.SHOVEL.is(handStack.getItem())) {
+            return true;
+        }
+        else if (BlockTags.MINEABLE_WITH_HOE.contains(block) && ToolType.HOE.is(handStack.getItem())) {
+            return true;
+        }
+
+        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
 
         // No expected tool type, so we have to return true because we don't know otherwise
         if (expectedToolType == ToolType.NONE) {

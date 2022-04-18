@@ -81,7 +81,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.excavator.asItem());
         builder(
             TagManager.Items.HOE_TOOLS,
-            TinkerTools.mattock
+            TinkerTools.mattock,
+            TinkerTools.kama
         );
         builder(
             TagManager.Items.KNIFE_TOOLS,
