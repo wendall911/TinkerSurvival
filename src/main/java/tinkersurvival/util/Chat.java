@@ -58,9 +58,7 @@ public class Chat {
             delay = 700;
         }
 
-        executor.schedule(() -> {
-            player.displayClientMessage(message, true);
-        }, delay, TimeUnit.MILLISECONDS);
+        executor.schedule(() -> player.displayClientMessage(message, true), delay, TimeUnit.MILLISECONDS);
     }
 
 }

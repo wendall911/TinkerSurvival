@@ -24,6 +24,8 @@ import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 
+import java.util.Objects;
+
 public class RockStone extends BlockItem {
 
     public RockStone(Block block, Item.Properties tabGroup) {
@@ -38,23 +40,23 @@ public class RockStone extends BlockItem {
         InteractionHand hand = context.getHand();
 
         if (state.getMaterial() == Material.STONE &&
-                context.getPlayer().getMainHandItem().getItem() instanceof RockStone) {
+                Objects.requireNonNull(context.getPlayer()).getMainHandItem().getItem() instanceof RockStone) {
             if (level.isClientSide()) {
-                player.swing(hand);
+                Objects.requireNonNull(player).swing(hand);
             }
             else {
                 if (!level.isClientSide) {
                     if (level.random.nextFloat() < 0.5) {
                         if (level.random.nextFloat() < ConfigHandler.Server.flintChance()) {
                             NonNullList<ItemStack> dropStack =
-                                NonNullList.withSize(1, new ItemStack(TinkerSurvivalItems.FLINT_SHARD.get(), 2));
+                                NonNullList.withSize(1, new ItemStack(TinkerSurvivalItems.FLINT_SHARD, 2));
 
-                            Containers.dropContents(level, player.getOnPos(), dropStack);
+                            Containers.dropContents(level, Objects.requireNonNull(player).getOnPos(), dropStack);
                         }
 
-                        player.getItemInHand(hand).shrink(1);
+                        Objects.requireNonNull(player).getItemInHand(hand).shrink(1);
                     }
-                    level.playSound(null, player.getOnPos(), Sounds.FLINT_KNAPPING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.playSound(null, Objects.requireNonNull(player).getOnPos(), Sounds.FLINT_KNAPPING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
             }
 

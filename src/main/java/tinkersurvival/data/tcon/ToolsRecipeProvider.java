@@ -9,7 +9,7 @@ import slimeknights.tconstruct.common.data.BaseRecipeProvider;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 
-import tinkersurvival.items.TinkerSurvivalItems;
+import tinkersurvival.items.TConItems;
 import tinkersurvival.TinkerSurvival;
 
 public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterialRecipeHelper, IToolRecipeHelper {
@@ -35,18 +35,18 @@ public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterial
     }
 
     private void addToolBuildingRecipes(Consumer<FinishedRecipe> consumer) {
-        toolBuilding(consumer, TinkerSurvivalItems.KNIFE, "tools/building/");
-        toolBuilding(consumer, TinkerSurvivalItems.SAW, "tools/building/");
+        toolBuilding(consumer, TConItems.KNIFE, "tools/building/");
+        toolBuilding(consumer, TConItems.SAW, "tools/building/");
     }
 
-	private void addPartRecipes(Consumer<FinishedRecipe> consumer) {
+    private void addPartRecipes(Consumer<FinishedRecipe> consumer) {
         String partFolder = "tools/parts/";
         String castFolder = "smeltery/casts/";
 
         partRecipes(
             consumer,
-            TinkerSurvivalItems.SAW_BLADE,
-            TinkerSurvivalItems.SAW_BLADE_CAST,
+            TConItems.SAW_BLADE,
+            TConItems.SAW_BLADE_CAST,
             4,
             partFolder,
             castFolder

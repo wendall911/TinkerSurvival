@@ -4,24 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Containers;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.material.Material;
 
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -35,7 +27,6 @@ import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.Chat;
 import tinkersurvival.util.ItemUse;
 import tinkersurvival.util.ToolType;
-import tinkersurvival.world.TinkerSurvivalWorld;
 
 @Mod.EventBusSubscriber(modid = TinkerSurvival.MODID)
 public class HarvestEventHandler {
@@ -47,11 +38,10 @@ public class HarvestEventHandler {
         final LevelAccessor level = event.getWorld();
         final BlockPos pos = event.getPos();
         final BlockState state = level.getBlockState(pos);
-        final Block block = state.getBlock();
         final Player player = event.getPlayer();
         final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
         boolean cancel = false;
-        boolean alwaysBreakable = TagManager.Blocks.ALWAYS_BREAKABLE.contains(block) ||
+        boolean alwaysBreakable = state.is(TagManager.Blocks.ALWAYS_BREAKABLE) ||
                 ((AbstractBlockStateAccessor) state).getDestroySpeed() == 0;
 
         if (!alwaysBreakable && !player.isCreative()) {
@@ -91,22 +81,21 @@ public class HarvestEventHandler {
         event.setCanceled(cancel);
     }
 
-	@SubscribeEvent
+    @SubscribeEvent
     public static void harvestCheckEvent(PlayerEvent.HarvestCheck event) {
         final Player player = event.getPlayer();
         final BlockState state = event.getTargetBlock();
-        final Block block = state.getBlock();
 
         if (!player.isCreative()) {
             final ItemStack handStack = player.getMainHandItem();
             final boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
-            final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
+            final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
             boolean canHarvest = event.canHarvest()
                     || ItemUse.alwaysDrops(state)
                     || expectedToolType == ToolType.NONE;
 
             if (!canHarvest) {
-                final boolean isOre = Tags.Blocks.ORES.contains(block);
+                final boolean isOre = state.is(Tags.Blocks.ORES);
 
                 if (isOre && expectedToolType == ToolType.PICKAXE) {
                     canHarvest = (correctTool && handStack.isCorrectToolForDrops(state));
@@ -127,15 +116,14 @@ public class HarvestEventHandler {
         final Level level = player.getLevel();
         final BlockPos pos = event.getPos();
         final BlockState state = level.getBlockState(pos);
-        final Block block = state.getBlock();
         final float destroySpeed = ((AbstractBlockStateAccessor) state).getDestroySpeed();
         float slowdown = destroySpeed;
-        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
+        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
 
         if (!player.isCreative() && expectedToolType != ToolType.NONE) {
             ItemStack handStack = player.getMainHandItem();
             boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
-            boolean alwaysBreakable = TagManager.Blocks.ALWAYS_BREAKABLE.contains(block);
+            boolean alwaysBreakable = state.is(TagManager.Blocks.ALWAYS_BREAKABLE);
             boolean isWhitelisted = ItemUse.isWhitelistItem(handStack);
 
             if (!alwaysBreakable) {

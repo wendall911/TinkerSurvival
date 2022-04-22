@@ -7,16 +7,15 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.Tags;
 
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.common.registration.CastItemObject;
-import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 import static slimeknights.tconstruct.common.TinkerTags.Items.DURABILITY;
@@ -26,12 +25,11 @@ import static slimeknights.tconstruct.common.TinkerTags.Items.MULTIPART_TOOL;
 import static slimeknights.tconstruct.common.TinkerTags.Items.ONE_HANDED;
 import static slimeknights.tconstruct.common.TinkerTags.Items.RED_SAND_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SAND_CASTS;
-import static slimeknights.tconstruct.common.TinkerTags.Items.STONE_HARVEST;
-import static slimeknights.tconstruct.common.TinkerTags.Items.SWORD;
 import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
 
 import tinkersurvival.common.TagManager;
 import tinkersurvival.data.integration.ModIntegration;
+import tinkersurvival.items.TConItems;
 import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
@@ -43,7 +41,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "TinkerSurvival - Item Tags";
     }
 
@@ -52,7 +50,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         builder(
             TagManager.Items.FLINT_KNAPPABLE,
             Items.FLINT,
-            TinkerSurvivalWorld.ROCK_STONE.get()
+            TinkerSurvivalWorld.ROCK_STONE
         );
         getBuilder(TagManager.Items.PICKAXE_TOOLS)
             .addOptional(ModIntegration.ieLoc("buzzsaw"))
@@ -64,15 +62,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.veinHammer.asItem());
         getBuilder(TagManager.Items.AXE_TOOLS)
             .addOptional(ModIntegration.ieLoc("buzzsaw"))
-            .add(TinkerSurvivalItems.CRUDE_HATCHET.get().asItem())
-            .add(TinkerSurvivalItems.SAW.get().asItem())
+            .add(TinkerSurvivalItems.CRUDE_HATCHET)
+            .add(TConItems.SAW.get().asItem())
             .add(TinkerTools.mattock.asItem())
             .add(TinkerTools.handAxe.asItem())
             .add(TinkerTools.broadAxe.asItem());
         builder(
             TagManager.Items.SAW_TOOLS,
-            TinkerSurvivalItems.CRUDE_SAW.get(),
-            TinkerSurvivalItems.SAW.get()
+            TinkerSurvivalItems.CRUDE_SAW,
+            TConItems.SAW.get()
         );
         getBuilder(TagManager.Items.SHOVEL_TOOLS)
             .addOptional(ModIntegration.ieLoc("drill"))
@@ -86,8 +84,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         );
         builder(
             TagManager.Items.KNIFE_TOOLS,
-            TinkerSurvivalItems.CRUDE_KNIFE.get(),
-            TinkerSurvivalItems.KNIFE.get()
+            TinkerSurvivalItems.CRUDE_KNIFE,
+            TConItems.KNIFE.get()
         );
         getBuilder(TagManager.Items.SHARP_TOOLS)
             .addOptional(ModIntegration.ieLoc("revolver"))
@@ -97,16 +95,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.dagger.asItem())
             .add(TinkerTools.cleaver.asItem())
             .add(TinkerTools.sword.asItem());
-        builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE.get());
+        builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE);
         builder(
             TagManager.Items.SAW_PARTS,
-            TinkerSurvivalItems.CRUDE_SAW_HANDLE.get(),
-            TinkerSurvivalItems.CRUDE_SAW_BLADE.get()
+            TinkerSurvivalItems.CRUDE_SAW_HANDLE,
+            TinkerSurvivalItems.CRUDE_SAW_BLADE
         );
         builder(
             TagManager.Items.BANDAGES,
-            TinkerSurvivalItems.CRUDE_BANDAGE.get(),
-            TinkerSurvivalItems.BANDAGE.get()
+            TinkerSurvivalItems.CRUDE_BANDAGE,
+            TinkerSurvivalItems.BANDAGE
         );
 
         // Fruit Trees
@@ -160,33 +158,33 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         };
 
         this.tag(MULTIPART_TOOL).add(
-            TinkerSurvivalItems.SAW.get(),
-            TinkerSurvivalItems.KNIFE.get()
+            TConItems.SAW.get(),
+            TConItems.KNIFE.get()
         );
         this.tag(DURABILITY).add(
-            TinkerSurvivalItems.SAW.get(),
-            TinkerSurvivalItems.KNIFE.get()
+            TConItems.SAW.get(),
+            TConItems.KNIFE.get()
         );
         this.tag(ONE_HANDED).add(
-            TinkerSurvivalItems.SAW.get(),
-            TinkerSurvivalItems.KNIFE.get()
+            TConItems.SAW.get(),
+            TConItems.KNIFE.get()
         );
         this.tag(HARVEST_PRIMARY).add(
-            TinkerSurvivalItems.SAW.get(),
-            TinkerSurvivalItems.KNIFE.get()
+            TConItems.SAW.get(),
+            TConItems.KNIFE.get()
         );
-        this.tag(TOOL_PARTS).add(TinkerSurvivalItems.SAW_BLADE.get());
+        this.tag(TOOL_PARTS).add(TConItems.SAW_BLADE.get());
 
-        addCast.accept(TinkerSurvivalItems.SAW_BLADE_CAST);
+        addCast.accept(TConItems.SAW_BLADE_CAST);
     }
 
-    private void addWsLogVariants(Tag.Named<Item> tag, String type) {
+    private void addWsLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.wsLoc(type + "_log"))
             .addOptional(ModIntegration.wsLoc("stripped_" + type + "_log"));
     }
 
-    private void addTconLogVariants(Tag.Named<Item> tag, String type) {
+    private void addTconLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.tconLoc(type + "_log"))
             .addOptional(ModIntegration.tconLoc("stripped_" + type + "_log"))
@@ -194,7 +192,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.tconLoc("stripped_" + type + "_wood"));
     }
 
-    private void addAyceLogVariants(Tag.Named<Item> tag, String type) {
+    private void addAyceLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.ayceLoc(type + "_log"))
             .addOptional(ModIntegration.ayceLoc("stripped_" + type + "_log"))
@@ -202,7 +200,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.ayceLoc("stripped_" + type + "_wood"));
     }
 
-    private void addQuarkLogVariants(Tag.Named<Item> tag, String type) {
+    private void addQuarkLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.qLoc(type + "_log"))
             .addOptional(ModIntegration.qLoc("stripped_" + type + "_log"))
@@ -210,7 +208,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.qLoc("stripped_" + type + "_wood"));
     }
 
-    private void addBMOLogVariants(Tag.Named<Item> tag, String type) {
+    private void addBMOLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.bmoLoc(type + "_log"))
             .addOptional(ModIntegration.bmoLoc("stripped_" + type + "_log"))
@@ -218,7 +216,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.bmoLoc("stripped_" + type + "_wood"));
     }
 
-    private void addBOPLogVariants(Tag.Named<Item> tag, String type) {
+    private void addBOPLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.bopLoc(type + "_log"))
             .addOptional(ModIntegration.bopLoc("stripped_" + type + "_log"))
@@ -226,7 +224,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.bopLoc("stripped_" + type + "_wood"));
     }
 
-    private void addBotaniaLogVariants(Tag.Named<Item> tag, String type) {
+    private void addBotaniaLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.botaniaLoc(type + "_log"))
             .addOptional(ModIntegration.botaniaLoc("stripped_" + type + "_log"))
@@ -234,7 +232,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.botaniaLoc("stripped_" + type));
     }
 
-    private void addFTLogVariants(Tag.Named<Item> tag, String type) {
+    private void addFTLogVariants(TagKey<Item> tag, String type) {
         getBuilder(tag)
             .addOptional(ModIntegration.ftLoc(type + "_log"))
             .addOptional(ModIntegration.ftLoc("stripped_" + type + "_log"))
@@ -242,16 +240,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.ftLoc("stripped_" + type + "_wood"));
     }
 
-    private void builder(Tag.Named<Item> tag) {
-        getBuilder(tag);
-    }
-
-    private void builder(Tag.Named<Item> tag, ItemLike... items) {
-        getBuilder(tag).add(Arrays.stream(items).map(ItemLike::asItem).toArray(Item[]::new));
-    }
-
-    protected TagsProvider.TagAppender<Item> getBuilder(Tag.Named<Item> tag) {
+    protected TagsProvider.TagAppender<Item> getBuilder(TagKey<Item> tag) {
         return tag(tag);
+    }
+
+    private void builder(TagKey<Item> tag, ItemLike... items) {
+        getBuilder(tag).add(Arrays.stream(items).map(ItemLike::asItem).toArray(Item[]::new));
     }
 
 }

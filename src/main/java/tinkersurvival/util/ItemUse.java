@@ -1,10 +1,6 @@
 package tinkersurvival.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
@@ -19,13 +15,12 @@ import tinkersurvival.common.TagManager;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.mixin.AbstractBlockStateAccessor;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.util.ToolType;
 
 public class ItemUse {
 
-    private static Map<String, String> whitelistToolsMap = new HashMap<>();
+    private static final Map<String, String> whitelistToolsMap = new HashMap<>();
 
-	private static List<String> TOOL_TYPES = new ArrayList<String>(
+    private static final List<String> TOOL_TYPES = new ArrayList<>(
         Arrays.asList(
             "pickaxe",
             "axe",
@@ -42,7 +37,7 @@ public class ItemUse {
             "revolver",
             "saw"
         )
-	);
+    );
     
     public static void init() {
         if (ModList.get().isLoaded("tinkersarchery")) {
@@ -67,7 +62,7 @@ public class ItemUse {
     }
 
     public static boolean isWhitelistItem(ItemStack stack) {
-        String itemName = stack.getItem().getRegistryName().toString();
+        String itemName = Objects.requireNonNull(stack.getItem().getRegistryName()).toString();
         String modid = getModId(itemName);
 
         return ConfigHandler.Server.whitelistMods().contains(modid)
@@ -75,11 +70,11 @@ public class ItemUse {
     }
 
     public static String getModId(Block block) {
-        return getModId(block.getRegistryName().toString());
+        return getModId(Objects.requireNonNull(block.getRegistryName()).toString());
     }
 
     public static String getModId(ItemStack stack) {
-        return getModId(stack.getItem().getRegistryName().toString());
+        return getModId(Objects.requireNonNull(stack.getItem().getRegistryName()).toString());
     }
 
     public static String getModId(String name) {
@@ -97,23 +92,23 @@ public class ItemUse {
             return true;
         }
         else {
-            return TagManager.Blocks.ALWAYS_DROPS.contains(state.getBlock());
+            return state.is(TagManager.Blocks.ALWAYS_DROPS);
         }
     }
 
     public static String getToolClass(ItemStack stack) {
-        String itemName = stack.getItem().getRegistryName().toString();
-		String type = whitelistToolsMap.get(itemName);
+        String itemName = Objects.requireNonNull(stack.getItem().getRegistryName()).toString();
+        String type = whitelistToolsMap.get(itemName);
 
         if (type == null) {
-			String[] nameParts = itemName.split("[^a-z]+");
-			for (String toolType : TOOL_TYPES) {
-				if (itemName.contains(toolType)
-						&& Arrays.asList(nameParts).contains(toolType)) {
-					type = toolType;
-				}
-			}
-		}
+            String[] nameParts = itemName.split("[^a-z]+");
+            for (String toolType : TOOL_TYPES) {
+                if (itemName.contains(toolType)
+                        && Arrays.asList(nameParts).contains(toolType)) {
+                    type = toolType;
+                }
+            }
+        }
 
         return type;
     }
@@ -124,23 +119,21 @@ public class ItemUse {
             return true;
         }
 
-        Block block = state.getBlock();
-
         // Check tagged tool uses
-        if (BlockTags.MINEABLE_WITH_PICKAXE.contains(block) && ToolType.PICKAXE.is(handStack.getItem())) {
+        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE) && ToolType.PICKAXE.is(handStack.getItem())) {
             return true;
         }
-        else if (BlockTags.MINEABLE_WITH_AXE.contains(block) && ToolType.AXE.is(handStack.getItem())) {
+        else if (state.is(BlockTags.MINEABLE_WITH_AXE) && ToolType.AXE.is(handStack.getItem())) {
             return true;
         }
-        else if (BlockTags.MINEABLE_WITH_SHOVEL.contains(block) && ToolType.SHOVEL.is(handStack.getItem())) {
+        else if (state.is(BlockTags.MINEABLE_WITH_SHOVEL) && ToolType.SHOVEL.is(handStack.getItem())) {
             return true;
         }
-        else if (BlockTags.MINEABLE_WITH_HOE.contains(block) && ToolType.HOE.is(handStack.getItem())) {
+        else if (state.is(BlockTags.MINEABLE_WITH_HOE) && ToolType.HOE.is(handStack.getItem())) {
             return true;
         }
 
-        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(block, ToolType.NONE);
+        final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
 
         // No expected tool type, so we have to return true because we don't know otherwise
         if (expectedToolType == ToolType.NONE) {

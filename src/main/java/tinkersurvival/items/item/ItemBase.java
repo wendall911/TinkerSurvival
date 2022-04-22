@@ -19,7 +19,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.TinkerSurvivalWorld;
+import tinkersurvival.world.effect.TinkerSurvivalEffects;
+
+import java.util.Objects;
 
 public class ItemBase extends Item {
 
@@ -33,14 +35,14 @@ public class ItemBase extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-		Player player = entity instanceof Player ? (Player)entity : null;
+        Player player = entity instanceof Player ? (Player)entity : null;
 
-		if (player instanceof ServerPlayer) {
-			CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
-		}
+        if (player instanceof ServerPlayer) {
+            CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
+        }
 
-		if (!level.isClientSide) {
-            String name = stack.getItem().getRegistryName().getPath().toString();
+        if (!level.isClientSide) {
+            String name = Objects.requireNonNull(stack.getItem().getRegistryName()).getPath();
 
             if (name.contains("bandage")) {
                 int amplifier = 0;
@@ -49,39 +51,39 @@ public class ItemBase extends Item {
                     amplifier = 1;
                 }
 
-                MobEffect effect = TinkerSurvivalWorld.STOP_BLEEDING.get();
+                MobEffect effect = TinkerSurvivalEffects.STOP_BLEEDING.get();
                 entity.addEffect(new MobEffectInstance(effect, 600, amplifier));
             }
             else if (name.contains("cup")) {
-                MobEffect effect = TinkerSurvivalWorld.ZOMBIE_ESSENCE.get();
+                MobEffect effect = TinkerSurvivalEffects.ZOMBIE_ESSENCE.get();
                 entity.addEffect(new MobEffectInstance(effect, 3600, 1));
             }
 
-		}
-
-		if (player != null) {
-			player.awardStat(Stats.ITEM_USED.get(this));
-			if (!player.getAbilities().instabuild) {
-				stack.shrink(1);
-			}
-		}
-
-		if (animation == UseAnim.DRINK) {
-			level.gameEvent(entity, GameEvent.DRINKING_FINISH, entity.eyeBlockPosition());
         }
 
-		return stack;
+        if (player != null) {
+            player.awardStat(Stats.ITEM_USED.get(this));
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+        }
+
+        if (animation == UseAnim.DRINK) {
+            level.gameEvent(entity, GameEvent.DRINKING_FINISH, entity.eyeBlockPosition());
+        }
+
+        return stack;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        String name = stack.getItem().getRegistryName().getPath().toString();
-        boolean stopBleeding = player.hasEffect(TinkerSurvivalWorld.STOP_BLEEDING.get());
-        boolean zombieEssence = player.hasEffect(TinkerSurvivalWorld.ZOMBIE_ESSENCE.get());
+        String name = Objects.requireNonNull(stack.getItem().getRegistryName()).getPath();
+        boolean stopBleeding = player.hasEffect(TinkerSurvivalEffects.STOP_BLEEDING.get());
+        boolean zombieEssence = player.hasEffect(TinkerSurvivalEffects.ZOMBIE_ESSENCE.get());
 
         if (name.contains("bandage")) {
-            if (stopBleeding || (!stopBleeding && player.getHealth() >= player.getMaxHealth())) {
+            if (stopBleeding || player.getHealth() >= player.getMaxHealth()) {
                 return InteractionResultHolder.fail(stack);
             }
         }

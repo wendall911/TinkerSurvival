@@ -33,7 +33,7 @@ public class ModLootTables extends LootTableProvider {
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
         return ImmutableList.of(
-			Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
+            Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
         );
     }
 

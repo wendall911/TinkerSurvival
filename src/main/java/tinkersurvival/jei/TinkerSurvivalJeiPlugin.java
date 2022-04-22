@@ -15,6 +15,8 @@ import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
+import java.util.Objects;
+
 @SuppressWarnings("unused")
 @JeiPlugin
 public class TinkerSurvivalJeiPlugin implements IModPlugin {
@@ -26,15 +28,15 @@ public class TinkerSurvivalJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
-        addIngredientInfo(registry, TinkerSurvivalWorld.ROCK_STONE.get());
-        addIngredientInfo(registry, TinkerSurvivalItems.PLANT_FIBER.get());
-        addIngredientInfo(registry, TinkerSurvivalItems.FLINT_SHARD.get());
+        addIngredientInfo(registry, TinkerSurvivalWorld.ROCK_STONE);
+        addIngredientInfo(registry, TinkerSurvivalItems.PLANT_FIBER);
+        addIngredientInfo(registry, TinkerSurvivalItems.FLINT_SHARD);
         addIngredientInfo(registry, Items.STICK);
 
     }
 
     private void addIngredientInfo(IRecipeRegistration registry, Item item) {
-        String name = item.getRegistryName().getPath().toString();
+        String name = Objects.requireNonNull(item.getRegistryName()).getPath();
 
         registry.addIngredientInfo(
             new ItemStack(item),

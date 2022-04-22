@@ -33,7 +33,7 @@ public class CrudeSaw extends AxeItem {
             return container;
         }
         else {
-            return new ItemStack(TinkerSurvivalItems.CRUDE_SAW_HANDLE.get());
+            return new ItemStack(TinkerSurvivalItems.CRUDE_SAW_HANDLE);
         }
     }
 

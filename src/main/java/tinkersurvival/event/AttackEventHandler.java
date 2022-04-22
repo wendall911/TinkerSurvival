@@ -19,9 +19,7 @@ public class AttackEventHandler {
 
     @SubscribeEvent
     public static void onHurt(LivingHurtEvent event) {
-        if (event.getSource().getDirectEntity() instanceof Player) {
-            Player player = (Player)event.getSource().getDirectEntity();
-
+        if (event.getSource().getDirectEntity() instanceof Player player) {
             if (!player.isCreative()) {
                 final ItemStack handStack = player.getMainHandItem();
                 final Level level = player.getLevel();

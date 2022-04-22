@@ -47,7 +47,7 @@ public class CrudeKnife extends SwordItem {
         if (destroySpeed != 0.0F) {
             doDamage(knife, player);
         }
-        else if (TagManager.Blocks.FIBER_PLANTS.contains(state.getBlock())) {
+        else if (state.is(TagManager.Blocks.FIBER_PLANTS)) {
             if (level.random.nextFloat() < 0.2) {
                 doDamage(knife, player);
             }

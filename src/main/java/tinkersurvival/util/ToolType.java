@@ -2,8 +2,9 @@ package tinkersurvival.util;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import tinkersurvival.common.TagManager;
 
@@ -22,14 +23,15 @@ public enum ToolType {
     SHARP(TagManager.Items.SHARP_TOOLS),
     NONE(null);
 
-    @Nullable private final Tag.Named<Item> tag;
+    @Nullable private final TagKey<Item> tag;
 
-    ToolType(@Nullable Tag.Named<Item> tag) {
+    ToolType(@Nullable TagKey<Item> tag) {
         this.tag = tag;
     }
 
     public boolean is(Item item) {
-        return this.tag != null && this.tag.contains(item);
+        ItemStack stack = new ItemStack(item);
+        return this.tag != null && stack.is(item);
     }
 
 }

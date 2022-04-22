@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ShearsItem;
@@ -25,9 +25,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import tinkersurvival.common.TagManager;
 import tinkersurvival.config.ConfigHandler;
@@ -99,9 +97,9 @@ public final class HarvestBlock {
         }
 
         for (Item item : ForgeRegistries.ITEMS.getValues()) {
-            if (item instanceof DiggerItem digger) {
+            if (item instanceof DiggerItem) {
+                final DiggerItem digger = (DiggerItem) item;
                 final ToolType toolType = toolTypeForMineableTag(((DiggerItemAccessor) digger).getBlocks());
-
                 if (toolType != ToolType.NONE) {
                     ITEM_TOOL_TYPES.put(item, toolType);
                 }
@@ -112,7 +110,7 @@ public final class HarvestBlock {
         }
 
         if (!unknownMaterialBlocks.isEmpty()) {
-            TinkerSurvival.LOGGER.error("Unable to infer primary tools for %d blocks with unknown materials. These blocks will not be affected by NTP's modifications!", unknownMaterialBlocks.values().stream().mapToInt(Collection::size).sum());
+            TinkerSurvival.LOGGER.error("Unable to infer primary tools for %s blocks with unknown materials. These blocks will not be affected by NTP's modifications!", unknownMaterialBlocks.values().stream().mapToInt(Collection::size).sum());
             unknownMaterialBlocks
                 .forEach((mat, blocks) -> {
                     blocks.forEach(TinkerSurvival.LOGGER::warn);
@@ -123,13 +121,13 @@ public final class HarvestBlock {
             final Material material = entry.getKey();
             final List<Block> blocks = entry.getValue();
 
-            TinkerSurvival.LOGGER.warn("Material: [isLiquid={}, isSolid={}, blocksMotion={}, isFlammable={}, isReplaceable={}, isSolidBlocking={}, getPushReaction={}, getColor=[id={}, col={}]] | Blocks: {}",
+            TinkerSurvival.LOGGER.warn("Material: [isLiquid=%s, isSolid=%s, blocksMotion=%s, isFlammable=%s, isReplaceable=%s, isSolidBlocking=%s, getPushReaction=%s, getColor=[id=%s, col=%s]] | Blocks: %s",
                 material.isLiquid(), material.isSolid(), material.blocksMotion(), material.isFlammable(), material.isReplaceable(), material.isSolidBlocking(), material.getPushReaction(), material.getColor().id, new Color(material.getColor().col),
                 blocks.stream().map(b -> b.getRegistryName().toString()).collect(Collectors.joining(", ")));
         }
     }
 
-    private static ToolType toolTypeForMineableTag(Tag<Block> tag) {
+    private static ToolType toolTypeForMineableTag(TagKey<Block> tag) {
         if (tag == BlockTags.MINEABLE_WITH_PICKAXE) {
             return ToolType.PICKAXE;
         }

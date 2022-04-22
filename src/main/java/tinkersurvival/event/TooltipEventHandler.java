@@ -11,7 +11,6 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.ItemUse;
 
@@ -31,21 +30,12 @@ public class TooltipEventHandler {
             if (type != null) {
 
                 switch (type) {
-                    case "bow":
-                        tooltip = "tooltip.uselessBow1";
-                        break;
-                    case "hoe":
-                        tooltip = "tooltip.uselessHoe1";
-                        break;
-                    case "pickaxe":
-                        tooltip = "tooltip.uselessTool1";
-                        break;
-                    case "sword":
-                        tooltip = "tooltip.uselessWeapon1";
-                        break;
-                    default:
-                        break;
-
+                    case "bow" -> tooltip = "tooltip.uselessBow1";
+                    case "hoe" -> tooltip = "tooltip.uselessHoe1";
+                    case "pickaxe" -> tooltip = "tooltip.uselessTool1";
+                    case "sword" -> tooltip = "tooltip.uselessWeapon1";
+                    default -> {
+                    }
                 }
 
                 message = (new TranslatableComponent(tooltip)).withStyle(ChatFormatting.DARK_RED);

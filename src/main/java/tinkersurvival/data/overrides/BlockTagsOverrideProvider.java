@@ -1,22 +1,16 @@
 package tinkersurvival.data.overrides;
 
-import java.util.Arrays;
-
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-import tinkersurvival.common.TagManager;
-import tinkersurvival.data.integration.ModIntegration;
-import tinkersurvival.util.IBlockProvider;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.TinkerSurvivalWorld;
 
 public class BlockTagsOverrideProvider extends BlockTagsProvider {
     public BlockTagsOverrideProvider(DataGenerator generatorIn, ExistingFileHelper existingFileHelper) {
@@ -38,11 +32,7 @@ public class BlockTagsOverrideProvider extends BlockTagsProvider {
             .add(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.NETHERITE_BLOCK, Blocks.RESPAWN_ANCHOR, Blocks.ANCIENT_DEBRIS);
     }
 
-    private void builder(Tag.Named<Block> tag, IBlockProvider... items) {
-        getBuilder(tag).add(Arrays.stream(items).map(IBlockProvider::asBlock).toArray(Block[]::new));
-    }
-
-    protected TagsProvider.TagAppender<Block> getBuilder(Tag.Named<Block> tag) {
+    protected TagsProvider.TagAppender<Block> getBuilder(TagKey<Block> tag) {
         return tag(tag);
     }
 

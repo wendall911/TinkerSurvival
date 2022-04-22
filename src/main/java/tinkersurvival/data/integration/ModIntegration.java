@@ -1,43 +1,13 @@
 package tinkersurvival.data.integration;
 
-import java.util.function.Supplier;
-
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.IForgeRegistry;
 
-import tinkersurvival.common.TinkerSurvivalModule;
+import tinkersurvival.common.CreativeTabs;
 
-public final class ModIntegration extends TinkerSurvivalModule {
-
-    public static RegistryObject<Item> CHERRY_PLANKS;
-    public static RegistryObject<Item> CITRUS_PLANKS;
-    public static RegistryObject<Item> BMO_ANCIENT_OAK_PLANKS;
-    public static RegistryObject<Item> BMO_BLIGHTED_BALSA_PLANKS;
-    public static RegistryObject<Item> BMO_SWAMP_CYPRESS_PLANKS;
-    public static RegistryObject<Item> BMO_WILLOW_PLANKS;
-    public static RegistryObject<Item> BOP_CHERRY_PLANKS;
-    public static RegistryObject<Item> BOP_DEAD_PLANKS;
-    public static RegistryObject<Item> BOP_FIR_PLANKS;
-    public static RegistryObject<Item> BOP_HELLBARK_PLANKS;
-    public static RegistryObject<Item> BOP_JACARANDA_PLANKS;
-    public static RegistryObject<Item> BOP_MAGIC_PLANKS;
-    public static RegistryObject<Item> BOP_MAHOGANY_PLANKS;
-    public static RegistryObject<Item> BOP_PALM_PLANKS;
-    public static RegistryObject<Item> BOP_REDWOOD_PLANKS;
-    public static RegistryObject<Item> BOP_UMBRAN_PLANKS;
-    public static RegistryObject<Item> BOP_WILLOW_PLANKS;
-    public static RegistryObject<Item> BOTANIA_DREAMWOOD_PLANKS;
-    public static RegistryObject<Item> QUARK_AZALEA_PLANKS;
-    public static RegistryObject<Item> QUARK_BLOSSOM_PLANKS;
-    public static RegistryObject<Item> AYCE_HAZEL_PLANKS;
-    public static RegistryObject<Item> TCON_BLOODSHROOM_PLANKS;
-    public static RegistryObject<Item> TCON_GREENHEART_PLANKS;
-    public static RegistryObject<Item> TCON_SKYROOT_PLANKS;
-    public static RegistryObject<Item> WS_PALM_TREE_PLANKS;
+public final class ModIntegration {
 
     public static final String AYCE_MODID = "allyoucaneat";
     public static final String BMO_MODID = "biomemakeover";
@@ -50,75 +20,73 @@ public final class ModIntegration extends TinkerSurvivalModule {
     public static final String TCON_MODID = "tconstruct";
     public static final String WS_MODID = "watersource";
 
-    public static void init() {
+    public static Item CHERRY_PLANKS;
+    public static Item CITRUS_PLANKS;
+    public static Item BMO_ANCIENT_OAK_PLANKS;
+    public static Item BMO_BLIGHTED_BALSA_PLANKS;
+    public static Item BMO_SWAMP_CYPRESS_PLANKS;
+    public static Item BMO_WILLOW_PLANKS;
+    public static Item BOP_CHERRY_PLANKS;
+    public static Item BOP_DEAD_PLANKS;
+    public static Item BOP_FIR_PLANKS;
+    public static Item BOP_HELLBARK_PLANKS;
+    public static Item BOP_JACARANDA_PLANKS;
+    public static Item BOP_MAGIC_PLANKS;
+    public static Item BOP_MAHOGANY_PLANKS;
+    public static Item BOP_PALM_PLANKS;
+    public static Item BOP_REDWOOD_PLANKS;
+    public static Item BOP_UMBRAN_PLANKS;
+    public static Item BOP_WILLOW_PLANKS;
+    public static Item BOTANIA_DREAMWOOD_PLANKS;
+    public static Item QUARK_AZALEA_PLANKS;
+    public static Item QUARK_BLOSSOM_PLANKS;
+    public static Item AYCE_HAZEL_PLANKS;
+    public static Item TCON_BLOODSHROOM_PLANKS;
+    public static Item TCON_GREENHEART_PLANKS;
+    public static Item TCON_SKYROOT_PLANKS;
+    public static Item WS_PALM_TREE_PLANKS;
+
+    public static IForgeRegistry<Item> ITEM_REGISTRY;
+
+    public static void init(IForgeRegistry<Item> registry) {
+        ITEM_REGISTRY = registry;
+
         String dataGen = System.getenv("DATA_GEN");
         if (dataGen != null && dataGen.contains("all")) {
-            CHERRY_PLANKS = registerFruitTreesItem("cherry_planks");
-            CITRUS_PLANKS = registerFruitTreesItem("citrus_planks");
-            BMO_ANCIENT_OAK_PLANKS = registerBMOItem("ancient_oak_planks");
-            BMO_BLIGHTED_BALSA_PLANKS = registerBMOItem("blighted_balsa_planks");
-            BMO_SWAMP_CYPRESS_PLANKS = registerBMOItem("swamp_cypress_planks");
-            BMO_WILLOW_PLANKS = registerBMOItem("willow_planks");
-            BOP_CHERRY_PLANKS = registerBOPItem("cherry_planks");
-            BOP_DEAD_PLANKS = registerBOPItem("dead_planks");
-            BOP_FIR_PLANKS = registerBOPItem("fir_planks");
-            BOP_HELLBARK_PLANKS = registerBOPItem("hellbark_planks");
-            BOP_JACARANDA_PLANKS = registerBOPItem("jacaranda_planks");
-            BOP_MAGIC_PLANKS = registerBOPItem("magic_planks");
-            BOP_MAHOGANY_PLANKS = registerBOPItem("mahogany_planks");
-            BOP_PALM_PLANKS = registerBOPItem("palm_planks");
-            BOP_REDWOOD_PLANKS = registerBOPItem("redwood_planks");
-            BOP_UMBRAN_PLANKS = registerBOPItem("umbran_planks");
-            BOP_WILLOW_PLANKS = registerBOPItem("willow_planks");
-            BOTANIA_DREAMWOOD_PLANKS = registerBotaniaItem("dreamwood_planks");
-            QUARK_AZALEA_PLANKS = registerQuarkItem("azalea_planks");
-            QUARK_BLOSSOM_PLANKS = registerQuarkItem("blossom_planks");
-            AYCE_HAZEL_PLANKS = registerAyceItem("hazel_planks");
-            TCON_BLOODSHROOM_PLANKS = registerTconItem("bloodshroom_planks");
-            TCON_GREENHEART_PLANKS = registerTconItem("greenheart_planks");
-            TCON_SKYROOT_PLANKS = registerTconItem("skyroot_planks");
-            WS_PALM_TREE_PLANKS = registerWsItem("palm_tree_planks");
+            CHERRY_PLANKS = registerItem(ftLoc("cherry_planks"));
+            CITRUS_PLANKS = registerItem(ftLoc("citrus_planks"));
+            BMO_ANCIENT_OAK_PLANKS = registerItem(bmoLoc("ancient_oak_planks"));
+            BMO_BLIGHTED_BALSA_PLANKS = registerItem(bmoLoc("blighted_balsa_planks"));
+            BMO_SWAMP_CYPRESS_PLANKS = registerItem(bmoLoc("swamp_cypress_planks"));
+            BMO_WILLOW_PLANKS = registerItem(bmoLoc("willow_planks"));
+            BOP_CHERRY_PLANKS = registerItem(bopLoc("cherry_planks"));
+            BOP_DEAD_PLANKS = registerItem(bopLoc("dead_planks"));
+            BOP_FIR_PLANKS = registerItem(bopLoc("fir_planks"));
+            BOP_HELLBARK_PLANKS = registerItem(bopLoc("hellbark_planks"));
+            BOP_JACARANDA_PLANKS = registerItem(bopLoc("jacaranda_planks"));
+            BOP_MAGIC_PLANKS = registerItem(bopLoc("magic_planks"));
+            BOP_MAHOGANY_PLANKS = registerItem(bopLoc("mahogany_planks"));
+            BOP_PALM_PLANKS = registerItem(bopLoc("palm_planks"));
+            BOP_REDWOOD_PLANKS = registerItem(bopLoc("redwood_planks"));
+            BOP_UMBRAN_PLANKS = registerItem(bopLoc("umbran_planks"));
+            BOP_WILLOW_PLANKS = registerItem(bopLoc("willow_planks"));
+            BOTANIA_DREAMWOOD_PLANKS = registerItem(botaniaLoc("dreamwood_planks"));
+            QUARK_AZALEA_PLANKS = registerItem(qLoc("azalea_planks"));
+            QUARK_BLOSSOM_PLANKS = registerItem(qLoc("blossom_planks"));
+            AYCE_HAZEL_PLANKS = registerItem(ayceLoc("hazel_planks"));
+            TCON_BLOODSHROOM_PLANKS = registerItem(tconLoc("bloodshroom_planks"));
+            TCON_GREENHEART_PLANKS = registerItem(tconLoc("greenheart_planks"));
+            TCON_SKYROOT_PLANKS = registerItem(tconLoc("skyroot_planks"));
+            WS_PALM_TREE_PLANKS = registerItem(wsLoc("palm_tree_planks"));
         }
     }
 
-    private static RegistryObject<Item> registerTconItem(String name) {
-        return registerItem(name, TCON_ITEM_REGISTRY);
-    }
+    private static Item registerItem(ResourceLocation loc) {
+        Item item = (new Item(new Item.Properties().tab(CreativeTabs.INTEGRATION_TAB_GROUP))).setRegistryName(loc);
 
-    private static RegistryObject<Item> registerAyceItem(String name) {
-        return registerItem(name, AYCE_ITEM_REGISTRY);
-    }
+        ITEM_REGISTRY.register(item);
 
-    private static RegistryObject<Item> registerQuarkItem(String name) {
-        return registerItem(name, QUARK_ITEM_REGISTRY);
-    }
-
-    private static RegistryObject<Item> registerBMOItem(String name) {
-        return registerItem(name, BMO_ITEM_REGISTRY);
-    }
-
-    private static RegistryObject<Item> registerBOPItem(String name) {
-        return registerItem(name, BOP_ITEM_REGISTRY);
-    }
-
-    private static RegistryObject<Item> registerBotaniaItem(String name) {
-        return registerItem(name, BOTANIA_ITEM_REGISTRY);
-    }
-
-    private static RegistryObject<Item> registerFruitTreesItem(String name) {
-        return registerItem(name, FRUITTREES_ITEM_REGISTRY);
-    }
-
-    private static RegistryObject<Item> registerWsItem(String name) {
-        return registerItem(name, WS_ITEM_REGISTRY);
-    }
-
-    private static RegistryObject<Item> registerItem(String name, DeferredRegister<Item> registry) {
-        return registerItem(name, () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)), registry);
-    }
-
-    private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item, DeferredRegister<Item> registry) {
-        return registry.register(name, item);
+        return item;
     }
 
     public static ResourceLocation bmoLoc(String name) {

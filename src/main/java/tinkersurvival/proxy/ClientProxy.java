@@ -2,26 +2,41 @@ package tinkersurvival.proxy;
 
 import net.minecraft.client.gui.Font;
 
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import slimeknights.tconstruct.shared.CommonsClientEvents;
 
 import tinkersurvival.client.TinkerSurvivalBook;
-import tinkersurvival.TinkerSurvival;
 
-@EventBusSubscriber(modid = TinkerSurvival.MODID, value = Dist.CLIENT, bus = Bus.MOD)
+@OnlyIn(Dist.CLIENT)
 public final class ClientProxy extends CommonProxy {
 
-    public ClientProxy() {
+    public ClientProxy() {}
+
+    @Override
+    public void start() {
+
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        registerListeners(bus);
+
         TinkerSurvivalBook.init();
+
+        super.start();
     }
 
-    @SubscribeEvent
-    static void clientSetup(final FMLClientSetupEvent event) {
+    @Override
+    public void registerListeners(IEventBus bus) {
+        super.registerListeners(bus);
+
+        bus.addListener(this::clientSetup);
+    }
+
+    public void clientSetup(final FMLClientSetupEvent event) {
         Font unicode = CommonsClientEvents.unicodeFontRender();
 
         TinkerSurvivalBook.TINKERS_SURVIVAL.fontRenderer = unicode;

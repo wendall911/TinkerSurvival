@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
-import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
 import tinkersurvival.data.client.ModBlockStateProvider;
 import tinkersurvival.data.client.ModItemModelProvider;
@@ -32,7 +31,6 @@ public final class DataGenerators {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(gen, existingFileHelper);
-        TinkerPartSpriteProvider partSprites = new TinkerPartSpriteProvider();
         SawPartSpriteProvider sawPartSprites = new SawPartSpriteProvider();
         String modpackOverrides = System.getenv("MOD_OVERRIDES");
 

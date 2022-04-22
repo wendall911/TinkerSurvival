@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.Mod;
 import tinkersurvival.items.tool.Knife;
 import tinkersurvival.items.tool.Saw;
 import tinkersurvival.TinkerSurvival;
-import tinkersurvival.world.TinkerSurvivalWorld;
 
 @Mod.EventBusSubscriber(modid = TinkerSurvival.MODID)
 public class PlayerEventHandler {

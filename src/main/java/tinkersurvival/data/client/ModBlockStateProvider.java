@@ -15,6 +15,8 @@ import net.minecraftforge.registries.RegistryObject;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.TinkerSurvivalWorld;
 
+import java.util.Objects;
+
 public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
@@ -28,11 +30,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-		generateLooseRockBaseModel();
+        generateLooseRockBaseModel();
 
-        TinkerSurvivalWorld.getBlockEntries().stream()
-                .map(RegistryObject::get)
-                .forEach(this::generateLooseRockVariants);
+        generateLooseRockVariants(TinkerSurvivalWorld.ANDESITE_LOOSE_ROCK);
+        generateLooseRockVariants(TinkerSurvivalWorld.DIORITE_LOOSE_ROCK);
+        generateLooseRockVariants(TinkerSurvivalWorld.GRANITE_LOOSE_ROCK);
+        generateLooseRockVariants(TinkerSurvivalWorld.STONE_LOOSE_ROCK);
+        generateLooseRockVariants(TinkerSurvivalWorld.SANDSTONE_LOOSE_ROCK);
+        generateLooseRockVariants(TinkerSurvivalWorld.RED_SANDSTONE_LOOSE_ROCK);
+        generateLooseRockVariants(TinkerSurvivalWorld.ROCK_STONE_BLOCK);
     }
 
     private void generateLooseRockBaseModel() {
@@ -64,7 +70,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void generateLooseRockVariants(Block block) {
         ResourceLocation name = block.getRegistryName();
-        String type = name.getPath().toString().replace("_loose_rock", "");
+        String type = Objects.requireNonNull(name).getPath().toString().replace("_loose_rock", "");
 
         if (type.contains("rock_stone")) {
             type = "stone";

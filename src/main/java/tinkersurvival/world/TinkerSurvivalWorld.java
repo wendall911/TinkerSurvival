@@ -1,136 +1,80 @@
 package tinkersurvival.world;
 
-import java.util.Collection;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.world.effect.MobEffect;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.IForgeRegistry;
 
-import tinkersurvival.client.CreativeTabBase;
-import tinkersurvival.common.TinkerSurvivalModule;
-import tinkersurvival.config.ConfigHandler;
+import tinkersurvival.common.CreativeTabs;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.world.block.LooseRockBlock;
-import tinkersurvival.world.feature.LooseRocks;
-import tinkersurvival.world.effect.StopBleeding;
-import tinkersurvival.world.effect.ZombieEssence;
 import tinkersurvival.world.item.RockStone;
 
-public final class TinkerSurvivalWorld extends TinkerSurvivalModule {
+public final class TinkerSurvivalWorld {
 
-    public static ConfiguredFeature<?, ?> LOOSE_ROCKS_CONFIGURED;
-    public static PlacedFeature LOOSE_ROCKS_PLACED;
+    private static IForgeRegistry<Block> BLOCK_REGISTRY;
+    private static IForgeRegistry<Item> ITEM_REGISTRY;
 
-    public static CreativeTabBase TAB_GROUP;
+    // Blocks
+    public static Block ANDESITE_LOOSE_ROCK;
+    public static Block DIORITE_LOOSE_ROCK;
+    public static Block GRANITE_LOOSE_ROCK;
+    public static Block STONE_LOOSE_ROCK;
+    public static Block SANDSTONE_LOOSE_ROCK;
+    public static Block RED_SANDSTONE_LOOSE_ROCK;
+    public static Block ROCK_STONE_BLOCK;
 
-    public static RegistryObject<Item> ROCK_STONE;
+    // Items
+    public static Item ROCK_STONE;
 
-    public static RegistryObject<Block> ANDESITE_LOOSE_ROCK;
-    public static RegistryObject<Block> DIORITE_LOOSE_ROCK;
-    public static RegistryObject<Block> GRANITE_LOOSE_ROCK;
-    public static RegistryObject<Block> STONE_LOOSE_ROCK;
-    public static RegistryObject<Block> SANDSTONE_LOOSE_ROCK;
-    public static RegistryObject<Block> RED_SANDSTONE_LOOSE_ROCK;
-    public static RegistryObject<Block> ROCK_STONE_BLOCK;
+    public static void initBlocks(IForgeRegistry<Block> registry) {
+        BLOCK_REGISTRY = registry;
 
-    public static Feature<NoneFeatureConfiguration> LOOSE_ROCKS_FEATURE;
-
-    public static RegistryObject<MobEffect> STOP_BLEEDING;
-    public static RegistryObject<MobEffect> ZOMBIE_ESSENCE;
-
-    public static void init() {
-        TAB_GROUP = new CreativeTabBase(TinkerSurvival.MODID + ".world", () -> new ItemStack(ROCK_STONE.get()));
-
-        // Blocks
-        ANDESITE_LOOSE_ROCK = registerBlock("andesite_loose_rock", LooseRockBlock::new);
-        DIORITE_LOOSE_ROCK = registerBlock("diorite_loose_rock", LooseRockBlock::new);
-        GRANITE_LOOSE_ROCK = registerBlock("granite_loose_rock", LooseRockBlock::new);
-        STONE_LOOSE_ROCK = registerBlock("stone_loose_rock", LooseRockBlock::new);
-        SANDSTONE_LOOSE_ROCK = registerBlock("sandstone_loose_rock", LooseRockBlock::new);
-        RED_SANDSTONE_LOOSE_ROCK = registerBlock("red_sandstone_loose_rock", LooseRockBlock::new);
-        ROCK_STONE_BLOCK = registerBlock("rock_stone_block", LooseRockBlock::new);
-
-        // Items
-        ROCK_STONE = registerRockStone("rock_stone");
-
-        // Effects
-        STOP_BLEEDING = MOBEFFECT_REGISTRY.register(
-            "stop_bleeding", () -> new StopBleeding()
-        );
-        ZOMBIE_ESSENCE = MOBEFFECT_REGISTRY.register(
-            "zombie_essence", () -> new ZombieEssence()
-        );
-
+        ANDESITE_LOOSE_ROCK = registerBlock("andesite_loose_rock");
+        DIORITE_LOOSE_ROCK = registerBlock("diorite_loose_rock");
+        GRANITE_LOOSE_ROCK = registerBlock("granite_loose_rock");
+        STONE_LOOSE_ROCK = registerBlock("stone_loose_rock");
+        SANDSTONE_LOOSE_ROCK = registerBlock("sandstone_loose_rock");
+        RED_SANDSTONE_LOOSE_ROCK = registerBlock("red_sandstone_loose_rock");
+        ROCK_STONE_BLOCK = registerBlock("rock_stone_block");
     }
 
-    public static void setup(IEventBus bus) {
-        /*
-         * Setup feature registry during setup, since Forge doesn't quite have the correct
-         * implementation for this just yet, it is controlled by Minecraft
-         *
-         * In the future, may be able to move to initRegistries
-         */
-        FEATURE_REGISTRY = DeferredRegister.create(ForgeRegistries.FEATURES, TinkerSurvival.MODID);
-        FEATURE_REGISTRY.register(bus);
+    public static void initItems(IForgeRegistry<Item> registry) {
+        ITEM_REGISTRY = registry;
 
-        // Worldgen Features
-        LOOSE_ROCKS_FEATURE = new LooseRocks();
-
-        // Worldgen Feature Configuration
-        LOOSE_ROCKS_CONFIGURED = LOOSE_ROCKS_FEATURE
-            .configured(NoneFeatureConfiguration.INSTANCE);
-
-        LOOSE_ROCKS_PLACED = LOOSE_ROCKS_CONFIGURED.placed(
-                    CountPlacement.of(ConfigHandler.Server.rockGenFrequency()),
-                    InSquarePlacement.spread(),
-                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE
-                );
-
-        FEATURE_REGISTRY.register("loose_rocks", () -> LOOSE_ROCKS_FEATURE);
+        registerItem("andesite_loose_rock", ANDESITE_LOOSE_ROCK);
+        registerItem("diorite_loose_rock", DIORITE_LOOSE_ROCK);
+        registerItem("granite_loose_rock", GRANITE_LOOSE_ROCK);
+        registerItem("stone_loose_rock", STONE_LOOSE_ROCK);
+        registerItem("sandstone_loose_rock", SANDSTONE_LOOSE_ROCK);
+        registerItem("red_sandstone_loose_rock", RED_SANDSTONE_LOOSE_ROCK);
+        registerItem("rock_stone_block", ROCK_STONE_BLOCK);
     }
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory) {
-        return registerBlock(name, blockFactory, block -> new BlockItem(block, new Item.Properties().tab(TAB_GROUP)));
+    private static Block registerBlock(String name) {
+        Block blockConfigured = (new LooseRockBlock()).setRegistryName(new ResourceLocation(TinkerSurvival.MODID, name));
+
+        BLOCK_REGISTRY.register(blockConfigured);
+
+        return blockConfigured;
     }
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockFactory, Function<T, BlockItem> blockItemFactory) {
-        RegistryObject<T> block = BLOCK_REGISTRY.register(name, blockFactory);
+    private static void registerItem(String name, Block block) {
+        registerItem(name, new BlockItem(block, new Item.Properties().tab(CreativeTabs.WORLD_TAB_GROUP)));
 
-        registerItem(name, () -> blockItemFactory.apply(block.get()));
-
-        return block;
+        if (name.contains("rock_stone_block")) {
+            ROCK_STONE = registerItem("rock_stone", new RockStone(block, new Item.Properties().tab(CreativeTabs.WORLD_TAB_GROUP)));
+        }
     }
 
-    private static RegistryObject<Item> registerRockStone(String name) {
-        return registerItem(name, () -> new RockStone(ROCK_STONE_BLOCK.get(), new Item.Properties().tab(TAB_GROUP)));
-    }
+    private static Item registerItem(String name, Item item) {
+        Item itemConfigured = item.setRegistryName(new ResourceLocation(TinkerSurvival.MODID, name));
 
-    private static RegistryObject<Item> registerItem(String name) {
-        return registerItem(name, () -> new Item(new Item.Properties().tab(TAB_GROUP)));
-    }
+        ITEM_REGISTRY.register(itemConfigured);
 
-    private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
-        return ITEM_REGISTRY.register(name, item);
-    }
-
-    public static Collection<RegistryObject<Block>> getBlockEntries() {
-        return BLOCK_REGISTRY.getEntries();
+        return item;
     }
 
 }

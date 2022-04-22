@@ -2,7 +2,7 @@ package tinkersurvival.items;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
@@ -15,7 +15,7 @@ public class CrudeItemTier implements Tier {
     private int harvestLvl = 0;
     private int enchantability = 0;
     private Item repairIngredientItem = Items.BARRIER;
-    private Tag.Named<Item> repairIngredientTag;
+    private TagKey<Item> repairIngredientTag;
 
     public CrudeItemTier() {}
 
@@ -49,7 +49,7 @@ public class CrudeItemTier implements Tier {
         return this;
     }
 
-    public CrudeItemTier setRepairMat(Tag.Named<Item> tag) {
+    public CrudeItemTier setRepairMat(TagKey<Item> tag) {
         this.repairIngredientTag = tag;
 
         return this;

@@ -7,7 +7,6 @@ import net.minecraft.world.level.Level;
 
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.sound.Sounds;

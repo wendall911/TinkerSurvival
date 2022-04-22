@@ -22,6 +22,8 @@ import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.common.TagManager;
 
+import java.util.Objects;
+
 public class GlobalLootModifier extends GlobalLootModifierProvider {
 
     public GlobalLootModifier(DataGenerator dataGeneratorIn) {
@@ -61,56 +63,56 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
         addToolLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_toolsmith_crude_knife",
-            TinkerSurvivalItems.CRUDE_KNIFE.get()
+            TinkerSurvivalItems.CRUDE_KNIFE
         );
         addToolLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_toolsmith_crude_hatchet",
-            TinkerSurvivalItems.CRUDE_HATCHET.get()
+            TinkerSurvivalItems.CRUDE_HATCHET
         );
         addToolLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_toolsmith_crude_saw",
-            TinkerSurvivalItems.CRUDE_SAW.get()
+            TinkerSurvivalItems.CRUDE_SAW
         );
         addRareLoot(
             BuiltInLootTables.VILLAGE_TOOLSMITH,
             "village_fisher_wooden_cup",
-            TinkerSurvivalItems.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP
         );
         addRareLoot(
             BuiltInLootTables.BURIED_TREASURE,
             "buried_treasure_wooden_cup",
-            TinkerSurvivalItems.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP
         );
         addRareLoot(
             BuiltInLootTables.SHIPWRECK_TREASURE,
             "shipwreck_treasure_wooden_cup",
-            TinkerSurvivalItems.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP
         );
         addRareLoot(
             BuiltInLootTables.FISHING_TREASURE,
             "fishing_treasure_wooden_cup",
-            TinkerSurvivalItems.WOODEN_CUP.get()
+            TinkerSurvivalItems.WOODEN_CUP
         );
 
     }
 
     public void addPlantFiberDrops(Block block) {
-		String name = block.getRegistryName().getPath().toString();
+        String name = Objects.requireNonNull(block.getRegistryName()).getPath();
 
         this.add(
             "plant_fiber_from_" + name,
             TinkerSurvivalLootTables.PLANT_FIBER_DROPS.get(),
             new TinkerSurvivalLootTables.LootTableModifier(
                 createKnifeChanceCondition(0.16F, block),
-                new ItemStack(TinkerSurvivalItems.PLANT_FIBER.get())
+                new ItemStack(TinkerSurvivalItems.PLANT_FIBER)
             )
         );
     }
 
     public void addStickDrops(Block block) {
-		String name = block.getRegistryName().getPath().toString();
+        String name = Objects.requireNonNull(block.getRegistryName()).getPath();
 
         this.add(
             "stick_drops_from_" + name,
@@ -147,12 +149,12 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     public static LootItemCondition[] createKnifeChanceCondition(float chance, Block block) {
         return new LootItemCondition[] {
             LootItemRandomChanceCondition.randomChance(chance).build(),
-			MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
+            MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
             LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
         };
     }
 
-	public static LootItemCondition[] createResourceChanceCondition(float chance, ResourceLocation loc) {
+    public static LootItemCondition[] createResourceChanceCondition(float chance, ResourceLocation loc) {
         return new LootItemCondition[] {
             LootItemRandomChanceCondition.randomChance(chance).build(),
             LootTableIdCondition.builder(loc).build()

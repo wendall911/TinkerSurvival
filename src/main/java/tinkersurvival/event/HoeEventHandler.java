@@ -5,7 +5,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.event.world.BlockEvent.BlockToolModificationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,14 +15,16 @@ import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.ItemUse;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber(modid = TinkerSurvival.MODID)
 public class HoeEventHandler {
 
     @SubscribeEvent
-    public static void onHoeBlock(UseHoeEvent event) {
+    public static void onHoeBlock(BlockToolModificationEvent event) {
         final Player player = event.getPlayer();
 
-        if (!player.isCreative()) {
+        if (!Objects.requireNonNull(player).isCreative() && event.getToolAction() == ToolActions.HOE_TILL) {
             final ItemStack handStack = player.getMainHandItem();
             final Level level = player.getLevel();
 

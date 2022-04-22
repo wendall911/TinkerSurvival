@@ -3,11 +3,11 @@ package tinkersurvival.data.tcon;
 import net.minecraft.data.DataGenerator;
 
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
-import slimeknights.tconstruct.library.tools.definition.weapon.SweepWeaponAttack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 
-import tinkersurvival.items.TinkerSurvivalItems;
+import tinkersurvival.items.TConItems;
+import tinkersurvival.items.ToolDefinitions;
 import tinkersurvival.TinkerSurvival;
 
 public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvider {
@@ -28,7 +28,7 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
      */
     @Override
     protected void addToolDefinitions() {
-        define(TinkerSurvivalItems.KNIFE_DEFINITION)
+        define(ToolDefinitions.KNIFE_DEFINITION)
             .part(TinkerToolParts.smallBlade)
             .part(TinkerToolParts.toughHandle)
             .part(TinkerToolParts.toolBinding)
@@ -37,8 +37,8 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
             .multiplier(ToolStats.ATTACK_DAMAGE, 0.35f)
             .smallToolStartingSlots();
 
-        define(TinkerSurvivalItems.SAW_DEFINITION)
-            .part(TinkerSurvivalItems.SAW_BLADE)
+        define(ToolDefinitions.SAW_DEFINITION)
+            .part(TConItems.SAW_BLADE)
             .part(TinkerToolParts.toolHandle)
             .part(TinkerToolParts.toolBinding)
             .stat(ToolStats.ATTACK_DAMAGE, 0.0f)
