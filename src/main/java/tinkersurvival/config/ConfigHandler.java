@@ -84,16 +84,16 @@ public final class ConfigHandler {
         private static DoubleValue SLOW_DOWN_MULTIPLIER;
 
         private static final List<String> MODS_LIST = Arrays.asList("mods");
-        private static String[] modsStrings = new String[] {
+        private static final String[] modsStrings = new String[] {
             "tconstruct",
             "tinkersurvival"
         };
-        private static Predicate<Object> modidValidator = s -> s instanceof String
+        private static final Predicate<Object> modidValidator = s -> s instanceof String
                 && ((String) s).matches("[a-z]+");
         private final ConfigValue<List<? extends String>> MODS;
 
         private static final List<String> ITEMS_LIST = Arrays.asList("items");
-        private static String[] itemsStrings = new String[] {
+        private static final String[] itemsStrings = new String[] {
             "hammer-immersiveengineering:hammer",
             "wirecutter-immersiveengineering:wirecutter",
         };
@@ -103,8 +103,8 @@ public final class ConfigHandler {
 
         private static BooleanValue LOG_MODPACK_DATA;
 
-        private static final List<String> BLOCK_MODS_LIST = Arrays.asList("mods");
-        private static String[] blockModsStrings = new String[] {
+        private static final List<String> BLOCK_MODS_LIST = Arrays.asList("blockmods");
+        private static final String[] blockModsStrings = new String[] {
             "cfm",
             "furnish"
         };
@@ -147,7 +147,7 @@ public final class ConfigHandler {
             BLOCK_MODS = builder
                 .comment("List of mods that have blocks that are generally decorative in nature and require no tool for harvesting blocks. Default: "
                         + "[\"" + String.join("\", \"", blockModsStrings) + "\"]")
-                .defineListAllowEmpty(MODS_LIST, getFields(blockModsStrings), modidValidator);
+                .defineListAllowEmpty(BLOCK_MODS_LIST, getFields(blockModsStrings), modidValidator);
         }
 
         public static boolean enableRockGen() {
