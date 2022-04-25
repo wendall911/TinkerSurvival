@@ -1,6 +1,7 @@
 package tinkersurvival.util;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -31,7 +32,13 @@ public enum ToolType {
 
     public boolean is(Item item) {
         ItemStack stack = new ItemStack(item);
-        return this.tag != null && stack.is(item);
+        AtomicBoolean hasKey = new AtomicBoolean(false);
+
+        stack.getTags().takeWhile((TagKey<Item> n) -> {
+            return !hasKey.get();
+        }).filter(tagKey -> tag == tagKey).map(tagKey -> true).forEach(hasKey::set);
+
+        return this.tag != null && hasKey.get();
     }
 
 }
