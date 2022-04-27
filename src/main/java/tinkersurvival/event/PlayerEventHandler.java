@@ -1,6 +1,8 @@
 package tinkersurvival.event;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
@@ -8,6 +10,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.items.tool.Knife;
 import tinkersurvival.items.tool.Saw;
 import tinkersurvival.TinkerSurvival;
@@ -50,6 +53,22 @@ public class PlayerEventHandler {
                     }
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (!ConfigHandler.Server.enableHungerPenalty()) {
+            return;
+        }
+
+        Player player = event.getPlayer() instanceof Player ? (Player) event.getPlayer() : null;
+
+        if ((player != null) && !player.level.isClientSide && event.isWasDeath()) {
+            ServerPlayer sp = (ServerPlayer) player;
+
+            sp.getFoodData().setFoodLevel(ConfigHandler.Server.hunger());
+            sp.getFoodData().setSaturation(ConfigHandler.Server.saturation());
         }
     }
 
