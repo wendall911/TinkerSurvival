@@ -82,6 +82,9 @@ public final class ConfigHandler {
         private static DoubleValue FLINT_CHANCE;
         private static DoubleValue HEAL_RATE;
         private static DoubleValue SLOW_DOWN_MULTIPLIER;
+        private static BooleanValue ENABLE_HUNGER_PENALTY;
+        private static IntValue HUNGER;
+        private static IntValue SATURATION;
 
         private static final List<String> MODS_LIST = Arrays.asList("mods");
         private static final String[] modsStrings = new String[] {
@@ -148,6 +151,15 @@ public final class ConfigHandler {
                 .comment("List of mods that have blocks that are generally decorative in nature and require no tool for harvesting blocks. Default: "
                         + "[\"" + String.join("\", \"", blockModsStrings) + "\"]")
                 .defineListAllowEmpty(BLOCK_MODS_LIST, getFields(blockModsStrings), modidValidator);
+            ENABLE_HUNGER_PENALTY = builder
+                .comment("Hunger penalty feature. If after dying, player is rewarded with reduced hunger levels.")
+                .define("ENABLE_HUNGER_PENALTY", false);
+            HUNGER = builder
+                .comment("Hunger value after death. (0 = Really? That's just cruel, 20 = No penalty.)")
+                .defineInRange("HUNGER", 8, 0, 20);
+            SATURATION = builder
+                .comment("Saturation value after death. Range 0 to 20.")
+                .defineInRange("SATURATION", 0, 0, 20);
         }
 
         public static boolean enableRockGen() {
@@ -195,6 +207,19 @@ public final class ConfigHandler {
 
             return mods;
         }
+
+        public static boolean enableHungerPenalty() {
+            return CONFIG.ENABLE_HUNGER_PENALTY.get();
+        }
+
+        public static int hunger() {
+            return CONFIG.HUNGER.get();
+        }
+
+        public static int saturation() {
+            return CONFIG.SATURATION.get();
+        }
+
     }
 
 }
