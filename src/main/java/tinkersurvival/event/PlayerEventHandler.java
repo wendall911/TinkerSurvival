@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -56,19 +57,24 @@ public class PlayerEventHandler {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerClone(PlayerEvent.Clone event) {
-        if (!ConfigHandler.Server.enableHungerPenalty()) {
-            return;
-        }
-
         Player player = event.getPlayer() instanceof Player ? (Player) event.getPlayer() : null;
 
-        if ((player != null) && !player.level.isClientSide && event.isWasDeath()) {
+        if ((player != null)
+                && !player.isCreative()
+                && !player.isSpectator()
+                && !player.level.isClientSide
+                && event.isWasDeath()) {
             ServerPlayer sp = (ServerPlayer) player;
 
-            sp.getFoodData().setFoodLevel(ConfigHandler.Server.hunger());
-            sp.getFoodData().setSaturation(ConfigHandler.Server.saturation());
+            if (ConfigHandler.Server.enableHungerPenalty()) {
+                sp.getFoodData().setFoodLevel(ConfigHandler.Server.hunger());
+                sp.getFoodData().setSaturation(ConfigHandler.Server.saturation());
+            }
+            if (ConfigHandler.Server.enableHealthPenalty()) {
+                sp.setHealth(ConfigHandler.Server.health());
+            }
         }
     }
 

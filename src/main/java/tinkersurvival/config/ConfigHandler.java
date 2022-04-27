@@ -85,6 +85,8 @@ public final class ConfigHandler {
         private static BooleanValue ENABLE_HUNGER_PENALTY;
         private static IntValue HUNGER;
         private static IntValue SATURATION;
+        private static BooleanValue ENABLE_HEALTH_PENALTY;
+        private static DoubleValue HEALTH;
 
         private static final List<String> MODS_LIST = Arrays.asList("mods");
         private static final String[] modsStrings = new String[] {
@@ -155,11 +157,17 @@ public final class ConfigHandler {
                 .comment("Hunger penalty feature. If after dying, player is rewarded with reduced hunger levels.")
                 .define("ENABLE_HUNGER_PENALTY", false);
             HUNGER = builder
-                .comment("Hunger value after death. (0 = Really? That's just cruel, 20 = No penalty.)")
+                .comment("Hunger value after death in half shanks. (0 = Really? That's just cruel, 20 = No penalty.)")
                 .defineInRange("HUNGER", 8, 0, 20);
             SATURATION = builder
                 .comment("Saturation value after death. Range 0 to 20.")
                 .defineInRange("SATURATION", 0, 0, 20);
+            ENABLE_HEALTH_PENALTY = builder
+                .comment("Health penalty feature. If after dying, player is rewarded with reduced health levels.")
+                .define("ENABLE_HEALTH_PENALTY", false);
+            HEALTH = builder
+                .comment("Health value after death in half hearts.")
+                .defineInRange("HEALTH", 6.0, 0.5, 100.0);
         }
 
         public static boolean enableRockGen() {
@@ -218,6 +226,15 @@ public final class ConfigHandler {
 
         public static int saturation() {
             return CONFIG.SATURATION.get();
+        }
+
+        public static boolean enableHealthPenalty() {
+            return CONFIG.ENABLE_HEALTH_PENALTY.get();
+        }
+
+        public static float health() {
+            double health = CONFIG.HEALTH.get();
+            return (float)health;
         }
 
     }
