@@ -285,6 +285,24 @@ public class ModRecipesProvider extends RecipeProvider {
         // Botania
         wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.BOTANIA_MODID));
         plankRecipeBuilder(wrapped, ModIntegration.BOTANIA_DREAMWOOD_PLANKS.get(), TagManager.Items.BOTANIA_DREAMWOOD_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BOTANIA_LIVINGWOOD_PLANKS.get(), TagManager.Items.BOTANIA_LIVINGWOOD_LOGS, "has_logs");
+
+        // Immersive Engineering
+        ShapelessRecipeBuilder.shapeless(ModIntegration.IE_STICK_TREATED.get(), 2)
+                .requires(TagManager.Items.IE_TREATED_WOOD)
+                .requires(TinkerSurvivalItems.SAW.get())
+                .group("treated_sticks")
+                .unlockedBy("has_treated_planks", has(TagManager.Items.IE_TREATED_WOOD))
+                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "stick_treated"));
+
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.IE_MODID));
+        ShapelessRecipeBuilder.shapeless(ModIntegration.IE_STICK_TREATED.get(), 4)
+                .requires(TagManager.Items.IE_TREATED_WOOD)
+                .requires(TagManager.Items.IE_TREATED_WOOD)
+                .requires(TinkerSurvivalItems.SAW.get())
+                .group("treated_sticks")
+                .unlockedBy("has_treated_planks", has(TagManager.Items.IE_TREATED_WOOD))
+                .save(wrapped, new ResourceLocation(ModIntegration.IE_MODID, "crafting/stick_treated"));
 
         ShapelessRecipeBuilder.shapeless(Items.STICK, 2)
                 .requires(ItemTags.PLANKS)

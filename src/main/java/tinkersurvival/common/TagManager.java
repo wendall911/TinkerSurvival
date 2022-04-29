@@ -69,6 +69,10 @@ public final class TagManager {
 
         // Botania
         public static final Tag.Named<Item> BOTANIA_DREAMWOOD_LOGS = create("dreamwood_logs");
+        public static final Tag.Named<Item> BOTANIA_LIVINGWOOD_LOGS = create("livingwood_logs");
+
+        // IE
+        public static final Tag.Named<Item> IE_TREATED_WOOD = forgeTag("treated_wood");
 
         private static Tag.Named<Item> create(String id) {
             return ItemTags.createOptional(identifier(id));

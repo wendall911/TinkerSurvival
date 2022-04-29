@@ -31,6 +31,8 @@ public final class ModIntegration extends TinkerSurvivalModule {
     public static RegistryObject<Item> BOP_UMBRAN_PLANKS;
     public static RegistryObject<Item> BOP_WILLOW_PLANKS;
     public static RegistryObject<Item> BOTANIA_DREAMWOOD_PLANKS;
+    public static RegistryObject<Item> BOTANIA_LIVINGWOOD_PLANKS;
+    public static RegistryObject<Item> IE_STICK_TREATED;
     public static RegistryObject<Item> QUARK_AZALEA_PLANKS;
     public static RegistryObject<Item> QUARK_BLOSSOM_PLANKS;
     public static RegistryObject<Item> AYCE_HAZEL_PLANKS;
@@ -71,6 +73,8 @@ public final class ModIntegration extends TinkerSurvivalModule {
             BOP_UMBRAN_PLANKS = registerBOPItem("umbran_planks");
             BOP_WILLOW_PLANKS = registerBOPItem("willow_planks");
             BOTANIA_DREAMWOOD_PLANKS = registerBotaniaItem("dreamwood_planks");
+            BOTANIA_LIVINGWOOD_PLANKS = registerBotaniaItem("livingwood_planks");
+            IE_STICK_TREATED = registerIEItem("stick_treated");
             QUARK_AZALEA_PLANKS = registerQuarkItem("azalea_planks");
             QUARK_BLOSSOM_PLANKS = registerQuarkItem("blossom_planks");
             AYCE_HAZEL_PLANKS = registerAyceItem("hazel_planks");
@@ -103,6 +107,10 @@ public final class ModIntegration extends TinkerSurvivalModule {
 
     private static RegistryObject<Item> registerBotaniaItem(String name) {
         return registerItem(name, BOTANIA_ITEM_REGISTRY);
+    }
+
+    private static RegistryObject<Item> registerIEItem(String name) {
+        return registerItem(name, IE_ITEM_REGISTRY);
     }
 
     private static RegistryObject<Item> registerFruitTreesItem(String name) {

@@ -139,6 +139,9 @@ dependencies {
 	//implementation fg.deobf("curse.maven:sushigocrafting-452500:3618339")
 	//implementation fg.deobf("curse.maven:titanium-287342:3622220")
 	//implementation fg.deobf("curse.maven:patchouli-306770:3630725")
+	//implementation fg.deobf("curse.maven:curios-309927:3661868")
+	//implementation fg.deobf("curse.maven:botania-225643:3664223")
+	//implementation fg.deobf("curse.maven:immersiveengineering-231951:3587149")
 }
 
 def commonManifest = {
