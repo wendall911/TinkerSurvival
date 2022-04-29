@@ -71,6 +71,10 @@ public final class TagManager {
 
         // Botania
         public static final TagKey<Item> BOTANIA_DREAMWOOD_LOGS = create("dreamwood_logs");
+        public static final TagKey<Item> BOTANIA_LIVINGWOOD_LOGS = create("livingwood_logs");
+
+        // IE
+        public static final TagKey<Item> IE_TREATED_WOOD = forgeTag("treated_wood");
 
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());

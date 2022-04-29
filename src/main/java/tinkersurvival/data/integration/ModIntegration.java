@@ -38,6 +38,8 @@ public final class ModIntegration {
     public static Item BOP_UMBRAN_PLANKS;
     public static Item BOP_WILLOW_PLANKS;
     public static Item BOTANIA_DREAMWOOD_PLANKS;
+    public static Item BOTANIA_LIVINGWOOD_PLANKS;
+    public static Item IE_STICK_TREATED;
     public static Item QUARK_AZALEA_PLANKS;
     public static Item QUARK_BLOSSOM_PLANKS;
     public static Item AYCE_HAZEL_PLANKS;
@@ -71,6 +73,8 @@ public final class ModIntegration {
             BOP_UMBRAN_PLANKS = registerItem(bopLoc("umbran_planks"));
             BOP_WILLOW_PLANKS = registerItem(bopLoc("willow_planks"));
             BOTANIA_DREAMWOOD_PLANKS = registerItem(botaniaLoc("dreamwood_planks"));
+            BOTANIA_LIVINGWOOD_PLANKS = registerItem(botaniaLoc("livingwood_planks"));
+            IE_STICK_TREATED = registerItem(ieLoc("stick_treated"));
             QUARK_AZALEA_PLANKS = registerItem(qLoc("azalea_planks"));
             QUARK_BLOSSOM_PLANKS = registerItem(qLoc("blossom_planks"));
             AYCE_HAZEL_PLANKS = registerItem(ayceLoc("hazel_planks"));

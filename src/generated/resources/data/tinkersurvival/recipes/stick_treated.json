@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "treated_sticks",
+  "ingredients": [
+    {
+      "tag": "forge:treated_wood"
+    },
+    {
+      "item": "tinkersurvival:saw"
+    }
+  ],
+  "result": {
+    "item": "immersiveengineering:stick_treated",
+    "count": 2
+  }
+}

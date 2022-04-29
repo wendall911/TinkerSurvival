@@ -130,8 +130,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addBOPLogVariants(TagManager.Items.BOP_UMBRAN_LOGS, "umbran");
         addBOPLogVariants(TagManager.Items.BOP_WILLOW_LOGS, "willow");
 
-        // Biomes O' Plenty
+        // Botania
         addBotaniaLogVariants(TagManager.Items.BOTANIA_DREAMWOOD_LOGS, "dreamwood");
+        addBotaniaLogVariants(TagManager.Items.BOTANIA_LIVINGWOOD_LOGS, "livingwood");
 
         // Quark
         addQuarkLogVariants(TagManager.Items.QUARK_AZALEA_LOGS, "azalea");
