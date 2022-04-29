@@ -25,7 +25,6 @@ public final class ConfigHandler {
 
     public static void init() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Client.CONFIG_SPEC);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Common.CONFIG_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Server.CONFIG_SPEC);
     }
 
@@ -52,23 +51,6 @@ public final class ConfigHandler {
         public static boolean enableFailSound() {
             return CONFIG.ENABLE_FAIL_SOUND.get();
         }
-
-    }
-
-    public static final class Common {
-
-        public static final ForgeConfigSpec CONFIG_SPEC;
-
-        private static final Common CONFIG;
-
-        static {
-            Pair<Common,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
-
-            CONFIG_SPEC = specPair.getRight();
-            CONFIG = specPair.getLeft();
-        }
-
-        Common(ForgeConfigSpec.Builder builder) {}
 
     }
 
