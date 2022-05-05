@@ -28,7 +28,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-		generateLooseRockBaseModel();
+        generateLooseRockBaseModel();
 
         TinkerSurvivalWorld.getBlockEntries().stream()
                 .map(RegistryObject::get)

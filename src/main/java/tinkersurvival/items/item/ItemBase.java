@@ -33,13 +33,13 @@ public class ItemBase extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-		Player player = entity instanceof Player ? (Player)entity : null;
+        Player player = entity instanceof Player ? (Player)entity : null;
 
-		if (player instanceof ServerPlayer) {
-			CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
-		}
+        if (player instanceof ServerPlayer) {
+            CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
+        }
 
-		if (!level.isClientSide) {
+        if (!level.isClientSide) {
             String name = stack.getItem().getRegistryName().getPath().toString();
 
             if (name.contains("bandage")) {
@@ -57,20 +57,20 @@ public class ItemBase extends Item {
                 entity.addEffect(new MobEffectInstance(effect, 3600, 1));
             }
 
-		}
-
-		if (player != null) {
-			player.awardStat(Stats.ITEM_USED.get(this));
-			if (!player.getAbilities().instabuild) {
-				stack.shrink(1);
-			}
-		}
-
-		if (animation == UseAnim.DRINK) {
-			level.gameEvent(entity, GameEvent.DRINKING_FINISH, entity.eyeBlockPosition());
         }
 
-		return stack;
+        if (player != null) {
+            player.awardStat(Stats.ITEM_USED.get(this));
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+        }
+
+        if (animation == UseAnim.DRINK) {
+            level.gameEvent(entity, GameEvent.DRINKING_FINISH, entity.eyeBlockPosition());
+        }
+
+        return stack;
     }
 
     @Override

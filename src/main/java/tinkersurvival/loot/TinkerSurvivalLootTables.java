@@ -34,30 +34,30 @@ public class TinkerSurvivalLootTables extends TinkerSurvivalModule {
         STICK_DROPS = LOOT_MODIFIER_REGISTRY.register("stick_drops", LootTableSerializer::new);
         TOOL_LOOT = LOOT_MODIFIER_REGISTRY.register("tool_loot", LootTableSerializer::new);
         RARE_LOOT = LOOT_MODIFIER_REGISTRY.register("rare_loot", LootTableSerializer::new);
-	}
+    }
 
-	public static class LootTableSerializer extends GlobalLootModifierSerializer<LootTableModifier> {
+    public static class LootTableSerializer extends GlobalLootModifierSerializer<LootTableModifier> {
 
-		@Override
-		public LootTableModifier read(ResourceLocation location, JsonObject json, LootItemCondition[] lootCondition) {
-			return new LootTableModifier(
+        @Override
+        public LootTableModifier read(ResourceLocation location, JsonObject json, LootItemCondition[] lootCondition) {
+            return new LootTableModifier(
                 lootCondition,
                 new ItemStack(GsonHelper.getAsItem(json, "item"))
             );
-		}
+        }
 
-		@Override
-		public JsonObject write(LootTableModifier instance) {
+        @Override
+        public JsonObject write(LootTableModifier instance) {
             JsonObject jsonObject = makeConditions(instance.getConditions());
 
             jsonObject.addProperty("item", instance.getStack().getItem().getRegistryName().toString());
 
             return jsonObject;
-		}
+        }
 
-	}
+    }
 
-	public static class LootTableModifier extends LootModifier {
+    public static class LootTableModifier extends LootModifier {
 
         private final ItemStack stack;
 
@@ -83,6 +83,6 @@ public class TinkerSurvivalLootTables extends TinkerSurvivalModule {
             return generatedLoot;
         }
 
-	}
+    }
 
 }

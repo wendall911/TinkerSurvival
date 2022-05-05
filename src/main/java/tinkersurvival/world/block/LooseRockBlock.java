@@ -22,7 +22,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 public class LooseRockBlock extends Block {
 
-	// West, ??, North, fromWest, height, fromNorth
+    // West, ??, North, fromWest, height, fromNorth
     public static final VoxelShape rockHitbox = box(4, 0, 3, 12, 2, 11);
 
     public LooseRockBlock() {

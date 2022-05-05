@@ -91,7 +91,7 @@ public class HarvestEventHandler {
         event.setCanceled(cancel);
     }
 
-	@SubscribeEvent
+    @SubscribeEvent
     public static void harvestCheckEvent(PlayerEvent.HarvestCheck event) {
         final Player player = event.getPlayer();
         final BlockState state = event.getTargetBlock();

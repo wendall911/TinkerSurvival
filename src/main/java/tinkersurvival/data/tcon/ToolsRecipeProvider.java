@@ -39,7 +39,7 @@ public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterial
         toolBuilding(consumer, TinkerSurvivalItems.SAW, "tools/building/");
     }
 
-	private void addPartRecipes(Consumer<FinishedRecipe> consumer) {
+    private void addPartRecipes(Consumer<FinishedRecipe> consumer) {
         String partFolder = "tools/parts/";
         String castFolder = "smeltery/casts/";
 

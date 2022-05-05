@@ -97,7 +97,7 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     }
 
     public void addPlantFiberDrops(Block block) {
-		String name = block.getRegistryName().getPath().toString();
+        String name = block.getRegistryName().getPath().toString();
 
         this.add(
             "plant_fiber_from_" + name,
@@ -110,7 +110,7 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     }
 
     public void addStickDrops(Block block) {
-		String name = block.getRegistryName().getPath().toString();
+        String name = block.getRegistryName().getPath().toString();
 
         this.add(
             "stick_drops_from_" + name,
@@ -147,12 +147,12 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     public static LootItemCondition[] createKnifeChanceCondition(float chance, Block block) {
         return new LootItemCondition[] {
             LootItemRandomChanceCondition.randomChance(chance).build(),
-			MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
+            MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
             LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
         };
     }
 
-	public static LootItemCondition[] createResourceChanceCondition(float chance, ResourceLocation loc) {
+    public static LootItemCondition[] createResourceChanceCondition(float chance, ResourceLocation loc) {
         return new LootItemCondition[] {
             LootItemRandomChanceCondition.randomChance(chance).build(),
             LootTableIdCondition.builder(loc).build()

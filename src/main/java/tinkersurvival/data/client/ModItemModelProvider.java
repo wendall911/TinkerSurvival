@@ -55,7 +55,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, TinkerSurvivalItems.BANDAGE.get());
         builder(itemGenerated, TinkerSurvivalItems.WOODEN_CUP.get());
 
-		addCastModels(TinkerSurvivalItems.SAW_BLADE_CAST);
+        addCastModels(TinkerSurvivalItems.SAW_BLADE_CAST);
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, Item item) {
@@ -64,8 +64,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         return getBuilder(name).parent(itemGenerated).texture("layer0", "item/" + name);
     }
 
-	protected void blockItem(Supplier<? extends Block> block) {
-		String type = block.get().getRegistryName().getPath().toString().replace("_loose_rock", "");
+    protected void blockItem(Supplier<? extends Block> block) {
+        String type = block.get().getRegistryName().getPath().toString().replace("_loose_rock", "");
 
         ItemModelBuilder builder = Optional.ofNullable(block.get())
             .map(Block::asItem)

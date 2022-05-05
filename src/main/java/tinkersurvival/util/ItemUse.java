@@ -25,7 +25,7 @@ public class ItemUse {
 
     private static Map<String, String> whitelistToolsMap = new HashMap<>();
 
-	private static List<String> TOOL_TYPES = new ArrayList<String>(
+    private static List<String> TOOL_TYPES = new ArrayList<String>(
         Arrays.asList(
             "pickaxe",
             "axe",
@@ -42,7 +42,7 @@ public class ItemUse {
             "revolver",
             "saw"
         )
-	);
+    );
     
     public static void init() {
         if (ModList.get().isLoaded("tinkersarchery")) {
@@ -103,17 +103,17 @@ public class ItemUse {
 
     public static String getToolClass(ItemStack stack) {
         String itemName = stack.getItem().getRegistryName().toString();
-		String type = whitelistToolsMap.get(itemName);
+        String type = whitelistToolsMap.get(itemName);
 
         if (type == null) {
-			String[] nameParts = itemName.split("[^a-z]+");
-			for (String toolType : TOOL_TYPES) {
-				if (itemName.contains(toolType)
-						&& Arrays.asList(nameParts).contains(toolType)) {
-					type = toolType;
-				}
-			}
-		}
+            String[] nameParts = itemName.split("[^a-z]+");
+            for (String toolType : TOOL_TYPES) {
+                if (itemName.contains(toolType)
+                        && Arrays.asList(nameParts).contains(toolType)) {
+                    type = toolType;
+                }
+            }
+        }
 
         return type;
     }
