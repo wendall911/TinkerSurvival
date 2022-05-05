@@ -1,5 +1,6 @@
 modLoader="javafml"
 loaderVersion="[38,)"
+issueTrackerURL="https://github.com/wendall911/TinkerSurvival/issues"
 license="MIT"
 
 [[mods]]
@@ -11,7 +12,8 @@ license="MIT"
   updateJSONURL="https://raw.githubusercontent.com/wendall911/TinkerSurvival/1.18.x/files/updates.json"
   authors="wendall911"
   credits="ashar42"
-  logoFile=""
+  itemIcon="tinkersurvival:rock_stone"
+  logoFile="logo.png"
 
 [[dependencies.tinkersurvival]]
     modId="forge"
