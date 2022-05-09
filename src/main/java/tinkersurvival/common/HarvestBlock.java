@@ -110,7 +110,7 @@ public final class HarvestBlock {
         }
 
         if (!unknownMaterialBlocks.isEmpty()) {
-            TinkerSurvival.LOGGER.error("Unable to infer primary tools for %s blocks with unknown materials. These blocks will not be affected by NTP's modifications!", unknownMaterialBlocks.values().stream().mapToInt(Collection::size).sum());
+            TinkerSurvival.LOGGER.error("Unable to infer primary tools for %s blocks with unknown materials. These blocks will not be enforce correct tool.", unknownMaterialBlocks.values().stream().mapToInt(Collection::size).sum());
             unknownMaterialBlocks
                 .forEach((mat, blocks) -> {
                     blocks.forEach(TinkerSurvival.LOGGER::warn);
