@@ -17,6 +17,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.ModList;
 
 import tinkersurvival.common.HarvestBlock;
 import tinkersurvival.common.TagManager;
@@ -43,6 +44,16 @@ public class HarvestEventHandler {
         boolean cancel = false;
         boolean alwaysBreakable = state.is(TagManager.Blocks.ALWAYS_BREAKABLE) ||
                 ((AbstractBlockStateAccessor) state).getDestroySpeed() == 0;
+
+        if (ModList.get().isLoaded("carryon")) {
+            final ItemStack handStack = player.getMainHandItem();
+            final ItemStack offhandStack = player.getOffhandItem();
+
+            if (handStack.isEmpty() && offhandStack.isEmpty()
+                    && tschipp.carryon.client.keybinds.CarryOnKeybinds.isKeyPressed(player)) {
+                alwaysBreakable = true;
+            }
+        }
 
         if (!alwaysBreakable && !player.isCreative()) {
             if (expectedToolType != ToolType.NONE) {
