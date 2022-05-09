@@ -133,6 +133,8 @@ dependencies {
         transitive = false
     }
 
+    compileOnly fg.deobf("curse.maven:carryon-274259:3601938")
+
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
 
     //Include some examples here for testing other mods
