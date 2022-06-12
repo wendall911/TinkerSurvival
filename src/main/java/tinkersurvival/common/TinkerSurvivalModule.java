@@ -27,7 +27,7 @@ public abstract class TinkerSurvivalModule {
         ITEM_TCON_REGISTRY.register(bus);
         LOOT_MODIFIER_REGISTRY.register(bus);
 
-        if (ConfigHandler.Server.enableRockGen()) {
+        if (ConfigHandler.Common.enableRockGen()) {
             FEATURE_REGISTRY.register(bus);
         }
     }

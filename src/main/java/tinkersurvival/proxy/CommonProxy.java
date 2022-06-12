@@ -58,7 +58,7 @@ public class CommonProxy {
     public static void onBiomeLoading(BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder generator = event.getGeneration();
 
-        if (ConfigHandler.Server.enableRockGen()) {
+        if (ConfigHandler.Common.enableRockGen()) {
             generator.addFeature(
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 LooseRockFeatureHolders.LOOSE_ROCKS_PLACEMENT

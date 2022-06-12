@@ -20,7 +20,7 @@ public class LooseRockFeatureHolders {
 
     public static final Holder<PlacedFeature> LOOSE_ROCKS_PLACEMENT = PlacementUtils.register("loose_rocks",
         LOOSE_ROCKS_CONFIGURED,
-        CountPlacement.of(ConfigHandler.Server.rockGenFrequency()),
+        CountPlacement.of(ConfigHandler.Common.rockGenFrequency()),
         InSquarePlacement.spread(),
         PlacementUtils.HEIGHTMAP_WORLD_SURFACE
     );
