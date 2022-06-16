@@ -1,26 +1,26 @@
 {
     "display": {
         "title": {
-            "translate": "item.grass_string.name"
+            "translate": "advancements.tinkersurvival.plant_string.title"
         },
         "description": {
-            "translate": "advancements.tinkersurvival.grass_string.desc"
+            "translate": "advancements.tinkersurvival.plant_string.desc"
         },
         "icon": {
-            "item": "tinkersurvival:grass_string"
+            "item": "tinkersurvival:plant_string"
         },
         "frame": "task",
         "show_toast": true,
-        "announce_to_chat": true,
+        "announce_to_chat": false,
         "hidden": false
     },
     "criteria": {
-        "has_grass_fiber": {
+        "has_plant_string": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "tinkersurvival:grass_fiber"
+                        "items": ["tinkersurvival:plant_string"]
                     }
                 ]
             }
@@ -28,12 +28,15 @@
     },
     "requirements": [
         [
-            "has_grass_fiber"
+            "has_plant_string"
         ]
     ],
     "rewards": {
         "recipes": [
-            "tinkersurvival:grass_string"
+            "tinkersurvival:crude_hatchet",
+            "tinkersurvival:crude_saw_handle",
+            "tinkersurvival:crude_saw_blade",
+            "tinkersurvival:crude_saw"
         ]
     },
     "parent": "tinkersurvival:crude_knife"
