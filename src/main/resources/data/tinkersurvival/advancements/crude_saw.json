@@ -1,27 +1,26 @@
 {
     "display": {
         "title": {
-            "translate": "gui.toolforge.name"
+            "translate": "advancements.tinkersurvival.crude_saw.title"
         },
         "description": {
-            "translate": "advancements.tinkersurvival.toolforge.desc",
-            "italic": true
+            "translate": "advancements.tinkersurvival.crude_saw.desc"
         },
         "icon": {
-            "item": "tconstruct:toolforge"
+            "item": "tinkersurvival:crude_saw"
         },
         "frame": "task",
         "show_toast": true,
-        "announce_to_chat": true,
+        "announce_to_chat": false,
         "hidden": false
     },
     "criteria": {
-        "placed_tool_forge": {
+        "has_saw": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "tconstruct:toolforge"
+                        "items": ["tinkersurvival:crude_saw"]
                     }
                 ]
             }
@@ -29,8 +28,8 @@
     },
     "requirements": [
         [
-            "placed_tool_forge"
+            "has_saw"
         ]
     ],
-    "parent": "tinkersurvival:tool_station"
+    "parent": "tinkersurvival:plant_string"
 }
