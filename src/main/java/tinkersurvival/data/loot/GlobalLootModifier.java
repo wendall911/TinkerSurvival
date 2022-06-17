@@ -1,18 +1,18 @@
 package tinkersurvival.data.loot;
 
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.predicates.*;
 
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
@@ -97,7 +97,7 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     }
 
     public void addPlantFiberDrops(Block block) {
-        String name = block.getRegistryName().getPath().toString();
+        String name = block.getRegistryName().getPath();
 
         this.add(
             "plant_fiber_from_" + name,
@@ -110,13 +110,13 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     }
 
     public void addStickDrops(Block block) {
-        String name = block.getRegistryName().getPath().toString();
+        String name = block.getRegistryName().getPath();
 
         this.add(
             "stick_drops_from_" + name,
             TinkerSurvivalLootTables.STICK_DROPS.get(),
             new TinkerSurvivalLootTables.LootTableModifier(
-                createKnifeChanceCondition(0.16F, block),
+                createPlayerChanceCondition(0.16F, block),
                 new ItemStack(Items.STICK)
             )
         );
@@ -146,9 +146,20 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
 
     public static LootItemCondition[] createKnifeChanceCondition(float chance, Block block) {
         return new LootItemCondition[] {
-            LootItemRandomChanceCondition.randomChance(chance).build(),
-            MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
-            LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
+                LootItemRandomChanceCondition.randomChance(chance).build(),
+                MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.KNIFE_TOOLS)).build(),
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
+        };
+    }
+
+    /**
+     * Returns a list of Conditions where a player must have broken the block, with the specified chance
+     */
+    public static LootItemCondition[] createPlayerChanceCondition(float chance, Block block) {
+        return new LootItemCondition[] {
+                LootItemRandomChanceCondition.randomChance(chance).build(),
+                LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(EntityType.PLAYER)).build(),
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
         };
     }
 
