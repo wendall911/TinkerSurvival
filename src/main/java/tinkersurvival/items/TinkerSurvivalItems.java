@@ -93,25 +93,25 @@ public final class TinkerSurvivalItems {
     }
 
     private static Item registerKnifeTool(String name, Tier tier) {
-        Item knifeTool = new CrudeKnife(tier, 1, -1.4F, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP));
+        Item knifeTool = new CrudeKnife(tier, 1, -1.4F, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, knifeTool);
     }
 
     private static Item registerHatchetTool(String name, Tier tier) {
-        Item hatchetTool = new CrudeHatchet(tier, 4, -3.0F, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP));
+        Item hatchetTool = new CrudeHatchet(tier, 4, -3.0F, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, hatchetTool);
     }
 
     private static Item registerSawTool(String name, Tier tier, int damage, float speed) {
-        Item sawTool = new CrudeSaw(name, tier, damage, speed, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP));
+        Item sawTool = new CrudeSaw(name, tier, damage, speed, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, sawTool);
     }
 
     private static Item registerMortar(String name) {
-        return registerItem(name, new Mortar(new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP)));
+        return registerItem(name, new Mortar(new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP).setNoRepair()));
     }
 
 }
