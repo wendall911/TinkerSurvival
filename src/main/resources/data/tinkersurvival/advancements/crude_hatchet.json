@@ -1,29 +1,26 @@
 {
     "display": {
         "title": {
-            "translate": "gui.toolstation.name"
+            "translate": "advancements.tinkersurvival.crude_hatchet.title"
         },
         "description": {
-            "translate": "gui.toolstation.info",
-            "italic": true
+            "translate": "advancements.tinkersurvival.crude_hatchet.desc"
         },
         "icon": {
-            "item": "tconstruct:tooltables",
-            "data": 3
+            "item": "tinkersurvival:crude_hatchet"
         },
         "frame": "task",
         "show_toast": true,
-        "announce_to_chat": true,
+        "announce_to_chat": false,
         "hidden": false
     },
     "criteria": {
-        "placed_tool_station": {
+        "has_crude_knife": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "tconstruct:tooltables",
-                        "data": 3
+                        "items": ["tinkersurvival:crude_hatchet"]
                     }
                 ]
             }
@@ -31,8 +28,8 @@
     },
     "requirements": [
         [
-            "placed_tool_station"
+            "has_crude_knife"
         ]
     ],
-    "parent": "tinkersurvival:getting_wood"
+    "parent": "tinkersurvival:plant_string"
 }

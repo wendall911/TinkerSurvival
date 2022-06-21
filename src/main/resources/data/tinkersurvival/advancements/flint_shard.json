@@ -1,27 +1,26 @@
 {
     "display": {
         "title": {
-            "translate": "item.crude_knife.name"
+            "translate": "advancements.tinkersurvival.flint_shard.title"
         },
         "description": {
-            "translate": "advancements.tinkersurvival.crude_knife.desc",
-            "italic": true
+            "translate": "advancements.tinkersurvival.flint_shard.desc"
         },
         "icon": {
-            "item": "tinkersurvival:crude_knife"
+            "item": "tinkersurvival:flint_shard"
         },
         "frame": "task",
         "show_toast": true,
-        "announce_to_chat": true,
+        "announce_to_chat": false,
         "hidden": false
     },
     "criteria": {
-        "has_knife": {
+        "has_flint_shard": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "tinkersurvival:crude_knife"
+                        "items": ["tinkersurvival:flint_shard"]
                     }
                 ]
             }
@@ -29,14 +28,14 @@
     },
     "requirements": [
         [
-            "has_knife"
+            "has_flint_shard"
         ]
     ],
     "rewards": {
         "recipes": [
-            "tinkersurvival:crude_hatchet",
-            "tinkersurvival:crude_saw"
+            "tinkersurvival:flint",
+            "tinkersurvival:crude_knife"
         ]
     },
-    "parent": "tinkersurvival:flint_shard"
+    "parent": "tinkersurvival:sticks_and_stones"
 }
