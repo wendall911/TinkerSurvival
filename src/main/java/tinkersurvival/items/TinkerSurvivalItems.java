@@ -105,12 +105,12 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
         CRUDE_SAW = registerSawTool("crude_saw", FLINT_TIER, 3, -4.0F);
         MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
         KNIFE = ITEM_TCON_REGISTRY.register("knife", () -> new Knife(
-            (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS),
+            (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS).setNoRepair(),
             KNIFE_DEFINITION
         ));
         KNIFE_DEFINITION = ToolDefinition.builder(KNIFE).meleeHarvest().build();
         SAW = ITEM_TCON_REGISTRY.register("saw", () -> new Saw(
-            (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS),
+            (new Item.Properties()).stacksTo(1).tab(TinkerTools.TAB_TOOLS).setNoRepair(),
             SAW_DEFINITION
         ));
         SAW_BLADE = ITEM_TCON_REGISTRY.register("saw_blade", () -> new ToolPartItem(
@@ -162,25 +162,25 @@ public final class TinkerSurvivalItems extends TinkerSurvivalModule {
     }
 
     private static RegistryObject<Item> registerKnifeTool(String name, Tier tier) {
-        Item knifeTool = new CrudeKnife(tier, 1, -1.4F, new Item.Properties().tab(TOOL_TAB_GROUP));
+        Item knifeTool = new CrudeKnife(tier, 1, -1.4F, new Item.Properties().tab(TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, () -> knifeTool);
     }
 
     private static RegistryObject<Item> registerHatchetTool(String name, Tier tier) {
-        Item hatchetTool = new CrudeHatchet(tier, 4, -3.0F, new Item.Properties().tab(TOOL_TAB_GROUP));
+        Item hatchetTool = new CrudeHatchet(tier, 4, -3.0F, new Item.Properties().tab(TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, () -> hatchetTool);
     }
 
     private static RegistryObject<Item> registerSawTool(String name, Tier tier, int damage, float speed) {
-        Item sawTool = new CrudeSaw(name, tier, damage, speed, new Item.Properties().tab(TOOL_TAB_GROUP));
+        Item sawTool = new CrudeSaw(name, tier, damage, speed, new Item.Properties().tab(TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, () -> sawTool);
     }
 
     private static RegistryObject<Item> registerMortar(String name) {
-        return registerItem(name, () -> new Mortar(new Item.Properties().tab(TOOL_TAB_GROUP)));
+        return registerItem(name, () -> new Mortar(new Item.Properties().tab(TOOL_TAB_GROUP).setNoRepair()));
     }
 
 }
