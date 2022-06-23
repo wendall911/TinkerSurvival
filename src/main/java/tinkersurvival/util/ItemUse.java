@@ -23,9 +23,11 @@ public class ItemUse {
     private static final List<String> TOOL_TYPES = new ArrayList<>(
         Arrays.asList(
             "pickaxe",
+            "pickadze",
             "axe",
             "hoe",
             "mattock",
+            "kama",
             "shears",
             "shovel",
             "sword",
@@ -34,6 +36,7 @@ public class ItemUse {
             "wirecutter",
             "wrench",
             "drill",
+            "building",
             "revolver",
             "saw"
         )
@@ -110,7 +113,49 @@ public class ItemUse {
             }
         }
 
-        return type;
+        if (type != null) {
+            return type;
+        }
+        else {
+            return "unknown";
+        }
+    }
+
+    public static boolean isCorrectToolType(String type, ItemStack handStack) {
+        boolean isCorrectToolType = false;
+        String toolClass = getToolClass(handStack);
+
+        switch(type) {
+            case "pickaxe":
+                isCorrectToolType = toolClass.equals(type)
+                        || toolClass.equals("drill")
+                        || toolClass.equals("pickadze")
+                        || toolClass.equals("building")
+                        || ToolType.PICKAXE.is(handStack.getItem());
+                break;
+            case "axe":
+                isCorrectToolType = toolClass.equals(type)
+                        || toolClass.equals("mattock")
+                        || toolClass.equals("building")
+                        || ToolType.AXE.is(handStack.getItem());
+                break;
+            case "shovel":
+                isCorrectToolType = toolClass.equals(type)
+                        || toolClass.equals("mattock")
+                        || toolClass.equals("drill")
+                        || toolClass.equals("pickadze")
+                        || toolClass.equals("building")
+                        || ToolType.SHOVEL.is(handStack.getItem());
+                break;
+            case "hoe":
+                isCorrectToolType = toolClass.equals(type)
+                        || toolClass.equals("mattock")
+                        || toolClass.equals("building")
+                        || ToolType.HOE.is(handStack.getItem());
+                break;
+        }
+
+        return isCorrectToolType;
     }
 
     public static boolean isCorrectTool(BlockState state, Player player, ItemStack handStack) {
@@ -120,16 +165,16 @@ public class ItemUse {
         }
 
         // Check tagged tool uses
-        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE) && ToolType.PICKAXE.is(handStack.getItem())) {
+        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE) && isCorrectToolType("pickaxe", handStack)) {
             return true;
         }
-        else if (state.is(BlockTags.MINEABLE_WITH_AXE) && ToolType.AXE.is(handStack.getItem())) {
+        else if (state.is(BlockTags.MINEABLE_WITH_AXE) && isCorrectToolType("axe", handStack)) {
             return true;
         }
-        else if (state.is(BlockTags.MINEABLE_WITH_SHOVEL) && ToolType.SHOVEL.is(handStack.getItem())) {
+        else if (state.is(BlockTags.MINEABLE_WITH_SHOVEL) && isCorrectToolType("shovel", handStack)) {
             return true;
         }
-        else if (state.is(BlockTags.MINEABLE_WITH_HOE) && ToolType.HOE.is(handStack.getItem())) {
+        else if (state.is(BlockTags.MINEABLE_WITH_HOE) && isCorrectToolType("hoe", handStack)) {
             return true;
         }
 

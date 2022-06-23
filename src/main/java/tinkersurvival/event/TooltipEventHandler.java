@@ -27,7 +27,7 @@ public class TooltipEventHandler {
             String type = ItemUse.getToolClass(stack);
             String tooltip = "tooltip.uselessTool2";
 
-            if (type != null) {
+            if (!type.equals("unknown")) {
 
                 switch (type) {
                     case "bow" -> tooltip = "tooltip.uselessBow1";
