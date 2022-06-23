@@ -102,6 +102,7 @@ public final class ConfigHandler {
         private static IntValue SATURATION;
         private static BooleanValue ENABLE_HEALTH_PENALTY;
         private static DoubleValue HEALTH;
+        private static IntValue GENERIC_DAMAGE;
 
         private static final List<String> MODS_LIST = Arrays.asList("mods");
         private static final String[] modsStrings = new String[] {
@@ -177,6 +178,9 @@ public final class ConfigHandler {
             HEALTH = builder
                 .comment("Health value after death in half hearts.")
                 .defineInRange("HEALTH", 6.0, 0.5, 100.0);
+            GENERIC_DAMAGE = builder
+                .comment("The amount of generic damage in half hearts a non-whitelisted tool, or bare hand should do. Default 0")
+                .defineInRange("GENERIC_DAMAGE", 0, 0, 4);
         }
 
         public static double flintChance() {
@@ -236,6 +240,11 @@ public final class ConfigHandler {
         public static float health() {
             double health = CONFIG.HEALTH.get();
             return (float)health;
+        }
+
+        public static float genericDamage() {
+            int damage = CONFIG.GENERIC_DAMAGE.get();
+            return (float)damage;
         }
 
     }

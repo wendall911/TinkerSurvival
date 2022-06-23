@@ -28,8 +28,12 @@ public class AttackEventHandler {
                     if (!level.isClientSide && ConfigHandler.Client.enableFailSound()) {
                         level.playSound(null, player.getOnPos(), Sounds.SWORD_FAIL.get(), SoundSource.BLOCKS, 0.4F, 1.0F);
                     }
-                    event.setAmount(0.0f);
-                    event.setCanceled(true);
+
+                    event.setAmount(ConfigHandler.Server.genericDamage());
+
+                    if (ConfigHandler.Server.genericDamage() == 0.0F) {
+                        event.setCanceled(true);
+                    }
                 }
             }
         }
