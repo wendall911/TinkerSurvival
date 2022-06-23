@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.16
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:player"
+      },
+      "entity": "this"
+    },
+    {
+      "condition": "minecraft:block_state_property",
+      "block": "minecraft:jungle_leaves"
+    }
+  ],
+  "item": "minecraft:stick",
+  "type": "tinkersurvival:stick_drops"
+}
