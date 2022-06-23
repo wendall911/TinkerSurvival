@@ -152,6 +152,14 @@ dependencies {
     //implementation fg.deobf("curse.maven:curios-309927:3748873")
     //implementation fg.deobf("curse.maven:botania-225643:3755269")
     //implementation fg.deobf("curse.maven:immersiveengineering-231951:3755665")
+    //runtimeOnly fg.deobf("curse.maven:buildinggadgets-298187:3725903")
+    //runtimeOnly fg.deobf("curse.maven:homeostatic-634466:3845248")
+    //runtimeOnly fg.deobf("curse.maven:twilightforest-227639:3828399")
+    //runtimeOnly fg.deobf("curse.maven:oreganized-439153:3819472")
+    //runtimeOnly fg.deobf("curse.maven:oreganized-439153:3819472")
+    //runtimeOnly fg.deobf("curse.maven:macawswindows-363569:3712019")
+    //runtimeOnly fg.deobf("curse.maven:configured-457570:3721946")
+    //runtimeOnly fg.deobf("curse.maven:catalogue-459701:3803098")
 }
 
 def commonManifest = {
