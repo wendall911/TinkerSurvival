@@ -1,0 +1,13 @@
+{
+  "title": "Homeostatic Temperature Indicator",
+  "image": {
+    "file": "tinkersurvival:book/images/thermometer.png",
+    "width": 170,
+    "height": 91
+  },
+  "text": [
+    {
+      "text": "There is a temperature indicator to the right of your hotbar. Above the thermometer is the relative temperature around you. The temperature on the globe is your core temperature."
+    }
+  ]
+}

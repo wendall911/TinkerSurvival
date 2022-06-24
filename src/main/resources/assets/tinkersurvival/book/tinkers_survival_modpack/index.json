@@ -58,7 +58,7 @@
     "name": "temperature",
     "data": "sections/temperature.json",
     "icon": {
-      "item": "cold_sweat:thermometer"
+      "item": "homeostatic:leather_flask"
     }
   },
   {

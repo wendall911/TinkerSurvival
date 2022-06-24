@@ -1,13 +1,10 @@
 {
-  "title": "Getting Leather for Insulation",
-  "item": "minecraft:leather",
-  "text": [
+  "title": "Getting Leather for Water Flask",
+  "recipe": "homeostatic:leather_flask",
+  "grid_size": "large",
+  "description": [
     {
-      "text": "Tip: Leather can be obtained by Smoking most meats."
-    },
-    {
-      "text": "One great way to get Leather early game is fishing! Cook the fish in a furnace, then smoke the cooked fish in a Smoker to obtain Leather",
-      "paragraph": true
+      "text": "One great way to get Leather early game is fishing! Cook the fish in a furnace, then smoke the cooked fish in a Smoker to obtain Leather"
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "title": "Armor Insulation",
+  "image": {
+    "file": "tinkersurvival:book/images/insulation.png",
+    "width": 170,
+    "height": 79
+  },
+  "text": [
+    {
+      "text": "Any piece of armor can be combined with different materials, wool gives it the \"Insulated\" tag. This works with Tinkers' Construct armor as well!"
+    }
+  ]
+}

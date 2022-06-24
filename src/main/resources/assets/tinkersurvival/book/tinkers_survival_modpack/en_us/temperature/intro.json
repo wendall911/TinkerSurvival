@@ -1,17 +1,13 @@
 {
-  "title": "Cold Sweat Temperature",
+  "title": "Homeostatic Temperature",
   "image": {
     "file": "tinkersurvival:book/images/temperature.png",
     "width": 170,
-    "height": 33
+    "height": 84
   },
   "text": [
     {
-      "text": "Temperature is the prime mechanic of Cold Sweat. Like hunger and health, it is a resource that must be monitored and properly managed. When the player's core temperature reaches a critical point, either too low or too high, death is imminent unless the problem can be quickly resolved."
-    },
-    {
-      "text": "There is a temperature indicator above your hotbar. It indicates the ambient temperture. 0 is good. Red numbers are getting hotter. Blue, getting colder.",
-      "paragraph": true
+      "text": "Temperature and thirst are primary mechanics of Homeostatic. Like hunger and health, it is a resource that must be monitored and properly managed. When the player's core temperature reaches a critical point, either too low or too high, death is imminent unless the problem can be quickly resolved."
     }
   ]
 }

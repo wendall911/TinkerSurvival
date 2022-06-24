@@ -5,11 +5,15 @@
     "data": "temperature/intro.json"
   },
   {
-    "type": "mantle:crafting",
-    "data": "temperature/sewing_table.json"
+    "type": "mantle:image_text",
+    "data": "temperature/thermometer.json"
   },
   {
-    "type": "mantle:showcase",
+    "type": "mantle:image_text",
+    "data": "temperature/armor_modifier.json"
+  },
+  {
+    "type": "mantle:crafting",
     "data": "temperature/leather.json"
   }
 ]
