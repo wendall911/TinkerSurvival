@@ -2,23 +2,29 @@ package tinkersurvival.data.loot;
 
 import java.util.Objects;
 
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.*;
 
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
+import slimeknights.tconstruct.tools.TinkerTools;
 import tinkersurvival.items.TinkerSurvivalItems;
 import tinkersurvival.loot.TinkerSurvivalLootTables;
 import tinkersurvival.TinkerSurvival;
@@ -127,8 +133,8 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
                 "extra_stick_drops_from_" + name,
                 TinkerSurvivalLootTables.STICK_DROPS.get(),
                 new TinkerSurvivalLootTables.LootTableModifier(
-                        createPlayerChanceCondition(0.16F, block),
-                        new ItemStack(Items.STICK)
+                    createExtraStickDropConditions(0.16F, block),
+                    new ItemStack(Items.STICK)
                 )
         );
     }
@@ -163,15 +169,20 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
         };
     }
 
+    private static final LootItemCondition.Builder HAS_SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
+    private static final LootItemCondition.Builder HAS_NO_SILK_TOUCH = HAS_SILK_TOUCH.invert();
+
     /**
-     * Returns a list of Conditions where a player must have broken the block, with the specified chance
+     * Returns a list of Conditions where a player must have broken the block without silk touch and/or shears like items, with the specified chance
      * Provided by Insane96 <delvillano.alberto@gmail.com>
      */
-    public static LootItemCondition[] createPlayerChanceCondition(float chance, Block block) {
+    public static LootItemCondition[] createExtraStickDropConditions(float chance, Block block) {
         return new LootItemCondition[] {
             LootItemRandomChanceCondition.randomChance(chance).build(),
             LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(EntityType.PLAYER)).build(),
-            LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
+            LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build(),
+            HAS_NO_SILK_TOUCH.build(),
+            MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS).of(TinkerTools.scythe.get())).invert().build()
         };
     }
 
