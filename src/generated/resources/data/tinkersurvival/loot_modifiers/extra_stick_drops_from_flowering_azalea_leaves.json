@@ -14,6 +14,34 @@
     {
       "condition": "minecraft:block_state_property",
       "block": "minecraft:flowering_azalea_leaves"
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:match_tool",
+        "predicate": {
+          "enchantments": [
+            {
+              "enchantment": "minecraft:silk_touch",
+              "levels": {
+                "min": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:match_tool",
+        "predicate": {
+          "items": [
+            "tconstruct:scythe"
+          ],
+          "tag": "tinkersurvival:shear_tools"
+        }
+      }
     }
   ],
   "item": "minecraft:stick",

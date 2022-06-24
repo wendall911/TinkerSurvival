@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import org.jetbrains.annotations.NotNull;
@@ -95,6 +96,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(TinkerTools.dagger.asItem())
             .add(TinkerTools.cleaver.asItem())
             .add(TinkerTools.sword.asItem());
+        getBuilder(TagManager.Items.SHEAR_TOOLS)
+            .add(TinkerTools.kama.asItem())
+            .addTag(Tags.Items.SHEARS);
         builder(TagManager.Items.ROCK, TinkerSurvivalWorld.ROCK_STONE);
         builder(
             TagManager.Items.SAW_PARTS,

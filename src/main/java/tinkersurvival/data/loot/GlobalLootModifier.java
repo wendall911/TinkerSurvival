@@ -182,7 +182,7 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
             LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(EntityType.PLAYER)).build(),
             LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build(),
             HAS_NO_SILK_TOUCH.build(),
-            MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS).of(TinkerTools.scythe.get())).invert().build()
+            MatchTool.toolMatches(ItemPredicate.Builder.item().of(TagManager.Items.SHEAR_TOOLS).of(TinkerTools.scythe.get())).invert().build()
         };
     }
 

@@ -24,6 +24,7 @@ public final class TagManager {
         public static final TagKey<Item> HOE_TOOLS = create("hoe_tools");
         public static final TagKey<Item> KNIFE_TOOLS = create("knife_tools");
         public static final TagKey<Item> SHARP_TOOLS = create("sharp_tools");
+        public static final TagKey<Item> SHEAR_TOOLS = create("shear_tools");
         public static final TagKey<Item> ROCK = create("rock");
         public static final TagKey<Item> SAW_PARTS = create("saw_parts");
         public static final TagKey<Item> BANDAGES = create("bandages");
