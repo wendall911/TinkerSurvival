@@ -1,9 +1,15 @@
 package tinkersurvival.util;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -194,6 +200,17 @@ public class ItemUse {
 
         // Otherwise, we check if the expected tool type can identify this item as it's tool
         return expectedToolType.is(handStack.getItem());
+    }
+
+    public static boolean isArmor(ItemStack stack) {
+        return stack.getItem() instanceof ArmorItem;
+    }
+
+    public static boolean isWhitelistArmor(ItemStack stack) {
+        String itemName = Objects.requireNonNull(stack.getItem().getRegistryName()).toString();
+        String modid = getModId(itemName);
+
+        return ConfigHandler.Server.armorWhitelistMods().contains(modid) || ConfigHandler.Server.armorWhitelistItems().contains(itemName);
     }
 
 }

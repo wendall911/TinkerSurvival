@@ -118,7 +118,7 @@ public final class ConfigHandler {
             "hammer-immersiveengineering:hammer",
             "wirecutter-immersiveengineering:wirecutter",
         };
-        private static Predicate<Object> itemidValidator = s -> s instanceof String
+        private static final Predicate<Object> itemidValidator = s -> s instanceof String
                 && ((String) s).matches("[a-z]+[-]{1}[a-z]+[:]{1}[a-z_]+");
         private final ConfigValue<List<? extends String>> ITEMS;
 
@@ -130,6 +130,21 @@ public final class ConfigHandler {
             "furnish"
         };
         private final ConfigValue<List<? extends String>> BLOCK_MODS;
+
+        private static BooleanValue ENFORCE_WHITELIST_ARMOR;
+        private static final List<String> ARMOR_MODS_LIST = Arrays.asList("armormods");
+        private static final String[] armorModsStrings = new String[] {
+                "immersiveengineering",
+                "tconstruct"
+        };
+        private final ConfigValue<List<? extends String>> ARMOR_MODS;
+        private static final List<String> ARMOR_LIST = Arrays.asList("armor");
+        private static final String[] armorStrings = new String[] {
+                "tconstruct:piggybackpack"
+        };
+        private static final Predicate<Object> armoridValidator = s -> s instanceof String
+                && ((String) s).matches("[a-z]+[:]{1}[a-z_]+");
+        private final ConfigValue<List<? extends String>> ARMOR_WHITELIST;
 
         static {
             Pair<Server,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
@@ -181,6 +196,17 @@ public final class ConfigHandler {
             GENERIC_DAMAGE = builder
                 .comment("The amount of generic damage in half hearts a non-whitelisted tool, or bare hand should do. Default 0")
                 .defineInRange("GENERIC_DAMAGE", 0, 0, 4);
+            ENFORCE_WHITELIST_ARMOR = builder
+                    .comment("Enforce use of armor whitelist. All other armor will not be equipable.")
+                    .define("ENFORCE_WHITELIST_ARMOR", false);
+            ARMOR_MODS = builder
+                    .comment("List of mods that armor will be equipable for. Must enable ENFORCE_WHITELIST_ARMOR to be effective. Default: "
+                            + "[\"" + String.join("\", \"", armorModsStrings) + "\"]")
+                    .defineListAllowEmpty(ARMOR_MODS_LIST, getFields(armorModsStrings), modidValidator);
+            ARMOR_WHITELIST = builder
+                    .comment("List of individual armor items that will always work. Format modid:item Default: "
+                            + "[\"" + String.join("\", \"", armorStrings) + "\"]")
+                    .defineListAllowEmpty(ARMOR_LIST, getFields(armorStrings), armoridValidator);
         }
 
         public static double flintChance() {
@@ -245,6 +271,22 @@ public final class ConfigHandler {
         public static float genericDamage() {
             int damage = CONFIG.GENERIC_DAMAGE.get();
             return (float)damage;
+        }
+
+        public static boolean enforceWhitelistArmor() {
+            return CONFIG.ENFORCE_WHITELIST_ARMOR.get();
+        }
+
+        public static List<String> armorWhitelistMods() {
+            List<String> mods = (List<String>) CONFIG.ARMOR_MODS.get();
+
+            return mods;
+        }
+
+        public static List<String> armorWhitelistItems() {
+            List<String> armorWhitelist = (List<String>) CONFIG.ARMOR_WHITELIST.get();
+
+            return armorWhitelist;
         }
 
     }
