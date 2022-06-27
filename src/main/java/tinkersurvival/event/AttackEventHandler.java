@@ -25,7 +25,7 @@ public class AttackEventHandler {
                 final Level level = player.getLevel();
 
                 if (!ItemUse.isWhitelistItem(handStack)) {
-                    if (!level.isClientSide && ConfigHandler.Client.enableFailSound()) {
+                    if (!level.isClientSide && ConfigHandler.Client.enableFailSound() && ConfigHandler.Server.genericDamage() == 0.0F) {
                         level.playSound(null, player.getOnPos(), Sounds.SWORD_FAIL.get(), SoundSource.BLOCKS, 0.4F, 1.0F);
                     }
 
