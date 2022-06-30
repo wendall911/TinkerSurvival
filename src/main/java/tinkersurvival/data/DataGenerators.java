@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
+import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 
 import tinkersurvival.data.client.ModBlockStateProvider;
 import tinkersurvival.data.client.ModItemModelProvider;
@@ -15,6 +16,7 @@ import tinkersurvival.data.loot.ModLootTables;
 import tinkersurvival.data.loot.GlobalLootModifier;
 import tinkersurvival.data.overrides.BlockTagsOverrideProvider;
 import tinkersurvival.data.recipes.ModRecipesProvider;
+import tinkersurvival.data.tcon.MaterialPartTextureGenerator;
 import tinkersurvival.data.tcon.sprite.SawPartSpriteProvider;
 import tinkersurvival.data.tcon.StationSlotLayoutProvider;
 import tinkersurvival.data.tcon.ToolDefinitionDataProvider;
@@ -33,6 +35,7 @@ public final class DataGenerators {
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(gen, existingFileHelper);
         SawPartSpriteProvider sawPartSprites = new SawPartSpriteProvider();
         String modpackOverrides = System.getenv("MOD_OVERRIDES");
+        TinkerMaterialSpriteProvider materialSprites = new TinkerMaterialSpriteProvider();
 
         gen.addProvider(new ModItemModelProvider(gen, existingFileHelper));
         gen.addProvider(new ModBlockStateProvider(gen, existingFileHelper));
@@ -45,6 +48,10 @@ public final class DataGenerators {
         gen.addProvider(new StationSlotLayoutProvider(gen));
         gen.addProvider(new GeneratorPartTextureJsonGenerator(gen, TinkerSurvival.MODID, sawPartSprites));
         gen.addProvider(new ToolDefinitionDataProvider(gen));
+
+        if (event.includeClient()) {
+            gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, sawPartSprites, materialSprites));
+        }
 
         if (modpackOverrides != null && modpackOverrides.contains("all")) {
             gen.addProvider(new BlockTagsOverrideProvider(gen, event.getExistingFileHelper()));
