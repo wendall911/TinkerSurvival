@@ -106,7 +106,7 @@ public class HarvestEventHandler {
                     || expectedToolType == ToolType.NONE;
 
             if (!canHarvest) {
-                final boolean isOre = state.is(Tags.Blocks.ORES);
+                final boolean isOre = state.is(Tags.Blocks.ORES) || state.is(Tags.Blocks.OBSIDIAN);
 
                 if (isOre && expectedToolType == ToolType.PICKAXE) {
                     canHarvest = (correctTool && handStack.isCorrectToolForDrops(state));
