@@ -39,11 +39,13 @@ public class HarvestEventHandler {
         final LevelAccessor level = event.getWorld();
         final BlockPos pos = event.getPos();
         final BlockState state = level.getBlockState(pos);
-        final Player player = event.getPlayer();
+        final Player player = event.getPlayer() != null ? event.getPlayer() : null;
         final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
         boolean cancel = false;
         boolean alwaysBreakable = state.is(TagManager.Blocks.ALWAYS_BREAKABLE) ||
                 ((AbstractBlockStateAccessor) state).getDestroySpeed() == 0;
+
+        if (player == null) return;
 
         if (ModList.get().isLoaded("carryon")) {
             final ItemStack handStack = player.getMainHandItem();
@@ -94,10 +96,10 @@ public class HarvestEventHandler {
 
     @SubscribeEvent
     public static void harvestCheckEvent(PlayerEvent.HarvestCheck event) {
-        final Player player = event.getPlayer();
+        final Player player = event.getPlayer() != null ? event.getPlayer() : null;
         final BlockState state = event.getTargetBlock();
 
-        if (!player.isCreative()) {
+        if (player != null && !player.isCreative()) {
             final ItemStack handStack = player.getMainHandItem();
             final boolean correctTool = ItemUse.isCorrectTool(state, player, handStack);
             final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
@@ -123,7 +125,10 @@ public class HarvestEventHandler {
     // Controls the slow mining speed of blocks that aren't the right tool
     @SubscribeEvent
     public static void slowMining(PlayerEvent.BreakSpeed event) {
-        final Player player = event.getPlayer();
+        final Player player = event.getPlayer() != null ? event.getPlayer() : null;
+
+        if (player == null) return;
+
         final Level level = player.getLevel();
         final BlockPos pos = event.getPos();
         final BlockState state = level.getBlockState(pos);

@@ -15,16 +15,14 @@ import tinkersurvival.sound.Sounds;
 import tinkersurvival.TinkerSurvival;
 import tinkersurvival.util.ItemUse;
 
-import java.util.Objects;
-
 @Mod.EventBusSubscriber(modid = TinkerSurvival.MODID)
 public class HoeEventHandler {
 
     @SubscribeEvent
     public static void onHoeBlock(BlockToolModificationEvent event) {
-        final Player player = event.getPlayer();
+        final Player player = event.getPlayer() != null ? event.getPlayer() : null;
 
-        if (!Objects.requireNonNull(player).isCreative() && event.getToolAction() == ToolActions.HOE_TILL) {
+        if (player != null && !player.isCreative() && event.getToolAction() == ToolActions.HOE_TILL) {
             final ItemStack handStack = player.getMainHandItem();
             final Level level = player.getLevel();
 

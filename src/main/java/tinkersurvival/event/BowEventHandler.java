@@ -18,9 +18,9 @@ public class BowEventHandler {
     @SubscribeEvent
     public static void onArrowLoose(ArrowLooseEvent event) {
         if (ItemUse.hasTinkerBow()) {
-            final Player player = event.getPlayer();
+            final Player player = event.getPlayer() != null ? event.getPlayer() : null;
 
-            if (!player.isCreative()) {
+            if (player != null && !player.isCreative()) {
                 final ItemStack handStack = player.getMainHandItem();
                 final Level level = player.getLevel();
 
