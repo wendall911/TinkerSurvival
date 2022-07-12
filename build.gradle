@@ -161,6 +161,8 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:configured-457570:3721946")
     //runtimeOnly fg.deobf("curse.maven:catalogue-459701:3803098")
     //runtimeOnly fg.deobf("curse.maven:electrodynamics-316867:3784685")
+    //runtimeOnly fg.deobf("curse.maven:valhesia_core-416935:3768769")
+    //runtimeOnly fg.deobf("curse.maven:valhesia_structures-347488:3708292")
 }
 
 def commonManifest = {
