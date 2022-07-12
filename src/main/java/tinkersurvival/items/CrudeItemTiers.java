@@ -14,5 +14,7 @@ public class CrudeItemTiers {
         .setAttackDamage(0.5F).setRepairMat(Items.COBBLESTONE);
     public static final Tier WOOD_TIER = new CrudeItemTier().setMaxUses(20).setEfficiency(0.0F)
         .setAttackDamage(0.0F).setRepairMat(ItemTags.PLANKS);
+    public static final Tier NO_TIER = new CrudeItemTier().setMaxUses(1).setEfficiency(0.0F)
+            .setAttackDamage(0.0F);
 
 }
