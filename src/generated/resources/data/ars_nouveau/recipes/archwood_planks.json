@@ -1,5 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "ars_nouveau",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "group": "planks",
   "ingredients": [
     {
       "tag": "forge:logs/archwood"

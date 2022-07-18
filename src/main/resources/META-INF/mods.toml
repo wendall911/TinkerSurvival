@@ -87,3 +87,9 @@ license="MIT"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="geckolib3"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
