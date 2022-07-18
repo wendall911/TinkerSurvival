@@ -19,6 +19,7 @@ public final class ModIntegration {
     public static final String SGC_MODID = "sushigocrafting";
     public static final String TCON_MODID = "tconstruct";
     public static final String WS_MODID = "watersource";
+    public static final String AN_MODID = "ars_nouveau";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -47,6 +48,7 @@ public final class ModIntegration {
     public static Item TCON_GREENHEART_PLANKS;
     public static Item TCON_SKYROOT_PLANKS;
     public static Item WS_PALM_TREE_PLANKS;
+    public static Item AN_ARCHWOOD_PLANKS;
 
     public static IForgeRegistry<Item> ITEM_REGISTRY;
 
@@ -82,6 +84,7 @@ public final class ModIntegration {
             TCON_GREENHEART_PLANKS = registerItem(tconLoc("greenheart_planks"));
             TCON_SKYROOT_PLANKS = registerItem(tconLoc("skyroot_planks"));
             WS_PALM_TREE_PLANKS = registerItem(wsLoc("palm_tree_planks"));
+            AN_ARCHWOOD_PLANKS = registerItem(anLoc("archwood_planks"));
         }
     }
 
@@ -131,6 +134,10 @@ public final class ModIntegration {
 
     public static ResourceLocation wsLoc(String name) {
         return getLoc(WS_MODID, name);
+    }
+
+    public static ResourceLocation anLoc(String name) {
+        return getLoc(AN_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

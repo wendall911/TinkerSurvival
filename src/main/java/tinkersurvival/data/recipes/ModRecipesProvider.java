@@ -286,6 +286,10 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(wrapped, ModIntegration.BOTANIA_DREAMWOOD_PLANKS, TagManager.Items.BOTANIA_DREAMWOOD_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BOTANIA_LIVINGWOOD_PLANKS, TagManager.Items.BOTANIA_LIVINGWOOD_LOGS, "has_logs");
 
+        // Ars Nouveau
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.AN_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.AN_ARCHWOOD_PLANKS, ItemTags.create(new ResourceLocation("forge:logs/archwood")), "has_logs");
+
         // Immersive Engineering
         ShapelessRecipeBuilder.shapeless(ModIntegration.IE_STICK_TREATED, 2)
                 .requires(TagManager.Items.IE_TREATED_WOOD)
@@ -302,8 +306,6 @@ public class ModRecipesProvider extends RecipeProvider {
                 .group("treated_sticks")
                 .unlockedBy("has_treated_planks", has(TagManager.Items.IE_TREATED_WOOD))
                 .save(wrapped, new ResourceLocation(ModIntegration.IE_MODID, "crafting/stick_treated"));
-
-
 
         ShapelessRecipeBuilder.shapeless(Items.STICK, 2)
                 .requires(ItemTags.PLANKS)

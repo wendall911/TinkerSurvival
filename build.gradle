@@ -141,8 +141,6 @@ dependencies {
         transitive = false
     }
 
-    implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
-
     compileOnly fg.deobf("curse.maven:carryon-274259:3674344")
 
     //Include some examples here for testing other mods
@@ -163,6 +161,10 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:electrodynamics-316867:3784685")
     //runtimeOnly fg.deobf("curse.maven:valhesia_core-416935:3768769")
     //runtimeOnly fg.deobf("curse.maven:valhesia_structures-347488:3708292")
+    //runtimeOnly fg.deobf("curse.maven:ars_nouveau-401955:3871318")
+    //runtimeOnly fg.deobf("curse.maven:geckolib-388172:3856641")
+
+    implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
 }
 
 def commonManifest = {
@@ -253,6 +255,7 @@ curseforge {
                     optionalLibrary 'water-source'
                     optionalLibrary 'sushigocrafting'
                     optionalLibrary 'botania'
+                    optionalLibrary 'ars-nouveau'
                 }
             }
         }
