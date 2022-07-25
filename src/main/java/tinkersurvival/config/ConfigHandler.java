@@ -110,7 +110,7 @@ public final class ConfigHandler {
             "tinkersurvival"
         };
         private static final Predicate<Object> modidValidator = s -> s instanceof String
-                && ((String) s).matches("[a-z]+");
+                && ((String) s).matches("[a-z_]+");
         private final ConfigValue<List<? extends String>> MODS;
 
         private static final List<String> ITEMS_LIST = Arrays.asList("items");
