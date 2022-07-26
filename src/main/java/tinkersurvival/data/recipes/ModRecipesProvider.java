@@ -291,14 +291,15 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(wrapped, ModIntegration.AN_ARCHWOOD_PLANKS, ItemTags.create(new ResourceLocation("forge:logs/archwood")), "has_logs");
 
         // Immersive Engineering
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.IE_MODID));
+
         ShapelessRecipeBuilder.shapeless(ModIntegration.IE_STICK_TREATED, 2)
                 .requires(TagManager.Items.IE_TREATED_WOOD)
                 .requires(TConItems.SAW)
                 .group("treated_sticks")
                 .unlockedBy("has_treated_planks", has(TagManager.Items.IE_TREATED_WOOD))
-                .save(consumer, new ResourceLocation(TinkerSurvival.MODID, "stick_treated"));
+                .save(wrapped, new ResourceLocation(TinkerSurvival.MODID, "stick_treated"));
 
-        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.IE_MODID));
         ShapelessRecipeBuilder.shapeless(ModIntegration.IE_STICK_TREATED, 4)
                 .requires(TagManager.Items.IE_TREATED_WOOD)
                 .requires(TagManager.Items.IE_TREATED_WOOD)
