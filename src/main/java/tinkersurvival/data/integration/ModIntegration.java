@@ -20,6 +20,7 @@ public final class ModIntegration {
     public static final String TCON_MODID = "tconstruct";
     public static final String WS_MODID = "watersource";
     public static final String AN_MODID = "ars_nouveau";
+    public static final String EXNIHILO_MODID = "exnihilosequentia";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -138,6 +139,10 @@ public final class ModIntegration {
 
     public static ResourceLocation anLoc(String name) {
         return getLoc(AN_MODID, name);
+    }
+
+    public static ResourceLocation exnihiloLoc(String name) {
+        return getLoc(EXNIHILO_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

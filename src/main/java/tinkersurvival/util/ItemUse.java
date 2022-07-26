@@ -44,7 +44,8 @@ public class ItemUse {
             "drill",
             "building",
             "revolver",
-            "saw"
+            "saw",
+            "crook"
         )
     );
     
@@ -157,6 +158,7 @@ public class ItemUse {
                 isCorrectToolType = toolClass.equals(type)
                         || toolClass.equals("mattock")
                         || toolClass.equals("building")
+                        || toolClass.equals("crook")
                         || ToolType.HOE.is(handStack.getItem());
                 break;
         }

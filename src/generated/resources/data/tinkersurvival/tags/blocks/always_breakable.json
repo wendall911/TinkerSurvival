@@ -10,6 +10,14 @@
       "id": "sushigocrafting:avocado_leaves",
       "required": false
     },
+    {
+      "id": "exnihilosequentia:infested_leaves",
+      "required": false
+    },
+    {
+      "id": "exnihilosequentia:infesting_leaves",
+      "required": false
+    },
     "#minecraft:dirt",
     "#forge:sand",
     "#minecraft:sand"
