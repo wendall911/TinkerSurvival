@@ -138,6 +138,7 @@ public class ItemUse {
                         || toolClass.equals("drill")
                         || toolClass.equals("pickadze")
                         || toolClass.equals("building")
+                        || toolClass.equals("hammer")
                         || ToolType.PICKAXE.is(handStack.getItem());
                 break;
             case "axe":
