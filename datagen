@@ -1,3 +1,5 @@
 #!/bin/sh
 
+for f in `find src/generated/ | grep \.png` ; do rm $f ; done
+
 DATA_GEN=all ./gradlew runData
