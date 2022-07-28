@@ -153,6 +153,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // Water Source
         addWsLogVariants(TagManager.Items.WS_PALM_TREE_LOGS, "palm_tree");
 
+        // Undergarden
+        addUndergardenLogVariants(TagManager.Items.UNDERGARDEN_GRONGLE_LOGS, "grongle");
+        addUndergardenLogVariants(TagManager.Items.UNDERGARDEN_SMOGSTEM_LOGS, "smogstem");
+        addUndergardenLogVariants(TagManager.Items.UNDERGARDEN_WIGGLEWOOD_LOGS, "wigglewood");
+
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());
@@ -243,6 +248,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.ftLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.ftLoc(type + "_wood"))
             .addOptional(ModIntegration.ftLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addUndergardenLogVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.undergardenLoc(type + "_log"))
+            .addOptional(ModIntegration.undergardenLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.undergardenLoc(type + "_wood"))
+            .addOptional(ModIntegration.undergardenLoc("stripped_" + type + "_wood"));
     }
 
     protected TagsProvider.TagAppender<Item> getBuilder(TagKey<Item> tag) {

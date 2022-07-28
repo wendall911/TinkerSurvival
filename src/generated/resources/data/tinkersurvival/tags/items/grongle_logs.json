@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "undergarden:grongle_log",
+      "required": false
+    },
+    {
+      "id": "undergarden:stripped_grongle_log",
+      "required": false
+    },
+    {
+      "id": "undergarden:grongle_wood",
+      "required": false
+    },
+    {
+      "id": "undergarden:stripped_grongle_wood",
+      "required": false
+    }
+  ]
+}

@@ -77,6 +77,11 @@ public final class TagManager {
         // IE
         public static final TagKey<Item> IE_TREATED_WOOD = forgeTag("treated_wood");
 
+        // Undergarden
+        public static final TagKey<Item> UNDERGARDEN_GRONGLE_LOGS = create("grongle_logs");
+        public static final TagKey<Item> UNDERGARDEN_SMOGSTEM_LOGS = create("smogstem_logs");
+        public static final TagKey<Item> UNDERGARDEN_WIGGLEWOOD_LOGS = create("wigglewood_logs");
+
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }

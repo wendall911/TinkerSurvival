@@ -21,6 +21,7 @@ public final class ModIntegration {
     public static final String WS_MODID = "watersource";
     public static final String AN_MODID = "ars_nouveau";
     public static final String EXNIHILO_MODID = "exnihilosequentia";
+    public static final String UNDERGARDEN_MODID = "undergarden";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -50,6 +51,9 @@ public final class ModIntegration {
     public static Item TCON_SKYROOT_PLANKS;
     public static Item WS_PALM_TREE_PLANKS;
     public static Item AN_ARCHWOOD_PLANKS;
+    public static Item UNDERGARDEN_SMOGSTEM_PLANKS;
+    public static Item UNDERGARDEN_WIGGLEWOOD_PLANKS;
+    public static Item UNDERGARDEN_GRONGLE_PLANKS;
 
     public static IForgeRegistry<Item> ITEM_REGISTRY;
 
@@ -86,6 +90,9 @@ public final class ModIntegration {
             TCON_SKYROOT_PLANKS = registerItem(tconLoc("skyroot_planks"));
             WS_PALM_TREE_PLANKS = registerItem(wsLoc("palm_tree_planks"));
             AN_ARCHWOOD_PLANKS = registerItem(anLoc("archwood_planks"));
+            UNDERGARDEN_GRONGLE_PLANKS = registerItem(undergardenLoc("grongle_planks"));
+            UNDERGARDEN_SMOGSTEM_PLANKS = registerItem(undergardenLoc("smogstem_planks"));
+            UNDERGARDEN_WIGGLEWOOD_PLANKS = registerItem(undergardenLoc("wigglewood_planks"));
         }
     }
 
@@ -143,6 +150,10 @@ public final class ModIntegration {
 
     public static ResourceLocation exnihiloLoc(String name) {
         return getLoc(EXNIHILO_MODID, name);
+    }
+
+    public static ResourceLocation undergardenLoc(String name) {
+        return getLoc(UNDERGARDEN_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

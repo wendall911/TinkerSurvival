@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "undergarden:smogstem_log",
+      "required": false
+    },
+    {
+      "id": "undergarden:stripped_smogstem_log",
+      "required": false
+    },
+    {
+      "id": "undergarden:smogstem_wood",
+      "required": false
+    },
+    {
+      "id": "undergarden:stripped_smogstem_wood",
+      "required": false
+    }
+  ]
+}

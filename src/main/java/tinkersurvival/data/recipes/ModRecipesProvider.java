@@ -22,6 +22,7 @@ import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 
 import org.jetbrains.annotations.NotNull;
+
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 
 import slimeknights.tconstruct.tables.TinkerTables;
@@ -289,6 +290,12 @@ public class ModRecipesProvider extends RecipeProvider {
         // Ars Nouveau
         wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.AN_MODID));
         plankRecipeBuilder(wrapped, ModIntegration.AN_ARCHWOOD_PLANKS, ItemTags.create(new ResourceLocation("forge:logs/archwood")), "has_logs");
+
+        // Undergarden
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.UNDERGARDEN_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.UNDERGARDEN_GRONGLE_PLANKS, TagManager.Items.UNDERGARDEN_GRONGLE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.UNDERGARDEN_SMOGSTEM_PLANKS, TagManager.Items.UNDERGARDEN_SMOGSTEM_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.UNDERGARDEN_WIGGLEWOOD_PLANKS, TagManager.Items.UNDERGARDEN_WIGGLEWOOD_LOGS, "has_logs");
 
         // Immersive Engineering
         wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.IE_MODID));

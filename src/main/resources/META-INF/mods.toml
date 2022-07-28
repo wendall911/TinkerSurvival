@@ -93,3 +93,9 @@ license="MIT"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="undergarden"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
