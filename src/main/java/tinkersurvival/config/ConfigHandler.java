@@ -109,8 +109,9 @@ public final class ConfigHandler {
             "tconstruct",
             "tinkersurvival"
         };
+        // See: https://github.com/MinecraftForge/MinecraftForge/blob/1.18.x/fmlloader/src/main/java/net/minecraftforge/fml/loading/moddiscovery/ModInfo.java
         private static final Predicate<Object> modidValidator = s -> s instanceof String
-                && ((String) s).matches("[a-z_]+");
+                && ((String) s).matches("^[a-z][a-z0-9_]{1,63}$");
         private final ConfigValue<List<? extends String>> MODS;
 
         private static final List<String> ITEMS_LIST = Arrays.asList("items");
