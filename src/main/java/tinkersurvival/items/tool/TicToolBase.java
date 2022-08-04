@@ -1,7 +1,6 @@
 package tinkersurvival.items.tool;
 
 import javax.annotation.Nonnull;
-import java.util.Random;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -9,7 +8,6 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import net.minecraftforge.common.ForgeHooks;
@@ -34,7 +32,6 @@ public class TicToolBase extends ModifiableItem {
         ItemStack container = stack.copy();
         ToolStack tool = ToolStack.from(container);
         Player player = ForgeHooks.getCraftingPlayer();
-        Inventory inventory = player.getInventory();
 
         // Don't allow autocrafters, as we have no way to invalidate recipe for broken tool
         if (player == null) {
@@ -44,6 +41,8 @@ public class TicToolBase extends ModifiableItem {
         if (container.getTag().getBoolean("remove")) {
             return ItemStack.EMPTY;
         }
+
+        Inventory inventory = player.getInventory();
 
         /*
          * This actually works correctly if not shift-clicking with repair kits.
