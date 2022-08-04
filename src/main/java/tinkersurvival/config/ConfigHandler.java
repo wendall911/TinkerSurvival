@@ -50,7 +50,7 @@ public final class ConfigHandler {
         }
 
         public static boolean enableFailSound() {
-            return CONFIG.ENABLE_FAIL_SOUND.get();
+            return ENABLE_FAIL_SOUND.get();
         }
 
     }
@@ -80,11 +80,11 @@ public final class ConfigHandler {
         }
 
         public static boolean enableRockGen() {
-            return CONFIG.ENABLE_ROCK_GEN.get();
+            return ENABLE_ROCK_GEN.get();
         }
 
         public static int rockGenFrequency() {
-            return CONFIG.ROCK_GEN_FREQUENCY.get();
+            return ROCK_GEN_FREQUENCY.get();
         }
 
     }
@@ -104,7 +104,7 @@ public final class ConfigHandler {
         private static DoubleValue HEALTH;
         private static IntValue GENERIC_DAMAGE;
 
-        private static final List<String> MODS_LIST = Arrays.asList("mods");
+        private static final List<String> MODS_LIST = List.of("mods");
         private static final String[] modsStrings = new String[] {
             "tconstruct",
             "tinkersurvival"
@@ -114,7 +114,7 @@ public final class ConfigHandler {
                 && ((String) s).matches("^[a-z][a-z0-9_]{1,63}$");
         private final ConfigValue<List<? extends String>> MODS;
 
-        private static final List<String> ITEMS_LIST = Arrays.asList("items");
+        private static final List<String> ITEMS_LIST = List.of("items");
         private static final String[] itemsStrings = new String[] {
             "hammer-immersiveengineering:hammer",
             "wirecutter-immersiveengineering:wirecutter",
@@ -125,7 +125,7 @@ public final class ConfigHandler {
 
         private static BooleanValue LOG_MODPACK_DATA;
 
-        private static final List<String> BLOCK_MODS_LIST = Arrays.asList("blockmods");
+        private static final List<String> BLOCK_MODS_LIST = List.of("blockmods");
         private static final String[] blockModsStrings = new String[] {
             "cfm",
             "furnish"
@@ -133,19 +133,24 @@ public final class ConfigHandler {
         private final ConfigValue<List<? extends String>> BLOCK_MODS;
 
         private static BooleanValue ENFORCE_WHITELIST_ARMOR;
-        private static final List<String> ARMOR_MODS_LIST = Arrays.asList("armormods");
+        private static final List<String> ARMOR_MODS_LIST = List.of("armormods");
         private static final String[] armorModsStrings = new String[] {
                 "immersiveengineering",
                 "tconstruct"
         };
         private final ConfigValue<List<? extends String>> ARMOR_MODS;
-        private static final List<String> ARMOR_LIST = Arrays.asList("armor");
+        private static final List<String> ARMOR_LIST = List.of("armor");
         private static final String[] armorStrings = new String[] {
                 "tconstruct:piggybackpack"
         };
         private static final Predicate<Object> armoridValidator = s -> s instanceof String
                 && ((String) s).matches("[a-z]+[:]{1}[a-z_]+");
         private final ConfigValue<List<? extends String>> ARMOR_WHITELIST;
+        private static final List<String> TAG_LIST = List.of("tag");
+        private static final String[] tagStrings = new String[] {
+                "whitelist_tools"
+        };
+        private final ConfigValue<List<? extends String>> TAG_WHITELIST;
 
         static {
             Pair<Server,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Server::new);
@@ -208,18 +213,22 @@ public final class ConfigHandler {
                     .comment("List of individual armor items that will always work. Format modid:item Default: "
                             + "[\"" + String.join("\", \"", armorStrings) + "\"]")
                     .defineListAllowEmpty(ARMOR_LIST, getFields(armorStrings), armoridValidator);
+            TAG_WHITELIST = builder
+                    .comment("List of tags when added to tools or armor will always work."
+                            + "[\"" + String.join("\", \"", tagStrings) + "\"]")
+                    .defineListAllowEmpty(TAG_LIST, getFields(tagStrings), s -> (s instanceof String));
         }
 
         public static double flintChance() {
-            return CONFIG.FLINT_CHANCE.get();
+            return FLINT_CHANCE.get();
         }
 
         public static double healRate() {
-            return CONFIG.HEAL_RATE.get();
+            return HEAL_RATE.get();
         }
 
         public static double slowDownMultiplier() {
-            return CONFIG.SLOW_DOWN_MULTIPLIER.get();
+            return SLOW_DOWN_MULTIPLIER.get();
         }
 
         private static Supplier<List<? extends String>> getFields(String[] strings) {
@@ -266,12 +275,14 @@ public final class ConfigHandler {
 
         public static float health() {
             double health = CONFIG.HEALTH.get();
-            return (float)health;
+
+            return (float) health;
         }
 
         public static float genericDamage() {
             int damage = CONFIG.GENERIC_DAMAGE.get();
-            return (float)damage;
+
+            return (float) damage;
         }
 
         public static boolean enforceWhitelistArmor() {
@@ -279,15 +290,15 @@ public final class ConfigHandler {
         }
 
         public static List<String> armorWhitelistMods() {
-            List<String> mods = (List<String>) CONFIG.ARMOR_MODS.get();
-
-            return mods;
+            return (List<String>) CONFIG.ARMOR_MODS.get();
         }
 
         public static List<String> armorWhitelistItems() {
-            List<String> armorWhitelist = (List<String>) CONFIG.ARMOR_WHITELIST.get();
+            return (List<String>) CONFIG.ARMOR_WHITELIST.get();
+        }
 
-            return armorWhitelist;
+        public static List<String> tagWhitelist() {
+            return (List<String>) CONFIG.TAG_WHITELIST.get();
         }
 
     }

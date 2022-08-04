@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -74,8 +75,9 @@ public class ItemUse {
     public static boolean isWhitelistItem(ItemStack stack) {
         String itemName = Objects.requireNonNull(stack.getItem().getRegistryName()).toString();
         String modid = getModId(itemName);
+        boolean hasTag = hasWhitelistTag(stack);
 
-        return ConfigHandler.Server.whitelistMods().contains(modid)
+        return hasTag || ConfigHandler.Server.whitelistMods().contains(modid)
                 || whitelistToolsMap.get(itemName) != null;
     }
 
@@ -212,8 +214,20 @@ public class ItemUse {
     public static boolean isWhitelistArmor(ItemStack stack) {
         String itemName = Objects.requireNonNull(stack.getItem().getRegistryName()).toString();
         String modid = getModId(itemName);
+        boolean hasTag = hasWhitelistTag(stack);
 
-        return ConfigHandler.Server.armorWhitelistMods().contains(modid) || ConfigHandler.Server.armorWhitelistItems().contains(itemName);
+        return hasTag || ConfigHandler.Server.armorWhitelistMods().contains(modid) || ConfigHandler.Server.armorWhitelistItems().contains(itemName);
+    }
+
+    public static boolean hasWhitelistTag(ItemStack stack) {
+        CompoundTag tags = stack.getTag();
+        boolean hasTag = false;
+
+        if (tags != null) {
+            hasTag = ConfigHandler.Server.tagWhitelist().stream().anyMatch(tags::contains);
+        }
+
+        return hasTag;
     }
 
 }
