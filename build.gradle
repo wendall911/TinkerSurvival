@@ -208,11 +208,25 @@ def replaceResources = tasks.register("replaceResources", Copy) {
     it.into "$buildDir/resources/main/"
 }
 
+def updates = tasks.register("generateUpdates", Copy) {
+    it.outputs.upToDateWhen {
+        false
+    }
+
+    it.from("./files/templates/") {
+        include 'updates.json'
+        expand 'mod_version': mod_version
+    }
+
+    it.into 'files/'
+}
+
 processResources {
     duplicatesStrategy(DuplicatesStrategy.FAIL)
     exclude('META-INF/mods.toml')
     configure {
         finalizedBy(replaceResources)
+        finalizedBy(updates)
     }
 }
 
