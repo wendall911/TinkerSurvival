@@ -22,6 +22,7 @@ public final class ModIntegration {
     public static final String AN_MODID = "ars_nouveau";
     public static final String EXNIHILO_MODID = "exnihilosequentia";
     public static final String UNDERGARDEN_MODID = "undergarden";
+    public static final String DYNAMICTREES_MODID = "dynamictrees";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -154,6 +155,10 @@ public final class ModIntegration {
 
     public static ResourceLocation undergardenLoc(String name) {
         return getLoc(UNDERGARDEN_MODID, name);
+    }
+
+    public static ResourceLocation dynamictreesLoc(String name) {
+        return getLoc(DYNAMICTREES_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

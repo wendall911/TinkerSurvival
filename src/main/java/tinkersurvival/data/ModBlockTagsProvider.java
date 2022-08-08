@@ -87,6 +87,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(Blocks.LARGE_FERN)
             .add(Blocks.GRASS)
             .add(Blocks.TALL_GRASS);
+
+        this.tag(TagManager.Blocks.BRANCHES)
+            .addOptionalTag(ModIntegration.dynamictreesLoc("branches"));
     }
 
 }

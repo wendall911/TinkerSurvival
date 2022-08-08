@@ -165,6 +165,7 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:geckolib-388172:3856641")
     //runtimeOnly fg.deobf("curse.maven:exnihilo-400012:3874541")
     //runtimeOnly fg.deobf("curse.maven:undergarden-379849:3810810")
+    //runtimeOnly fg.deobf("curse.maven:dynamictrees-252818:3831578")
 
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
 }
@@ -260,6 +261,7 @@ curseforge {
                     optionalLibrary 'ars-nouveau'
                     optionalLibrary 'ex-nihilo-sequentia'
                     optionalLibrary 'the-undergarden'
+                    optionalLibrary 'dynamictrees'
                 }
             }
         }

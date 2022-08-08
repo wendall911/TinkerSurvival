@@ -122,56 +122,56 @@ public class ItemUse {
             }
         }
 
-        if (type != null) {
-            return type;
-        }
-        else {
-            return "unknown";
-        }
+        return Objects.requireNonNullElse(type, "unknown");
     }
 
     public static boolean isCorrectToolType(String type, ItemStack handStack) {
         boolean isCorrectToolType = false;
         String toolClass = getToolClass(handStack);
 
-        switch(type) {
-            case "pickaxe":
-                isCorrectToolType = toolClass.equals(type)
-                        || toolClass.equals("drill")
-                        || toolClass.equals("pickadze")
-                        || toolClass.equals("building")
-                        || toolClass.equals("hammer")
-                        || ToolType.PICKAXE.is(handStack.getItem());
-                break;
-            case "axe":
-                isCorrectToolType = toolClass.equals(type)
-                        || toolClass.equals("mattock")
-                        || toolClass.equals("building")
-                        || ToolType.AXE.is(handStack.getItem());
-                break;
-            case "shovel":
-                isCorrectToolType = toolClass.equals(type)
-                        || toolClass.equals("mattock")
-                        || toolClass.equals("drill")
-                        || toolClass.equals("pickadze")
-                        || toolClass.equals("building")
-                        || ToolType.SHOVEL.is(handStack.getItem());
-                break;
-            case "hoe":
-                isCorrectToolType = toolClass.equals(type)
-                        || toolClass.equals("mattock")
-                        || toolClass.equals("building")
-                        || toolClass.equals("crook")
-                        || ToolType.HOE.is(handStack.getItem());
-                break;
+        switch (type) {
+            case "pickaxe" -> isCorrectToolType = toolClass.equals(type)
+                    || toolClass.equals("drill")
+                    || toolClass.equals("pickadze")
+                    || toolClass.equals("building")
+                    || toolClass.equals("hammer")
+                    || ToolType.PICKAXE.is(handStack.getItem());
+            case "axe" -> isCorrectToolType = toolClass.equals(type)
+                    || toolClass.equals("mattock")
+                    || toolClass.equals("building")
+                    || ToolType.AXE.is(handStack.getItem());
+            case "shovel" -> isCorrectToolType = toolClass.equals(type)
+                    || toolClass.equals("mattock")
+                    || toolClass.equals("drill")
+                    || toolClass.equals("pickadze")
+                    || toolClass.equals("building")
+                    || ToolType.SHOVEL.is(handStack.getItem());
+            case "hoe" -> isCorrectToolType = toolClass.equals(type)
+                    || toolClass.equals("mattock")
+                    || toolClass.equals("building")
+                    || toolClass.equals("crook")
+                    || ToolType.HOE.is(handStack.getItem());
         }
 
         return isCorrectToolType;
     }
 
+    public static boolean isAlwaysBreakable(BlockState state) {
+        if (((AbstractBlockStateAccessor) state).getDestroySpeed() == 0) {
+            if (!ModList.get().isLoaded("dynamictrees")) {
+                return true;
+            }
+            else {
+                return !state.is(TagManager.Blocks.BRANCHES);
+            }
+        }
+
+        return false;
+    }
+
     public static boolean isCorrectTool(BlockState state, Player player, ItemStack handStack) {
         // Always allow destroySpeed == 0
-        if (((AbstractBlockStateAccessor) state).getDestroySpeed() == 0) {
+        if (isAlwaysBreakable(state)) {
             return true;
         }
 

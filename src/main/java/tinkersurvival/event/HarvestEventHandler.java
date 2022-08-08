@@ -43,7 +43,7 @@ public class HarvestEventHandler {
         final ToolType expectedToolType = HarvestBlock.BLOCK_TOOL_TYPES.getOrDefault(state.getBlock(), ToolType.NONE);
         boolean cancel = false;
         boolean alwaysBreakable = state.is(TagManager.Blocks.ALWAYS_BREAKABLE) ||
-                ((AbstractBlockStateAccessor) state).getDestroySpeed() == 0;
+                ItemUse.isAlwaysBreakable(state);
 
         if (player == null) return;
 

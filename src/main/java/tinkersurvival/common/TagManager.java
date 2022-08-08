@@ -102,6 +102,9 @@ public final class TagManager {
         public static final TagKey<Block> LOOSE_ROCKS = create("loose_rocks");
         public static final TagKey<Block> FIBER_PLANTS = create("fiber_plants");
 
+        // Dynamic Trees
+        public static final TagKey<Block> BRANCHES = create("branches");
+
         private static TagKey<Block> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }
