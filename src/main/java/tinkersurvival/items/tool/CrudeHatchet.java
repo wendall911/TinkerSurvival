@@ -1,7 +1,8 @@
 package tinkersurvival.items.tool;
 
-import javax.annotation.Nonnull;
 import java.util.Random;
+
+import javax.annotation.Nonnull;
 
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;

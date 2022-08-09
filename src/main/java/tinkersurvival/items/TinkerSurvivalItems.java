@@ -57,11 +57,11 @@ public final class TinkerSurvivalItems {
         // Tools
         CRUDE_KNIFE = registerKnifeTool("crude_knife", CrudeItemTiers.FLINT_TIER);
         CRUDE_HATCHET = registerHatchetTool("crude_hatchet", CrudeItemTiers.STONE_TIER);
-        CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", CrudeItemTiers.NO_TIER, 0, -8.0F);
+        CRUDE_SAW_HANDLE = registerSawTool("crude_saw_handle", CrudeItemTiers.NO_TIER, -8.0F);
         CRUDE_SAW_BLADE = registerItem("crude_saw_blade", new Item(
             new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP)
         ));
-        CRUDE_SAW = registerSawTool("crude_saw", CrudeItemTiers.FLINT_TIER, 3, -4.0F);
+        CRUDE_SAW = registerSawTool("crude_saw", CrudeItemTiers.FLINT_TIER, -4.0F);
         MORTAR_AND_PESTLE = registerMortar("mortar_and_pestle");
 
         // Bandages
@@ -104,8 +104,8 @@ public final class TinkerSurvivalItems {
         return registerItem(name, hatchetTool);
     }
 
-    private static Item registerSawTool(String name, Tier tier, int damage, float speed) {
-        Item sawTool = new CrudeSaw(name, tier, damage, speed, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP).setNoRepair());
+    private static Item registerSawTool(String name, Tier tier, float speed) {
+        Item sawTool = new CrudeSaw(name, tier, speed, new Item.Properties().tab(CreativeTabs.TOOL_TAB_GROUP).setNoRepair());
 
         return registerItem(name, sawTool);
     }

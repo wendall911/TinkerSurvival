@@ -38,7 +38,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .addOptional(ModIntegration.exnihiloLoc("infesting_leaves"))
             .addTag(BlockTags.DIRT)
             .addTag(Tags.Blocks.SAND)
-            .addTag(BlockTags.SAND);
+            .addTag(BlockTags.SAND)
+            .addTag(TagManager.Blocks.FIBER_PLANTS);
 
         this.tag(TagManager.Blocks.ALWAYS_DROPS)
             .addTag(TagManager.Blocks.LOOSE_ROCKS)

@@ -20,6 +20,7 @@
     },
     "#minecraft:dirt",
     "#forge:sand",
-    "#minecraft:sand"
+    "#minecraft:sand",
+    "#tinkersurvival:fiber_plants"
   ]
 }
