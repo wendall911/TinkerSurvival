@@ -297,6 +297,40 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(wrapped, ModIntegration.UNDERGARDEN_SMOGSTEM_PLANKS, TagManager.Items.UNDERGARDEN_SMOGSTEM_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.UNDERGARDEN_WIGGLEWOOD_PLANKS, TagManager.Items.UNDERGARDEN_WIGGLEWOOD_LOGS, "has_logs");
 
+        // BYG
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.BYG_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_ETHER_PLANKS, TagManager.Items.BYG_ETHER_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_MANGROVE_PLANKS, TagManager.Items.BYG_MANGROVE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_REDWOOD_PLANKS, TagManager.Items.BYG_REDWOOD_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_BLUE_ENCHANTED_PLANKS, TagManager.Items.BYG_BLUE_ENCHANTED_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_GREEN_ENCHANTED_PLANKS, TagManager.Items.BYG_GREEN_ENCHANTED_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_LAMENT_PLANKS, TagManager.Items.BYG_LAMENT_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_WITHERING_OAK_PLANKS, TagManager.Items.BYG_WITHERING_OAK_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_MAHOGANY_PLANKS, TagManager.Items.BYG_MAHOGANY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_CHERRY_PLANKS, TagManager.Items.BYG_CHERRY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_PALO_VERDE_PLANKS, TagManager.Items.BYG_PALO_VERDE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_BAOBAB_PLANKS, TagManager.Items.BYG_BAOBAB_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_JACARANDA_PLANKS, TagManager.Items.BYG_JACARANDA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_BLOODSHROOM_PLANKS, TagManager.Items.BYG_BLOODSHROOM_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_GREENHEART_PLANKS, TagManager.Items.BYG_GREENHEART_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_CYPRESS_PLANKS, TagManager.Items.BYG_CYPRESS_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_PALM_PLANKS, TagManager.Items.BYG_PALM_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_EBONY_PLANKS, TagManager.Items.BYG_EBONY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_IMBUED_NIGHTSHADE_PLANKS, TagManager.Items.BYG_IMBUED_NIGHTSHADE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_NIGHTSHADE_PLANKS, TagManager.Items.BYG_NIGHTSHADE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_RAINBOW_EUCALYPTUS_PLANKS, TagManager.Items.BYG_RAINBOW_EUCALYPTUS_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_ASPEN_PLANKS, TagManager.Items.BYG_ASPEN_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_SKYROOT_PLANKS, TagManager.Items.BYG_SKYROOT_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_FIR_PLANKS, TagManager.Items.BYG_FIR_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_SKYRIS_PLANKS, TagManager.Items.BYG_SKYRIS_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_CIKA_PLANKS, TagManager.Items.BYG_CIKA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_HOLLY_PLANKS, TagManager.Items.BYG_HOLLY_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_MAPLE_PLANKS, TagManager.Items.BYG_MAPLE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_PINE_PLANKS, TagManager.Items.BYG_PINE_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_WILLOW_PLANKS, TagManager.Items.BYG_WILLOW_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_WITCH_HAZEL_PLANKS, TagManager.Items.BYG_WITCH_HAZEL_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_ZELKOVA_PLANKS, TagManager.Items.BYG_ZELKOVA_LOGS, "has_logs");
+
         // Immersive Engineering
         wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.IE_MODID));
 

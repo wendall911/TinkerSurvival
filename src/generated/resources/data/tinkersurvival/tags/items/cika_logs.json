@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:cika_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_cika_log",
+      "required": false
+    },
+    {
+      "id": "byg:cika_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_cika_wood",
+      "required": false
+    }
+  ]
+}

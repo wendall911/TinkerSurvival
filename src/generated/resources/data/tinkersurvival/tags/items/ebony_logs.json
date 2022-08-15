@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:ebony_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_ebony_log",
+      "required": false
+    },
+    {
+      "id": "byg:ebony_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_ebony_wood",
+      "required": false
+    }
+  ]
+}

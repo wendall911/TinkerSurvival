@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:witch_hazel_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_witch_hazel_log",
+      "required": false
+    },
+    {
+      "id": "byg:witch_hazel_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_witch_hazel_wood",
+      "required": false
+    }
+  ]
+}

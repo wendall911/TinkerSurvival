@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "byg",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:ether_logs"
+    },
+    {
+      "item": "tinkersurvival:crude_saw"
+    }
+  ],
+  "result": {
+    "item": "byg:ether_planks",
+    "count": 2
+  }
+}

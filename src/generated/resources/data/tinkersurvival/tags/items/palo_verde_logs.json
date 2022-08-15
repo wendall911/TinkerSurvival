@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:palo_verde_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_palo_verde_log",
+      "required": false
+    },
+    {
+      "id": "byg:palo_verde_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_palo_verde_wood",
+      "required": false
+    }
+  ]
+}

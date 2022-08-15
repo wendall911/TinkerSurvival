@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:maple_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_maple_log",
+      "required": false
+    },
+    {
+      "id": "byg:maple_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_maple_wood",
+      "required": false
+    }
+  ]
+}

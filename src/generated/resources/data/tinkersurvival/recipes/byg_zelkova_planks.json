@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "byg",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:zelkova_logs"
+    },
+    {
+      "item": "tinkersurvival:saw"
+    }
+  ],
+  "result": {
+    "item": "byg:zelkova_planks",
+    "count": 4
+  }
+}

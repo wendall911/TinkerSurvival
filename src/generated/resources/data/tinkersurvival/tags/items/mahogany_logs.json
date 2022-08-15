@@ -16,6 +16,22 @@
     {
       "id": "biomesoplenty:stripped_mahogany_wood",
       "required": false
+    },
+    {
+      "id": "byg:mahogany_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_mahogany_log",
+      "required": false
+    },
+    {
+      "id": "byg:mahogany_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_mahogany_wood",
+      "required": false
     }
   ]
 }

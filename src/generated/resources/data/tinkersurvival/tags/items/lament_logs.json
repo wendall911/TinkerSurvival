@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:lament_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_lament_log",
+      "required": false
+    },
+    {
+      "id": "byg:lament_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_lament_wood",
+      "required": false
+    }
+  ]
+}

@@ -16,6 +16,22 @@
     {
       "id": "biomesoplenty:stripped_redwood_wood",
       "required": false
+    },
+    {
+      "id": "byg:redwood_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_redwood_log",
+      "required": false
+    },
+    {
+      "id": "byg:redwood_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_redwood_wood",
+      "required": false
     }
   ]
 }

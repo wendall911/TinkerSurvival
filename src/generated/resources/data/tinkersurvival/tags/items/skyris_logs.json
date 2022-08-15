@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:skyris_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_skyris_log",
+      "required": false
+    },
+    {
+      "id": "byg:skyris_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_skyris_wood",
+      "required": false
+    }
+  ]
+}

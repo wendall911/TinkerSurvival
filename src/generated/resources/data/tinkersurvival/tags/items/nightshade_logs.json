@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:nightshade_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_nightshade_log",
+      "required": false
+    },
+    {
+      "id": "byg:nightshade_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_nightshade_wood",
+      "required": false
+    }
+  ]
+}

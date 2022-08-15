@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "byg",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:maple_logs"
+    },
+    {
+      "item": "tinkersurvival:saw"
+    }
+  ],
+  "result": {
+    "item": "byg:maple_planks",
+    "count": 4
+  }
+}

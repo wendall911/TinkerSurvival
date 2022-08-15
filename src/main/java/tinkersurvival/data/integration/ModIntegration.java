@@ -23,6 +23,7 @@ public final class ModIntegration {
     public static final String EXNIHILO_MODID = "exnihilosequentia";
     public static final String UNDERGARDEN_MODID = "undergarden";
     public static final String DYNAMICTREES_MODID = "dynamictrees";
+    public static final String BYG_MODID = "byg";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -55,6 +56,37 @@ public final class ModIntegration {
     public static Item UNDERGARDEN_SMOGSTEM_PLANKS;
     public static Item UNDERGARDEN_WIGGLEWOOD_PLANKS;
     public static Item UNDERGARDEN_GRONGLE_PLANKS;
+    public static Item BYG_ETHER_PLANKS;
+    public static Item BYG_MANGROVE_PLANKS;
+    public static Item BYG_REDWOOD_PLANKS;
+    public static Item BYG_BLUE_ENCHANTED_PLANKS;
+    public static Item BYG_GREEN_ENCHANTED_PLANKS;
+    public static Item BYG_LAMENT_PLANKS;
+    public static Item BYG_WITHERING_OAK_PLANKS;
+    public static Item BYG_MAHOGANY_PLANKS;
+    public static Item BYG_CHERRY_PLANKS;
+    public static Item BYG_PALO_VERDE_PLANKS;
+    public static Item BYG_BAOBAB_PLANKS;
+    public static Item BYG_JACARANDA_PLANKS;
+    public static Item BYG_BLOODSHROOM_PLANKS;
+    public static Item BYG_GREENHEART_PLANKS;
+    public static Item BYG_CYPRESS_PLANKS;
+    public static Item BYG_PALM_PLANKS;
+    public static Item BYG_EBONY_PLANKS;
+    public static Item BYG_IMBUED_NIGHTSHADE_PLANKS;
+    public static Item BYG_NIGHTSHADE_PLANKS;
+    public static Item BYG_RAINBOW_EUCALYPTUS_PLANKS;
+    public static Item BYG_ASPEN_PLANKS;
+    public static Item BYG_SKYROOT_PLANKS;
+    public static Item BYG_FIR_PLANKS;
+    public static Item BYG_SKYRIS_PLANKS;
+    public static Item BYG_CIKA_PLANKS;
+    public static Item BYG_HOLLY_PLANKS;
+    public static Item BYG_MAPLE_PLANKS;
+    public static Item BYG_PINE_PLANKS;
+    public static Item BYG_WILLOW_PLANKS;
+    public static Item BYG_WITCH_HAZEL_PLANKS;
+    public static Item BYG_ZELKOVA_PLANKS;
 
     public static IForgeRegistry<Item> ITEM_REGISTRY;
 
@@ -94,6 +126,37 @@ public final class ModIntegration {
             UNDERGARDEN_GRONGLE_PLANKS = registerItem(undergardenLoc("grongle_planks"));
             UNDERGARDEN_SMOGSTEM_PLANKS = registerItem(undergardenLoc("smogstem_planks"));
             UNDERGARDEN_WIGGLEWOOD_PLANKS = registerItem(undergardenLoc("wigglewood_planks"));
+            BYG_ETHER_PLANKS = registerItem(bygLoc("ether_planks"));
+            BYG_MANGROVE_PLANKS = registerItem(bygLoc("mangrove_planks"));
+            BYG_REDWOOD_PLANKS = registerItem(bygLoc("redwood_planks"));
+            BYG_BLUE_ENCHANTED_PLANKS = registerItem(bygLoc("blue_enchanted_planks"));
+            BYG_GREEN_ENCHANTED_PLANKS = registerItem(bygLoc("green_enchanted_planks"));
+            BYG_LAMENT_PLANKS = registerItem(bygLoc("lament_planks"));
+            BYG_WITHERING_OAK_PLANKS = registerItem(bygLoc("withering_oak_planks"));
+            BYG_MAHOGANY_PLANKS = registerItem(bygLoc("mahogany_planks"));
+            BYG_CHERRY_PLANKS = registerItem(bygLoc("cherry_planks"));
+            BYG_PALO_VERDE_PLANKS = registerItem(bygLoc("palo_verde_planks"));
+            BYG_BAOBAB_PLANKS = registerItem(bygLoc("baobab_planks"));
+            BYG_JACARANDA_PLANKS = registerItem(bygLoc("jacaranda_planks"));
+            BYG_BLOODSHROOM_PLANKS = registerItem(bygLoc("bloodshroom_planks"));
+            BYG_GREENHEART_PLANKS = registerItem(bygLoc("greenheart_planks"));
+            BYG_CYPRESS_PLANKS = registerItem(bygLoc("cypress_planks"));
+            BYG_PALM_PLANKS = registerItem(bygLoc("palm_planks"));
+            BYG_EBONY_PLANKS = registerItem(bygLoc("ebony_planks"));
+            BYG_IMBUED_NIGHTSHADE_PLANKS = registerItem(bygLoc("imbued_nightshade_planks"));
+            BYG_NIGHTSHADE_PLANKS = registerItem(bygLoc("nightshade_planks"));
+            BYG_RAINBOW_EUCALYPTUS_PLANKS = registerItem(bygLoc("rainbow_eucalyptus_planks"));
+            BYG_ASPEN_PLANKS = registerItem(bygLoc("aspen_planks"));
+            BYG_SKYROOT_PLANKS = registerItem(bygLoc("skyroot_planks"));
+            BYG_FIR_PLANKS = registerItem(bygLoc("fir_planks"));
+            BYG_SKYRIS_PLANKS = registerItem(bygLoc("skyris_planks"));
+            BYG_CIKA_PLANKS = registerItem(bygLoc("cika_planks"));
+            BYG_HOLLY_PLANKS = registerItem(bygLoc("holly_planks"));
+            BYG_MAPLE_PLANKS = registerItem(bygLoc("maple_planks"));
+            BYG_PINE_PLANKS = registerItem(bygLoc("pine_planks"));
+            BYG_WILLOW_PLANKS = registerItem(bygLoc("willow_planks"));
+            BYG_WITCH_HAZEL_PLANKS = registerItem(bygLoc("witch_hazel_planks"));
+            BYG_ZELKOVA_PLANKS = registerItem(bygLoc("zelkova_planks"));
         }
     }
 
@@ -159,6 +222,10 @@ public final class ModIntegration {
 
     public static ResourceLocation dynamictreesLoc(String name) {
         return getLoc(DYNAMICTREES_MODID, name);
+    }
+
+    public static ResourceLocation bygLoc(String name) {
+        return getLoc(BYG_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

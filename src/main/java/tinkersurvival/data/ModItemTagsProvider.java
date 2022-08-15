@@ -158,6 +158,39 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addUndergardenLogVariants(TagManager.Items.UNDERGARDEN_SMOGSTEM_LOGS, "smogstem");
         addUndergardenLogVariants(TagManager.Items.UNDERGARDEN_WIGGLEWOOD_LOGS, "wigglewood");
 
+        // BYG
+        addBygLogVariants(TagManager.Items.BYG_ETHER_LOGS, "ether");
+        addBygLogVariants(TagManager.Items.BYG_MANGROVE_LOGS, "mangrove");
+        addBygLogVariants(TagManager.Items.BYG_REDWOOD_LOGS, "redwood");
+        addBygLogVariants(TagManager.Items.BYG_BLUE_ENCHANTED_LOGS, "blue_enchanted");
+        addBygLogVariants(TagManager.Items.BYG_GREEN_ENCHANTED_LOGS, "green_enchanted");
+        addBygLogVariants(TagManager.Items.BYG_LAMENT_LOGS, "lament");
+        addBygLogVariants(TagManager.Items.BYG_WITHERING_OAK_LOGS, "withering_oak");
+        addBygLogVariants(TagManager.Items.BYG_MAHOGANY_LOGS, "mahogany");
+        addBygLogVariants(TagManager.Items.BYG_CHERRY_LOGS, "cherry");
+        addBygLogVariants(TagManager.Items.BYG_PALO_VERDE_LOGS, "palo_verde");
+        addBygLogVariants(TagManager.Items.BYG_BAOBAB_LOGS, "baobab");
+        addBygLogVariants(TagManager.Items.BYG_JACARANDA_LOGS, "jacaranda");
+        addBygLogVariants(TagManager.Items.BYG_BLOODSHROOM_LOGS, "bloodshroom");
+        addBygLogVariants(TagManager.Items.BYG_GREENHEART_LOGS, "greenheart");
+        addBygLogVariants(TagManager.Items.BYG_CYPRESS_LOGS, "cypress");
+        addBygLogVariants(TagManager.Items.BYG_PALM_LOGS, "palm");
+        addBygLogVariants(TagManager.Items.BYG_EBONY_LOGS, "ebony");
+        addBygLogVariants(TagManager.Items.BYG_IMBUED_NIGHTSHADE_LOGS, "imbued_nightshade");
+        addBygLogVariants(TagManager.Items.BYG_NIGHTSHADE_LOGS, "nightshade");
+        addBygLogVariants(TagManager.Items.BYG_RAINBOW_EUCALYPTUS_LOGS, "rainbow_eucalyptus");
+        addBygLogVariants(TagManager.Items.BYG_ASPEN_LOGS, "aspen");
+        addBygLogVariants(TagManager.Items.BYG_SKYROOT_LOGS, "skyroot");
+        addBygLogVariants(TagManager.Items.BYG_FIR_LOGS, "fir");
+        addBygLogVariants(TagManager.Items.BYG_SKYRIS_LOGS, "skyris");
+        addBygLogVariants(TagManager.Items.BYG_CIKA_LOGS, "cika");
+        addBygLogVariants(TagManager.Items.BYG_HOLLY_LOGS, "holly");
+        addBygLogVariants(TagManager.Items.BYG_MAPLE_LOGS, "maple");
+        addBygLogVariants(TagManager.Items.BYG_PINE_LOGS, "pine");
+        addBygLogVariants(TagManager.Items.BYG_WILLOW_LOGS, "willow");
+        addBygLogVariants(TagManager.Items.BYG_WITCH_HAZEL_LOGS, "witch_hazel");
+        addBygLogVariants(TagManager.Items.BYG_ZELKOVA_LOGS, "zelkova");
+
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());
@@ -256,6 +289,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.undergardenLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.undergardenLoc(type + "_wood"))
             .addOptional(ModIntegration.undergardenLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addBygLogVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bygLoc(type + "_log"))
+            .addOptional(ModIntegration.bygLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.bygLoc(type + "_wood"))
+            .addOptional(ModIntegration.bygLoc("stripped_" + type + "_wood"));
     }
 
     protected TagsProvider.TagAppender<Item> getBuilder(TagKey<Item> tag) {

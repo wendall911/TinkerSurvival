@@ -16,6 +16,22 @@
     {
       "id": "biomesoplenty:stripped_jacaranda_wood",
       "required": false
+    },
+    {
+      "id": "byg:jacaranda_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_jacaranda_log",
+      "required": false
+    },
+    {
+      "id": "byg:jacaranda_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_jacaranda_wood",
+      "required": false
     }
   ]
 }

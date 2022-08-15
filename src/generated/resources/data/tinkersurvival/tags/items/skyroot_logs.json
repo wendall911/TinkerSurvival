@@ -16,6 +16,22 @@
     {
       "id": "tconstruct:stripped_skyroot_wood",
       "required": false
+    },
+    {
+      "id": "byg:skyroot_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_skyroot_log",
+      "required": false
+    },
+    {
+      "id": "byg:skyroot_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_skyroot_wood",
+      "required": false
     }
   ]
 }

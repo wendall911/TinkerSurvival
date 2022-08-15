@@ -16,6 +16,22 @@
     {
       "id": "biomesoplenty:stripped_willow_wood",
       "required": false
+    },
+    {
+      "id": "byg:willow_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_willow_log",
+      "required": false
+    },
+    {
+      "id": "byg:willow_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_willow_wood",
+      "required": false
     }
   ]
 }

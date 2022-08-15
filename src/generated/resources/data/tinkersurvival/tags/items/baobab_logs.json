@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:baobab_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_baobab_log",
+      "required": false
+    },
+    {
+      "id": "byg:baobab_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_baobab_wood",
+      "required": false
+    }
+  ]
+}

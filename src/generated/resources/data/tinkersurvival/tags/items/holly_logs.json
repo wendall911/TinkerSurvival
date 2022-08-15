@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:holly_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_holly_log",
+      "required": false
+    },
+    {
+      "id": "byg:holly_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_holly_wood",
+      "required": false
+    }
+  ]
+}

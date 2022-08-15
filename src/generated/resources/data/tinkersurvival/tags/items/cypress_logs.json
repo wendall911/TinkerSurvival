@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:cypress_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_cypress_log",
+      "required": false
+    },
+    {
+      "id": "byg:cypress_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_cypress_wood",
+      "required": false
+    }
+  ]
+}

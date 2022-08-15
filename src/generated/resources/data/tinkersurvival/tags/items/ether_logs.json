@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:ether_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_ether_log",
+      "required": false
+    },
+    {
+      "id": "byg:ether_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_ether_wood",
+      "required": false
+    }
+  ]
+}

@@ -82,6 +82,39 @@ public final class TagManager {
         public static final TagKey<Item> UNDERGARDEN_SMOGSTEM_LOGS = create("smogstem_logs");
         public static final TagKey<Item> UNDERGARDEN_WIGGLEWOOD_LOGS = create("wigglewood_logs");
 
+        // BYG
+        public static final TagKey<Item> BYG_ETHER_LOGS = create("ether_logs");
+        public static final TagKey<Item> BYG_MANGROVE_LOGS = create("mangrove_logs");
+        public static final TagKey<Item> BYG_REDWOOD_LOGS = create("redwood_logs");
+        public static final TagKey<Item> BYG_BLUE_ENCHANTED_LOGS = create("blue_enchanted_logs");
+        public static final TagKey<Item> BYG_GREEN_ENCHANTED_LOGS = create("green_enchanted_logs");
+        public static final TagKey<Item> BYG_LAMENT_LOGS = create("lament_logs");
+        public static final TagKey<Item> BYG_WITHERING_OAK_LOGS = create("withering_oak_logs");
+        public static final TagKey<Item> BYG_MAHOGANY_LOGS = create("mahogany_logs");
+        public static final TagKey<Item> BYG_CHERRY_LOGS = create("cherry_logs");
+        public static final TagKey<Item> BYG_PALO_VERDE_LOGS = create("palo_verde_logs");
+        public static final TagKey<Item> BYG_BAOBAB_LOGS = create("baobab_logs");
+        public static final TagKey<Item> BYG_JACARANDA_LOGS = create("jacaranda_logs");
+        public static final TagKey<Item> BYG_BLOODSHROOM_LOGS = create("bloodshroom_logs");
+        public static final TagKey<Item> BYG_GREENHEART_LOGS = create("greenheart_logs");
+        public static final TagKey<Item> BYG_CYPRESS_LOGS = create("cypress_logs");
+        public static final TagKey<Item> BYG_PALM_LOGS = create("palm_logs");
+        public static final TagKey<Item> BYG_EBONY_LOGS = create("ebony_logs");
+        public static final TagKey<Item> BYG_IMBUED_NIGHTSHADE_LOGS = create("imbued_nightshade_logs");
+        public static final TagKey<Item> BYG_NIGHTSHADE_LOGS = create("nightshade_logs");
+        public static final TagKey<Item> BYG_RAINBOW_EUCALYPTUS_LOGS = create("rainbow_eucalyptus_logs");
+        public static final TagKey<Item> BYG_ASPEN_LOGS = create("aspen_logs");
+        public static final TagKey<Item> BYG_SKYROOT_LOGS = create("skyroot_logs");
+        public static final TagKey<Item> BYG_FIR_LOGS = create("fir_logs");
+        public static final TagKey<Item> BYG_SKYRIS_LOGS = create("skyris_logs");
+        public static final TagKey<Item> BYG_CIKA_LOGS = create("cika_logs");
+        public static final TagKey<Item> BYG_HOLLY_LOGS = create("holly_logs");
+        public static final TagKey<Item> BYG_MAPLE_LOGS = create("maple_logs");
+        public static final TagKey<Item> BYG_PINE_LOGS = create("pine_logs");
+        public static final TagKey<Item> BYG_WILLOW_LOGS = create("willow_logs");
+        public static final TagKey<Item> BYG_WITCH_HAZEL_LOGS = create("witch_hazel_logs");
+        public static final TagKey<Item> BYG_ZELKOVA_LOGS = create("zelkova_logs");
+
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }

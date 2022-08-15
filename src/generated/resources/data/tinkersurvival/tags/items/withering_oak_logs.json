@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:withering_oak_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_withering_oak_log",
+      "required": false
+    },
+    {
+      "id": "byg:withering_oak_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_withering_oak_wood",
+      "required": false
+    }
+  ]
+}

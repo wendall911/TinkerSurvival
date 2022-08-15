@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:aspen_log",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_aspen_log",
+      "required": false
+    },
+    {
+      "id": "byg:aspen_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_aspen_wood",
+      "required": false
+    }
+  ]
+}
