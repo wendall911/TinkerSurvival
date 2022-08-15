@@ -68,8 +68,6 @@ public final class ModIntegration {
     public static Item BYG_PALO_VERDE_PLANKS;
     public static Item BYG_BAOBAB_PLANKS;
     public static Item BYG_JACARANDA_PLANKS;
-    public static Item BYG_BLOODSHROOM_PLANKS;
-    public static Item BYG_GREENHEART_PLANKS;
     public static Item BYG_CYPRESS_PLANKS;
     public static Item BYG_PALM_PLANKS;
     public static Item BYG_EBONY_PLANKS;
@@ -138,8 +136,6 @@ public final class ModIntegration {
             BYG_PALO_VERDE_PLANKS = registerItem(bygLoc("palo_verde_planks"));
             BYG_BAOBAB_PLANKS = registerItem(bygLoc("baobab_planks"));
             BYG_JACARANDA_PLANKS = registerItem(bygLoc("jacaranda_planks"));
-            BYG_BLOODSHROOM_PLANKS = registerItem(bygLoc("bloodshroom_planks"));
-            BYG_GREENHEART_PLANKS = registerItem(bygLoc("greenheart_planks"));
             BYG_CYPRESS_PLANKS = registerItem(bygLoc("cypress_planks"));
             BYG_PALM_PLANKS = registerItem(bygLoc("palm_planks"));
             BYG_EBONY_PLANKS = registerItem(bygLoc("ebony_planks"));

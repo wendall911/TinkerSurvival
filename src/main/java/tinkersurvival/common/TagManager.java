@@ -95,8 +95,6 @@ public final class TagManager {
         public static final TagKey<Item> BYG_PALO_VERDE_LOGS = create("palo_verde_logs");
         public static final TagKey<Item> BYG_BAOBAB_LOGS = create("baobab_logs");
         public static final TagKey<Item> BYG_JACARANDA_LOGS = create("jacaranda_logs");
-        public static final TagKey<Item> BYG_BLOODSHROOM_LOGS = create("bloodshroom_logs");
-        public static final TagKey<Item> BYG_GREENHEART_LOGS = create("greenheart_logs");
         public static final TagKey<Item> BYG_CYPRESS_LOGS = create("cypress_logs");
         public static final TagKey<Item> BYG_PALM_LOGS = create("palm_logs");
         public static final TagKey<Item> BYG_EBONY_LOGS = create("ebony_logs");

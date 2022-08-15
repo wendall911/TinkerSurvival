@@ -16,22 +16,6 @@
     {
       "id": "tconstruct:stripped_bloodshroom_wood",
       "required": false
-    },
-    {
-      "id": "byg:bloodshroom_log",
-      "required": false
-    },
-    {
-      "id": "byg:stripped_bloodshroom_log",
-      "required": false
-    },
-    {
-      "id": "byg:bloodshroom_wood",
-      "required": false
-    },
-    {
-      "id": "byg:stripped_bloodshroom_wood",
-      "required": false
     }
   ]
 }

@@ -311,8 +311,6 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(wrapped, ModIntegration.BYG_PALO_VERDE_PLANKS, TagManager.Items.BYG_PALO_VERDE_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_BAOBAB_PLANKS, TagManager.Items.BYG_BAOBAB_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_JACARANDA_PLANKS, TagManager.Items.BYG_JACARANDA_LOGS, "has_logs");
-        plankRecipeBuilder(wrapped, ModIntegration.BYG_BLOODSHROOM_PLANKS, TagManager.Items.BYG_BLOODSHROOM_LOGS, "has_logs");
-        plankRecipeBuilder(wrapped, ModIntegration.BYG_GREENHEART_PLANKS, TagManager.Items.BYG_GREENHEART_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_CYPRESS_PLANKS, TagManager.Items.BYG_CYPRESS_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_PALM_PLANKS, TagManager.Items.BYG_PALM_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_EBONY_PLANKS, TagManager.Items.BYG_EBONY_LOGS, "has_logs");

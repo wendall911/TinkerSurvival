@@ -16,22 +16,6 @@
     {
       "id": "tconstruct:stripped_greenheart_wood",
       "required": false
-    },
-    {
-      "id": "byg:greenheart_log",
-      "required": false
-    },
-    {
-      "id": "byg:stripped_greenheart_log",
-      "required": false
-    },
-    {
-      "id": "byg:greenheart_wood",
-      "required": false
-    },
-    {
-      "id": "byg:stripped_greenheart_wood",
-      "required": false
     }
   ]
 }

@@ -171,8 +171,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addBygLogVariants(TagManager.Items.BYG_PALO_VERDE_LOGS, "palo_verde");
         addBygLogVariants(TagManager.Items.BYG_BAOBAB_LOGS, "baobab");
         addBygLogVariants(TagManager.Items.BYG_JACARANDA_LOGS, "jacaranda");
-        addBygLogVariants(TagManager.Items.BYG_BLOODSHROOM_LOGS, "bloodshroom");
-        addBygLogVariants(TagManager.Items.BYG_GREENHEART_LOGS, "greenheart");
         addBygLogVariants(TagManager.Items.BYG_CYPRESS_LOGS, "cypress");
         addBygLogVariants(TagManager.Items.BYG_PALM_LOGS, "palm");
         addBygLogVariants(TagManager.Items.BYG_EBONY_LOGS, "ebony");
