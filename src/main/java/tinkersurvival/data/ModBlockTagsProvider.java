@@ -87,7 +87,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(Blocks.FERN)
             .add(Blocks.LARGE_FERN)
             .add(Blocks.GRASS)
-            .add(Blocks.TALL_GRASS);
+            .add(Blocks.TALL_GRASS)
+            .addOptionalTag(TagManager.forgeLoc("grass"))
+            .addOptionalTag(TagManager.forgeLoc("bushes"));
 
         this.tag(TagManager.Blocks.BRANCHES)
             .addOptionalTag(ModIntegration.dynamictreesLoc("branches"));

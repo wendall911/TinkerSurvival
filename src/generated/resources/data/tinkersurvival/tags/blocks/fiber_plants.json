@@ -6,6 +6,14 @@
     "minecraft:fern",
     "minecraft:large_fern",
     "minecraft:grass",
-    "minecraft:tall_grass"
+    "minecraft:tall_grass",
+    {
+      "id": "#forge:grass",
+      "required": false
+    },
+    {
+      "id": "#forge:bushes",
+      "required": false
+    }
   ]
 }

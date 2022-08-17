@@ -24,6 +24,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import tinkersurvival.common.HarvestBlock;
 import tinkersurvival.common.TinkerSurvivalModule;
+import tinkersurvival.common.loot.TinkerSurvivalLootItemConditions;
 import tinkersurvival.config.ConfigHandler;
 import tinkersurvival.data.integration.ModIntegration;
 import tinkersurvival.items.TConItems;
@@ -79,6 +80,7 @@ public class CommonProxy {
             TinkerSurvivalItems.init(event.getRegistry());
             ModIntegration.init(event.getRegistry());
             TinkerSurvivalWorld.initItems(event.getRegistry());
+            TinkerSurvivalLootItemConditions.init(bus);
 
             bus.register(new TConItems());
             bus.register(new TinkerSurvivalBooks());
