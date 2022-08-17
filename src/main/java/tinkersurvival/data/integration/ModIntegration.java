@@ -24,6 +24,7 @@ public final class ModIntegration {
     public static final String UNDERGARDEN_MODID = "undergarden";
     public static final String DYNAMICTREES_MODID = "dynamictrees";
     public static final String BYG_MODID = "byg";
+    public static final String TF_MODID = "twilightforest";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -85,6 +86,46 @@ public final class ModIntegration {
     public static Item BYG_WILLOW_PLANKS;
     public static Item BYG_WITCH_HAZEL_PLANKS;
     public static Item BYG_ZELKOVA_PLANKS;
+    public static Item TF_CANOPY_PLANKS;
+    public static Item TF_CANOPY_LOG;
+    public static Item TF_CANOPY_STRIPPED_LOG;
+    public static Item TF_CANOPY_WOOD;
+    public static Item TF_CANOPY_STRIPPED_WOOD;
+    public static Item TF_DARK_PLANKS;
+    public static Item TF_DARK_LOG;
+    public static Item TF_DARK_STRIPPED_LOG;
+    public static Item TF_DARK_WOOD;
+    public static Item TF_DARK_STRIPPED_WOOD;
+    public static Item TF_MANGROVE_PLANKS;
+    public static Item TF_MANGROVE_LOG;
+    public static Item TF_MANGROVE_STRIPPED_LOG;
+    public static Item TF_MANGROVE_WOOD;
+    public static Item TF_MANGROVE_STRIPPED_WOOD;
+    public static Item TF_MINING_PLANKS;
+    public static Item TF_MINING_LOG;
+    public static Item TF_MINING_STRIPPED_LOG;
+    public static Item TF_MINING_WOOD;
+    public static Item TF_MINING_STRIPPED_WOOD;
+    public static Item TF_SORTING_PLANKS;
+    public static Item TF_SORTING_LOG;
+    public static Item TF_SORTING_STRIPPED_LOG;
+    public static Item TF_SORTING_WOOD;
+    public static Item TF_SORTING_STRIPPED_WOOD;
+    public static Item TF_TIME_PLANKS;
+    public static Item TF_TIME_LOG;
+    public static Item TF_TIME_STRIPPED_LOG;
+    public static Item TF_TIME_WOOD;
+    public static Item TF_TIME_STRIPPED_WOOD;
+    public static Item TF_TRANSFORMATION_PLANKS;
+    public static Item TF_TRANSFORMATION_LOG;
+    public static Item TF_TRANSFORMATION_STRIPPED_LOG;
+    public static Item TF_TRANSFORMATION_WOOD;
+    public static Item TF_TRANSFORMATION_STRIPPED_WOOD;
+    public static Item TF_TWILIGHT_OAK_PLANKS;
+    public static Item TF_TWILIGHT_OAK_LOG;
+    public static Item TF_TWILIGHT_OAK_STRIPPED_LOG;
+    public static Item TF_TWILIGHT_OAK_WOOD;
+    public static Item TF_TWILIGHT_OAK_STRIPPED_WOOD;
 
     public static IForgeRegistry<Item> ITEM_REGISTRY;
 
@@ -153,6 +194,46 @@ public final class ModIntegration {
             BYG_WILLOW_PLANKS = registerItem(bygLoc("willow_planks"));
             BYG_WITCH_HAZEL_PLANKS = registerItem(bygLoc("witch_hazel_planks"));
             BYG_ZELKOVA_PLANKS = registerItem(bygLoc("zelkova_planks"));
+            TF_CANOPY_PLANKS = registerItem(tfLoc("canopy_planks"));
+            TF_CANOPY_LOG = registerItem(tfLoc("canopy_log"));
+            TF_CANOPY_STRIPPED_LOG = registerItem(tfLoc("canopy_stripped_log"));
+            TF_CANOPY_WOOD = registerItem(tfLoc("canopy_wood"));
+            TF_CANOPY_STRIPPED_WOOD = registerItem(tfLoc("canopy_stripped_wood"));
+            TF_DARK_PLANKS = registerItem(tfLoc("dark_planks"));
+            TF_DARK_LOG = registerItem(tfLoc("dark_log"));
+            TF_DARK_STRIPPED_LOG = registerItem(tfLoc("dark_stripped_log"));
+            TF_DARK_WOOD = registerItem(tfLoc("dark_wood"));
+            TF_DARK_STRIPPED_WOOD = registerItem(tfLoc("dark_stripped_wood"));
+            TF_MANGROVE_PLANKS = registerItem(tfLoc("mangrove_planks"));
+            TF_MANGROVE_LOG = registerItem(tfLoc("mangrove_log"));
+            TF_MANGROVE_STRIPPED_LOG = registerItem(tfLoc("mangrove_stripped_log"));
+            TF_MANGROVE_WOOD = registerItem(tfLoc("mangrove_wood"));
+            TF_MANGROVE_STRIPPED_WOOD = registerItem(tfLoc("mangrove_stripped_wood"));
+            TF_MINING_PLANKS = registerItem(tfLoc("mining_planks"));
+            TF_MINING_LOG = registerItem(tfLoc("mining_log"));
+            TF_MINING_STRIPPED_LOG = registerItem(tfLoc("mining_stripped_log"));
+            TF_MINING_WOOD = registerItem(tfLoc("mining_wood"));
+            TF_MINING_STRIPPED_WOOD = registerItem(tfLoc("mining_stripped_wood"));
+            TF_SORTING_PLANKS = registerItem(tfLoc("sorting_planks"));
+            TF_SORTING_LOG = registerItem(tfLoc("sorting_log"));
+            TF_SORTING_STRIPPED_LOG = registerItem(tfLoc("sorting_stripped_log"));
+            TF_SORTING_WOOD = registerItem(tfLoc("sorting_wood"));
+            TF_SORTING_STRIPPED_WOOD = registerItem(tfLoc("sorting_stripped_wood"));
+            TF_TIME_PLANKS = registerItem(tfLoc("time_planks"));
+            TF_TIME_LOG = registerItem(tfLoc("time_log"));
+            TF_TIME_STRIPPED_LOG = registerItem(tfLoc("time_stripped_log"));
+            TF_TIME_WOOD = registerItem(tfLoc("time_wood"));
+            TF_TIME_STRIPPED_WOOD = registerItem(tfLoc("time_stripped_wood"));
+            TF_TRANSFORMATION_PLANKS = registerItem(tfLoc("transformation_planks"));
+            TF_TRANSFORMATION_LOG = registerItem(tfLoc("transformation_log"));
+            TF_TRANSFORMATION_STRIPPED_LOG = registerItem(tfLoc("transformation_stripped_log"));
+            TF_TRANSFORMATION_WOOD = registerItem(tfLoc("transformation_wood"));
+            TF_TRANSFORMATION_STRIPPED_WOOD = registerItem(tfLoc("transformation_stripped_wood"));
+            TF_TWILIGHT_OAK_PLANKS = registerItem(tfLoc("twilight_oak_planks"));
+            TF_TWILIGHT_OAK_LOG = registerItem(tfLoc("twilight_oak_log"));
+            TF_TWILIGHT_OAK_STRIPPED_LOG = registerItem(tfLoc("twilight_oak_stripped_log"));
+            TF_TWILIGHT_OAK_WOOD = registerItem(tfLoc("twilight_oak_wood"));
+            TF_TWILIGHT_OAK_STRIPPED_WOOD = registerItem(tfLoc("twilight_oak_stripped_wood"));
         }
     }
 
@@ -222,6 +303,10 @@ public final class ModIntegration {
 
     public static ResourceLocation bygLoc(String name) {
         return getLoc(BYG_MODID, name);
+    }
+
+    public static ResourceLocation tfLoc(String name) {
+        return getLoc(TF_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

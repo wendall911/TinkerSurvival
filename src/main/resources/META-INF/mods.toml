@@ -105,3 +105,9 @@ license="MIT"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="twilightforest"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

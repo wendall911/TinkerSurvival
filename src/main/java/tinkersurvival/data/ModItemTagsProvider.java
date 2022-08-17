@@ -189,6 +189,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addBygLogVariants(TagManager.Items.BYG_WITCH_HAZEL_LOGS, "witch_hazel");
         addBygLogVariants(TagManager.Items.BYG_ZELKOVA_LOGS, "zelkova");
 
+        // Twilight Forest
+        getBuilder(TagManager.Items.TF_GIANT_LOGS)
+            .addOptional(ModIntegration.tfLoc("giant_log"));
+
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());

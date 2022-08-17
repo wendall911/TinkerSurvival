@@ -113,6 +113,9 @@ public final class TagManager {
         public static final TagKey<Item> BYG_WITCH_HAZEL_LOGS = create("witch_hazel_logs");
         public static final TagKey<Item> BYG_ZELKOVA_LOGS = create("zelkova_logs");
 
+        // Twilight Forest
+        public static final TagKey<Item> TF_GIANT_LOGS = create("giant_logs");
+
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }
