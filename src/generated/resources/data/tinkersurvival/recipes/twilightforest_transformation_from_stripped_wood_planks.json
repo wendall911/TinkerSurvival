@@ -9,7 +9,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "twilightforest:transformation_stripped_wood"
+      "item": "twilightforest:stripped_transformation_wood"
     },
     {
       "item": "tinkersurvival:saw"

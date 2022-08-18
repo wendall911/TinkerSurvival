@@ -9,7 +9,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "twilightforest:mining_stripped_log"
+      "item": "twilightforest:stripped_mining_log"
     },
     {
       "item": "tinkersurvival:crude_saw"

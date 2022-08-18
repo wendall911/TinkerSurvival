@@ -9,7 +9,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "twilightforest:sorting_stripped_log"
+      "item": "twilightforest:stripped_sorting_log"
     },
     {
       "item": "tinkersurvival:saw"
