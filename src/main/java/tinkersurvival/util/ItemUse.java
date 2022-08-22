@@ -46,7 +46,8 @@ public class ItemUse {
             "building",
             "revolver",
             "saw",
-            "crook"
+            "crook",
+            "spell"
         )
     );
     
@@ -114,6 +115,7 @@ public class ItemUse {
 
         if (type == null) {
             String[] nameParts = itemName.split("[^a-z]+");
+
             for (String toolType : TOOL_TYPES) {
                 if (itemName.contains(toolType)
                         && Arrays.asList(nameParts).contains(toolType)) {
@@ -135,21 +137,25 @@ public class ItemUse {
                     || toolClass.equals("pickadze")
                     || toolClass.equals("building")
                     || toolClass.equals("hammer")
+                    || toolClass.equals("spell")
                     || ToolType.PICKAXE.is(handStack.getItem());
             case "axe" -> isCorrectToolType = toolClass.equals(type)
                     || toolClass.equals("mattock")
                     || toolClass.equals("building")
+                    || toolClass.equals("spell")
                     || ToolType.AXE.is(handStack.getItem());
             case "shovel" -> isCorrectToolType = toolClass.equals(type)
                     || toolClass.equals("mattock")
                     || toolClass.equals("drill")
                     || toolClass.equals("pickadze")
                     || toolClass.equals("building")
+                    || toolClass.equals("spell")
                     || ToolType.SHOVEL.is(handStack.getItem());
             case "hoe" -> isCorrectToolType = toolClass.equals(type)
                     || toolClass.equals("mattock")
                     || toolClass.equals("building")
                     || toolClass.equals("crook")
+                    || toolClass.equals("spell")
                     || ToolType.HOE.is(handStack.getItem());
         }
 
