@@ -193,6 +193,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         getBuilder(TagManager.Items.TF_GIANT_LOGS)
             .addOptional(ModIntegration.tfLoc("giant_log"));
 
+        // Ecologics
+        addEcoLogVariants(TagManager.Items.ECO_COCONUT_LOGS, "coconut");
+        addEcoLogVariants(TagManager.Items.ECO_WALNUT_LOGS, "walnut");
+        addEcoLogVariants(TagManager.Items.ECO_AZALEA_LOGS, "azalea");
+        addEcoLogVariants(TagManager.Items.ECO_FLOWERING_AZALEA_LOGS, "flowering_azalea");
+
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());
@@ -299,6 +305,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.bygLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.bygLoc(type + "_wood"))
             .addOptional(ModIntegration.bygLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addEcoLogVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.ecoLoc(type + "_log"))
+            .addOptional(ModIntegration.ecoLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.ecoLoc(type + "_wood"))
+            .addOptional(ModIntegration.ecoLoc("stripped_" + type + "_wood"));
     }
 
     protected TagsProvider.TagAppender<Item> getBuilder(TagKey<Item> tag) {

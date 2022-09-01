@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ecologics:coconut_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_coconut_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:coconut_wood",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_coconut_wood",
+      "required": false
+    }
+  ]
+}

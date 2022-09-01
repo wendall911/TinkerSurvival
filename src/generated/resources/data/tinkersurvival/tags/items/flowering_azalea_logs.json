@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ecologics:flowering_azalea_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_flowering_azalea_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:flowering_azalea_wood",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_flowering_azalea_wood",
+      "required": false
+    }
+  ]
+}

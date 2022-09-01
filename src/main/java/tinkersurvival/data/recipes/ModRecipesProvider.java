@@ -390,6 +390,13 @@ public class ModRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_treated_planks", has(TagManager.Items.IE_TREATED_WOOD))
                 .save(wrapped, new ResourceLocation(ModIntegration.IE_MODID, "crafting/stick_treated"));
 
+        // Ecologics
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.ECO_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.ECO_COCONUT_PLANKS, TagManager.Items.ECO_COCONUT_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.ECO_WALNUT_PLANKS, TagManager.Items.ECO_WALNUT_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.ECO_AZALEA_PLANKS, TagManager.Items.ECO_AZALEA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.ECO_FLOWERING_AZALEA_PLANKS, TagManager.Items.ECO_FLOWERING_AZALEA_LOGS, "has_logs");
+
         ShapelessRecipeBuilder.shapeless(Items.STICK, 2)
                 .requires(ItemTags.PLANKS)
                 .requires(TagManager.Items.SAW_TOOLS)

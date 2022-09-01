@@ -16,6 +16,22 @@
     {
       "id": "quark:stripped_azalea_wood",
       "required": false
+    },
+    {
+      "id": "ecologics:azalea_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_azalea_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:azalea_wood",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_azalea_wood",
+      "required": false
     }
   ]
 }

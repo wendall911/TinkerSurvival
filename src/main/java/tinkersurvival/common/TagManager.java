@@ -116,6 +116,12 @@ public final class TagManager {
         // Twilight Forest
         public static final TagKey<Item> TF_GIANT_LOGS = create("giant_logs");
 
+        // Ecologics
+        public static TagKey<Item> ECO_COCONUT_LOGS = create("coconut_logs");
+        public static TagKey<Item> ECO_WALNUT_LOGS = create("walnut_logs");
+        public static TagKey<Item> ECO_AZALEA_LOGS = create("azalea_logs");
+        public static TagKey<Item> ECO_FLOWERING_AZALEA_LOGS = create("flowering_azalea_logs");
+
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }

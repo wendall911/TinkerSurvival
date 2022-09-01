@@ -146,12 +146,12 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:crafttweaker-239197:3918220")
 
     //Include some examples here for testing other mods
-    //implementation fg.deobf("curse.maven:sushigocrafting-452500:3758195")
-    //implementation fg.deobf("curse.maven:titanium-287342:3707558")
-    //implementation fg.deobf("curse.maven:patchouli-306770:3846086")
-    //implementation fg.deobf("curse.maven:curios-309927:3841948")
-    //implementation fg.deobf("curse.maven:botania-225643:3755269")
-    //implementation fg.deobf("curse.maven:immersiveengineering-231951:3755665")
+    //runtimeOnly fg.deobf("curse.maven:sushigocrafting-452500:3758195")
+    //runtimeOnly fg.deobf("curse.maven:titanium-287342:3707558")
+    //runtimeOnly fg.deobf("curse.maven:patchouli-306770:3846086")
+    //runtimeOnly fg.deobf("curse.maven:curios-309927:3841948")
+    //runtimeOnly fg.deobf("curse.maven:botania-225643:3755269")
+    //runtimeOnly fg.deobf("curse.maven:immersiveengineering-231951:3755665")
     //runtimeOnly fg.deobf("curse.maven:buildinggadgets-298187:3725903")
     //runtimeOnly fg.deobf("curse.maven:homeostatic-634466:3845248")
     //runtimeOnly fg.deobf("curse.maven:twilightforest-227639:3901400")
@@ -169,6 +169,7 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:dynamictrees-252818:3831578")
     //runtimeOnly fg.deobf("curse.maven:terrablender-563928:3816497")
     //runtimeOnly fg.deobf("curse.maven:byg-247560:3868886")
+    //runtimeOnly fg.deobf("curse.maven:ecologics-570463:3939725")
 
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
 }
@@ -281,6 +282,7 @@ curseforge {
                     optionalLibrary 'dynamictrees'
                     optionalLibrary 'oh-the-biomes-youll-go'
                     optionalLibrary 'the-twilight-forest'
+                    optionalLibrary 'ecologics'
                 }
             }
         }

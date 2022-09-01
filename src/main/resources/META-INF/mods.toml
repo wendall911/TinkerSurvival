@@ -111,3 +111,9 @@ license="MIT"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.tinkersurvival]]
+    modId="ecologics"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

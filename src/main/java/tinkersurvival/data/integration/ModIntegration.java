@@ -25,6 +25,7 @@ public final class ModIntegration {
     public static final String DYNAMICTREES_MODID = "dynamictrees";
     public static final String BYG_MODID = "byg";
     public static final String TF_MODID = "twilightforest";
+    public static final String ECO_MODID = "ecologics";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -126,6 +127,10 @@ public final class ModIntegration {
     public static Item TF_TWILIGHT_OAK_STRIPPED_LOG;
     public static Item TF_TWILIGHT_OAK_WOOD;
     public static Item TF_TWILIGHT_OAK_STRIPPED_WOOD;
+    public static Item ECO_COCONUT_PLANKS;
+    public static Item ECO_WALNUT_PLANKS;
+    public static Item ECO_AZALEA_PLANKS;
+    public static Item ECO_FLOWERING_AZALEA_PLANKS;
 
     public static IForgeRegistry<Item> ITEM_REGISTRY;
 
@@ -234,6 +239,10 @@ public final class ModIntegration {
             TF_TWILIGHT_OAK_STRIPPED_LOG = registerItem(tfLoc("stripped_twilight_oak_log"));
             TF_TWILIGHT_OAK_WOOD = registerItem(tfLoc("twilight_oak_wood"));
             TF_TWILIGHT_OAK_STRIPPED_WOOD = registerItem(tfLoc("stripped_twilight_oak_wood"));
+            ECO_COCONUT_PLANKS = registerItem(ecoLoc("coconut_planks"));
+            ECO_WALNUT_PLANKS = registerItem(ecoLoc("walnut_planks"));
+            ECO_AZALEA_PLANKS = registerItem(ecoLoc("azalea_planks"));
+            ECO_FLOWERING_AZALEA_PLANKS = registerItem(ecoLoc("flowering_azalea_planks"));
         }
     }
 
@@ -307,6 +316,10 @@ public final class ModIntegration {
 
     public static ResourceLocation tfLoc(String name) {
         return getLoc(TF_MODID, name);
+    }
+
+    public static ResourceLocation ecoLoc(String name) {
+        return getLoc(ECO_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

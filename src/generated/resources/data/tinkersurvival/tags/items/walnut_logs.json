@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ecologics:walnut_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_walnut_log",
+      "required": false
+    },
+    {
+      "id": "ecologics:walnut_wood",
+      "required": false
+    },
+    {
+      "id": "ecologics:stripped_walnut_wood",
+      "required": false
+    }
+  ]
+}
