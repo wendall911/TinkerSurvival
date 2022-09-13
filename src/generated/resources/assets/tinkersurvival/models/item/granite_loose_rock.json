@@ -1,6 +1,6 @@
 {
   "parent": "tinkersurvival:block/granite_loose_rock",
   "textures": {
-    "all": "minecraft:block/granite"
+    "all": "tinkersurvival:block/loose/9p_loose_granite"
   }
 }

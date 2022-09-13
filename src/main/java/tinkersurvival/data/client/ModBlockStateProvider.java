@@ -63,7 +63,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void addFaces(ModelBuilder<BlockModelBuilder>.ElementBuilder elementBuilder) {
         elementBuilder.allFaces((direction, faceBuilder) -> {
             ModelBuilder<BlockModelBuilder>.ElementBuilder.FaceBuilder f = faceBuilder
-                .uvs(0, 0, 16, 16)
+                .uvs(0, 0, 12, 12)
                 .texture("#all");
         }).end();
     }
@@ -78,7 +78,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         ModelFile modelFile = models()
             .withExistingParent(name.toString(), modLoc("block/loose_rock"))
-            .texture("all", mcLoc("block/" + type));
+            .texture("all", modLoc("block/loose/9p_loose_" + type));
 
         getVariantBuilder(block)
             .forAllStates(state -> ConfiguredModel.builder().modelFile(modelFile).build());

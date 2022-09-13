@@ -1,6 +1,6 @@
 {
   "parent": "tinkersurvival:block/loose_rock",
   "textures": {
-    "all": "minecraft:block/andesite"
+    "all": "tinkersurvival:block/loose/9p_loose_andesite"
   }
 }
