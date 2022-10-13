@@ -4,15 +4,18 @@ import java.util.function.Consumer;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
 
-import slimeknights.tconstruct.common.data.BaseRecipeProvider;
+import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
+import slimeknights.tconstruct.library.data.recipe.IRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 
 import tinkersurvival.items.TConItems;
 import tinkersurvival.TinkerSurvival;
 
-public class ToolsRecipeProvider extends BaseRecipeProvider implements IMaterialRecipeHelper, IToolRecipeHelper {
+public class ToolsRecipeProvider extends RecipeProvider implements IConditionBuilder, IRecipeHelper, IMaterialRecipeHelper, IToolRecipeHelper {
 
     public ToolsRecipeProvider(DataGenerator generatorIn) {
         super(generatorIn);
