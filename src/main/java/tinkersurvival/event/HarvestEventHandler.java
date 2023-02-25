@@ -23,8 +23,10 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.Loader;
 
 import slimeknights.tconstruct.library.utils.ToolHelper;
+import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 
 import tinkersurvival.client.sound.Sounds;
 import tinkersurvival.config.ConfigHandler;
@@ -92,7 +94,7 @@ public class HarvestEventHandler {
             String blockMod = block.getRegistryName().getNamespace();
 
             if (ItemUse.isWhitelistItem(heldItemStack) && toolClass != null) {
-                if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass, blockMod)) {
+                if (isRightTool(heldItemStack, neededHarvestLevel, neededToolClass, toolClass, block, blockMod)) {
                     return 1.0F;
                 }
 
@@ -113,9 +115,16 @@ public class HarvestEventHandler {
         return 1.0F;
     }
 
-    private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass, String blockMod) {
+    private boolean isRightTool(ItemStack heldItemStack, int neededHarvestLevel, String neededToolClass, String toolClass, Block block, String blockMod) {
         if (Arrays.asList(ConfigHandler.blocks.MOD_BLOCKS_WHITELIST).contains(blockMod)) {
             return true;
+	} else if (Loader.isModLoaded("exnihilocreatio") &&
+		   toolClass.equals("sledge") && ExNihiloRegistryManager.HAMMER_REGISTRY.isRegistered(block)) {
+	    /* Ex Nihilo Creatio's hammer (and TComplements version of it) has a harvest level of -1, 
+	       making the harvest level check fail on cobblestone without this fix */
+	    /* If the tool is a sledge hammer and the block is in Ex Nihilo Creatio's hammer registry,
+	       allow the block to be broken */
+	    return true;
         } else if (neededToolClass.equals(toolClass)) {
             if (toolClass.equals("wrench")) {
                 return heldItemStack.getItem().getRegistryName().getNamespace().equals(blockMod);
@@ -176,7 +185,7 @@ public class HarvestEventHandler {
                 String mainhandToolClass = ItemUse.getToolClass(mainhandItemStack);
 
                 if (ItemUse.isWhitelistItem(mainhandItemStack) && mainhandToolClass != null) {
-                    if (isRightTool(mainhandItemStack, neededHarvestLevel, neededToolClass, mainhandToolClass, blockMod)) {
+                    if (isRightTool(mainhandItemStack, neededHarvestLevel, neededToolClass, mainhandToolClass, block, blockMod)) {
                         return;
                     }
                 }
@@ -186,7 +195,7 @@ public class HarvestEventHandler {
 
                 if (ItemUse.isWhitelistItem(offhandItemStack) && offhandToolClass != null) {
 
-                    if (isRightTool(offhandItemStack, neededHarvestLevel, neededToolClass, offhandToolClass, blockMod)) {
+                    if (isRightTool(offhandItemStack, neededHarvestLevel, neededToolClass, offhandToolClass, block, blockMod)) {
                         return;
                     }
                 }

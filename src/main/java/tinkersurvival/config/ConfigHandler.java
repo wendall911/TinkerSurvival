@@ -13,12 +13,16 @@ public class ConfigHandler {
         public static String[] MOD_TOOL_WHITELIST = new String[] {
             "opencomputers",
             "tconstruct",
+	    "exnihilocreatio",
+	    "tcomplement",
             "tinkersurvival"
         };
 
         @Config.Comment({"List of individual tools that will always work. Format tooltype-modid:item"})
         public static String[] TOOLS_WHITELIST = new String[] {
             "shears-minecraft:shears",
+	    "sledge-exnihilocreatio:hammer_tconstruct",
+	    "sledge-tcomplement:sledge_hammer",
             "hammer-immersiveengineering:tool",
             "wirecutter-immersiveengineering:tool",
             "sword-immersiveengineering:revolver",
