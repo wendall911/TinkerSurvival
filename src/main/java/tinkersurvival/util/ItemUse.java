@@ -36,6 +36,7 @@ public class ItemUse {
         "shovel",
         "sword",
         "weapon",
+	"sledge",
         "hammer",
         "wirecutter",
         "wrench",
