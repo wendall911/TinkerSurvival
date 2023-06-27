@@ -40,7 +40,7 @@ public class TinkerSurvivalJeiPlugin implements IModPlugin {
 
         registry.addIngredientInfo(
             new ItemStack(item),
-            VanillaTypes.ITEM,
+            VanillaTypes.ITEM_STACK,
             new TranslatableComponent("jei." + TinkerSurvival.MODID + ".description." + name)
         );
     }
