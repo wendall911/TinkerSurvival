@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "malum",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:soulwood_logs"
+    },
+    {
+      "item": "tinkersurvival:saw"
+    }
+  ],
+  "result": {
+    "item": "malum:soulwood_planks",
+    "count": 4
+  }
+}

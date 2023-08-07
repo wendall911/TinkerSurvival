@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "malum:soulwood",
+      "required": false
+    },
+    {
+      "id": "malum:soulwood_log",
+      "required": false
+    },
+    {
+      "id": "malum:stripped_soulwood_log",
+      "required": false
+    },
+    {
+      "id": "malum:exposed_soulwood_log",
+      "required": false
+    },
+    {
+      "id": "malum:revealed_soulwood_log",
+      "required": false
+    }
+  ]
+}

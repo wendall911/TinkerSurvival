@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "malum",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "tinkersurvival:runewood_logs"
+    },
+    {
+      "item": "tinkersurvival:crude_saw"
+    }
+  ],
+  "result": {
+    "item": "malum:runewood_planks",
+    "count": 2
+  }
+}

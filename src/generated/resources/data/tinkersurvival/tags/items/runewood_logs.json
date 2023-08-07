@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "malum:runewood",
+      "required": false
+    },
+    {
+      "id": "malum:runewood_log",
+      "required": false
+    },
+    {
+      "id": "malum:stripped_runewood",
+      "required": false
+    },
+    {
+      "id": "malum:stripped_runewood_log",
+      "required": false
+    },
+    {
+      "id": "malum:blighted_runewood",
+      "required": false
+    },
+    {
+      "id": "malum:exposed_runewood_log",
+      "required": false
+    },
+    {
+      "id": "malum:revealed_runewood_log",
+      "required": false
+    }
+  ]
+}
