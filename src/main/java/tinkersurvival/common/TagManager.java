@@ -112,6 +112,10 @@ public final class TagManager {
         public static final TagKey<Item> BYG_WILLOW_LOGS = create("willow_logs");
         public static final TagKey<Item> BYG_WITCH_HAZEL_LOGS = create("witch_hazel_logs");
         public static final TagKey<Item> BYG_ZELKOVA_LOGS = create("zelkova_logs");
+        public static final TagKey<Item> BYG_BULBIS_STEMS = create("bulbis_stems");
+        public static final TagKey<Item> BYG_IMPARIUS_STEMS = create("imparius_stems");
+        public static final TagKey<Item> BYG_SYTHIAN_STEMS = create("sythian_stems");
+        public static final TagKey<Item> BYG_EMBUR_PEDU = create("embur_pedu");
 
         // Twilight Forest
         public static final TagKey<Item> TF_GIANT_LOGS = create("giant_logs");

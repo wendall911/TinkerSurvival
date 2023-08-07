@@ -329,6 +329,10 @@ public class ModRecipesProvider extends RecipeProvider {
         plankRecipeBuilder(wrapped, ModIntegration.BYG_WILLOW_PLANKS, TagManager.Items.BYG_WILLOW_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_WITCH_HAZEL_PLANKS, TagManager.Items.BYG_WITCH_HAZEL_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.BYG_ZELKOVA_PLANKS, TagManager.Items.BYG_ZELKOVA_LOGS, "has_logs");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_BULBIS_PLANKS, TagManager.Items.BYG_BULBIS_STEMS, "has_stems");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_IMPARIUS_PLANKS, TagManager.Items.BYG_IMPARIUS_STEMS, "has_stems");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_SYTHIAN_PLANKS, TagManager.Items.BYG_SYTHIAN_STEMS, "has_stems");
+        plankRecipeBuilder(wrapped, ModIntegration.BYG_EMBUR_PLANKS, TagManager.Items.BYG_EMBUR_PEDU, "has_pedu");
 
         // Twilight Forest
         wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.TF_MODID));

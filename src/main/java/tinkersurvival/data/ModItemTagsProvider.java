@@ -188,6 +188,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addBygLogVariants(TagManager.Items.BYG_WILLOW_LOGS, "willow");
         addBygLogVariants(TagManager.Items.BYG_WITCH_HAZEL_LOGS, "witch_hazel");
         addBygLogVariants(TagManager.Items.BYG_ZELKOVA_LOGS, "zelkova");
+        addBygBulbisVariants(TagManager.Items.BYG_BULBIS_STEMS, "bulbis");
+        addBygImpariusVariants(TagManager.Items.BYG_IMPARIUS_STEMS, "imparius");
+        addBygSythianVariants(TagManager.Items.BYG_SYTHIAN_STEMS, "sythian");
+        addBygEmburVariants(TagManager.Items.BYG_EMBUR_PEDU, "embur");
 
         // Twilight Forest
         getBuilder(TagManager.Items.TF_GIANT_LOGS)
@@ -305,6 +309,38 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.bygLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.bygLoc(type + "_wood"))
             .addOptional(ModIntegration.bygLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addBygBulbisVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bygLoc(type + "_stem"))
+            .addOptional(ModIntegration.bygLoc("stripped_" + type + "_stem"))
+            .addOptional(ModIntegration.bygLoc(type + "_wood"))
+            .addOptional(ModIntegration.bygLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addBygImpariusVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bygLoc(type + "_stem"))
+            .addOptional(ModIntegration.bygLoc("fungal_" + type + "_stem"))
+            .addOptional(ModIntegration.bygLoc(type + "_hyphae"))
+            .addOptional(ModIntegration.bygLoc("fungal_" + type + "_hyphae"));
+    }
+
+    private void addBygSythianVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bygLoc(type + "_stem"))
+            .addOptional(ModIntegration.bygLoc("stripped_" + type + "_stem"))
+            .addOptional(ModIntegration.bygLoc(type + "_hyphae"))
+            .addOptional(ModIntegration.bygLoc("stripped_" + type + "_hyphae"));
+    }
+
+    private void addBygEmburVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.bygLoc(type + "_pedu"))
+            .addOptional(ModIntegration.bygLoc("fungal_" + type + "_pedu"))
+            .addOptional(ModIntegration.bygLoc(type + "_hyphae"))
+            .addOptional(ModIntegration.bygLoc("fungal_" + type + "_hyphae"));
     }
 
     private void addEcoLogVariants(TagKey<Item> tag, String type) {
