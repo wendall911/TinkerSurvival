@@ -118,6 +118,8 @@ public final class ConfigHandler {
         private static final String[] itemsStrings = new String[] {
             "hammer-immersiveengineering:hammer",
             "wirecutter-immersiveengineering:wirecutter",
+            "weapon-malum:crude_scythe",
+            "weapon-malum:soul_stained_steel_scythe"
         };
         private static final Predicate<Object> itemidValidator = s -> s instanceof String
                 && ((String) s).matches("[a-z]+[-]{1}[a-z]+[:]{1}[a-z_]+");

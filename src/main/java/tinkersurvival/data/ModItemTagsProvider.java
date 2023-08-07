@@ -203,6 +203,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addEcoLogVariants(TagManager.Items.ECO_AZALEA_LOGS, "azalea");
         addEcoLogVariants(TagManager.Items.ECO_FLOWERING_AZALEA_LOGS, "flowering_azalea");
 
+        // Malum
+        addSoulwoodVariants(TagManager.Items.MALUM_RUNEWOOD_LOGS, "runewood");
+        addRunewoodVariants(TagManager.Items.MALUM_SOULWOOD_LOGS, "soulwood");
+
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());
@@ -349,6 +353,26 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .addOptional(ModIntegration.ecoLoc("stripped_" + type + "_log"))
             .addOptional(ModIntegration.ecoLoc(type + "_wood"))
             .addOptional(ModIntegration.ecoLoc("stripped_" + type + "_wood"));
+    }
+
+    private void addRunewoodVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.malumLoc(type))
+            .addOptional(ModIntegration.malumLoc(type + "_log"))
+            .addOptional(ModIntegration.malumLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.malumLoc("exposed_" + type + "_log"))
+            .addOptional(ModIntegration.malumLoc("revealed_" + type + "_log"));
+    }
+
+    private void addSoulwoodVariants(TagKey<Item> tag, String type) {
+        getBuilder(tag)
+            .addOptional(ModIntegration.malumLoc(type))
+            .addOptional(ModIntegration.malumLoc(type + "_log"))
+            .addOptional(ModIntegration.malumLoc("stripped_" + type))
+            .addOptional(ModIntegration.malumLoc("stripped_" + type + "_log"))
+            .addOptional(ModIntegration.malumLoc("blighted_" + type))
+            .addOptional(ModIntegration.malumLoc("exposed_" + type + "_log"))
+            .addOptional(ModIntegration.malumLoc("revealed_" + type + "_log"));
     }
 
     protected TagsProvider.TagAppender<Item> getBuilder(TagKey<Item> tag) {

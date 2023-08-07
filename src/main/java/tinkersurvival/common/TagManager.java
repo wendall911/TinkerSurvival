@@ -126,6 +126,10 @@ public final class TagManager {
         public static TagKey<Item> ECO_AZALEA_LOGS = create("azalea_logs");
         public static TagKey<Item> ECO_FLOWERING_AZALEA_LOGS = create("flowering_azalea_logs");
 
+        // Malum
+        public static TagKey<Item> MALUM_RUNEWOOD_LOGS = create("runewood_logs");
+        public static TagKey<Item> MALUM_SOULWOOD_LOGS = create("soulwood_logs");
+
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }

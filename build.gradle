@@ -144,6 +144,8 @@ dependencies {
         //runtimeOnly fg.deobf("curse.maven:terrablender-563928:${terrablender_version}")
         //implementation fg.deobf("curse.maven:byg-247560:${byg_version}")
         //runtimeOnly fg.deobf("curse.maven:ecologics-570463:3939725")
+        //runtimeOnly fg.deobf("curse.maven:lodestone-616457:4616315")
+        //runtimeOnly fg.deobf("curse.maven:malum-484064:4631612")
     }
 
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
@@ -236,6 +238,7 @@ task curseforge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
         mainFile.addOptional('oh-the-biomes-youll-go')
         mainFile.addOptional('the-twilight-forest')
         mainFile.addOptional('ecologics')
+        mainFile.addOptional('malum')
     }
 }
 
