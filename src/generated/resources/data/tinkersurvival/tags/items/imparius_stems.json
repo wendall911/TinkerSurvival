@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:imparius_stem",
+      "required": false
+    },
+    {
+      "id": "byg:fungal_imparius_stem",
+      "required": false
+    },
+    {
+      "id": "byg:imparius_hyphae",
+      "required": false
+    },
+    {
+      "id": "byg:fungal_imparius_hyphae",
+      "required": false
+    }
+  ]
+}

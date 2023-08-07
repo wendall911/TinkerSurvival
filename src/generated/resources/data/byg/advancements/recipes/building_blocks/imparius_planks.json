@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "byg:imparius_planks"
+    ]
+  },
+  "criteria": {
+    "has_stems": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "tinkersurvival:imparius_stems"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "byg:imparius_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stems",
+      "has_the_recipe"
+    ]
+  ]
+}

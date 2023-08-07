@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:bulbis_stem",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_bulbis_stem",
+      "required": false
+    },
+    {
+      "id": "byg:bulbis_wood",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_bulbis_wood",
+      "required": false
+    }
+  ]
+}

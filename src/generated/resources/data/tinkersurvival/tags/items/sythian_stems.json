@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:sythian_stem",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_sythian_stem",
+      "required": false
+    },
+    {
+      "id": "byg:sythian_hyphae",
+      "required": false
+    },
+    {
+      "id": "byg:stripped_sythian_hyphae",
+      "required": false
+    }
+  ]
+}

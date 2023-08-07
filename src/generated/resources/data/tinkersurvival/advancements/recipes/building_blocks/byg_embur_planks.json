@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "tinkersurvival:byg_embur_planks"
+    ]
+  },
+  "criteria": {
+    "has_pedu": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tconstruct:tinker_station"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "tinkersurvival:byg_embur_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pedu",
+      "has_the_recipe"
+    ]
+  ]
+}

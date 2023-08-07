@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "byg:embur_pedu",
+      "required": false
+    },
+    {
+      "id": "byg:fungal_embur_pedu",
+      "required": false
+    },
+    {
+      "id": "byg:embur_hyphae",
+      "required": false
+    },
+    {
+      "id": "byg:fungal_embur_hyphae",
+      "required": false
+    }
+  ]
+}
