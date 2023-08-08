@@ -412,6 +412,10 @@ public class ModRecipesProvider extends RecipeProvider {
         wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.MALUM_MODID));
         plankRecipeBuilder(wrapped, ModIntegration.MALUM_RUNEWOOD_PLANKS, TagManager.Items.MALUM_RUNEWOOD_LOGS, "has_logs");
         plankRecipeBuilder(wrapped, ModIntegration.MALUM_SOULWOOD_PLANKS, TagManager.Items.MALUM_SOULWOOD_LOGS, "has_logs");
+
+        // Ice and Fire; Dragons
+        wrapped = withCondition(consumer, new ModLoadedCondition(ModIntegration.IFD_MODID));
+        plankRecipeBuilder(wrapped, ModIntegration.IFD_DREADWOOD_PLANKS, TagManager.Items.IFD_DREADWOOD_LOGS, "has_logs");
     }
 
     private static void plankRecipeBuilder(Consumer<FinishedRecipe> consumer, ItemLike item, TagKey<Item> itemTag, String label) {
@@ -429,6 +433,9 @@ public class ModRecipesProvider extends RecipeProvider {
         }
         else if (modid.contains(ModIntegration.MALUM_MODID)) {
             plankOverrideRecipe.save(consumer, new ResourceLocation(ModIntegration.MALUM_MODID, name));
+        }
+        else if (modid.contains(ModIntegration.IFD_MODID)) {
+            plankOverrideRecipe.save(consumer, new ResourceLocation(ModIntegration.IFD_MODID, "dread_wood_planks"));
         }
         else {
             plankOverrideRecipe.save(consumer);

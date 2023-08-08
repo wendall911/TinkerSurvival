@@ -27,6 +27,7 @@ public final class ModIntegration {
     public static final String TF_MODID = "twilightforest";
     public static final String ECO_MODID = "ecologics";
     public static final String MALUM_MODID = "malum";
+    public static final String IFD_MODID = "iceandfire";
 
     public static Item CHERRY_PLANKS;
     public static Item CITRUS_PLANKS;
@@ -138,6 +139,7 @@ public final class ModIntegration {
     public static Item ECO_FLOWERING_AZALEA_PLANKS;
     public static Item MALUM_RUNEWOOD_PLANKS;
     public static Item MALUM_SOULWOOD_PLANKS;
+    public static Item IFD_DREADWOOD_PLANKS;
 
     public static IForgeRegistry<Item> ITEM_REGISTRY;
 
@@ -256,6 +258,7 @@ public final class ModIntegration {
             ECO_FLOWERING_AZALEA_PLANKS = registerItem(ecoLoc("flowering_azalea_planks"));
             MALUM_RUNEWOOD_PLANKS = registerItem(malumLoc("runewood_planks"));
             MALUM_SOULWOOD_PLANKS = registerItem(malumLoc("soulwood_planks"));
+            IFD_DREADWOOD_PLANKS = registerItem(ifdLoc("dreadwood_planks"));
         }
     }
 
@@ -337,6 +340,10 @@ public final class ModIntegration {
 
     public static ResourceLocation malumLoc(String name) {
         return getLoc(MALUM_MODID, name);
+    }
+
+    public static ResourceLocation ifdLoc(String name) {
+        return getLoc(IFD_MODID, name);
     }
 
     private static ResourceLocation getLoc(String modid, String name) {

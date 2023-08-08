@@ -207,6 +207,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addSoulwoodVariants(TagManager.Items.MALUM_RUNEWOOD_LOGS, "runewood");
         addRunewoodVariants(TagManager.Items.MALUM_SOULWOOD_LOGS, "soulwood");
 
+        // Ice and Fire; Dragons
+        getBuilder(TagManager.Items.IFD_DREADWOOD_LOGS)
+            .addOptional(ModIntegration.ifdLoc("dreadwood_log"));
+
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());

@@ -130,6 +130,9 @@ public final class TagManager {
         public static TagKey<Item> MALUM_RUNEWOOD_LOGS = create("runewood_logs");
         public static TagKey<Item> MALUM_SOULWOOD_LOGS = create("soulwood_logs");
 
+        // Ice and Fire; Dragons
+        public static TagKey<Item> IFD_DREADWOOD_LOGS = create("dreadwood_logs");
+
         private static TagKey<Item> create(String id) {
             return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).createOptionalTagKey(identifier(id), Collections.emptySet());
         }
