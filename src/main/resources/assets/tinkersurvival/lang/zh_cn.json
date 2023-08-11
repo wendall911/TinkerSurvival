@@ -72,7 +72,7 @@
     "modifier.tinkersurvival.mana.description": "如果提供魔力，物品栏中的物品将使用魔力修复耐久度。",
     "tools": "工具",
     "MOD_TOOL_WHITELIST.tooltip": "列表中模组的工具将始终有效并且可以制作。而其他模组的工具则会变得像湿面条一样。",
-    "TOOLS_WHITELIST.tooltip": "列表中始终有效的单个工具。格式tooltype-modid:item",
+    "TOOLS_WHITELIST.tooltip": "列表中始终有效的单个工具。格式为tooltype-modid:item",
     "armor": "盔甲",
     "MOD_ARMOR_WHITELIST.tooltip": "列表中模组的盔甲将始终有效并且可以制作。未在列表中的模组的盔甲将无法使用并无法制作。",
     "ARMOR_WHITELIST.tooltip": "列表中始终有效的单个盔甲。格式为modid:item",
