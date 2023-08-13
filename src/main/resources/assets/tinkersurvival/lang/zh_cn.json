@@ -94,7 +94,7 @@
     "NO_SLEEPING.tooltip": "到了晚上，我哭着想跑去睡觉……",
     "SLOW_DOWN_DIRT_PUNCHING.tooltip": "空手挖掘包含泥土在内的方块的挖掘速度会减慢。默认为true",
     "ENABLE_SAW.tooltip": "使锯子能够制作木板。默认为true",
-    "FORCE_SAW_FOR_PLANKS.tooltip": "移除原版中木板和木棍和合成配方，且仅能通过锯子制作。默认为true",
+    "FORCE_SAW_FOR_PLANKS.tooltip": "移除原版中木板和木棍的合成配方，且仅能通过锯子制作。默认为true",
     "client": "客户端",
     "ENABLE_FAIL_SOUND.tooltip": "若使用了错误工具将播放失败音效。",
 
