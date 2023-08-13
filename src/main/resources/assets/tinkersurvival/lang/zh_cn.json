@@ -45,7 +45,7 @@
     "block.tinkersurvival.red_sandstone_loose_rock": "松散的岩石堆（红砂岩）",
     "jei.tinkersurvival.description.rock": "你可以在地上捡到这些岩石，用燧石小刀可以将它切割成燧石碎片",
     "jei.tinkersurvival.description.plant_fiber": "用小刀斩断草时会掉落植物纤维。植物纤维可以合成用于制作工具的草绳和制作绷带软膏的植物浆。",
-    "jei.tinkersurvival.description.stick": "破坏树叶时会掉落木棍。使用任何小刀都可以增加木棍掉落的概率。",
+    "jei.tinkersurvival.description.stick": "破坏树叶时会掉落木棍。使用任何小刀都可以使木棍掉落的概率翻倍。",
     "jei.tinkersurvival.description.flint_shard": "在任意岩石上敲击小块岩石会掉落燧石碎片。用小块岩石敲击任何岩石，都有一定概率碎成两个燧石碎片。",
     "tooltip.uselessTool1": "这个工具什么都挖不了！",
     "tooltip.uselessTool2": "只能用于合成。",
