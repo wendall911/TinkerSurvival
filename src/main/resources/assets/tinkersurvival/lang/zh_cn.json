@@ -85,7 +85,7 @@
     "ENABLE_ROCK_FROM_DIRT.tooltip": "挖掘泥土能掉落小型岩石。（默认：false)",
     "ROCK_FROM_DIRT_CHANCE.tooltip": "空手挖掘泥土掉落小型岩石的概率。默认为0.4（=40%）",
     "FLINT_CHANCE.tooltip": "敲击获得燧石碎片的成功概率。默认为60%-0.6D",
-    "GRASS_FIBER_CHANCE.tooltip": "高草掉落植物纤维的概率。默认为60%-0.6D。使用小刀的概率再多40%。",
+    "GRASS_FIBER_CHANCE.tooltip": "高草丛掉落植物纤维的概率。默认为60%-0.6D。使用小刀的概率再多40%。",
     "HEAL_RATE.tooltip": "调整绷带的生命值恢复速度。粗制绷带的效果为50%。",
     "SLOW_DOWN_MULTIPLIER.tooltip": "用于调整错误使用工具时的挖掘速度削减。（默认为1.0)",
     "features": "游戏特性",
