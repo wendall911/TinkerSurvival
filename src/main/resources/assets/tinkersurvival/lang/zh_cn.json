@@ -78,7 +78,7 @@
     "ARMOR_WHITELIST.tooltip": "列表中始终有效的单个盔甲。格式为modid:item",
     "ARMOR_TEMP_MODIFIERS.tooltip": "所有有温度调节强化的盔甲列表。格式为modid:item=modifier",
     "INSULATED_MODIFIER.tooltip": "匠魂盔甲羊毛的保温系数值。",
-    "CHILLING_MODIFIER.tooltip": "匠魂盔甲冻结史莱姆的降温系数值。",
+    "CHILLING_MODIFIER.tooltip": "匠魂盔甲冻结黏液的降温系数值。",
     "balance": "平衡性",
     "ENABLE_ROCKGEN.tooltip": "岩石堆能生成在地表。默认为true",
     "ROCKGEN_CHANCE.tooltip": "岩石堆生成在地表的概率。默认为1.0D（=100%）",
