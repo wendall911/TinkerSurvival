@@ -41,7 +41,7 @@ def modid = "${modid}"
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '17'
 
 minecraft {
-    mappings channel: "${mappings_channel}", version: mappings_version
+    mappings channel: "${mappings_channel}", version: "${mappings_version}-${minecraft_version}"
 
     runs {
         client {
