@@ -39,7 +39,7 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
         DefaultMaterialsModule defaultThreeParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material).build();
 
         define(ToolDefinitions.KNIFE_DEFINITION)
-            .module(PartStatsModule.meleeHarvest()
+            .module(PartStatsModule.parts()
                 .part(TinkerToolParts.smallBlade)
                 .part(TinkerToolParts.toughHandle)
                 .part(TinkerToolParts.toolBinding).build())
@@ -52,7 +52,7 @@ public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvid
             .smallToolStartingSlots();
 
         define(ToolDefinitions.SAW_DEFINITION)
-            .module(PartStatsModule.meleeHarvest()
+            .module(PartStatsModule.parts()
                 .part(TConItems.SAW_BLADE)
                 .part(TinkerToolParts.toolHandle)
                 .part(TinkerToolParts.toolBinding).build())

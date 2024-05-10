@@ -2,35 +2,35 @@
   "parts": [
     {
       "path": "tinkersurvival:item/tool/saw/head",
-      "statType": "tconstruct:head"
+      "stat_type": "tconstruct:head"
     },
     {
       "path": "tinkersurvival:item/tool/saw/head_broken",
-      "statType": "tconstruct:head"
+      "stat_type": "tconstruct:head"
     },
     {
       "path": "tinkersurvival:item/tool/saw/binding",
-      "statType": "tconstruct:binding"
+      "stat_type": "tconstruct:binding"
     },
     {
       "path": "tinkersurvival:item/tool/saw/handle",
-      "statType": "tconstruct:handle"
+      "stat_type": "tconstruct:handle"
     },
     {
       "path": "tinkersurvival:item/tool/knife/head",
-      "statType": "tconstruct:head"
+      "stat_type": "tconstruct:head"
     },
     {
       "path": "tinkersurvival:item/tool/knife/head_broken",
-      "statType": "tconstruct:head"
+      "stat_type": "tconstruct:head"
     },
     {
       "path": "tinkersurvival:item/tool/knife/binding",
-      "statType": "tconstruct:binding"
+      "stat_type": "tconstruct:binding"
     },
     {
       "path": "tinkersurvival:item/tool/knife/handle",
-      "statType": "tconstruct:handle"
+      "stat_type": "tconstruct:handle"
     }
   ],
   "replace": false

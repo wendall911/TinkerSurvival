@@ -33,22 +33,21 @@ public final class DataGenerators {
         SawPartSpriteProvider sawPartSprites = new SawPartSpriteProvider();
         String modpackOverrides = System.getenv("MOD_OVERRIDES");
         TinkerMaterialSpriteProvider materialSprites = new TinkerMaterialSpriteProvider();
+        boolean client = event.includeClient();
+        boolean server = event.includeServer();
 
-        gen.addProvider(true, new ModItemModelProvider(gen, existingFileHelper));
-        gen.addProvider(true, blockTags);
-        gen.addProvider(true, new ModItemTagsProvider(gen, blockTags, existingFileHelper));
-        gen.addProvider(true, new ModRecipesProvider(gen));
-        gen.addProvider(true, new ToolsRecipeProvider(gen));
-        gen.addProvider(true, new StationSlotLayoutProvider(gen));
-        gen.addProvider(true, new GeneratorPartTextureJsonGenerator(gen, TinkerSurvival.MODID, sawPartSprites));
-        gen.addProvider(true, new ToolDefinitionDataProvider(gen));
-
-        if (event.includeClient()) {
-            gen.addProvider(true, new MaterialPartTextureGenerator(gen, existingFileHelper, sawPartSprites, materialSprites));
-        }
+        gen.addProvider(server, new ModItemModelProvider(gen, existingFileHelper));
+        gen.addProvider(server, blockTags);
+        gen.addProvider(server, new ModItemTagsProvider(gen, blockTags, existingFileHelper));
+        gen.addProvider(server, new ModRecipesProvider(gen));
+        gen.addProvider(server, new ToolsRecipeProvider(gen));
+        gen.addProvider(server, new StationSlotLayoutProvider(gen));
+        gen.addProvider(client, new GeneratorPartTextureJsonGenerator(gen, TinkerSurvival.MODID, sawPartSprites));
+        gen.addProvider(server, new ToolDefinitionDataProvider(gen));
+        gen.addProvider(client, new MaterialPartTextureGenerator(gen, existingFileHelper, sawPartSprites, materialSprites));
 
         if (modpackOverrides != null && modpackOverrides.contains("all")) {
-            gen.addProvider(true, new BlockTagsOverrideProvider(gen, event.getExistingFileHelper()));
+            gen.addProvider(server, new BlockTagsOverrideProvider(gen, event.getExistingFileHelper()));
         }
     }
 

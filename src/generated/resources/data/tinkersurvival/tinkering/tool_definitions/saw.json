@@ -6,8 +6,7 @@
         "tinkersurvival:saw_blade",
         "tconstruct:tool_handle",
         "tconstruct:tool_binding"
-      ],
-      "stat_provider": "tconstruct:melee_harvest"
+      ]
     },
     {
       "type": "tconstruct:base_stats",
