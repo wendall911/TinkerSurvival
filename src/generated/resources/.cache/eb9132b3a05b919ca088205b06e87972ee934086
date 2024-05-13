@@ -1,11 +1,7 @@
-// 1.19.2	2024-05-01T08:50:26.228332954	TinkerSurvival Tool Recipes
-8525dcae6a5d71b1d637d4ce379f02e903723adb data/tinkersurvival/recipes/smeltery/casts/gold/saw_blade.json
-ad181cc6ab37866e0957096115bba52124bb0807 data/tinkersurvival/recipes/smeltery/casts/red_sand/builder_block/saw_blade.json
-36e2e552d775aa302026b0eeb164020e225779ef data/tinkersurvival/recipes/smeltery/casts/red_sand/builder_cast/saw_blade.json
-3acb0fa8b5f03d38b3de177d9f84371acd6d1a5d data/tinkersurvival/recipes/smeltery/casts/red_sand/molding/saw_blade.json
-9c9b1bc5926a60f11ac76aace4e3dae5276e8de7 data/tinkersurvival/recipes/smeltery/casts/sand/builder_block/saw_blade.json
-9ebe0cb59988374edb6a042fe10a467f343e0927 data/tinkersurvival/recipes/smeltery/casts/sand/builder_cast/saw_blade.json
-41accf738535ac6ce523f47044df6136380a9026 data/tinkersurvival/recipes/smeltery/casts/sand/molding/saw_blade.json
+// 1.19.2	2024-05-02T15:02:14.741454648	TinkerSurvival Tool Recipes
+8525dcae6a5d71b1d637d4ce379f02e903723adb data/tinkersurvival/recipes/smeltery/casts/gold_casts/saw_blade.json
+65bd185df0521e2622caa934d050b3cf0279d77b data/tinkersurvival/recipes/smeltery/casts/red_sand_casts/saw_blade.json
+cb63471b96a837f33bfc3cad7af6ac52947c8f79 data/tinkersurvival/recipes/smeltery/casts/sand_casts/saw_blade.json
 1d4766e8e76ee2f4f004aecfa71054108db66558 data/tinkersurvival/recipes/tools/building/knife.json
 d8ab727f2707a1e70868b6bf816865a11180dfb9 data/tinkersurvival/recipes/tools/building/saw.json
 d49a17ca88e2567759ab7fcde7b5948f17df4d34 data/tinkersurvival/recipes/tools/parts/builder/saw_blade.json
