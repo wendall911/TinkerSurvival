@@ -102,7 +102,9 @@ public class MaterialPartTextureGenerator extends GenericTextureGenerator {
               if (material.supportStatType(statType) || overrides.hasOverride(statType, material.getTexture())) {
                 ResourceLocation spritePath = outputPath(part, material);
                 if (!spriteReader.exists(spritePath)) {
-                  generateSprite(spriteReader, material, part, spritePath, saver, metaSaver);
+                  try {
+                    generateSprite(spriteReader, material, part, spritePath, saver, metaSaver);
+                  } catch (Exception ignored) {}
                 }
                 break;
               }
