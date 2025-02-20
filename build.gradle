@@ -3,10 +3,9 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'net.darkhax.curseforgegradle' version '1.+'
     id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.71.8'
-    id 'com.modrinth.minotaur' version '2.+'
     id 'io.freefair.lombok' version '6.3.0'
+    id 'me.modmuss50.mod-publish-plugin' version '0.7.3'
 }
 
 repositories {
@@ -204,76 +203,71 @@ def updates = tasks.register("generateUpdates", Copy) {
     it.into 'files/'
 }
 
-def changelogFile = 'build/libs/' + project.getName() + '-' + version + '-changelog.txt'
+def changelogFile = project(":").projectDir.toString() + '/build/libs/' + project.getName() + '-' + version + '-changelog.txt'
+def publishFile = project(":").projectDir.toString() + "/build/libs/${archivesBaseName}-${version}.jar"
 
-task curseforge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+publishMods {
+    file = file(publishFile)
+    if (file(changelogFile).exists()) {
+        changelog = file(changelogFile).text
+    }
+    type = "${release_type}".startsWith("release") ? STABLE : ("${release_type}".startsWith("beta") ? BETA : ALPHA)
+    modLoaders.addAll(['forge'])
+
     if (project.hasProperty('tscurseApiKey')) {
-        apiToken = project.tscurseApiKey
-        def mainFile = upload(project.tscurseId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
-        mainFile.changelog = file(changelogFile)
-        mainFile.addJavaVersion('Java 17')
-        mainFile.addModLoader('Forge')
-        mainFile.releaseType = "${release_type}"
-        "${release_versions}".split(',').each {
-            mainFile.addGameVersion("${it}")
+        curseforge {
+            accessToken = project.tscurseApiKey
+            projectId = project.tscurseId
+            javaVersions.add(JavaVersion.toVersion("${java_version}"))
+            clientRequired = true
+            serverRequired = true
+            minecraftVersions.addAll("${release_versions}".split(','))
+            embeds('spectrelib')
+            requires('mantle')
+            requires('tinkers-construct')
+            optional('configured')
+            optional('catalogue')
+            optional('fruit-trees')
+            optional('quark')
+            optional('biomes-o-plenty')
+            optional('all-you-can-eat')
+            optional('water-source')
+            optional('sushigocrafting')
+            optional('botania')
+            optional('ars-nouveau')
+            optional('exnihilosequentia')
+            optional('the-undergarden')
+            optional('dynamictrees')
+            optional('oh-the-biomes-youll-go')
+            optional('the-twilight-forest')
+            optional('ecologics')
+            optional('alexs-mobs')
+            optional('betteranimalsplus')
+            optional('malum')
+            optional('ice-and-fire-dragons')
+            optional('psi')
         }
-        mainFile.addRequirement('mantle')
-        mainFile.addRequirement('tinkers-construct')
-        mainFile.addRequirement('survivalist-essentials')
-        mainFile.addOptional('configured')
-        mainFile.addOptional('catalogue')
-        mainFile.addOptional('fruit-trees')
-        mainFile.addOptional('quark')
-        mainFile.addOptional('biomes-o-plenty')
-        mainFile.addOptional('all-you-can-eat')
-        mainFile.addOptional('water-source')
-        mainFile.addOptional('sushigocrafting')
-        mainFile.addOptional('botania')
-        mainFile.addOptional('ars-nouveau')
-        mainFile.addOptional('exnihilosequentia')
-        mainFile.addOptional('the-undergarden')
-        mainFile.addOptional('dynamictrees')
-        mainFile.addOptional('oh-the-biomes-youll-go')
-        mainFile.addOptional('the-twilight-forest')
-        mainFile.addOptional('ecologics')
-        mainFile.addOptional('alexs-mobs')
-        mainFile.addOptional('betteranimalsplus')
-        mainFile.addOptional('malum')
-        mainFile.addOptional('ice-and-fire-dragons')
-        mainFile.addOptional('psi')
     }
-}
-
-tasks.curseforge.dependsOn build
-
-modrinth {
     if (project.hasProperty('tsModrinthId')) {
-        token = project.modrinthKey
-        projectId = project.tsModrinthId
-        version = getVersion()
-        versionType = "${release_type}"
-        if (file(changelogFile).exists()) {
-            changelog = file(changelogFile).text
-        }
-        uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
-        gameVersions = "${release_versions}".split(",") as List<String>
-        dependencies {
-            required.project 'mantle'
-            required.project 'tinkers-construct'
-            required.project 'survivalist-essentials'
-			optional.project 'quark'
-            optional.project 'allyoucaneat'
-            optional.project 'botania'
-            optional.project 'exnihilosequentia'
-            optional.project 'dynamictrees'
-            optional.project 'biomesyougo'
-            optional.project 'ecologics'
-            optional.project 'psi'
+        modrinth {
+            accessToken = project.modrinthKey
+            projectId = project.tsModrinthId
+            minecraftVersions.addAll("${release_versions}".split(','))
+            requires('mantle')
+            requires('tinkers-construct')
+			requires('quark')
+            requires('allyoucaneat')
+            requires('botania')
+            requires('exnihilosequentia')
+            requires('dynamictrees')
+            requires('biomesyougo')
+            requires('ecologics')
+            requires('psi')
         }
     }
+    if (project.hasProperty('tsGithubToken')) {
+    }
 }
-
-tasks.modrinth.dependsOn build
 
 task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
     file = new File(changelogFile);
