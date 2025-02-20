@@ -4,23 +4,18 @@ import java.util.function.Consumer;
 
 import org.jetbrains.annotations.NotNull;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 
 public class ModRecipesProvider extends RecipeProvider {
 
-    public ModRecipesProvider(DataGenerator generatorIn) {
-        super(generatorIn);
+    public ModRecipesProvider(PackOutput packOutput) {
+        super(packOutput);
     }
 
     @Override
-    public @NotNull String getName() {
-        return "TinkerSurvival - Recipies";
-    }
-
-    @Override
-    protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
     }
 
 }

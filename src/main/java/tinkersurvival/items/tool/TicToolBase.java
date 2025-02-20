@@ -5,7 +5,6 @@ import javax.annotation.Nonnull;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Containers;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -78,7 +77,7 @@ public class TicToolBase extends ModifiableItem {
             boolean removeItem = false;
 
             for (int i = 0; i < inventory.getContainerSize(); ++i) {
-                if (inventory.getItem(i).sameItem(container)) {
+                if (inventory.getItem(i).is(container.getItem())) {
                     if (container.getOrCreateTag().getFloat("crafty") == inventory.getItem(i).getOrCreateTag().getFloat("crafty")) {
                         if (inventory.getItem(i).getTag().getFloat("crafty") > 0) {
                             removeItem = true;
@@ -94,7 +93,7 @@ public class TicToolBase extends ModifiableItem {
 
         if (tool.isBroken()) {
             // Don't do that!
-            player.hurt(DamageSource.GENERIC, 0.5f);
+            player.hurt(player.damageSources().generic(), 0.5f);
             Chat.sendMessage(player, Chat.WARNING);
         }
 
@@ -126,7 +125,7 @@ public class TicToolBase extends ModifiableItem {
             // Drop broken tool if no space
             NonNullList<ItemStack> dropStack = NonNullList.withSize(1, container);
 
-            Containers.dropContents(player.getLevel(), new BlockPos(player.getEyePosition()), dropStack);
+            Containers.dropContents(player.level(), new BlockPos(player.blockPosition()), dropStack);
         }
 
         Chat.sendMessage(player, Chat.TOOL_BROKE, stack, true);

@@ -1,6 +1,6 @@
 package tinkersurvival.data.tcon;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
 import slimeknights.tconstruct.library.materials.RandomMaterial;
@@ -19,8 +19,8 @@ import tinkersurvival.TinkerSurvival;
 
 public class ToolDefinitionDataProvider extends AbstractToolDefinitionDataProvider {
 
-    public ToolDefinitionDataProvider(DataGenerator generatorIn) {
-        super(generatorIn, TinkerSurvival.MODID);
+    public ToolDefinitionDataProvider(PackOutput packOutput) {
+        super(packOutput, TinkerSurvival.MODID);
     }
 
     @Override

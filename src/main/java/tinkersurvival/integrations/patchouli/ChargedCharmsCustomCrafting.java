@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.Level;
 import vazkii.patchouli.client.book.BookContentsBuilder;
 import vazkii.patchouli.client.book.BookEntry;
 import vazkii.patchouli.client.book.ClientBookRegistry;
@@ -29,7 +30,7 @@ public class ChargedCharmsCustomCrafting extends PageCrafting {
     }
 
     @Override
-    public Recipe<?> loadRecipe(BookContentsBuilder builder, BookEntry entry, ResourceLocation loc) {
+    protected Recipe<?> loadRecipe(Level level, BookContentsBuilder builder, BookEntry entry, ResourceLocation loc) {
         AtomicReference<CraftingRecipe> craftingRecipe = new AtomicReference<>();
 
         if (loc != null) {

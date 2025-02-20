@@ -1,11 +1,12 @@
 package tinkersurvival.data;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import org.jetbrains.annotations.NotNull;
 
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -27,8 +28,8 @@ import tinkersurvival.TinkerSurvival;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
 
-    public ModItemTagsProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
-        super(dataGenerator, blockTagsProvider, TinkerSurvival.MODID, existingFileHelper);
+    public ModItemTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ModBlockTagsProvider blockTagsProvider, ExistingFileHelper helper) {
+        super(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), TinkerSurvival.MODID, helper);
     }
 
     @Override
@@ -37,7 +38,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
         Consumer<CastItemObject> addCast = cast -> {
             this.tag(GOLD_CASTS).add(cast.get());
             this.tag(TagManager.Items.SAW_BLADE_CAST).add(cast.get());

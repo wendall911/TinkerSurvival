@@ -1,6 +1,6 @@
 package tinkersurvival.data.tcon;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 import slimeknights.tconstruct.library.data.tinkering.AbstractStationSlotLayoutProvider;
 import slimeknights.tconstruct.tools.TinkerToolParts;
@@ -9,8 +9,8 @@ import tinkersurvival.items.TConItems;
 
 public class StationSlotLayoutProvider extends AbstractStationSlotLayoutProvider {
 
-    public StationSlotLayoutProvider(DataGenerator generatorIn) {
-        super(generatorIn);
+    public StationSlotLayoutProvider(PackOutput packOutput) {
+        super(packOutput);
     }
 
     @Override

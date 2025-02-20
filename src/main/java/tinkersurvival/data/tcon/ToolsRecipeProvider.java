@@ -2,7 +2,7 @@ package tinkersurvival.data.tcon;
 
 import java.util.function.Consumer;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 
@@ -18,14 +18,10 @@ import tinkersurvival.TinkerSurvival;
 
 public class ToolsRecipeProvider extends RecipeProvider implements IConditionBuilder, IRecipeHelper, IMaterialRecipeHelper, IToolRecipeHelper {
 
-    public ToolsRecipeProvider(DataGenerator generatorIn) {
-        super(generatorIn);
+    public ToolsRecipeProvider(PackOutput packOutput) {
+        super(packOutput);
     }
 
-    @Override
-    public String getName() {
-        return "TinkerSurvival Tool Recipes";
-    }
 
     @Override
     public String getModId() {
@@ -33,7 +29,7 @@ public class ToolsRecipeProvider extends RecipeProvider implements IConditionBui
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         this.addToolBuildingRecipes(consumer);
         this.addPartRecipes(consumer);
     }

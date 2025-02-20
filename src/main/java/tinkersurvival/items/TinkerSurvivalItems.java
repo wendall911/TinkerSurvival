@@ -3,7 +3,6 @@ package tinkersurvival.items;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegisterEvent;
 
-import survivalistessentials.common.CreativeTabs;
 import survivalistessentials.items.item.SurvivalistEssentialsBook;
 
 import tinkersurvival.TinkerSurvival;
@@ -28,9 +27,8 @@ public class TinkerSurvivalItems {
 
     public static Item registerBook(String name) {
         return registerItem(name, new SurvivalistEssentialsBook(
-                new Item.Properties().tab(CreativeTabs.ITEM_TAB_GROUP),
-                name,
-                TinkerSurvival.MODID
+            new Item.Properties(),
+            TinkerSurvival.MODID
         ));
     }
 

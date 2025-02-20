@@ -2,8 +2,8 @@ package tinkersurvival.data.client;
 
 import java.util.Objects;
 
-import net.minecraft.core.Registry;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
@@ -24,8 +24,8 @@ import tinkersurvival.TinkerSurvival;
 
 public class ModItemModelProvider extends ItemModelProvider {
 
-    public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, TinkerSurvival.MODID, existingFileHelper);
+    public ModItemModelProvider(PackOutput packOutput, ExistingFileHelper existingFileHelper) {
+        super(packOutput, TinkerSurvival.MODID, existingFileHelper);
     }
 
     @Override
@@ -45,9 +45,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         ResourceLocation idGold = cast.getId();
         String path = idGold.getPath().replace("_cast", "");
         ResourceLocation textureLocationGold = new ResourceLocation(idGold.getNamespace(), "item/cast/" + path);
-        ResourceLocation idSand = Registry.ITEM.getKey(cast.getSand().asItem());
+        ResourceLocation idSand = BuiltInRegistries.ITEM.getKey(cast.getSand().asItem());
         ResourceLocation textureLocationSand = new ResourceLocation(Objects.requireNonNull(idSand).getNamespace(), "item/sand_cast/" + path);
-        ResourceLocation idSandRed = Registry.ITEM.getKey(cast.getRedSand().asItem());
+        ResourceLocation idSandRed = BuiltInRegistries.ITEM.getKey(cast.getRedSand().asItem());
         ResourceLocation textureLocationSandRed = new ResourceLocation(Objects.requireNonNull(idSandRed).getNamespace(), "item/red_sand_cast/" + path);
         ResourceLocation loc = mcLoc("item/generated");
 
@@ -65,7 +65,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private MaterialModelBuilder<ItemModelBuilder> part(ItemObject<? extends MaterialItem> part, String texture) {
         return part(part.getId(), texture);
-    }
+}
 
     private void build(ModelFile itemGenerated, Item item) {
         String name = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();

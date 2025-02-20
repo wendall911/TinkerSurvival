@@ -9,6 +9,7 @@ import homeostatic.Homeostatic;
 import homeostatic.common.item.HomeostaticItems;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.Items;
 
 import net.minecraft.world.level.block.Blocks;
 
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
@@ -46,8 +48,8 @@ public class ModpackBookProvider extends PatchouliBookProvider {
     private int categorySortNum = -1;
     private int entrySortNum = -1;
 
-    public ModpackBookProvider(DataGenerator gen) {
-        super(gen, TinkerSurvival.MODID, "en_us");
+    public ModpackBookProvider(@NotNull final PackOutput packOutput) {
+        super(packOutput, TinkerSurvival.MODID, "en_us");
     }
 
     @Override

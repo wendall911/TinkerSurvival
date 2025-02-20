@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.google.gson.JsonObject;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -16,8 +16,8 @@ import tinkersurvival.items.TConItems;
 
 public class ToolItemModelProvider extends AbstractToolItemModelProvider {
 
-    public ToolItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, existingFileHelper, TinkerSurvival.MODID);
+    public ToolItemModelProvider(PackOutput packOutput, ExistingFileHelper existingFileHelper) {
+        super(packOutput, existingFileHelper, TinkerSurvival.MODID);
     }
 
     @Override

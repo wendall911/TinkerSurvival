@@ -34,7 +34,7 @@ public class PlayerEventHandler {
          *
          */
 
-        if (!event.getEntity().level.isClientSide) {
+        if (!event.getEntity().level().isClientSide) {
             ItemLike thing = event.getCrafting().getItem();
 
             if (thing instanceof Saw || thing instanceof Knife) {

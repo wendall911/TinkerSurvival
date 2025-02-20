@@ -1,6 +1,10 @@
 package tinkersurvival.proxy;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,8 +39,8 @@ public class CommonProxy {
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void registerEvent(RegisterEvent event) {
-            event.register(Registry.ITEM_REGISTRY, TConItems::init);
-            event.register(Registry.ITEM_REGISTRY, TinkerSurvivalItems::init);
+            event.register(Registries.ITEM, TConItems::init);
+            event.register(Registries.ITEM, TinkerSurvivalItems::init);
         }
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -49,6 +53,18 @@ public class CommonProxy {
             setupDone = true;
 
             TinkerSurvivalModule.initRegistries(bus);
+        }
+
+        @SubscribeEvent(priority = EventPriority.LOWEST)
+        public static void registerCreativeTab(BuildCreativeModeTabContentsEvent event) {
+            if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+                event.accept(new ItemStack(TConItems.KNIFE.get()));
+                event.accept(new ItemStack(TConItems.SAW.get()));
+                event.accept(new ItemStack(TConItems.SAW_BLADE.get()));
+                event.accept(new ItemStack(TConItems.SAW_BLADE_CAST.get()));
+                event.accept(new ItemStack(TConItems.SAW_BLADE_CAST.get()));
+                event.accept(new ItemStack(TinkerSurvivalItems.MODPACK_BOOK));
+            }
         }
 
     }
