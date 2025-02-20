@@ -36,6 +36,6 @@ license="${license}"
 [[dependencies.tinkersurvival]]
     modId="survivalistessentials"
     mandatory=true
-    versionRange="[${se_version},)"
+    versionRange="[${se_full_version},)"
     ordering="AFTER"
     side="BOTH"

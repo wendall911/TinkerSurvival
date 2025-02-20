@@ -166,7 +166,7 @@ def replaceProperties = [ 'version': version,
     'description': description, 'display_url': display_url, 'update_url': update_url, 'authors': authors,
     'credits': credits, 'logo_file': logo_file, 'minecraft_version_range': minecraft_version_range,
     'forge_version_range': forge_version_range, "loader_version_range": loader_version_range,
-    'se_version': se_version
+    'se_full_version': se_full_version
 ]
 
 processResources {
