@@ -14,7 +14,6 @@ import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import tinkersurvival.data.client.ModItemModelProvider;
 import tinkersurvival.data.client.patchouli.ModpackBookProvider;
 import tinkersurvival.data.overrides.BlockTagsOverrideProvider;
-import tinkersurvival.data.recipes.ModRecipesProvider;
 import tinkersurvival.data.tcon.MaterialPartTextureGenerator;
 import tinkersurvival.data.tcon.ToolItemModelProvider;
 import tinkersurvival.data.tcon.sprite.SawPartSpriteProvider;
@@ -43,7 +42,6 @@ public final class DataGenerators {
         gen.addProvider(server, new ModItemModelProvider(packOutput, existingFileHelper));
         gen.addProvider(server, blockTags);
         gen.addProvider(server, new ModItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, existingFileHelper));
-        gen.addProvider(server, new ModRecipesProvider(packOutput));
         gen.addProvider(server, new ToolsRecipeProvider(packOutput));
         gen.addProvider(server, new StationSlotLayoutProvider(packOutput));
         gen.addProvider(client, new GeneratorPartTextureJsonGenerator(packOutput, TinkerSurvival.MODID, sawPartSprites));
