@@ -3,21 +3,21 @@ package tinkersurvival.data.client.patchouli;
 import java.util.List;
 import java.util.function.Consumer;
 
+import org.jetbrains.annotations.NotNull;
+
 import chargedcharms.ChargedCharms;
 import chargedcharms.common.item.ChargedCharmsItems;
+
 import homeostatic.Homeostatic;
 import homeostatic.common.item.HomeostaticItems;
 
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-
 import net.minecraft.world.level.block.Blocks;
 
-import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
@@ -29,8 +29,8 @@ import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
-
 import slimeknights.tconstruct.world.TinkerWorld;
+
 import survivalistessentials.items.SurvivalistEssentialsItems;
 import survivalistessentials.SurvivalistEssentials;
 import survivalistessentials.world.SurvivalistEssentialsWorld;
@@ -64,7 +64,8 @@ public class ModpackBookProvider extends PatchouliBookProvider {
             .setDontGenerateBook(false)
             .setShowProgress(false)
             .setUseBlockyFont(true)
-            .setI18n(true);
+            .setI18n(true)
+            .setUseResourcePack(true);
 
         bookBuilder = addAbout(bookBuilder).build();
         bookBuilder = addGameplay(bookBuilder).build();
