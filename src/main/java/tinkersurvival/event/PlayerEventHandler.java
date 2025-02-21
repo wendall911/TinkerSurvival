@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import slimeknights.tconstruct.tables.block.entity.inventory.TinkerStationContainerWrapper;
+
 import tinkersurvival.items.tool.Knife;
 import tinkersurvival.items.tool.Saw;
 import tinkersurvival.TinkerSurvival;
@@ -57,7 +58,7 @@ public class PlayerEventHandler {
                             craftMatrix.setItem(i, tool);
                         }
                     }
-                    }
+                }
             }
         }
     }

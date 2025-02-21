@@ -22,7 +22,6 @@ public class ToolsRecipeProvider extends RecipeProvider implements IConditionBui
         super(packOutput);
     }
 
-
     @Override
     public String getModId() {
         return TinkerSurvival.MODID;
