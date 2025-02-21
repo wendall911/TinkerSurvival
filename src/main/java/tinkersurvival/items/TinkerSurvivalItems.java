@@ -28,6 +28,7 @@ public class TinkerSurvivalItems {
     public static Item registerBook(String name) {
         return registerItem(name, new SurvivalistEssentialsBook(
             new Item.Properties(),
+            name,
             TinkerSurvival.MODID
         ));
     }
