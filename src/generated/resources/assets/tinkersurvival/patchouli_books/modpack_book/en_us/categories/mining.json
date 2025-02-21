@@ -1,0 +1,6 @@
+{
+  "description": "info.tinkersurvival.modpack_book.mining.desc",
+  "icon": "tconstruct:pickaxe{\"tic_broken\":0,\"Damage\":0,\"tic_materials\":[\"tconstruct:copper#copper\",\"tconstruct:wood#wood\",\"tconstruct:clay#clay\"],\"tic_display\":1}",
+  "name": "info.tinkersurvival.modpack_book.mining.name",
+  "sortnum": 3
+}

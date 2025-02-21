@@ -1,0 +1,26 @@
+{
+  "category": "tinkersurvival:tools",
+  "icon": "tinkersurvival:saw{\"tic_broken\":0,\"Damage\":0,\"tic_materials\":[\"tconstruct:copper#copper\",\"tconstruct:wood#wood\",\"tconstruct:clay#clay\"],\"tic_display\":1}",
+  "name": "info.tinkersurvival.modpack_book.tools.tcon_tools.name",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tconstruct:common/materials_and_you",
+      "text": "info.tinkersurvival.modpack_book.tools.tcon_tools.desc",
+      "title": "info.tinkersurvival.modpack_book.tools.tcon_tools.name"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tinkersurvival:knife{\"tic_broken\":0,\"Damage\":0,\"tic_materials\":[\"tconstruct:copper#copper\",\"tconstruct:wood#wood\",\"tconstruct:clay#clay\"],\"tic_display\":1}",
+      "text": "info.tinkersurvival.modpack_book.tools.tcon_tools.knife.desc",
+      "title": "item.tinkersurvival.knife"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tinkersurvival:saw{\"tic_broken\":0,\"Damage\":0,\"tic_materials\":[\"tconstruct:copper#copper\",\"tconstruct:wood#wood\",\"tconstruct:clay#clay\"],\"tic_display\":1}",
+      "text": "info.tinkersurvival.modpack_book.tools.tcon_tools.saw.desc",
+      "title": "item.tinkersurvival.saw"
+    }
+  ],
+  "sortnum": 7
+}
