@@ -130,7 +130,8 @@ dependencies {
         runtimeOnly fg.deobf("curse.maven:sushigocrafting-452500:${sushigocrafting_version}")
         runtimeOnly fg.deobf("curse.maven:culinary_construct-296676:${culinary_construct_version}")
         runtimeOnly fg.deobf("curse.maven:architectury-419699:${architectury_version}")
-        runtimeOnly fg.deobf("curse.maven:bmo-567709:${bmo_version}")
+        // Crashes in development environment
+        //runtimeOnly fg.deobf("curse.maven:bmo-567709:${bmo_version}")
     }
     else {
         runtimeOnly fg.deobf("curse.maven:create-328085:${create_version}")
