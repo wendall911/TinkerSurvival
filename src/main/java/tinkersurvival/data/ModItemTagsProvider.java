@@ -20,6 +20,7 @@ import static slimeknights.tconstruct.common.TinkerTags.Items.MULTIPART_TOOL;
 import static slimeknights.tconstruct.common.TinkerTags.Items.MELEE_WEAPON;
 import static slimeknights.tconstruct.common.TinkerTags.Items.RED_SAND_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SAND_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.SMALL_TOOLS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
 
 import tinkersurvival.common.TagManager;
@@ -65,6 +66,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             TConItems.KNIFE.get()
         );
         this.tag(TOOL_PARTS).add(TConItems.SAW_BLADE.get());
+        this.tag(SMALL_TOOLS).add(
+            TConItems.KNIFE.get(),
+            TConItems.SAW.get()
+        );
 
         addCast.accept(TConItems.SAW_BLADE_CAST);
     }
