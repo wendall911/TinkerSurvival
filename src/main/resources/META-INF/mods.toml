@@ -1,7 +1,7 @@
 modLoader="javafml"
-loaderVersion="${loader_version_range}"
-issueTrackerURL="${issue_tracker}"
+loaderVersion="${forge_version_range}"
 license="${license}"
+issueTrackerURL="${issue_tracker}"
 
 [[mods]]
   modId="${modid}"
@@ -24,7 +24,7 @@ license="${license}"
 [[dependencies.tinkersurvival]]
     modId="minecraft"
     mandatory=true
-    versionRange="${minecraft_version_range}"
+    versionRange="${forge_mc_version_range}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tinkersurvival]]
