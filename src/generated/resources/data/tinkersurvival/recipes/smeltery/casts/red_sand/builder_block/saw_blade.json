@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "pattern": "tinkersurvival:saw_blade",
+  "pattern_item": {
+    "tag": "forge:sand/red"
+  },
+  "result": {
+    "item": "tinkersurvival:saw_blade_red_sand_cast",
+    "count": 4
+  }
+}

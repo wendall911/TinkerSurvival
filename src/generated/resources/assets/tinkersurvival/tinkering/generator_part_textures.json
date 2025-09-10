@@ -6,12 +6,12 @@
       "statType": "tconstruct:head"
     },
     {
-      "path": "tinkersurvival:item/tool/saw/binding",
-      "statType": "tconstruct:extra"
-    },
-    {
       "path": "tinkersurvival:item/tool/saw/broken_head",
       "statType": "tconstruct:head"
+    },
+    {
+      "path": "tinkersurvival:item/tool/saw/binding",
+      "statType": "tconstruct:extra"
     },
     {
       "path": "tinkersurvival:item/tool/saw/handle",
@@ -22,12 +22,12 @@
       "statType": "tconstruct:head"
     },
     {
-      "path": "tinkersurvival:item/tool/knife/binding",
-      "statType": "tconstruct:extra"
-    },
-    {
       "path": "tinkersurvival:item/tool/knife/broken_head",
       "statType": "tconstruct:head"
+    },
+    {
+      "path": "tinkersurvival:item/tool/knife/binding",
+      "statType": "tconstruct:extra"
     },
     {
       "path": "tinkersurvival:item/tool/knife/handle",

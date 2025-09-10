@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:molding_table",
   "material": {
-    "item": "tconstruct:blank_sand_cast"
+    "tag": "tconstruct:casts/sand"
   },
   "pattern": {
     "item": "tinkersurvival:saw_blade",
