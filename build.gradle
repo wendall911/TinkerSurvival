@@ -3,9 +3,11 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.71.8'
-    id 'io.freefair.lombok' version '6.3.0'
-    id 'me.modmuss50.mod-publish-plugin' version '0.7.3'
+    // https://plugins.gradle.org/plugin/me.modmuss50.mod-publish-plugin
+    id 'me.modmuss50.mod-publish-plugin' version '1.0.0'
+    // https://plugins.gradle.org/plugin/se.bjurr.gitchangelog.git-changelog-gradle-plugin
+    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '3.0.7'
+    id 'io.freefair.lombok' version '8.14.2'
 }
 
 repositories {
@@ -13,10 +15,6 @@ repositories {
         // location of the maven that hosts Mantle and JEI files
         name = 'Progwml6 maven'
         url = 'https://dvs1.progwml6.com/files/maven'
-    }
-    maven { // TOP
-        name 'McJty maven'
-        url "https://maven.k-4u.nl"
     }
     maven { // CraftTweaker, Immersive Engineering, JEI
         name 'BlameJared Maven'
@@ -26,20 +24,24 @@ repositories {
         dirs 'libs'
     }
     maven {
-        name = "Curse Maven"
-        url = "https://cursemaven.com"
+        name = 'Curse Maven'
+        url = 'https://cursemaven.com'
         content {
-            includeGroup "curse.maven"
+            includeGroup 'curse.maven'
         }
     }
-	maven {
-		name = "C4's Maven"
-		url = "https://maven.theillusivec4.top/"
-	}
+    maven {
+        name = 'Illusive Soulworks'
+        url = "https://maven.theillusivec4.top/"
+    }
     maven {
         // Patchouli && Provider
         name = "Blame Jared"
         url = "https://maven.blamejared.com"
+    }
+    maven {
+        name = 'wendall911 maven' // Library for wendall911 mods
+        url = 'https://raw.githubusercontent.com/wendall911/maven/main/'
     }
 }
 
@@ -52,7 +54,7 @@ def modid = "${modid}"
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '17'
 
 minecraft {
-    mappings channel: "${mappings_channel}", version: "${mappings_version}-${minecraft_version}"
+    mappings channel: 'parchment', version: "${mappings_version}-${minecraft_version}"
 
     runs {
         client {
@@ -86,8 +88,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            args '--mod', 'tinkersurvival',
+            args '--mod', "${modid}",
                     '--all',
                     '--output', file('src/generated/resources/'),
                     '--existing', file('src/main/resources/'),
@@ -111,7 +112,7 @@ dependencies {
 
     implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tic_version}")
-    implementation fg.deobf("curse.maven:se-676800:${se_version}")
+    implementation fg.deobf(group: 'com.github.wendall911.survivalistessentials', name: 'SurvivalistEssentials', version: "${se_full_version}")
     implementation fg.deobf("curse.maven:homeostatic-634466:${homeostatic_version}")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}-FORGE")
     implementation fg.deobf("xyz.brassgoggledcoders:PatchouliProvider:${patchouli_provider_version}")
@@ -120,9 +121,7 @@ dependencies {
     if (System.getenv('DATA_GEN') == null) {
         //Include some examples here for testing other mods
         runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-        runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${minecraft_version}-${probe_version}") {
-            transitive = false
-        }
+        runtimeOnly fg.deobf("curse.maven:top-245211:${probe_version}")
         runtimeOnly fg.deobf("curse.maven:botania-225643:${botania_version}")
         runtimeOnly fg.deobf("curse.maven:immersiveengineering-231951:${ie_version}")
         runtimeOnly fg.deobf("curse.maven:sol_carrot-277616:${sol_carrot_version}")
@@ -164,10 +163,9 @@ jar {
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
 def replaceProperties = [ 'version': version,
     'issue_tracker': issue_tracker, 'license': license, 'modid': modid, 'display_name': display_name,
-    'description': description, 'display_url': display_url, 'update_url': update_url, 'authors': authors,
-    'credits': credits, 'logo_file': logo_file, 'minecraft_version_range': minecraft_version_range,
-    'forge_version_range': forge_version_range, "loader_version_range": loader_version_range,
-    'se_full_version': se_full_version
+    'description': description, 'display_url': display_url, 'mod_update_branch': mod_update_branch, 'authors': authors,
+    'credits': credits, 'logo_file': logo_file, 'forge_mc_version_range': forge_mc_version_range,
+    'forge_version_range': forge_version_range, 'se_full_version': se_full_version
 ]
 
 processResources {
@@ -181,7 +179,33 @@ processResources {
     }
 }
 
-jar.finalizedBy('reobfJar', 'signJar')
+jar.finalizedBy('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            // This gives us the built obfuscated version Forge requires
+            artifact jar
+        }
+    }
+    repositories {
+        if (System.getenv('local_maven') != null) {
+            maven {
+                url 'file://' + System.getenv('local_maven')
+            }
+        }
+    }
+}
+
+task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+    file.set(new File(project(":").projectDir.toString() + '/build/libs/changelog.txt'));
+    templateContent.set(file(project(":").projectDir.toString() + '/files/templates/changelog.mustache').getText('UTF-8'));
+    toRevision.set('HEAD');
+    fromRevision.set("${minecraft_version}-${last_mod_version}");
+}
 
 def updates = tasks.register("generateUpdates", Copy) {
     it.outputs.upToDateWhen {
@@ -190,13 +214,15 @@ def updates = tasks.register("generateUpdates", Copy) {
 
     it.from("./files/templates/") {
         include 'updates.json'
-        expand 'mod_version': mod_version
+        expand 'version': version, 'minecraft_version': minecraft_version
     }
 
     it.into 'files/'
 }
 
-def changelogFile = project(":").projectDir.toString() + '/build/libs/' + project.getName() + '-' + version + '-changelog.txt'
+tasks.build.dependsOn('changelog', 'generateUpdates')
+
+def changelogFile = project(":").projectDir.toString() + '/build/libs/changelog.txt'
 def publishFile = project(":").projectDir.toString() + "/build/libs/${archivesBaseName}-${version}.jar"
 
 publishMods {
@@ -206,6 +232,7 @@ publishMods {
     }
     type = "${release_type}".startsWith("release") ? STABLE : ("${release_type}".startsWith("beta") ? BETA : ALPHA)
     modLoaders.addAll(['forge'])
+    dryRun = providers.environmentVariable('DO_RELEASE').getOrNull() == null
 
     if (project.hasProperty('tscurseApiKey')) {
         curseforge {
@@ -215,7 +242,6 @@ publishMods {
             clientRequired = true
             serverRequired = true
             minecraftVersions.addAll("${release_versions}".split(','))
-            embeds('spectrelib')
             requires('mantle')
             requires('tinkers-construct')
             optional('configured')
@@ -256,57 +282,6 @@ publishMods {
             requires('biomesyougo')
             requires('ecologics')
             requires('psi')
-        }
-    }
-    if (project.hasProperty('tsGithubToken')) {
-    }
-}
-
-task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
-    file = new File(changelogFile);
-    templateContent = file('files/templates/changelog.mustache').getText('UTF-8');
-    fromRepo = file("$projectDir");
-    toRef = "HEAD";
-    fromRef = "${minecraft_version}-${last_mod_version}";
-}
-
-tasks.build.dependsOn('changelog', 'generateUpdates')
-
-// Jar Signing
-import net.minecraftforge.gradle.common.tasks.SignJar
-
-task signJar(type: SignJar, dependsOn: jar) {
-    dependsOn 'reobfJar'
-
-    // Skip the task if our secret data isn't available
-    onlyIf {
-        project.hasProperty('keyStore')
-    }
-
-    keyStore = project.keyStore // This needs to be a path to the keystore file
-    alias = project.keyStoreAlias
-    storePass = project.keyStorePass
-    keyPass = project.keyStoreKeyPass
-    inputFile = jar.archiveFile
-    outputFile = jar.archiveFile
-}
-
-publishing {
-    repositories {
-        maven {
-            name = 'GitHubPackages'
-            url = uri(maven_url)
-            credentials {
-                username = project.githubusername
-                password = project.githubtoken
-            }
-        }
-    }
-
-    publications {
-        gpr(MavenPublication) {
-            artifactId = modid
-            from(components.java)
         }
     }
 }
