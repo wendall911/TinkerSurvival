@@ -1,0 +1,4 @@
+#!/bin/bash
+# Ugly bug effective
+./gradlew build || exit 1
+./gradlew publishMods || exit 1
