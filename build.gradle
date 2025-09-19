@@ -35,10 +35,9 @@ repositories {
 }
 
 group = 'com.github.wendall911.tinkersurvival'
-version = "${minecraft_version}-${mod_version}"
+def actualVersion = version
+version = "${minecraft_version}-${version}"
 archivesBaseName = "${mod_name}"
-def mcversion = "${minecraft_version}"
-def modid = "${modid}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '17'
 
@@ -48,7 +47,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file("run").canonicalPath
-            arg "-mixin.config=${modid}.mixins.json"
+            arg "-mixin.config=${mod_id}.mixins.json"
             property 'forge.logging.console.level', 'debug'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -62,7 +61,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
+            arg "-mixin.config=${mod_id}.mixins.json"
             property 'forge.logging.console.level', 'debug'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -76,7 +75,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
+            arg "-mixin.config=${mod_id}.mixins.json"
             property 'forge.logging.console.level', 'debug'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -94,6 +93,10 @@ minecraft {
             }
         }
     }
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
 }
 
 sourceSets.main.resources {
@@ -166,21 +169,17 @@ jar {
             "Implementation-Version": "${archiveVersion}",
             "Implementation-Vendor" :"${mod_author}",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "${modid}.mixins.json"
+            "MixinConfigs": "${mod_id}.mixins.json"
         ])
     }
 }
 
-mixin {
-    add sourceSets.main, "${modid}.refmap.json"
-}
-
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta', '*.mixins.json']
-def replaceProperties = [ 'version': version,
-    'issue_tracker': issue_tracker, 'license': license, 'modid': modid, 'display_name': display_name,
-    'description': description, 'display_url': display_url, 'update_url': update_url, 'authors': authors,
-    'credits': credits, 'logo_file': logo_file, 'forge_mc_version_range': forge_mc_version_range,
-    'forge_version_range': forge_version_range
+def replaceProperties = [
+    'version': actualVersion, 'forge_mc_version_range': forge_mc_version_range, 'forge_version_range': forge_version_range,
+    'license': license, 'mod_id': mod_id, 'mod_author': mod_author, 'mod_description': mod_description,
+    'mod_name': mod_name, 'issue_tracker': issue_tracker, 'mod_credits': mod_credits,
+    'mod_update_branch': mod_update_branch
 ]
 
 processResources {
@@ -203,7 +202,7 @@ def updates = tasks.register("generateUpdates", Copy) {
 
     it.from("./files/templates/") {
         include 'updates.json'
-        expand 'mod_version': mod_version
+        expand 'version': actualVersion, 'minecraft_version': minecraft_version
     }
 
     it.into 'files/'
