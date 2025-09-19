@@ -20,9 +20,6 @@ repositories {
         name 'BlameJared Maven'
         url 'https://maven.blamejared.com'
     }
-    flatDir {
-        dirs 'libs'
-    }
     maven {
         name = 'Curse Maven'
         url = 'https://cursemaven.com'
@@ -136,7 +133,7 @@ dependencies {
         runtimeOnly fg.deobf("curse.maven:create-328085:${create_version}")
     }
 
-	runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}+${minecraft_version}")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}+${minecraft_version}")
     runtimeOnly fg.deobf("curse.maven:comforts-276951:${comforts_version}")
 
     implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
@@ -274,7 +271,7 @@ publishMods {
             minecraftVersions.addAll("${release_versions}".split(','))
             requires('mantle')
             requires('tinkers-construct')
-			requires('quark')
+            requires('quark')
             requires('allyoucaneat')
             requires('botania')
             requires('exnihilosequentia')
