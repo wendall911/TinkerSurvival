@@ -34,10 +34,9 @@ repositories {
 }
 
 group = 'com.github.wendall911.tinkersurvival'
-version = "${minecraft_version}-${mod_version}"
+def actualVersion = version
+version = "${minecraft_version}-${version}"
 archivesBaseName = "${mod_name}"
-def mcversion = "${minecraft_version}"
-def modid = "${modid}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '17'
 
@@ -48,8 +47,6 @@ minecraft {
         client {
             workingDirectory project.file("run").canonicalPath
             property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 tinkersurvival {
@@ -61,8 +58,6 @@ minecraft {
         server {
             workingDirectory project.file('run')
             property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 tinkersurvival {
@@ -74,8 +69,6 @@ minecraft {
         data {
             workingDirectory project.file('run')
             property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             args '--mod', 'tinkersurvival',
                     '--all',
@@ -149,11 +142,11 @@ jar {
 }
 
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
-def replaceProperties = [ 'version': version,
-    'issue_tracker': issue_tracker, 'license': license, 'modid': modid, 'display_name': display_name,
-    'description': description, 'display_url': display_url, 'update_url': update_url, 'authors': authors,
-    'credits': credits, 'logo_file': logo_file, 'forge_version_range': forge_version_range,
-    'forge_mc_version_range': forge_mc_version_range, 'se_version': se_version
+def replaceProperties = [
+    'version': actualVersion, 'forge_mc_version_range': forge_mc_version_range, 'forge_version_range': forge_version_range,
+    'license': license, 'mod_id': mod_id, 'mod_author': mod_author, 'mod_description': mod_description,
+    'mod_name': mod_name, 'issue_tracker': issue_tracker, 'mod_credits': mod_credits,
+    'mod_update_branch': mod_update_branch, 'se_version': se_version
 ]
 
 processResources {
@@ -175,7 +168,7 @@ def updates = tasks.register("generateUpdates", Copy) {
 
     it.from("./files/templates/") {
         include 'updates.json'
-        expand 'mod_version': mod_version
+        expand 'version': actualVersion, 'minecraft_version': minecraft_version
     }
 
     it.into 'files/'
