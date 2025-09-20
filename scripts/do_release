@@ -1,5 +1,10 @@
 #!/bin/bash
 # Ugly bug effective
-./gradlew build || exit 1
-cat build/libs/changelog.txt
-DO_RELEASE=true ./gradlew publishMods || exit 1
+git_tag=$(git name-rev --name-only --tags HEAD 2>/dev/null | sed 's/^undefined$//')
+if [[ -n "$git_tag" && -z "$(git status --porcelain)" ]]; then
+    ./gradlew build || exit 1
+    cat build/libs/changelog.txt
+    DO_RELEASE=true ./gradlew publishMods || exit 1
+else
+    echo "This is not a release version."
+fi
