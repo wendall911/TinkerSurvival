@@ -2,6 +2,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     // https://plugins.gradle.org/plugin/me.modmuss50.mod-publish-plugin
     id 'me.modmuss50.mod-publish-plugin' version '1.0.0'
@@ -99,17 +100,17 @@ sourceSets.main.resources {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tic_version}")
-    implementation fg.deobf(group: 'com.github.wendall911.survivalistessentials', name: 'SurvivalistEssentials', version: "${se_full_version}")
+    implementation fg.deobf(group: 'com.github.wendall911.survivalistessentials', name: 'SurvivalistEssentials', version: "${minecraft_version}-${se_version}")
     implementation fg.deobf("curse.maven:homeostatic-634466:${homeostatic_version}")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}-FORGE")
     implementation fg.deobf("xyz.brassgoggledcoders:PatchouliProvider:${patchouli_provider_version}")
     implementation fg.deobf("curse.maven:chargedcharms-682683:${chargedcharms_version}")
 
     if (System.getenv('DATA_GEN') == null) {
-        //Include some examples here for testing other mods
         runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
         runtimeOnly fg.deobf("curse.maven:top-245211:${probe_version}")
         runtimeOnly fg.deobf("curse.maven:botania-225643:${botania_version}")
@@ -155,7 +156,7 @@ def replaceProperties = [
     'version': actualVersion, 'forge_mc_version_range': forge_mc_version_range, 'forge_version_range': forge_version_range,
     'license': license, 'mod_id': mod_id, 'mod_author': mod_author, 'mod_description': mod_description,
     'mod_name': mod_name, 'issue_tracker': issue_tracker, 'mod_credits': mod_credits,
-    'mod_update_branch': mod_update_branch, 'se_full_version': se_full_version
+    'mod_update_branch': mod_update_branch, 'se_version': se_version, 'se_version_range': se_version_range
 ]
 
 processResources {

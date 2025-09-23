@@ -36,6 +36,6 @@ logoFile="${mod_id}_icon.png"
 [[dependencies.${mod_id}]]
     modId="survivalistessentials"
     mandatory=true
-    versionRange="[${se_full_version},)"
+    versionRange="${se_version_range}"
     ordering="AFTER"
     side="BOTH"
