@@ -233,6 +233,7 @@ publishMods {
         curseforge {
             accessToken = project.tscurseApiKey
             projectId = project.tscurseId
+            projectSlug = project.tsSlug
             javaVersions.add(JavaVersion.toVersion("${java_version}"))
             clientRequired = true
             serverRequired = true
@@ -273,6 +274,16 @@ publishMods {
             optional('dynamictrees')
             optional('biomesyougo')
             optional('ecologics')
+        }
+    }
+    if (project.hasProperty('tsDiscordWebhook')) {
+        discord {
+            webhookUrl = project.tsDiscordWebhook
+            dryRunWebhookUrl = project.discordDryrunWebhook
+            username = "wendall911"
+            content = changelog.map {
+                "# A new version of Tinkers' Survival for Forge ${minecraft_version} has been released! \n" + it
+            }
         }
     }
 }
