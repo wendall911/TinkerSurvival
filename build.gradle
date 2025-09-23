@@ -166,6 +166,25 @@ processResources {
 
 jar.finalizedBy('reobfJar')
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            // This gives us the built obfuscated version Forge requires
+            artifact jar
+        }
+    }
+    repositories {
+        if (System.getenv('local_maven') != null) {
+            maven {
+                url 'file://' + System.getenv('local_maven')
+            }
+        }
+    }
+}
+
 def updates = tasks.register("generateUpdates", Copy) {
     it.outputs.upToDateWhen {
         false
