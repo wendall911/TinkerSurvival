@@ -111,6 +111,7 @@ dependencies {
     implementation fg.deobf("curse.maven:chargedcharms-682683:${chargedcharms_version}")
 
     if (System.getenv('DATA_GEN') == null) {
+        runtimeOnly fg.deobf(group: 'technology.roughness.whitenoise', name: "whitenoise-${minecraft_version}-forge", version: "${whitenoise_version}")
         runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
         runtimeOnly fg.deobf("curse.maven:top-245211:${probe_version}")
         runtimeOnly fg.deobf("curse.maven:botania-225643:${botania_version}")
