@@ -1,15 +1,15 @@
 modLoader="javafml"
 loaderVersion="${forge_version_range}"
 license="${license}"
-logoBlur=false
-issueTrackerURL="${issue_tracker}"
-logoFile="${mod_id}_icon.png"
+issueTrackerURL="https://github.com/${mod_author}/${mod_name}/issues"
+clientSideOnly=true
 
 [[mods]]
     modId="${mod_id}"
     version="${version}"
     displayName="${mod_name}"
-    updateJSONURL="https://raw.githubusercontent.com/wendall911/Homeostatic/${mod_update_branch}/files/updates.json"
+    updateJSONURL="https://raw.githubusercontent.com/${mod_author}/${mod_name}/${mod_update_branch}/files/updates.json"
+    displayURL="https://github.com/${mod_author}/${mod_name}"
     authors="${mod_author}"
     credits="${mod_credits}"
     description='''
@@ -30,7 +30,7 @@ logoFile="${mod_id}_icon.png"
 [[dependencies.${mod_id}]]
     modId="tconstruct"
     mandatory=true
-    versionRange="[0,)"
+    versionRange="${tic_version_range}"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.${mod_id}]]
