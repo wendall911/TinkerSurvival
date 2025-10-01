@@ -2,8 +2,6 @@ modLoader="javafml"
 loaderVersion="${forge_version_range}"
 license="${license}"
 issueTrackerURL="https://github.com/${mod_author}/${mod_name}/issues"
-clientSideOnly=true
-
 [[mods]]
     modId="${mod_id}"
     version="${version}"
