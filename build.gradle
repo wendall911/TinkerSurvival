@@ -107,7 +107,7 @@ dependencies {
     implementation fg.deobf(group: 'com.github.wendall911.survivalistessentials', name: 'SurvivalistEssentials', version: "${minecraft_version}-${se_version}")
     implementation fg.deobf("curse.maven:homeostatic-634466:${homeostatic_version}")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${minecraft_version}-${patchouli_version}-FORGE")
-    implementation fg.deobf("xyz.brassgoggledcoders:PatchouliProvider:${minecraft_version}-${patchouli_provider_version}")
+    compileOnly fg.deobf("xyz.brassgoggledcoders:PatchouliProvider:${minecraft_version}-${patchouli_provider_version}")
     implementation fg.deobf("curse.maven:chargedcharms-682683:${chargedcharms_version}")
 
     if (System.getenv('DATA_GEN') == null) {
@@ -120,12 +120,13 @@ dependencies {
         runtimeOnly fg.deobf("curse.maven:titanium-287342:${titanium_version}")
         runtimeOnly fg.deobf("curse.maven:sushigocrafting-452500:${sushigocrafting_version}")
         runtimeOnly fg.deobf("curse.maven:culinary_construct-296676:${culinary_construct_version}")
-        runtimeOnly fg.deobf("curse.maven:architectury-419699:${architectury_version}")
+        //runtimeOnly fg.deobf("curse.maven:architectury-419699:${architectury_version}")
         // Crashes in development environment
         //runtimeOnly fg.deobf("curse.maven:bmo-567709:${bmo_version}")
     }
     else {
         runtimeOnly fg.deobf("curse.maven:create-328085:${create_version}")
+        runtimeOnly fg.deobf("xyz.brassgoggledcoders:PatchouliProvider:${minecraft_version}-${patchouli_provider_version}")
     }
 
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}+${minecraft_version}")
