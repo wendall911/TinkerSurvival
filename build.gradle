@@ -260,7 +260,7 @@ publishMods {
             optional('ice-and-fire-dragons')
         }
     }
-    if (project.hasProperty('tsModrinthId')) {
+    if (project.hasProperty('modrinth_id')) {
         modrinth {
             accessToken = project.modrinthKey
             projectId = modrinth_id
