@@ -232,8 +232,8 @@ publishMods {
     if (project.hasProperty('tscurseApiKey')) {
         curseforge {
             accessToken = project.tscurseApiKey
-            projectId = project.tscurseId
-            projectSlug = project.tsSlug
+            projectId = curseforge_id
+            projectSlug = curseforge_slug
             javaVersions.add(JavaVersion.toVersion("${java_version}"))
             clientRequired = true
             serverRequired = true
@@ -263,7 +263,7 @@ publishMods {
     if (project.hasProperty('tsModrinthId')) {
         modrinth {
             accessToken = project.modrinthKey
-            projectId = project.tsModrinthId
+            projectId = modrinth_id
             minecraftVersions.addAll("${release_versions}".split(','))
             requires('mantle')
             requires('tinkers-construct')
